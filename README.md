@@ -1,4 +1,4 @@
-# PatentAgent [![Build Status](https://secure.travis-ci.org/rudewalrus/patentagent.png)](http://travis-ci.org/rudewalrus/patentagent) [![Dependency Status](https://gemnasium.com/rudewalrus/patentagent.png)](https://gemnasium.com/rudewalrus/patentagent)
+# PatentAgent [![Build Status](https://secure.travis-ci.org/RudeWalrus/PatentAgent.png)](http://travis-ci.org/RudeWalrus/PatentAgent) 
 
 ## Installation
 
