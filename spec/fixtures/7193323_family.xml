@@ -1,0 +1,1784 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/2.6.2/style/family-biblio.xsl"?>
+<ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns="http://www.epo.org/exchange">
+    <ops:meta name="elapsed-time" value="140"/>
+    <ops:patent-family legal="false">
+        <ops:publication-reference>
+            <document-id document-id-type="epodoc">
+                <doc-number>US7193323</doc-number>
+            </document-id>
+        </ops:publication-reference>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>CN</country>
+                    <doc-number>1618601</doc-number>
+                    <kind>A</kind>
+                    <date>20050525</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>CN1618601</doc-number>
+                    <date>20050525</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>CN</country>
+                    <doc-number>200410088354</doc-number>
+                    <kind>A</kind>
+                    <date>20041112</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="CN" doc-number="1618601" kind="A">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>CN</country>
+                            <doc-number>1618601</doc-number>
+                            <kind>A</kind>
+                            <date>20050525</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>CN1618601</doc-number>
+                            <date>20050525</date>
+                        </document-id>
+                    </publication-reference>
+                    <classification-ipc>
+                        <text>B32B15/04</text>
+                        <text>C25D3/56</text>
+                    </classification-ipc>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>CN20041088354</doc-number>
+                            <date>20041112</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>A2004100883542</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>10/714, 966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                        <priority-claim sequence="2">
+                            <document-id document-id-type="original">
+                                <doc-number> 10/714,966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>IBM</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>CYRIL CABRAL JR [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="epodoc">
+                                <inventor-name>
+                                    <name> CHIRAS STEFANIE R [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="epodoc">
+                                <inventor-name>
+                                    <name> COOPER EMANUEL I [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="epodoc">
+                                <inventor-name>
+                                    <name> HARIKLIA DELIGIANNI [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="epodoc">
+                                <inventor-name>
+                                    <name> KELLOCK ANDREW J [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="epodoc">
+                                <inventor-name>
+                                    <name> RUBINO JUDITH M [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="epodoc">
+                                <inventor-name>
+                                    <name> TSAI ROGER Y [US]
+</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                </bibliographic-data>
+            </exchange-document>
+        </ops:family-member>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>CN</country>
+                    <doc-number>100399524</doc-number>
+                    <kind>C</kind>
+                    <date>20080702</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>CN100399524C</doc-number>
+                    <date>20080702</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>CN</country>
+                    <doc-number>200410088354</doc-number>
+                    <kind>A</kind>
+                    <date>20041112</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="CN" doc-number="100399524" kind="C">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>CN</country>
+                            <doc-number>100399524</doc-number>
+                            <kind>C</kind>
+                            <date>20080702</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>CN100399524C</doc-number>
+                            <date>20080702</date>
+                        </document-id>
+                    </publication-reference>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>CN20041088354</doc-number>
+                            <date>20041112</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>A2004100883542</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>10/714, 966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                        <priority-claim sequence="2">
+                            <document-id document-id-type="original">
+                                <doc-number> 10/714,966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>IBM</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>HARIKLIA DELIGIANNI [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                </bibliographic-data>
+            </exchange-document>
+        </ops:family-member>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>2005104216</doc-number>
+                    <kind>A1</kind>
+                    <date>20050519</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>US2005104216</doc-number>
+                    <date>20050519</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="US" doc-number="2005104216" kind="A1">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>US</country>
+                            <doc-number>2005104216</doc-number>
+                            <kind>A1</kind>
+                            <date>20050519</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US2005104216</doc-number>
+                            <date>20050519</date>
+                        </document-id>
+                    </publication-reference>
+                    <classification-ipc>
+                        <text>H01L23/48</text>
+                    </classification-ipc>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/751</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/752</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/758</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/762</text>
+                    </classification-national>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US20030714966</doc-number>
+                            <date>20031118</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>10714966</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>INTERNATIONAL BUSINESS MACHINES CORPORATION</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="epodoc">
+                                <inventor-name>
+                                    <name> CHIRAS STEFANIE R [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="epodoc">
+                                <inventor-name>
+                                    <name> COOPER EMANUEL I [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="epodoc">
+                                <inventor-name>
+                                    <name> DELIGIANNI HARIKLIA [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="epodoc">
+                                <inventor-name>
+                                    <name> KELLOCK ANDREW J [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="epodoc">
+                                <inventor-name>
+                                    <name> RUBINO JUDITH M [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="epodoc">
+                                <inventor-name>
+                                    <name> TSAI ROGER Y [US]
+</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="8" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL, JR. CYRIL, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="9" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                </bibliographic-data>
+                <abstract lang="en">
+                    <p>A composite material comprising a layer containing copper, and an electrodeposited CoWP film on the copper layer. The CoWP film contains from 11 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a method of making an interconnect structure comprising: providing a trench or via within a dielectric material, and a conducting metal containing copper within the trench or the via</p>
+                    <p> and forming a CoWP film by electrodeposition on the copper layer. The CoWP film contains from 10 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a interconnect structure comprising a dielectric layer in contact with a metal layer</p>
+                    <p> an electrodeposited CoWP film on the metal layer, and a copper layer on the CoWP film.</p>
+                </abstract>
+            </exchange-document>
+        </ops:family-member>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>7193323</doc-number>
+                    <kind>B2</kind>
+                    <date>20070320</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>US7193323</doc-number>
+                    <date>20070320</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="US" doc-number="7193323" kind="B2">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>US</country>
+                            <doc-number>7193323</doc-number>
+                            <kind>B2</kind>
+                            <date>20070320</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US7193323</doc-number>
+                            <date>20070320</date>
+                        </document-id>
+                    </publication-reference>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/751</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/752</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/758</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/762</text>
+                    </classification-national>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US20030714966</doc-number>
+                            <date>20031118</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>10714966</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>INTERNATIONAL BUSINESS MACHINES CORPORATION</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>CABRAL JR CYRIL [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="epodoc">
+                                <inventor-name>
+                                    <name> CHIRAS STEFANIE R [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="epodoc">
+                                <inventor-name>
+                                    <name> COOPER EMANUEL [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="epodoc">
+                                <inventor-name>
+                                    <name> DELIGIANNI HARIKLIA [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="epodoc">
+                                <inventor-name>
+                                    <name> KELLOCK ANDREW J [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="epodoc">
+                                <inventor-name>
+                                    <name> RUBINO JUDITH M [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="epodoc">
+                                <inventor-name>
+                                    <name> TSAI ROGER Y [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="8" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL, JR. CYRIL, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="9" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                    <references-cited>
+                        <citation srep-phase="APP" sequence="1">
+                            <patcit dnum-type="publication number" num="1">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US5695810</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>5695810</doc-number>
+                                    <kind>A</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="2">
+                            <patcit dnum-type="publication number" num="2">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6323128</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6323128</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="3">
+                            <patcit dnum-type="publication number" num="3">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6342733</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6342733</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="4">
+                            <patcit dnum-type="publication number" num="4">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6528409</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6528409</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="5">
+                            <patcit dnum-type="publication number" num="5">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US2003010645</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>2003010645</doc-number>
+                                    <kind>A1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="6">
+                            <nplcit num="1">
+                                <text>- A. Kohn, et al., "Characterization of electroless deposited
+  Co(W,P) thin films for encapsulation of copper metallization"
+  Materials Science and Engineering A302 (2001) pp. 18-25</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="7">
+                            <nplcit num="2">
+                                <text>- C.-K. Hu, et al., "Reduced electromigration of Cu wires by
+  surface coating" IBM T.J. Watson Research Center, Yorktown
+  Heights, New York, 2002</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="8">
+                            <nplcit num="3">
+                                <text>- P.L. Cavallotti, et al., "Microelectrodeposition of cobalt and
+  its alloys" Proceedings AESF SUR/FIN Annual International
+  Technical Conference, 1999, pp. 325-335</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="9">
+                            <nplcit num="4">
+                                <text>- C.-K. Hu, et al., "Electromigration in On-Chip Single/Dual
+  Damascene Cu Interconnections" Journal of the Electrochemical
+  Society, vol. 149, No. 7, pp. 408-415, 2002</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="SEA" sequence="1">
+                            <patcit dnum-type="publication number" num="1">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6168991</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6168991</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="SEA" sequence="2">
+                            <patcit dnum-type="publication number" num="2">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6573606</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6573606</doc-number>
+                                    <kind>B2</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="SEA" sequence="3">
+                            <patcit dnum-type="publication number" num="3">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US2003075808</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>2003075808</doc-number>
+                                    <kind>A1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                    </references-cited>
+                </bibliographic-data>
+                <abstract lang="en">
+                    <p>A composite material comprising a layer containing copper, and an electrodeposited CoWP film on the copper layer. The CoWP film contains from 11 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a method of making an interconnect structure comprising: providing a trench or via within a dielectric material, and a conducting metal containing copper within the trench or the via</p>
+                    <p> and forming a CoWP film by electrodeposition on the copper layer. The CoWP film contains from 10 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a interconnect structure comprising a dielectric layer in contact with a metal layer</p>
+                    <p> an electrodeposited CoWP film on the metal layer, and a copper layer on the CoWP film.</p>
+                </abstract>
+            </exchange-document>
+        </ops:family-member>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>2005127518</doc-number>
+                    <kind>A1</kind>
+                    <date>20050616</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>US2005127518</doc-number>
+                    <date>20050616</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>4765205</doc-number>
+                    <kind>A</kind>
+                    <date>20050202</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>4765205</doc-number>
+                    <kind>A</kind>
+                    <date>20050202</date>
+                </document-id>
+            </priority-claim>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="US" doc-number="2005127518" kind="A1">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>US</country>
+                            <doc-number>2005127518</doc-number>
+                            <kind>A1</kind>
+                            <date>20050616</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US2005127518</doc-number>
+                            <date>20050616</date>
+                        </document-id>
+                    </publication-reference>
+                    <classification-ipc>
+                        <text>H01L21/44</text>
+                        <text>H01L23/48</text>
+                        <text>H01L23/52</text>
+                        <text>H01L29/40</text>
+                    </classification-ipc>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/768</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/637</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/642</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/648</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/675</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/687</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/687</text>
+                    </classification-national>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US20050047652</doc-number>
+                            <date>20050202</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>11047652</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20050047652</doc-number>
+                                <date>20050202</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>10714966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                        <priority-claim sequence="2">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>INTERNATIONAL BUSINESS MACHINES CORPORATION</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="epodoc">
+                                <inventor-name>
+                                    <name> CHIRAS STEFANIE R [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="epodoc">
+                                <inventor-name>
+                                    <name> COOPER EMANUEL I [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="epodoc">
+                                <inventor-name>
+                                    <name> DELIGIANNI HARIKLIA [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="epodoc">
+                                <inventor-name>
+                                    <name> KELLOCK ANDREW J [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="epodoc">
+                                <inventor-name>
+                                    <name> RUBINO JUDITH M [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="epodoc">
+                                <inventor-name>
+                                    <name> TSAI ROGER Y [US]
+</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="8" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL, JR. CYRIL</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                </bibliographic-data>
+                <abstract lang="en">
+                    <p>A composite material comprising a layer containing copper, and an electrodeposited CoWP film on the copper layer. The CoWP film contains from 11 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a method of making an interconnect structure comprising: providing a trench or via within a dielectric material, and a conducting metal containing copper within the trench or the via</p>
+                    <p> and forming a CoWP film by electrodeposition on the copper layer. The CoWP film contains from 10 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a interconnect structure comprising a dielectric layer in contact with a metal layer</p>
+                    <p> an electrodeposited CoWP film on the metal layer, and a copper layer on the CoWP film.</p>
+                </abstract>
+            </exchange-document>
+        </ops:family-member>
+        <ops:family-member>
+            <publication-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>7217655</doc-number>
+                    <kind>B2</kind>
+                    <date>20070515</date>
+                </document-id>
+                <document-id document-id-type="epodoc">
+                    <doc-number>US7217655</doc-number>
+                    <date>20070515</date>
+                </document-id>
+            </publication-reference>
+            <application-reference>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>4765205</doc-number>
+                    <kind>A</kind>
+                    <date>20050202</date>
+                </document-id>
+            </application-reference>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>4765205</doc-number>
+                    <kind>A</kind>
+                    <date>20050202</date>
+                </document-id>
+            </priority-claim>
+            <priority-claim>
+                <document-id document-id-type="docdb">
+                    <country>US</country>
+                    <doc-number>71496603</doc-number>
+                    <kind>A</kind>
+                    <date>20031118</date>
+                </document-id>
+            </priority-claim>
+            <exchange-document system="ops.epo.org" family-id="34574094" country="US" doc-number="7217655" kind="B2">
+                <bibliographic-data>
+                    <publication-reference>
+                        <document-id document-id-type="docdb">
+                            <country>US</country>
+                            <doc-number>7217655</doc-number>
+                            <kind>B2</kind>
+                            <date>20070515</date>
+                        </document-id>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US7217655</doc-number>
+                            <date>20070515</date>
+                        </document-id>
+                    </publication-reference>
+                    <classifications-ipcr>
+                        <classification-ipcr sequence="1">
+                            <text>H01L  21/  4763            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="2">
+                            <text>B32B  15/    04            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="3">
+                            <text>C25D   3/    56            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="4">
+                            <text>C25D   9/    08            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="5">
+                            <text>H01L  21/   288            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="6">
+                            <text>H01L  21/    44            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="7">
+                            <text>H01L  21/   768            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="8">
+                            <text>H01L  23/    48            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="9">
+                            <text>H01L  23/    52            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="10">
+                            <text>H01L  23/   532            A I                    </text>
+                        </classification-ipcr>
+                        <classification-ipcr sequence="11">
+                            <text>H01L  29/    40            A I                    </text>
+                        </classification-ipcr>
+                    </classifications-ipcr>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.175</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.582</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/E21.585</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>257/768</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/637</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/642</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/648</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/675</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/687</text>
+                    </classification-national>
+                    <classification-national>
+                        <country>US</country>
+                        <text>438/687</text>
+                    </classification-national>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/288E</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>C25D9/08</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C3B8</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L21/768C4</classification-symbol>
+                    </classification-ecla>
+                    <classification-ecla>
+                        <classification-symbol>H01L23/532M1C4</classification-symbol>
+                    </classification-ecla>
+                    <application-reference>
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US20050047652</doc-number>
+                            <date>20050202</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>11047652</doc-number>
+                        </document-id>
+                    </application-reference>
+                    <priority-claims>
+                        <priority-claim sequence="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20050047652</doc-number>
+                                <date>20050202</date>
+                            </document-id>
+                            <document-id document-id-type="original">
+                                <doc-number>10714966</doc-number>
+                            </document-id>
+                        </priority-claim>
+                        <priority-claim sequence="2">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US20030714966</doc-number>
+                                <date>20031118</date>
+                            </document-id>
+                        </priority-claim>
+                    </priority-claims>
+                    <parties>
+                        <applicants>
+                            <applicant sequence="1" data-format="epodoc">
+                                <applicant-name>
+                                    <name>IBM [US]</name>
+                                </applicant-name>
+                            </applicant>
+                            <applicant sequence="1" data-format="original">
+                                <applicant-name>
+                                    <name>INTERNATIONAL BUSINESS MACHINES CORPORATION</name>
+                                </applicant-name>
+                            </applicant>
+                        </applicants>
+                        <inventors>
+                            <inventor sequence="1" data-format="epodoc">
+                                <inventor-name>
+                                    <name>CABRAL JR CYRIL [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="epodoc">
+                                <inventor-name>
+                                    <name> CHIRAS STEFANIE R [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="epodoc">
+                                <inventor-name>
+                                    <name> COOPER EMANUEL I [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="epodoc">
+                                <inventor-name>
+                                    <name> DELIGIANNI HARIKLIA [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="epodoc">
+                                <inventor-name>
+                                    <name> KELLOCK ANDREW J [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="epodoc">
+                                <inventor-name>
+                                    <name> RUBINO JUDITH M [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="epodoc">
+                                <inventor-name>
+                                    <name> TSAI ROGER Y [US]</name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="1" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL CYRIL JR, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="2" data-format="original">
+                                <inventor-name>
+                                    <name>CHIRAS STEFANIE R, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="3" data-format="original">
+                                <inventor-name>
+                                    <name>COOPER EMANUEL I, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="4" data-format="original">
+                                <inventor-name>
+                                    <name>DELIGIANNI HARIKLIA, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="5" data-format="original">
+                                <inventor-name>
+                                    <name>KELLOCK ANDREW J, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="6" data-format="original">
+                                <inventor-name>
+                                    <name>RUBINO JUDITH M, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="7" data-format="original">
+                                <inventor-name>
+                                    <name>TSAI ROGER Y, </name>
+                                </inventor-name>
+                            </inventor>
+                            <inventor sequence="8" data-format="original">
+                                <inventor-name>
+                                    <name>CABRAL, JR. CYRIL</name>
+                                </inventor-name>
+                            </inventor>
+                        </inventors>
+                    </parties>
+                    <invention-title lang="en">Electroplated CoWP composite structures as copper barrier layers</invention-title>
+                    <references-cited>
+                        <citation srep-phase="APP" sequence="1">
+                            <patcit dnum-type="publication number" num="1">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US5695810</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>5695810</doc-number>
+                                    <kind>A</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="2">
+                            <patcit dnum-type="publication number" num="2">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6323128</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6323128</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="3">
+                            <patcit dnum-type="publication number" num="3">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6342733</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6342733</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="4">
+                            <patcit dnum-type="publication number" num="4">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6528409</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6528409</doc-number>
+                                    <kind>B1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="5">
+                            <patcit dnum-type="publication number" num="5">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6573606</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6573606</doc-number>
+                                    <kind>B2</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="6">
+                            <patcit dnum-type="publication number" num="6">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US2003010645</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>2003010645</doc-number>
+                                    <kind>A1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="7">
+                            <patcit dnum-type="publication number" num="7">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US2003075808</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>2003075808</doc-number>
+                                    <kind>A1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="8">
+                            <nplcit num="1">
+                                <text>- A. Kohn, et al., "Characterization of electroless deposited
+  Co(W,P) thin films for encapsulation of copper metallization"
+  Materials Science and Engineering A302 (2001) pp. 18-25</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="9">
+                            <nplcit num="2">
+                                <text>- C.-K. Hu, et al., "Reduced electromigration of Cu wires by
+  surface coating" IBM T.J. Watson Research Center, Yorktown
+  Heights, New York</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="10">
+                            <nplcit num="3">
+                                <text>- P.L. Cavallotti, et al., "Microelectrodeposition of cobalt and
+  its alloys" Proceedings AESF SUR/FIN Annual International
+  Technical Conference, 1999, pp. 325-335</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="APP" sequence="11">
+                            <nplcit num="4">
+                                <text>- C.-K. Hu, et al., "Electromigration in On-Chip Single/Dual
+  Damascene Cu Interconnections" Journal of the Electrochemical
+  Society, vol. 149, No. 7, pp. 408-415, 2002</text>
+                            </nplcit>
+                        </citation>
+                        <citation srep-phase="SEA" sequence="1">
+                            <patcit dnum-type="publication number" num="1">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US6972251</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>6972251</doc-number>
+                                    <kind>B2</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                        <citation srep-phase="SEA" sequence="2">
+                            <patcit dnum-type="publication number" num="2">
+                                <document-id document-id-type="epodoc">
+                                    <doc-number>US2004235237</doc-number>
+                                </document-id>
+                                <document-id document-id-type="docdb">
+                                    <country>US</country>
+                                    <doc-number>2004235237</doc-number>
+                                    <kind>A1</kind>
+                                </document-id>
+                            </patcit>
+                        </citation>
+                    </references-cited>
+                </bibliographic-data>
+                <abstract lang="en">
+                    <p>A composite material comprising a layer containing copper, and an electrodeposited CoWP film on the copper layer. The CoWP film contains from 11 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a method of making an interconnect structure comprising: providing a trench or via within a dielectric material, and a conducting metal containing copper within the trench or the via</p>
+                    <p> and forming a CoWP film by electrodeposition on the copper layer. The CoWP film contains from 10 atom percent to 25 atom percent phosphorus and has a thickness from 5 nm to 200 nm. The invention is also directed to a interconnect structure comprising a dielectric layer in contact with a metal layer</p>
+                    <p> an electrodeposited CoWP film on the metal layer, and a copper layer on the CoWP film.</p>
+                </abstract>
+            </exchange-document>
+        </ops:family-member>
+    </ops:patent-family>
+</ops:world-patent-data>

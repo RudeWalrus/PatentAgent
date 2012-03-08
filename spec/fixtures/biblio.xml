@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="/2.6.2/style/exchange.xsl"?>
+<ops:world-patent-data xmlns:ops="http://ops.epo.org" xmlns="http://www.epo.org/exchange">
+    <ops:meta name="elapsed-time" value="23"/>
+    <exchange-documents>
+        <exchange-document system="ops.epo.org" family-id="26727888" country="US" doc-number="6266379" kind="B1">
+            <bibliographic-data>
+                <publication-reference>
+                    <document-id document-id-type="docdb">
+                        <country>US</country>
+                        <doc-number>6266379</doc-number>
+                        <kind>B1</kind>
+                        <date>20010724</date>
+                    </document-id>
+                    <document-id document-id-type="epodoc">
+                        <doc-number>US6266379</doc-number>
+                        <date>20010724</date>
+                    </document-id>
+                </publication-reference>
+                <classification-ipc>
+                    <text>H03H7/30</text>
+                </classification-ipc>
+                <classifications-ipcr>
+                    <classification-ipcr sequence="1">
+                        <text>H03H   7/    30            A I                    </text>
+                    </classification-ipcr>
+                </classifications-ipcr>
+                <classification-national>
+                    <country>US</country>
+                    <text>333/28R</text>
+                </classification-national>
+                <classification-national>
+                    <country>US</country>
+                    <text>375/229</text>
+                </classification-national>
+                <classification-national>
+                    <country>US</country>
+                    <text>375/296</text>
+                </classification-national>
+                <classification-ecla>
+                    <classification-symbol>H04L25/03L1</classification-symbol>
+                </classification-ecla>
+                <application-reference>
+                    <document-id document-id-type="epodoc">
+                        <doc-number>US19970882252</doc-number>
+                        <date>19970625</date>
+                    </document-id>
+                    <document-id document-id-type="original">
+                        <doc-number>08882252</doc-number>
+                    </document-id>
+                </application-reference>
+                <priority-claims>
+                    <priority-claim sequence="1">
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US19970882252</doc-number>
+                            <date>19970625</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number>08/880980</doc-number>
+                        </document-id>
+                    </priority-claim>
+                    <priority-claim sequence="2">
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US19970880980</doc-number>
+                            <date>19970623</date>
+                        </document-id>
+                        <document-id document-id-type="original">
+                            <doc-number> 60/050098</doc-number>
+                        </document-id>
+                    </priority-claim>
+                    <priority-claim sequence="3">
+                        <document-id document-id-type="epodoc">
+                            <doc-number>US19970050098P</doc-number>
+                            <date>19970620</date>
+                        </document-id>
+                    </priority-claim>
+                </priority-claims>
+                <parties>
+                    <applicants>
+                        <applicant sequence="1" data-format="epodoc">
+                            <applicant-name>
+                                <name>MASSACHUSETTS INST TECHNOLOGY [US]</name>
+                            </applicant-name>
+                        </applicant>
+                        <applicant sequence="1" data-format="original">
+                            <applicant-name>
+                                <name>MASSACHUSETTS INSTITUTE OF TECHNOLOGY</name>
+                            </applicant-name>
+                        </applicant>
+                    </applicants>
+                    <inventors>
+                        <inventor sequence="1" data-format="epodoc">
+                            <inventor-name>
+                                <name>DALLY WILLIAM J [US]</name>
+                            </inventor-name>
+                        </inventor>
+                        <inventor sequence="1" data-format="original">
+                            <inventor-name>
+                                <name>DALLY WILLIAM J</name>
+                            </inventor-name>
+                        </inventor>
+                    </inventors>
+                </parties>
+                <invention-title lang="en">Digital transmitter with equalization</invention-title>
+                <references-cited>
+                    <citation srep-phase="APP" sequence="1">
+                        <patcit dnum-type="publication number" num="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US3777130</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>3777130</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="2">
+                        <patcit dnum-type="publication number" num="2">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US3906400</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>3906400</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="3">
+                        <patcit dnum-type="publication number" num="3">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US3914588</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>3914588</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="4">
+                        <patcit dnum-type="publication number" num="4">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US3987288</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>3987288</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="5">
+                        <patcit dnum-type="publication number" num="5">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US4374426</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>4374426</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="6">
+                        <patcit dnum-type="publication number" num="6">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US4556983</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>4556983</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="7">
+                        <patcit dnum-type="publication number" num="7">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US4849957</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>4849957</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="8">
+                        <patcit dnum-type="publication number" num="8">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US5119402</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>5119402</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="9">
+                        <patcit dnum-type="publication number" num="9">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US5418670</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>5418670</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="10">
+                        <patcit dnum-type="publication number" num="10">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US5608757</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>5608757</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="11">
+                        <nplcit num="1">
+                            <text>- National Semiconductor Product Folder, "CLC014, Adaptive Cable
+  Equalizer for High Speed Data Recovery," Feb. 26, 1997, pp. 1-3</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="12">
+                        <nplcit num="2">
+                            <text>- National Semiconductor Product Folder, "Comlinear CLC014,
+  Adaptive Cable Equalizer for High-speed Data Recovery," Aug.
+  1996, pp. 1-12</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="13">
+                        <nplcit num="3">
+                            <text>- De Man, Hugo J. et al., "High-Speed NMOS Circuits for
+  ROM-Accumulator and Multiplier TYpe Digital Filters," IEEE
+  Journal of Solid-State Circuits, vol. SC-13, No. 5, Oct. 1978,
+  pp. 565-572</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="14">
+                        <nplcit num="4">
+                            <text>- Fledler, Alan, et al., "PF 15.1: A 1.0625Gbps Transceiver with
+  2x-Oversampling and Transmit signal Pre-Emphasis," IEEE
+  International Solid-State Circuits Conference, Feb. 7, 1997, pp.
+  238-239</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="15">
+                        <nplcit num="5">
+                            <text>- Schröder, Hartmut, "High Word-Rate Digital Filters with
+  Programmable Table Look-up," IEEE Transactions on Circuits and
+  Systems, May 1977, pp. 277-279</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="APP" sequence="16">
+                        <nplcit num="6">
+                            <text>- Dally, William J. et al., "Transmitter Equalization for 4-Gbps
+  Signaling," IEEE Micro, vol. 17, No. 1, Jan./Feb. 1997, pp. 48-56</text>
+                        </nplcit>
+                    </citation>
+                    <citation srep-phase="SEA" sequence="1">
+                        <patcit dnum-type="publication number" num="1">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US4797898</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>4797898</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="SEA" sequence="2">
+                        <patcit dnum-type="publication number" num="2">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US5412691</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>5412691</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                    <citation srep-phase="SEA" sequence="3">
+                        <patcit dnum-type="publication number" num="3">
+                            <document-id document-id-type="epodoc">
+                                <doc-number>US5521946</doc-number>
+                            </document-id>
+                            <document-id document-id-type="docdb">
+                                <country>US</country>
+                                <doc-number>5521946</doc-number>
+                                <kind>A</kind>
+                            </document-id>
+                        </patcit>
+                    </citation>
+                </references-cited>
+            </bibliographic-data>
+            <abstract lang="en">
+                <p>An equalizer provided in a digital transmitter compensates for attenuation in a signal channel to a digital receiver. The equalizer generates signal levels as a logical function of bit history to emphasize transition signal levels relative to repeated signal levels. The preferred equalizer includes an FIR transition filter using a look-up table. Parallel circuits including FIR filters and digital-to-analog converters provide a high speed equalizer with lower speed circuitry. The equalizer is particularly suited to in-cabinet and local area network transmissions where feedback circuitry facilitates adaptive training of the equalizer.</p>
+            </abstract>
+        </exchange-document>
+    </exchange-documents>
+</ops:world-patent-data>
