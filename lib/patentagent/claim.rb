@@ -1,5 +1,3 @@
-require 'nokogiri'
-
 module PatentAgent
   class Claim
     attr_reader :claims, :total, :dep_count, :indep_count, :dep_claims, :indep_claims
