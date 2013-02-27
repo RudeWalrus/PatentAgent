@@ -17,11 +17,11 @@ describe PatentAgent::PTO::Patent do
     end
  
     it "should be instantiated" do
-     @patent.should be
+      @patent.should be
     end
     
     it "should have options.debug key" do
-     @patent.options.should have_key(:debug)
+      @patent.options.should have_key(:debug)
     end
     
     it "#valid_html? should be false before fetch" do
@@ -117,7 +117,7 @@ describe PatentAgent::PTO::Patent do
    end
    
    context "Class Methods" do 
-     before(:all) do
+     before(:each) do
        PatentAgent::PTO.stub(:get_from_url).and_return(html)
        @patent = PatentAgent::PTO::Patent.fetch(pnum)
      end

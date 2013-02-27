@@ -42,7 +42,7 @@ class PatentAgent::PTO::Patent
   
   def fetch
     @html = PatentAgent::PTO.get_html(patent_number)
-    @claims = PatentAgent::Claim.new
+    @claims = PatentAgent::Claims.new
     self
   end
   
@@ -83,7 +83,7 @@ class PatentAgent::PTO::Patent
       claim = x[0].gsub("\n", " ").gsub(/<BR><BR>/, " ")
       result = @claims << claim
     end
-    result = {count: claims.count, indep: claims.indep_count, dep: claims.dep_count, claims: claims.claims, }
+    result = {count: claims.count, indep: claims.indep_count, dep: claims.dep_count, claims: claims }
     log "Claims:" , result
     
     rescue RuntimeError => e

@@ -6,7 +6,7 @@ require 'logger'
 $: << File.dirname(__FILE__) + '../patentagent'
 
 require 'patentagent/util'
-require 'patentagent/claim'
+require 'patentagent/claims'
 require 'patentagent/ops/ops_utility'
 require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
