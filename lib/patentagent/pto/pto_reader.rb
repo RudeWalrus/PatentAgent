@@ -19,9 +19,10 @@ module PatentAgent
     # returns: 7256232
     #
     def valid_patent_number?(num)
-      number = num.to_s.delete("US").delete(',')
-      return $1 || $3 if number.match /([45678]\d{6})(\.[AB][12])?$|([Rr][Ee]\d{5}$)/
-      return nil
+      num.to_s.
+        delete("US").
+        delete(',').
+        match(/([45678]\d{6})(\.[AB][12])?$|([Rr][Ee]\d{5}$)/) {|match| match[1] || match[3]}
   	end
   	
   	private

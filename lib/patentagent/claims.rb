@@ -1,5 +1,5 @@
 module PatentAgent
-  class Claims < Array
+  class Claims < Hash
     attr_reader :total, :dep_count, :indep_count, :dep_claims, :indep_claims
     
     def initialize()

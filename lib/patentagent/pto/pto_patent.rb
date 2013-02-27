@@ -9,7 +9,7 @@ class PatentAgent::PTO::Patent
   @fields = {}
   
   FIELDS    = {
-    patent_number:   {gross: /<title>(.*?)<\/title>/mi,     fine: /[4567],?\d{3},?\d{3}|RE\d{5}/},
+    patent_number:   {gross: /<title>(.*?)<\/title>/mi,     fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
     title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi, fine:  />(.*?)</mi},
     abstract:        {gross: /Abstract(.*?)<hr>/mi,         fine: /<p>(.*?)<\/p>/mi},
     assignee:        {gross: /Assignee:(.*?)<\/tr>/mi,      fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
@@ -52,23 +52,22 @@ class PatentAgent::PTO::Patent
   end
     
   def parse
-    parse_fields
-    parse_claims
+    parse_fields FIELDS
+    parse_claims @html
     log "processed:", patent_number
     self  
   end
 
-  def parse_fields
-    FIELDS.each do |field, search|
+  def parse_fields(fields)
+    fields.each do |field, search|
       val = parse_field(field, search)
       instance_variable_set("@#{field}",val)
     end
   end
   
-  def parse_claims
+  def parse_claims(text)
   	
-    # get the claim text
-    claim_text = @html[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
+    claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
 
     raise "No Claims" if claim_text.nil?
   
@@ -78,11 +77,8 @@ class PatentAgent::PTO::Patent
     raise "Bad Claims" if m.nil?
 
     # collect the claims into an array
-    m.each do |x| 
-      # parse and clean up to get the claim
-      claim = x[0].gsub("\n", " ").gsub(/<BR><BR>/, " ")
-      result = @claims << claim
-    end
+    m.each { |claim| @claims << claim[0].gsub("\n", " ").gsub(/<BR><BR>/, " ") }
+
     result = {count: claims.count, indep: claims.indep_count, dep: claims.dep_count, claims: claims }
     log "Claims:" , result
     
@@ -91,15 +87,14 @@ class PatentAgent::PTO::Patent
       return ["Not found"]
   end
 
-    #
-  # This is the main parsing routine for reading the PTO Files
+  #
+  # Takes the main parsing routine for reading the PTO Files
   # It takes a gross search and a fine search and populates the array with the results
   # if a block is included, it runs the block on each of the matched search results (for the fine search)
   # 
-  def parse_field( field, obj)
+  def parse_field(field, obj)
     
     gross = @html[obj[:gross]]
-    #gross = obj[:gross].match(@html)
     
     log_field(field, gross)
     

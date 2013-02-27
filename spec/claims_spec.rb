@@ -7,7 +7,6 @@ def parse_claims text
   # lets get the individual claims
   m = claim_text.scan( /<br><br>\s*(\d+\..*?)((?=<br><br>\s*\d+\.)|(?=<hr>))/mi)
 
-
   # collect the claims into an array
   parsed_claims = m.map { |x| x[0].gsub("\n", " ").gsub(/<BR><BR>/, " ") }
 end
