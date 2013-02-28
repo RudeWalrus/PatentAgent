@@ -71,10 +71,12 @@ class PatentAgent::PTO::Patent
 
     raise "No Claims" if claim_text.nil?
   
-    # lets get the individual claims
+    # lets get the individual claims. The parens in the regex force the results to
+    # be placed into a capture group (an array within the array). The claim is element
+    # 0 of this array
     m = claim_text.scan( /<br><br>\s*(\d+\..*?)((?=<br><br>\s*\d+\.)|(?=<hr>))/mi)
 
-    raise "Bad Claims" if m.nil?
+    raise "Malformed Claims" if m.nil?
 
     # collect the claims into an array
     m.each { |claim| @claims << claim[0].gsub("\n", " ").gsub(/<BR><BR>/, " ") }
