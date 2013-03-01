@@ -1,23 +1,25 @@
 require 'logger'
 
 module PatentAgent
-  
-  class <<self
-    attr_accessor :indent, :debug
-    # Setup the logger.
-    # Value should be a logger but can can be stdout, stderr, or a filename.
-    # You can also configure logging by the environment variable PATENTAGENT_LOG.
-    
+  module Logging  
+    def logger=(log_io, options = {})
+      @logger = create_log(log_io)
+    end
+
     def logger
       @logger ||= create_log('patentagent.log')
-    end
-    
-    def logger=(log_location)
-      @logger = create_log(log_location)
     end
 
     def indent
       @indent ||= "\t\t"
+    end
+
+    def debug
+      @debug
+    end
+
+    def debug= value
+      @debug = value
     end
 
     #
@@ -33,7 +35,7 @@ module PatentAgent
           msg += "Count: #{obj.size}\n"
           obj.each {|item| msg << "#{@indent}#{item}\n"}
         when Hash
-          logger.info "Count: #{obj.size}\n"
+          msg += "Count: #{obj.size}\n"
           obj.each {|k,v| msg <<  "#{@indent}#{k}: #{v}\n"}
         when nil
           msg << "\n"
@@ -41,6 +43,25 @@ module PatentAgent
           msg << "#{indent}#{obj}\n"
       end
       logger.info msg   
+    end
+
+    #
+    # Setup the logger.
+    # param can be stdout, stderr, a FileIO object, or a filename.
+    # 
+    def create_log(param="patentagent.log")
+      if param.is_a?(String) then
+        case param
+          when 'stdout'
+             Logger.new(STDOUT)
+          when'stderr'
+             Logger.new(STDERR)
+          else # create a file
+            Logger.new(param)
+        end
+      else
+          Logger.new(param)
+      end
     end
     
     #
@@ -55,27 +76,12 @@ module PatentAgent
      result
     end
 
-    private    
-    # Create a log that respond to << like a logger
-    # param can be 'stdout', 'stderr', a string (then we will log to that file)
-    def create_log(param)
-      case param.class.to_s
-      when "String"
-        case param
-        when 'stdout'
-           Logger.new(STDOUT)
-        when'stderr'
-           Logger.new(STDERR)
-        else # create a file
-           Logger.new(param)
-        end
-      when "StringIO"
-          Logger.new(param)
-      else
-        name = ENV['PATENTAGENT_LOG'] || "patentagent.log"
-        Logger.new(name)
-      end
+    module ClassMethods
+      attr_accessor :indent, :debug
+    end
+
+    def self.included(base)
+      base.extend(ClassMethods)
     end
   end
-  
 end

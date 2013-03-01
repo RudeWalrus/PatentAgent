@@ -1,47 +1,60 @@
 require 'spec_helper'
 
-describe "PatentAgent Logging" do
-  it "default creates a logging instance" do
-    PatentAgent.logger.should be_kind_of Logger
-  end
+# dummy class used for tests
+class PatentLog 
+    include PatentAgent::Logging
+end
 
-  it "creates a log file" do
-    log_file = "mylogfile.info"
-    File.delete log_file if File.exists? log_file
-    PatentAgent.logger = log_file
-    PatentAgent.log "Header", "Data"
-    File.exists?(log_file).should be_true
+
+describe "PatentAgent::Logging" do
+  let(:p_log) {PatentLog.new}
+
+  context "mixin" do
+
+    it "responds to #log after mix-in" do
+      p_log.should respond_to(:log)
+    end
+
+
+    it "creates a log file" do
+      log_file = "mylogfile.info"
+      File.delete log_file if File.exists? log_file
+      p_log.logger = log_file
+      p_log.log "Header", "Data"
+      File.exists?(log_file).should be_true
+    end
   end
 
   context "testing different outputs" do
     let(:log_stream) {StringIO.new}
+
     before do
-      PatentAgent.should_receive(:create_log).and_return(Logger.new(log_stream))
-      PatentAgent.debug = true
+      p_log.should_receive(:create_log).and_return(Logger.new(log_stream))
+      p_log.debug = true
     end
 
     it "logs to STDOUT" do
-      PatentAgent.logger = 'stdout'
-      PatentAgent.log "STDOUT", "Hello"
+      p_log.logger = 'stdout'
+      p_log.log "Stdout", "Hello"
       log_stream.string.should match(/STDOUT/)
     end
 
     it "logs to STDERR" do
-      PatentAgent.logger = 'stderr'
-      PatentAgent.log "STDERR", "Hello"
+      p_log.logger = 'stderr'
+      p_log.log "Stderr", "Hello"
       log_stream.string.should match(/STDERR/)
     end
 
     it "logs an array" do
-      PatentAgent.logger = "mylogfile.info"
-      PatentAgent.log "Array", [1,2,3,4,5]
+      p_log.logger = "mylogfile.info"
+      p_log.log "Array", [1,2,3,4,5]
       log_stream.string.should match(/ARRAY/)
       log_stream.string.should match(/Count: 5/)
     end
 
     it "logs a hash" do
-      PatentAgent.logger = "mylogfile.info"
-      PatentAgent.log "Hash", {one: 1, two: 2, three: 3 }
+      p_log.logger = "mylogfile.info"
+      p_log.log "Hash", {one: 1, two: 2, three: 3 }
       log_stream.string.should match(/HASH/)
       log_stream.string.should match(/Count: 3/)
     end

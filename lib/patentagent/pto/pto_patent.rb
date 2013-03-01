@@ -1,8 +1,7 @@
 # The basic patent parser class
-
-
 class PatentAgent::PTO::Patent
   include PatentAgent::Util
+  include PatentAgent::Logging
 
   attr_reader :patent_number, :claims, :title, :abstract, :assignee, :app_number, :filed, :inventors, :text, :figures
   attr_reader :options, :html, :debug
