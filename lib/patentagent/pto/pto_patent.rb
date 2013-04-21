@@ -4,7 +4,7 @@ class PatentAgent::PTO::Patent
   include PatentAgent::Logging
 
   attr_reader :patent_number, :claims, :title, :abstract, :assignee, :app_number, :filed, :inventors, :text, :figures
-  attr_reader :options, :html, :debug
+  attr_reader :options, :html
   @fields = {}
   
   FIELDS    = {
@@ -36,11 +36,11 @@ class PatentAgent::PTO::Patent
   def setup_options(opts)
     @options ||= {:country =>"US", :debug => false, :fc => nil }
     @options.merge!(opts)
-    @debug = @options[:debug]
+    debug = @options[:debug]
   end
   
   def fetch
-    @html = PatentAgent::PTO.get_html(patent_number)
+    @html = PatentAgent::PTO::Reader.get_html(patent_number)
     @claims = PatentAgent::Claims.new
     self
   end
@@ -136,10 +136,10 @@ class PatentAgent::PTO::Patent
 	
   private
   
-  def log(msg, obj=nil, force = false)
-    return unless @debug || force
-    PatentAgent.log(msg, obj)
-  end
+  # def log(msg, obj=nil, force = false)
+  #   return unless @debug || force
+  #   PatentAgent.log(msg, obj)
+  # end
   
   def log_field(field, message)
     log(field, message, true) if (@options[:dump] && @options[:dump].match(field.to_s))

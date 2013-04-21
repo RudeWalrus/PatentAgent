@@ -1,7 +1,8 @@
 require 'logger'
 
 module PatentAgent
-  module Logging  
+  module Logging
+    extend self  
     def logger=(log_io, options = {})
       @logger = create_log(log_io)
     end

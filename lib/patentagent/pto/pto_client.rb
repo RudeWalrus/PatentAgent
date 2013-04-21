@@ -1,8 +1,6 @@
-# The basic patent parser class
-
 module PatentAgent
   module PTO
-    class Reader
+    class Client
       include PatentAgent::Logging
       
       PTOSRCHPATH = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1="
@@ -24,9 +22,9 @@ module PatentAgent
           delete("US").
           delete(',').
           match(/([45678]\d{6})(\.[AB][12])?$|([Rr][Ee]\d{5}$)/) {|match| match[1] || match[3]}
-    	end
-    	
-    	private
+      end
+      
+      private
       #
       # A wrapper for snarfing the HTML but its easy to stub it out for testing
       #

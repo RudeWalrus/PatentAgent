@@ -8,7 +8,7 @@ describe PatentAgent::PTO::Patent do
   context "#new" do
     
     before(:each) do
-      PatentAgent::PTO::stub(:get_from_url).and_return(html)
+      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
       @patent = PatentAgent::PTO::Patent.new(pnum)
     end
     
@@ -70,7 +70,7 @@ describe PatentAgent::PTO::Patent do
   context "Fetch" do
          
     before(:all) do
-      PatentAgent::PTO.stub(:get_from_url).and_return(html)
+      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
       @patent = PatentAgent::PTO::Patent.new(pnum)
       @patent.fetch.parse
     end 
@@ -118,7 +118,7 @@ describe PatentAgent::PTO::Patent do
    
    context "Class Methods" do 
      before(:each) do
-       PatentAgent::PTO.stub(:get_from_url).and_return(html)
+       PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
        @patent = PatentAgent::PTO::Patent.fetch(pnum)
      end
      
