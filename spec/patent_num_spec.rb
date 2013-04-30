@@ -7,31 +7,46 @@ describe PatentAgent::PatentNum do
   context "Basic Properties" do
   
     let(:patent) {PatentAgent::PatentNum.new("US7,267,263.B1") }
-   
-    it "Should return an object" do
-      patent.should_not be_nil
+
+    it "should return an object" do
+      expect(patent).to_not be_nil
     end
 
-    it "should have a full number" do
-      patent.full_number.should eq "US7267263.B1"
+    it "should output a string on puts" do
+      expect(patent.to_s).to eq "US7267263.B1"
     end
 
     it "should be a #valid? object" do
-      patent.valid?.should be_true
+      expect(patent.valid?).to be_true
     end
 
     it "should have a #number" do
-      patent.number.should eq "7267263"
+      expect(patent.number).to eq "7267263"
     end
 
     it "should have a US country code" do
-      patent.country_code.should eq "US"
+      expect(patent.country_code).to eq "US"
     end
 
     it "should have a kind code" do
-      patent.kind.should eq "B1"
+      expect(patent.kind).to eq "B1"
     end
   end
+
+  context "Various valid patents" do
+    it "should be #valid?" do
+      [
+      "US8,267,263.B1",
+      "US8267263",
+      "8267263.A1",
+      "8267263"
+      ].each  do |pnum|
+        pat = PatentAgent::PatentNum.new(pnum)
+        expect(pat.number).to eq "8267263"
+      end
+    end
+  end
+
 
   context "Country Codes" do
     it "should be CN" do
@@ -56,10 +71,6 @@ describe PatentAgent::PatentNum do
   context "ReIssue" do
     let(:pnum) {"RE55434"}
     let(:reissue) {PatentAgent::PatentNum.new(pnum)}
-
-    it "should have a full number" do
-      reissue.full_number.should eq pnum
-    end
 
     it "should be a #valid? object" do
       reissue.valid?.should be_true
