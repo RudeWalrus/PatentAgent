@@ -2,7 +2,8 @@ require 'logger'
 
 module PatentAgent
   module Logging
-    extend self  
+    extend self 
+
     def logger=(log_io, options = {})
       @logger = create_log(log_io)
     end
@@ -77,12 +78,12 @@ module PatentAgent
      result
     end
 
-    module ClassMethods
-      attr_accessor :indent, :debug
-    end
+    # module ClassMethods
+    #   #attr_accessor :indent, :debug
+    # end
 
-    def self.included(base)
-      base.extend(ClassMethods)
-    end
+    # def self.included(base)
+    #   base.extend(ClassMethods)
+    # end
   end
 end

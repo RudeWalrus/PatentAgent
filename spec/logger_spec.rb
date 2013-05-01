@@ -15,6 +15,10 @@ describe "PatentAgent::Logging" do
       p_log.should respond_to(:log)
     end
 
+    it "responds to #debug after mix-in" do
+      p_log.should respond_to(:debug)
+    end
+
 
     it "creates a log file" do
       log_file = "mylogfile.info"

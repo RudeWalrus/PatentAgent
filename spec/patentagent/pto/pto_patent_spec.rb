@@ -1,68 +1,79 @@
 require 'spec_helper'
 
-describe PatentAgent::PTO::Patent do
+describe PatentAgent::USPatent do
     
-  let(:pnum)  {"US6266379"}
-  let(:html)  {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
-  
+  let(:pnum)      {"US6266379"}
+  let(:html)      {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
+  let(:patent)    {PatentAgent::USPatent.new(pnum)}
+
   context "#new" do
-    
+     
     before(:each) do
-      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
-      @patent = PatentAgent::PTO::Patent.new(pnum)
+      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)  
     end
     
-    it "Blank instance when created with #new" do
-      @patent.patent_number.should == pnum
-    end
- 
     it "should be instantiated" do
-      @patent.should be
+      expect(patent).to be
     end
-    
+    it "Has a PatNum member" do
+      expect(patent.patent_num.valid?).to be_true
+      expect(patent.patent_num.number).to eq "6266379"
+      expect(patent.patent_num.country_code).to eq "US"
+    end
+
     it "should have options.debug key" do
-      @patent.options.should have_key(:debug)
+      patent.options.should have_key(:debug)
     end
     
     it "#valid_html? should be false before fetch" do
-      @patent.should_not be_valid_html
+      patent.valid_html?.should be_false
    end
    
    it "#fetch grabs valid patent from file" do
-      @patent.fetch.should be_valid_html
+      patent.fetch.valid_html?.should be_true
     end
    
    it "#valid? returns false before fetch" do
-     @patent.valid?.should be_false
+     patent.valid?.should be_false
    end
    
     it "#valid returns true after fetch" do
-      @patent.fetch.valid?.should be_true
+      patent.fetch.valid?.should be_true
     end
  
     it "should not be valid with invalid patent number" do
-      PatentAgent::PTO::Patent.new("US555").should_not be_valid
+      PatentAgent::USPatent.new("US555").should_not be_valid
     end
   
     it "invalid patent number should raise an error" do
-      PatentAgent::PTO::Patent.new("MyPatent5555").should raise_error
-    end
-  
-    it "should print debug output if enabled" do
-      patent = PatentAgent::PTO::Patent.new(pnum, :debug => true)
-      patent.debug.should be_true
+      PatentAgent::USPatent.new("MyPatent5555").should raise_error
     end
     
+    it "should not debug by default" do
+      patent.debug.should be_false
+    end
+
+    it "Responds to #debug" do
+      patent.respond_to?(:debug).should be_true
+    end
+
+    it "should print debug output if enabled" do
+      pat = PatentAgent::USPatent.new(pnum, :debug => true)
+      pat.debug.should be_true
+    end
+
+    
     it "should print log message when enabled" do
-      PatentAgent.should_receive(:log).at_least(:once)
-      PatentAgent::PTO::Patent.new(pnum, :debug => true).fetch.parse
+      pat = PatentAgent::USPatent.new(pnum, :debug => true)
+      pat.should_receive(:log).at_least(:once)
+      pat.fetch.parse
     end
   end
   
   context "HTTP Errors" do
     it "#valid? returns false on HTTP error" do
       RestClient.stub(:get).and_raise("HTTP Error")
-      PatentAgent::PTO::Patent.new(pnum).fetch.valid?.should be_false
+      PatentAgent::USPatent.new(pnum).fetch.valid?.should be_false
     end
   end
   
@@ -71,7 +82,7 @@ describe PatentAgent::PTO::Patent do
          
     before(:all) do
       PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
-      @patent = PatentAgent::PTO::Patent.new(pnum)
+      @patent = PatentAgent::USPatent.new(pnum)
       @patent.fetch.parse
     end 
    
@@ -119,15 +130,15 @@ describe PatentAgent::PTO::Patent do
    context "Class Methods" do 
      before(:each) do
        PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
-       @patent = PatentAgent::PTO::Patent.fetch(pnum)
+       @patent = PatentAgent::USPatent.fetch(pnum)
      end
      
      it "should create a patent from #fetch" do
-       @patent.should be_kind_of(PatentAgent::PTO::Patent)
+       @patent.should be_kind_of(PatentAgent::USPatent)
      end
      
      it "should be valid html" do
-       @patent.should be_valid
+       @patent.valid_html?.should be_true
      end
     
      it "should not have title and inventor before parse" do

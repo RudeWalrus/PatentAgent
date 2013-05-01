@@ -1,12 +1,5 @@
 module PatentAgent
-  class PatentNum
-    attr_reader  :country_code, :number, :kind
-    
-    def initialize(pat_num)
-      @clean                          = cleanup_number pat_num
-      @country_code, @number, @kind   = valid_patent_number?(@clean) 
-    end 
-    
+  module PatentNumUtils
     #  
     # assumes the number has been cleaned (all upcase, no commas, etc)
     #
@@ -16,23 +9,24 @@ module PatentAgent
     #       =>  kind is kind. This is something like A1 or B2
     #
     def valid_patent_number?(num)
-      if num =~ /\A([A-Z]{2})?(\d{5,9})\.?([A-Z]\d)?\Z/ then
+      pnum = cleanup_number(num)
+      if pnum =~ /\A([A-Z]{2})?(\d{5,9})\.?([A-Z]\d)?\Z/ then
         cc      = get_country_code($1)
         number  = $2
         kind    = $3 || ""  # if nil, set it to a blank
         
         # extra case to check for US ReIssue
         if cc == "US" then
-          valid_us = valid_us_patent_number? num 
+          valid_us = valid_us_patent_number?(num) 
         else
           valid_us = true
         end
         
-        @valid = (cc && number && valid_us) ? true : false
-        [cc,number,kind]
-      else
-        @valid = false
-        nil
+        if (cc && number && valid_us) then
+          return [cc,number,kind]
+        else
+          return nil
+        end
       end
     end
     
@@ -42,40 +36,46 @@ module PatentAgent
     # returns: 7256232
     #
     def valid_us_patent_number?(num)
-      num.match(/(US)?([45678]\d{6})(\.[AB][12])?$|(RE\d{5}$)/) {|match| match[2] || match[4]}
+      pnum = cleanup_number(num)
+      pnum.match(/(US)?([45678]\d{6})(\.[AB][12])?$|(RE\d{5}$)/) {|match| match[2] || match[4]}
     end
+    
+    private
+      #
+      # A two letter country code like US, CA, JP, etc. Special case is RE,
+      # which is a US re-issued patent. If RE, then its US.
+      #
+      def get_country_code(num)
+        return "US" if num.nil?
+        num.match(/([A-Z]{2})/) {|m| m[1] == "RE" ? "US" : m[1]} || "US"
+      end
 
-    #
-    # Returns the cleaned version of the input
-    #
+      # 
+      # cleans up the passed in string
+      def cleanup_number(number)
+        return "" if number.nil?
+        #upcase, remove any commas
+        number.to_s.upcase.delete(",").delete(" ")
+      end
+  end
+
+  class PatentNum
+    include PatentNumUtils
+
+    attr_reader  :country_code, :number, :kind
+    
+    def initialize(pat_num)
+      @clean = pat_num
+      @country_code, @number, @kind   = valid_patent_number?(pat_num)
+    end 
+
     def to_s
-      return nil unless valid?
+      return "invalid" unless valid?
       @clean
     end
 
     def valid?
-      @valid
+      @number
     end
-
-
-    private
-    #
-    # A two letter country code like US, CA, JP, etc. Special case is RE,
-    # which is a US re-issued patent. If RE, then its US.
-    #
-    def get_country_code(num)
-      return "US" if num.nil?
-      num.match(/([A-Z]{2})/) {|m| m[1] == "RE" ? "US" : m[1]} || "US"
-    end
-    
-    # 
-    # cleans up the passed in string
-    def cleanup_number(number)
-      return nil if number.nil?
-      #upcase, remove any commas
-      patent = number.to_s.upcase.delete(",").delete(" ")
-    end
-
-  end
-
+  end 
 end
