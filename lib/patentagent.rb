@@ -15,8 +15,8 @@ require 'patentagent/patent_num'
 # require 'patentagent/ops/ops_patent'
 
 
-require 'patentagent/pto/pto_reader'
-require 'patentagent/pto/pto_patent'
+require 'patentagent/us/us_client'
+require 'patentagent/us/us_patent'
 
 
 module PatentAgent

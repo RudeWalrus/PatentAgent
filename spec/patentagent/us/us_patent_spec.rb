@@ -6,26 +6,25 @@ describe PatentAgent::USPatent do
   let(:html)      {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
   let(:patent)    {PatentAgent::USPatent.new(pnum)}
 
-  context "#new" do
-     
+  context "#new" do    
     before(:each) do
-      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)  
+      PatentAgent::USClient.stub(:get_from_url).and_return(html)  
     end
     
-    it "should be instantiated" do
+    it "is instantiated" do
       expect(patent).to be
     end
-    it "Has a PatNum member" do
+    it "has a valid PatentNum member" do
       expect(patent.patent_num.valid?).to be_true
       expect(patent.patent_num.number).to eq "6266379"
       expect(patent.patent_num.country_code).to eq "US"
     end
 
-    it "should have options.debug key" do
+    it "has options.debug key" do
       patent.options.should have_key(:debug)
     end
     
-    it "#valid_html? should be false before fetch" do
+    it "#valid_html? is false before fetch" do
       patent.valid_html?.should be_false
    end
    
@@ -37,33 +36,32 @@ describe PatentAgent::USPatent do
      patent.valid?.should be_false
    end
    
-    it "#valid returns true after fetch" do
+    it "#valid? returns true after fetch" do
       patent.fetch.valid?.should be_true
     end
  
-    it "should not be valid with invalid patent number" do
+    it "is not valid with invalid patent number" do
       PatentAgent::USPatent.new("US555").should_not be_valid
     end
   
-    it "invalid patent number should raise an error" do
+    it "invalid patent number raises an error" do
       PatentAgent::USPatent.new("MyPatent5555").should raise_error
     end
     
-    it "should not debug by default" do
+    it "does not debug by default" do
       patent.debug.should be_false
     end
 
-    it "Responds to #debug" do
+    it "responds to #debug" do
       patent.respond_to?(:debug).should be_true
     end
 
-    it "should print debug output if enabled" do
+    it "prints debug output if enabled" do
       pat = PatentAgent::USPatent.new(pnum, :debug => true)
       pat.debug.should be_true
     end
 
-    
-    it "should print log message when enabled" do
+    it "prints log message when enabled" do
       pat = PatentAgent::USPatent.new(pnum, :debug => true)
       pat.should_receive(:log).at_least(:once)
       pat.fetch.parse
@@ -76,52 +74,51 @@ describe PatentAgent::USPatent do
       PatentAgent::USPatent.new(pnum).fetch.valid?.should be_false
     end
   end
-  
-       
+      
   context "Fetch" do
          
     before(:all) do
-      PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
+      PatentAgent::USClient.stub(:get_from_url).and_return(html)
       @patent = PatentAgent::USPatent.new(pnum)
       @patent.fetch.parse
     end 
    
-     it "Should fetch the html" do
-       @patent.should be_valid_html
+     it "#valid_html? is true" do
+       expect(@patent.valid_html?).to be_true
      end
      
-     it "Should have a valid title" do
+     it "Has a valid title" do
        @patent.title.should == Array("Digital transmitter with equalization")
      end
    
-     it "Should have one inventor" do
+     it "has one inventor" do
        @patent.inventors.should have(1).items
      end
    
-     it "Should have 41 claims" do
+     it "has 41 claims" do
        @patent.claims.should have(41).items
        @patent.claims.should_not have(40).items
      end
    
-     it "Should have 12 indep claims" do
+     it "has 12 indep claims" do
        @patent.claims.indep_claims.should have(12).items
        @patent.claims.indep_claims.should_not have(20).items
      end
    
-     it "Should have exaclty 29 dep claims" do
+     it "has exaclty 29 dep claims" do
        @patent.claims.dep_claims.should have(29).items
        @patent.claims.dep_claims.should_not have(20).items
      end
        
-     it "Should have have an App Number" do
+     it "has an App Number" do
        @patent.app_number.should == Array("08/882,252")
      end
    
-     it "Should have have an Filed Date " do
+     it "has an Filed Date " do
        @patent.filed.should == Array("June 25, 1997")
      end
    
-     it "Should have many Figures" do
+     it "has many Figures" do
        @patent.figures.should have_at_least(1).items
        @patent.figures.should be_kind_of(Array)
      end
@@ -129,24 +126,24 @@ describe PatentAgent::USPatent do
    
    context "Class Methods" do 
      before(:each) do
-       PatentAgent::PTO::Reader.stub(:get_from_url).and_return(html)
+       PatentAgent::USClient.stub(:get_from_url).and_return(html)
        @patent = PatentAgent::USPatent.fetch(pnum)
      end
      
-     it "should create a patent from #fetch" do
+     it "creates a patent from #fetch" do
        @patent.should be_kind_of(PatentAgent::USPatent)
      end
      
-     it "should be valid html" do
-       @patent.valid_html?.should be_true
+     it "#valid_html? returns true" do
+       expect(@patent.valid_html?).to be_true
      end
     
-     it "should not have title and inventor before parse" do
+     it "does not have title and inventor before parse" do
        @patent.title.should be_false
        @patent.inventors.should be_false
      end
     
-     it "should parse and create a title and inventor" do
+     it "parses and then generates a title and inventor" do
        @patent.parse
        @patent.title.should be_true
        @patent.inventors.should be_true

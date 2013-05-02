@@ -41,7 +41,7 @@ module PatentAgent
     end
     
     def fetch(patent_number = @patent_num)
-      @html = PatentAgent::PTO::Reader.get_html(patent_number)
+      @html = PatentAgent::USClient.get_html(patent_number)
       @claims = PatentAgent::Claims.new
       self
     end

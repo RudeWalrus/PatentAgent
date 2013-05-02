@@ -12,7 +12,7 @@ module PatentAgent
       pnum = cleanup_number(num)
       if pnum =~ /\A([A-Z]{2})?(\d{5,9})\.?([A-Z]\d)?\Z/ then
         cc      = get_country_code($1)
-        number  = $2
+        number  = get_number($1,$2)
         kind    = $3 || ""  # if nil, set it to a blank
         
         # extra case to check for US ReIssue
@@ -48,6 +48,10 @@ module PatentAgent
       def get_country_code(num)
         return "US" if num.nil?
         num.match(/([A-Z]{2})/) {|m| m[1] == "RE" ? "US" : m[1]} || "US"
+      end
+
+      def get_number(cc,num)
+        return "RE#{num}" if cc == "RE" else return num
       end
 
       # 
