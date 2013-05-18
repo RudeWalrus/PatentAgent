@@ -51,7 +51,7 @@ module PatentAgent
       end
 
       def get_number(cc,num)
-        return "RE#{num}" if cc == "RE" else return num
+        return cc == "RE" ? "RE#{num}" : num
       end
 
       # 
