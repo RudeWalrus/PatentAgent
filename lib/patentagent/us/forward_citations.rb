@@ -9,7 +9,6 @@ module PatentAgent
     def get_fc_html
       @url = PatentAgent::USUrls.fc_url(@parent,1)
       @html = PatentAgent::USClient.get_html(@parent, @url)
-      puts "Url is: #{@url}"
     end
 
     def valid?
