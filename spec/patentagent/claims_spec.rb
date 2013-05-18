@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-def parse_claims text
+def parse_claims(text)
     
   claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
 
@@ -14,8 +14,8 @@ end
 
 describe PatentAgent::Claims do
   
-  let(:claims)  {PatentAgent::Claims.new}
-  let(:claim_text) {File.read(File.dirname(__FILE__) + "/fixtures/US6266379.html") }
+  subject(:claims)  {PatentAgent::Claims.new}
+  let(:claim_text) {File.read(File.dirname(__FILE__) + "/../fixtures/US6266379.html") }
 
   describe '#new' do
     it "#initialize an empty class" do

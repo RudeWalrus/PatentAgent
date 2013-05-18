@@ -8,17 +8,17 @@ $: << File.dirname(__FILE__) + '../patentagent'
 require 'patentagent/patent'
 require 'patentagent/util'
 require 'patentagent/logging'
-require 'patentagent/claims'
 require 'patentagent/patent_num'
 
 # require 'patentagent/ops/ops_utility'
 # require 'patentagent/ops/ops_reader'
 # require 'patentagent/ops/ops_patent'
 
-
-require 'patentagent/us/us_client'
-require 'patentagent/us/us_patent'
-
+require 'patentagent/us/urls'
+require 'patentagent/us/client'
+require 'patentagent/us/patent'
+require 'patentagent/us/claims'
+require 'patentagent/us/forward_citations'
 
 module PatentAgent
   class << self

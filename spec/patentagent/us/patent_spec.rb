@@ -2,43 +2,33 @@ require 'spec_helper'
 
 describe PatentAgent::USPatent do
     
-  let(:pnum)      {"US6266379"}
-  let(:html)      {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
-  let(:patent)    {PatentAgent::USPatent.new(pnum)}
+  let(:pnum)          {"US6266379"}
+  let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
+  subject(:patent)    {PatentAgent::USPatent.new(pnum)}
 
   context "#new" do    
     before(:each) do
       PatentAgent::USClient.stub(:get_from_url).and_return(html)  
     end
     
-    it "is instantiated" do
-      expect(patent).to be
-    end
+    it {should be}
+      
+    its(:patent_num) {should be_valid} 
+    
     it "has a valid PatentNum member" do
-      expect(patent.patent_num.valid?).to be_true
       expect(patent.patent_num.number).to eq "6266379"
       expect(patent.patent_num.country_code).to eq "US"
     end
 
-    it "has options.debug key" do
-      patent.options.should have_key(:debug)
-    end
+    its(:options) {should have_key(:debug)}
     
-    it "#valid_html? is false before fetch" do
-      patent.valid_html?.should be_false
-   end
-   
-   it "#fetch grabs valid patent from file" do
-      patent.fetch.valid_html?.should be_true
-    end
-   
-   it "#valid? returns false before fetch" do
-     patent.valid?.should be_false
-   end
-   
-    it "#valid? returns true after fetch" do
-      patent.fetch.valid?.should be_true
-    end
+    it {should_not be_valid_html}
+    it {should_not be_valid}
+    
+    its(:fetch) {should be_valid_html}
+    its(:fetch) {should be_valid}
+  
+    its(:debug) {should be_false}
  
     it "is not valid with invalid patent number" do
       PatentAgent::USPatent.new("US555").should_not be_valid
@@ -46,10 +36,6 @@ describe PatentAgent::USPatent do
   
     it "invalid patent number raises an error" do
       PatentAgent::USPatent.new("MyPatent5555").should raise_error
-    end
-    
-    it "does not debug by default" do
-      patent.debug.should be_false
     end
 
     it "responds to #debug" do

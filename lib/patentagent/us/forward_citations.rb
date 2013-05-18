@@ -1,11 +1,19 @@
 module PatentAgent
-  class USPatentFC
-    def initialize(number)
-      @number = number
+  class ForwardCitation
+    attr_reader :parent, :html, :url
+
+    def initialize(parent)
+      @parent = parent
     end
 
-    def fc_url(num=@number, pg)
-      "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=#{pg}&u=%2Fnetahtml%2Fsearch-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/#{num}"
+    def get_fc_html
+      @url = PatentAgent::USUrls.fc_url(@parent,1)
+      @html = PatentAgent::USClient.get_html(@parent, @url)
+      puts "Url is: #{@url}"
+    end
+
+    def valid?
+      @html && @url
     end
   end
 end

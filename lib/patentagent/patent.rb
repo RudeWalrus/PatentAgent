@@ -3,7 +3,8 @@
 module PatentAgent    
   class Patent
     
-    attr_reader :inventors, :number, :priority_date
+    attr_reader :number, :title, :abstract, :assignee, :app_number
+    attr_reader :inventors, :priority_date
     
     def initialize(*patents)
       result = patents.each do |patent|

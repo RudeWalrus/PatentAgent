@@ -4,7 +4,8 @@ module PatentAgent
     include PatentAgent::Util
     include PatentAgent::Logging
 
-    attr_reader :patent_number, :claims, :title, :abstract, :assignee, :app_number, :filed, :inventors, :text, :figures
+    attr_reader :patent_number, :claims, :title, :abstract, :assignees, :app_number, :filed, :inventors, :text, :figures
+    attr_reader :ipc_codes, :back_citations, :fwd_citations, :pct
     attr_reader :options, :html, :patent_num
     @fields = {}
     
@@ -12,7 +13,7 @@ module PatentAgent
       patent_number:   {gross: /<title>(.*?)<\/title>/mi,     fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
       title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi, fine:  />(.*?)</mi},
       abstract:        {gross: /Abstract(.*?)<hr>/mi,         fine: /<p>(.*?)<\/p>/mi},
-      assignee:        {gross: /Assignee:(.*?)<\/tr>/mi,      fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
+      assignees:       {gross: /Assignee:(.*?)<\/tr>/mi,      fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
       app_number:      {gross: /Appl. No.:(.*?<b>.*?)<\/b>/mi,fine: /<b>(.*?)<\/b>/mi},
       filed:           {gross: /Filed:(.*?<b>.*?)<\/b>/mi,    fine: /<b>(.*?)<\/b>/mi},
       inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,     fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
@@ -41,7 +42,8 @@ module PatentAgent
     end
     
     def fetch(patent_number = @patent_num)
-      @html = PatentAgent::USClient.get_html(patent_number)
+      url = PatentAgent::USUrls.patent_url(patent_number)
+      @html = PatentAgent::USClient.get_html(patent_number, url)
       @claims = PatentAgent::Claims.new
       self
     end
