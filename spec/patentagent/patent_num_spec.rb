@@ -41,33 +41,24 @@ describe PatentAgent::PatentNum do
 
   context PatentAgent::PatentNum do
     let(:num)     {"US7,267,263.B1"}
-    let(:patent)  {PatentAgent::PatentNum.new(num) }
+    subject(:patent)  {PatentAgent::PatentNum.new(num) }
 
     context "US Patents" do
       context "#new object" do
-        it "should return an object" do
-          expect(patent).to_not be_nil
+
+        it "should accept a PatentNum object" do
+          obj = PatentAgent::PatentNum.new(patent)
+          obj.to_s.should eq num
         end
 
-        it "should output a string on to_s" do
-          expect(patent.to_s).to eq num
-        end
+        it                    {should_not be_nil}
+        it                    {should be_valid}
 
-        it "should be a #valid? object" do
-          expect(patent.valid?).to be_true
-        end
-
-        it "should have a #number" do
-          expect(patent.number).to eq "7267263"
-        end
-
-        it "should have a US country code" do
-          expect(patent.country_code).to eq "US"
-        end
-
-        it "should have a kind code" do
-          expect(patent.kind).to eq "B1"
-        end
+        its(:to_s)            {should eq num}
+        its(:number)          {should eq "7267263" }
+        its(:country_code)    {should eq "US" }
+        its(:kind)            {should eq "B1" }
+      
       end
 
       context "Check validity of patent numbers" do

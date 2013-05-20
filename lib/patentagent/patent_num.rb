@@ -69,7 +69,7 @@ module PatentAgent
     attr_reader  :country_code, :number, :kind
     
     def initialize(pat_num)
-      @clean = pat_num
+      @clean = pat_num.to_s
       @country_code, @number, @kind   = valid_patent_number?(pat_num)
     end 
 

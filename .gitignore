@@ -1,7 +1,7 @@
 .DS_Store
 *.gem
 .bundle
-Gemfile.lock
 pkg/*
 *.log
+*.info
 .ruby*

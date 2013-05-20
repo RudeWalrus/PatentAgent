@@ -14,7 +14,6 @@ module PatentAgent
 
     protected
     def self.get_num_part_of_patent(num)
-      return num.number if num.is_a? PatentAgent::PatentNum
       return PatentAgent::PatentNum.new(num).number
     end
   end
