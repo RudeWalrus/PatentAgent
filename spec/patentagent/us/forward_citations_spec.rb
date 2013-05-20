@@ -1,11 +1,23 @@
 require 'spec_helper'
 
 describe PatentAgent::Patent do
-  let(:num)     {"US5539735"}
-  let(:pnum)    {PatentAgent::PatentNum.new(num)}
-  let(:html)    {File.read(File.dirname(__FILE__) + "/../../fixtures/#{num}_fc" + '.html') }
+  let(:num)         {"US5539735"}
+  let(:pnum)        {PatentAgent::PatentNum.new(num)}
+  let(:html)        {File.read(File.dirname(__FILE__) + "/../../fixtures/#{num}_fc" + '.html') }
   subject(:patent)  {PatentAgent::ForwardCitation.new(pnum)}
   
+  context "#new" do
+    it "constructs from a string" do
+      obj = PatentAgent::ForwardCitation.new("US5539735")
+      obj.should be
+    end
+
+    it "constructs from a PatentNum" do
+      obj = PatentAgent::ForwardCitation.new(pnum)
+      expect(obj).to be 
+    end
+  end
+
   context "internal methods" do
     [5,10,50,200,1000].each do |cnt|
       it "Calculates the right number of references for #{cnt}" do
@@ -22,10 +34,8 @@ describe PatentAgent::Patent do
   context "Gets forward citations" do
     before {PatentAgent::USClient.stub(:get_from_url).and_return(html)}
 
-    it "is invalid before getting html" do
-      patent.should_not be_valid
-    end
-
+    it {should_not be_valid}
+    
     it "Gets the html for a patents forward references" do
       patent.get_fc_html
       patent.should be_valid
@@ -47,13 +57,14 @@ describe PatentAgent::Patent do
         patent.parse_fc_html
         patent.fc_references.should have(50).items
       end
+    end
+  end
 
-      6.times do |page|
-        it "Gets page #{page}" do
-          ary = patent.get_page page
-          ary.should have(50).items
-        end
-      end
+  context "fetches all the forward reference" do
+    it "gets all references" do
+      patent.fetch_forward_references
+      patent.count.should == 297
+      patent.fc_references.size.should == 297
     end
   end
 end

@@ -1,7 +1,6 @@
 module PatentAgent
   module PatentNumUtils
     #  
-    # assumes the number has been cleaned (all upcase, no commas, etc)
     #
     # returns a array where:
     #       =>  cc is country
