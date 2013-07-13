@@ -3,13 +3,13 @@ require 'spec_helper'
 describe PatentAgent::USPatent do
     
   let(:pnum)          {"US6266379"}
-  let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
+  #let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
   subject(:patent)    {PatentAgent::USPatent.new(pnum)}
 
-  context "#new" do    
-    before(:each) do
-      PatentAgent::USClient.stub(:get_from_url).and_return(html)  
-    end
+  context "#new", vcr: true do    
+    # before(:each) do
+    #   PatentAgent::USClient.stub(:get_from_url).and_return(html)  
+    # end
     
     it {should be}
       
@@ -61,78 +61,75 @@ describe PatentAgent::USPatent do
     end
   end
       
-  context "Fetch" do
+  context "Fetch", vcr: true do
          
-    before(:all) do
-      PatentAgent::USClient.stub(:get_from_url).and_return(html)
-      @patent = PatentAgent::USPatent.new(pnum)
-      @patent.fetch.parse
+    before(:each) do
+      @patent = PatentAgent::USPatent.new(pnum).fetch.parse
     end 
    
-     it "#valid_html? is true" do
-       expect(@patent.valid_html?).to be_true
+    it "#valid_html? is true" do
+      expect(@patent.valid_html?).to be_true
      end
      
-     it "Has a valid title" do
-       @patent.title.should == Array("Digital transmitter with equalization")
-     end
+    it "Has a valid title" do
+      @patent.title.should == Array("Digital transmitter with equalization")
+    end
    
-     it "has one inventor" do
-       @patent.inventors.should have(1).items
-     end
+    it "has one inventor" do
+      @patent.inventors.should have(1).items
+    end
    
-     it "has 41 claims" do
+    it "has 41 claims" do
        @patent.claims.should have(41).items
        @patent.claims.should_not have(40).items
-     end
+    end
    
-     it "has 12 indep claims" do
+    it "has 12 indep claims" do
        @patent.claims.indep_claims.should have(12).items
        @patent.claims.indep_claims.should_not have(20).items
-     end
+    end
    
-     it "has exaclty 29 dep claims" do
+    it "has exaclty 29 dep claims" do
        @patent.claims.dep_claims.should have(29).items
        @patent.claims.dep_claims.should_not have(20).items
-     end
+    end
        
-     it "has an App Number" do
+    it "has an App Number" do
        @patent.app_number.should == Array("08/882,252")
-     end
+    end
    
-     it "has an Filed Date " do
+    it "has an Filed Date " do
        @patent.filed.should == Array("June 25, 1997")
-     end
+    end
    
-     it "has many Figures" do
+    it "has many Figures" do
        @patent.figures.should have_at_least(1).items
        @patent.figures.should be_kind_of(Array)
-     end
-   end
+    end
+  end
    
-   context "Class Methods" do 
-     before(:each) do
-       PatentAgent::USClient.stub(:get_from_url).and_return(html)
+  context "Class Methods", vcr: true do 
+    before(:each) do
        @patent = PatentAgent::USPatent.fetch(pnum)
-     end
+    end
      
-     it "creates a patent from #fetch" do
+    it "creates a patent from #fetch" do
        @patent.should be_kind_of(PatentAgent::USPatent)
-     end
+    end
      
-     it "#valid_html? returns true" do
+    it "#valid_html? returns true" do
        expect(@patent.valid_html?).to be_true
-     end
+    end
     
-     it "does not have title and inventor before parse" do
+    it "does not have title and inventor before parse" do
        @patent.title.should be_false
        @patent.inventors.should be_false
-     end
+    end
     
-     it "parses and then generates a title and inventor" do
+    it "parses and then generates a title and inventor" do
        @patent.parse
        @patent.title.should be_true
        @patent.inventors.should be_true
-     end
-   end
+    end
+  end
 end

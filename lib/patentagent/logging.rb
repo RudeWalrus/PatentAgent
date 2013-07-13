@@ -44,7 +44,8 @@ module PatentAgent
         else
           msg << "#{indent}#{obj}\n"
       end
-      logger.info msg   
+      logger.info msg
+      obj  
     end
 
     #

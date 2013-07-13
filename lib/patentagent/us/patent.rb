@@ -42,8 +42,8 @@ module PatentAgent
     end
     
     def fetch(patent_number = @patent_num)
-      url = PatentAgent::USUrls.patent_url(patent_number)
-      @html = PatentAgent::USClient.get_html(patent_number, url)
+      url     = PatentAgent::USUrls.patent_url(patent_number)
+      @html   = PatentAgent::USClient.get_html(patent_number, url)
       @claims = PatentAgent::Claims.new
       self
     end

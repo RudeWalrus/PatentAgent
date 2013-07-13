@@ -2,7 +2,7 @@ module PatentAgent
   module PatentNumUtils
     #  
     #
-    # returns a array where:
+    # returns an array where:
     #       =>  cc is country
     #       =>  number is number. 5 to 9 digits. Checked against US valid numbers too
     #       =>  kind is kind. This is something like A1 or B2
@@ -56,8 +56,6 @@ module PatentAgent
       # 
       # cleans up the passed in string
       def cleanup_number(number)
-        return "" if number.nil?
-        #upcase, remove any commas
         number.to_s.upcase.delete(",").delete(" ")
       end
   end

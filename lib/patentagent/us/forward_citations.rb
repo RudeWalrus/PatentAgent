@@ -6,63 +6,76 @@ module PatentAgent
     #
     # Receives a patent number or PatentNum
     def initialize(parent)
-      @parent = PatentNum.new(parent)
+      @parent        = PatentNum.new(parent)
       @fc_references = []
     end
 
     def valid?
-      @html && @url
+      @count
     end
     
-    
-    
+    def fetch
+      @fc_references = []
+
+      # first grab the html and compute counts
+      # the first grab will have the first page of data
+      get_html(1)
+      get_counts
+      parse_fc_html
+      
+      # now do the remainder of the pages
+      (2..@pages).each do |page|
+        html = get_html(page)
+        parse_fc_html(html)
+      end
+      self
+    end
+
+    private
+
+    def get_html(page=1)
+      url   = PatentAgent::USUrls.fc_url(@parent,page)
+      html  = PatentAgent::USClient.get_html(@parent, url)
+      @html = clean_html(html)
+    end
+
     #
     # gets the html from the PTO
     #
-    def get_fc_html
-      @url = PatentAgent::USUrls.fc_url(@parent,1)
-      @html = PatentAgent::USClient.get_html(@parent, @url)
+    def get_counts(page=1)
       @count, @pages = compute_counts @html
     end
+
     
     #
     # Parses the HTML
     #
-    def parse_fc_html html=@html
-      # this is a really mess regex
-      # it grabs the patent number and stores  the patent numbers
+    def parse_fc_html(html=@html)
+      # this is a really messy regex
+      # it grabs the patent numbers and stores them in the 
+      # @fc_references array patent numbers
       # 
       html.scan(/<a\s+href=[^>]*>([re\d,]+)<\/a>.*?>/mi).inject(@fc_references) {|o,m| o << m[0] }
     end
-
-    def fetch_forward_references
-      get_fc_html
-      parse_fc_html
-    end
-    def get_page page
-      []
-    end
     
-    def get_references
-        @pages.times do |page|
-          puts "Page: #{page}"
-        end
+    #
+    # computes the total forward references and the number of total pages
+    #
+    def compute_counts(html)
+      # snarf the count of total hits and hits on this page
+      html.match(/hits \d+ through \d+.\s*out of (\d+)/mi) do |m|
+        count =  m[1].to_i
+        pages = (count.to_f / 50.0).ceil
+        [count, pages]
+      end
     end
 
-    private 
+    #
+    # strips out bold, italic and strong tags
+    #
+    def clean_html(string)
+      string.gsub(/<\/?([bi]|strong)>/mi, "")
+    end
 
-      def compute_counts(string)
-        # first, remove bold, italic and strong tags
-        clean = string.gsub(/<\/?([bi]|strong)>/i, "")
-
-        # now grab the count of total hits and hits on this page
-        clean.match(/hits \d+ through \d+.\s*out of (\d+)/mi) do |m|
-          count =  m[1].to_i
-          pages = (count.to_f / 50.0).ceil
-          [count, pages]
-        end
-      end
-
-      
   end
 end
