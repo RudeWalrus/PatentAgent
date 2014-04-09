@@ -30,7 +30,7 @@ module PatentAgent
     }
     
     # error raised when passed a bad patent number
-    class InvalidPatentNumber < RuntimeError; end
+    InvalidPatentNumber = Class.new(RuntimeError)
     
     def initialize(pnum, options = {})
       @patent_num = PatentAgent::PatentNum.new(pnum)
