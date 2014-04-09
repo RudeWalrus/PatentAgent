@@ -62,49 +62,48 @@ module PatentAgent
       end
     end
         
-    context "Fetch", vcr: true do
-           
-      before(:each) do
-        @patent = USPatent.new(pnum).fetch.parse
-      end 
+    context "#parse", vcr: true do
+      let(:data) {patent.fetch.parse}
      
+      it "#parse returns an instance of USPatent" do
+        expect(data).to be_kind_of(USPatent)
+        expect(data).to eq(patent)
+      end
       it "#valid_html? is true" do
-        expect(@patent.valid_html?).to be_true
+        expect(data.valid_html?).to be_true
        end
        
       it "Has a valid title" do
-        @patent.title.should == Array("Digital transmitter with equalization")
+        data.title.should == Array("Digital transmitter with equalization")
       end
      
       it "has one inventor" do
-        @patent.inventors.should have(1).items
+        data.inventors.should have(1).items
       end
      
       it "has 41 claims" do
-         expect(@patent.claims.count).to eq(41)
+         expect(data.claims.count).to eq(41)
       end
      
       it "has 12 indep claims" do
-         @patent.claims.indep_claims.should have(12).items
-         @patent.claims.indep_claims.should_not have(20).items
+         data.claims.indep_claims.should have(12).items
       end
      
       it "has exaclty 29 dep claims" do
-         @patent.claims.dep_claims.should have(29).items
-         @patent.claims.dep_claims.should_not have(20).items
+         data.claims.dep_claims.should have(29).items
       end
          
       it "has an App Number" do
-         @patent.app_number.should == Array("08/882,252")
+         data.app_number.should == Array("08/882,252")
       end
      
       it "has an Filed Date " do
-         @patent.filed.should == Array("June 25, 1997")
+         data.filed.should == Array("June 25, 1997")
       end
      
       it "has many Figures" do
-         @patent.figures.should have_at_least(1).items
-         @patent.figures.should be_kind_of(Array)
+         data.figures.should have_at_least(1).items
+         data.figures.should be_kind_of(Array)
       end
     end
      
