@@ -39,11 +39,10 @@ module PatentAgent
 
     context PatentNum do
       let(:num)         {"US7,267,263.B1"}
-      subject(:patent)  {PatentAgent::PatentNum.new(num) }
+      subject(:patent)  {PatentNum.new(num) }
 
       context "US Patents" do
         context "#new object" do
-
           it "should accept a PatentNum object" do
             obj = PatentNum.new(patent)
             obj.to_s.should eq num

@@ -65,9 +65,16 @@ module PatentAgent
 
     attr_reader  :country_code, :number, :kind
     
+    # error raised when passed a bad patent number
+    InvalidPatentNumber = Class.new(RuntimeError)
+
     def initialize(pat_num)
       @clean = pat_num.to_s
       @country_code, @number, @kind   = valid_patent_number?(pat_num)
+      raise InvalidPatentNumber unless valid?
+
+    rescue InvalidPatentNumber
+      puts "Bogus patent number #{pat_num}"
     end 
 
     def to_s

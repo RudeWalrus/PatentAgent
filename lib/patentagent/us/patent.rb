@@ -18,8 +18,8 @@ module PatentAgent
       InvalidPatentNumber = Class.new(RuntimeError)
       
       def initialize(pnum, options = {})
-        @patent_num = PatentNum.new(pnum)
         set_options(options)
+        @patent_num = PatentNum.new(pnum)
 
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless @patent_num.valid?
         
