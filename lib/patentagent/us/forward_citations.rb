@@ -1,3 +1,7 @@
+require "patentagent/us/urls"
+require "patentagent/us/client"
+
+
 module PatentAgent
   class ForwardCitation
     attr_reader :parent, :html, :url, :fc_references
@@ -34,8 +38,8 @@ module PatentAgent
     private
 
     def get_html(page=1)
-      url   = PatentAgent::USUrls.fc_url(@parent,page)
-      html  = PatentAgent::USClient.get_html(@parent, url)
+      url   = USUrls.fc_url(@parent,page)
+      html  = USClient.get_html(@parent, url)
       @html = clean_html(html)
     end
 

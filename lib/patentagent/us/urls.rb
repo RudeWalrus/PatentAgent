@@ -1,3 +1,5 @@
+require "patentagent/patent_num"
+
 module PatentAgent
   module USUrls
     PTOSRCHPATH = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1="
@@ -14,7 +16,7 @@ module PatentAgent
 
     protected
     def self.get_num_part_of_patent(num)
-      return PatentAgent::PatentNum.new(num).number
+      return PatentNum.new(num).number
     end
   end
 end

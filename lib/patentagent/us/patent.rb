@@ -1,3 +1,9 @@
+require "patentagent/util"
+require "patentagent/logging"
+require "patentagent/us/urls"
+require "patentagent/us/client"
+
+
 module PatentAgent
 # The basic patent parser class
   class USPatent
@@ -10,15 +16,16 @@ module PatentAgent
     @fields = {}
     
     FIELDS    = {
-      patent_number:   {gross: /<title>(.*?)<\/title>/mi,     fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
-      title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi, fine:  />(.*?)</mi},
-      abstract:        {gross: /Abstract(.*?)<hr>/mi,         fine: /<p>(.*?)<\/p>/mi},
-      assignees:       {gross: /Assignee:(.*?)<\/tr>/mi,      fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
-      app_number:      {gross: /Appl. No.:(.*?<b>.*?)<\/b>/mi,fine: /<b>(.*?)<\/b>/mi},
-      filed:           {gross: /Filed:(.*?<b>.*?)<\/b>/mi,    fine: /<b>(.*?)<\/b>/mi},
-      inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,     fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
+      patent_number:   {gross: /<title>(.*?)<\/title>/mi,             fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
+      title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi,  fine:  />(.*?)</mi},
+      abstract:        {gross: /Abstract(.*?)<hr>/mi,                 fine: /<p>(.*?)<\/p>/mi},
+      assignees:       {gross: /Assignee:(.*?)<\/tr>/mi,              fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
+      app_number:      {gross: /Appl. No.:(.*?<b>.*?)<\/b>/mi,        fine: /<b>(.*?)<\/b>/mi},
+      filed:           {gross: /Filed:(.*?<b>.*?)<\/b>/mi,            fine: /<b>(.*?)<\/b>/mi},
+      inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,             fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
                           :filter => ->(x) { x.delete(",").strip} },
-      text:            {gross: /<HR> <CENTER>(.*?)\*\*<\/b>/mi,    fine: /Description(.*?)<\/b>/mi},
+      text:            {gross: /<HR> <CENTER>(.*?)\*\*<\/b>/mi,       fine: /Description(.*?)<\/b>/mi},
+      parent_case:     {gross: /Parent Case Text(.*?)<CENTER>/mi,     fine: /<hr>(.*?)<\/hr>/mi},
       figures:         {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
     }
     
@@ -42,9 +49,9 @@ module PatentAgent
     end
     
     def fetch(patent_number = @patent_num)
-      url     = PatentAgent::USUrls.patent_url(patent_number)
-      @html   = PatentAgent::USClient.get_html(patent_number, url)
-      @claims = PatentAgent::Claims.new
+      url     = USUrls.patent_url(patent_number)
+      @html   = USClient.get_html(patent_number, url)
+      @claims = Claims.new
       self
     end
     

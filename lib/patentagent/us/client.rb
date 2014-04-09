@@ -1,8 +1,9 @@
+require "patentagent/logging"
 # The basic patent parser class
 
 module PatentAgent
   class USClient
-    include PatentAgent::Logging
+    include Logging
     
     
     def self.get_html(patent_num, url) 

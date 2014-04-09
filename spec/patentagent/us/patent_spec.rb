@@ -132,4 +132,11 @@ describe PatentAgent::USPatent do
        @patent.inventors.should be_true
     end
   end
+
+  context "Patent Methods", vcr: true do
+    it "US6252976 has Parent Case Text" do
+      patent = PatentAgent::USPatent.new("US6252976").fetch.parse
+      #expect(patent.parent_case).to be_true
+    end
+  end
 end

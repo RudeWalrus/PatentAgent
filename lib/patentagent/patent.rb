@@ -1,4 +1,4 @@
-
+require "patentagent/patent_num"
 
 module PatentAgent    
   class Patent
@@ -8,7 +8,7 @@ module PatentAgent
     
     def initialize(*patents)
       result = patents.each do |patent|
-        patent = PatentAgent::PatentNum.new(patent) if patent.is_a?(String) 
+        patent  = PatentNum.new(patent) if patent.is_a?(String) 
         @number = patent
       end    
     end
