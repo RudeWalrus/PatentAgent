@@ -7,8 +7,8 @@ require "patentagent/us/client"
 module PatentAgent
 # The basic patent parser class
   class USPatent
-    include PatentAgent::Util
-    include PatentAgent::Logging
+    include Util
+    include Logging
 
     attr_reader :patent_number, :claims, :title, :abstract, :assignees, :app_number, :filed, :inventors, :text, :figures
     attr_reader :ipc_codes, :back_citations, :fwd_citations, :pct
@@ -33,7 +33,7 @@ module PatentAgent
     InvalidPatentNumber = Class.new(RuntimeError)
     
     def initialize(pnum, options = {})
-      @patent_num = PatentAgent::PatentNum.new(pnum)
+      @patent_num = PatentNum.new(pnum)
       set_options(options)
 
       raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless @patent_num.valid?
@@ -51,7 +51,6 @@ module PatentAgent
     def fetch(patent_number = @patent_num)
       url     = USUrls.patent_url(patent_number)
       @html   = USClient.get_html(patent_number, url)
-      @claims = Claims.new
       self
     end
     
@@ -62,34 +61,11 @@ module PatentAgent
       
     def parse
       process_fields FIELDS
-      parse_claims @html
+      @claims = Claims.new(@html).parse
       log "processed:", patent_number
       self  
     end
 
-    def parse_claims(text)
-      
-      claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
-
-      raise "No Claims" if claim_text.nil?
-    
-      # lets get the individual claims. The parens in the regex force the results to
-      # be placed into a capture group (an array within the array). The claim is element
-      # 0 of this array
-      m = claim_text.scan( /<br><br>\s*(\d+\..*?)((?=<br><br>\s*\d+\.)|(?=<hr>))/mi)
-
-      raise "Malformed Claims" if m.nil?
-
-      # collect the claims into an array
-      m.each { |claim| @claims << claim[0].gsub("\n", " ").gsub(/<BR><BR>/, " ") }
-
-      result = {count: claims.count, indep: claims.indep_count, dep: claims.dep_count, claims: claims }
-      log "Claims:" , result
-      
-      rescue RuntimeError => e
-        log "Error in claims parsing. #{e}"
-        return ["Not found"]
-    end
 
     def process_fields(fields)
       fields.each do |field, search|

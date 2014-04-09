@@ -6,3 +6,4 @@ pkg/*
 *.info
 .ruby*
 tmp/*
+spec.opts
