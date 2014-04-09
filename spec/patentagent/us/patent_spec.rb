@@ -56,6 +56,13 @@ module PatentAgent
         end
       end
 
+      context "Patent#get", vcr: true do
+        it "gets the full patent using class method" do
+          pat = Patent.get("US8011234")
+          expect(pat).to be_valid
+        end
+      end
+
       context '#fetch', vcr: true do
         subject(:result) {patent.fetch}
 
@@ -77,7 +84,7 @@ module PatentAgent
          
         context "Fields:" do
           it "Has a valid title" do
-            result.title.should == Array("Digital transmitter with equalization")
+            result.title.should  match("Digital transmitter with equalization")
           end
          
           it "has one inventor" do
@@ -85,11 +92,11 @@ module PatentAgent
           end
 
           it "has an App Number" do
-             result.app_number.should == Array("08/882,252")
+             result.app_number.should  match("08/882,252")
           end
          
           it "has an Filed Date " do
-             result.filed.should == Array("June 25, 1997")
+             result.filed.should  match("June 25, 1997")
           end
          
           it "has many Figures" do
@@ -108,7 +115,7 @@ module PatentAgent
              result.claims.indep_claims.should have(12).items
           end
          
-          it "has exaclty 29 dep claims" do
+          it "has 29 dep claims" do
              result.claims.dep_claims.should have(29).items
           end
         end   

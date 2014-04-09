@@ -1,0 +1,549 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://patft.uspto.gov/netacgi/nph-Parser?OS=PN/8011234&RS=PN/8011234&Sect1=PTO1&Sect2=HITOFF&d=PALL&f=G&l=50&p=1&r=1&s1=8011234.PN.&u=/netahtml/PTO/srchnum.htm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: Script results follow
+    headers:
+      Server:
+      - NetAnswer Server 1.0
+      Content-Type:
+      - text/html
+    body:
+      encoding: UTF-8
+      string: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>United States Patent:
+        8011234</TITLE></HEAD>\n<BODY BGCOLOR=\"#FFFFFF\">\n<a name=\"top\"></a>\n<center>\n<IMG
+        SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US Patent & Trademark Office, Patent
+        Full Text and Image Database]\">\n<br>\n<TABLE>\n<tr><td align=center>\n<a
+        href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\"
+        border=\"0\" valign=middle></a>\n<a href=\"/netahtml/PTO/search-bool.html\"><img
+        src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\" valign=middle></a>\n<A
+        HREF=\"/netahtml/PTO/search-adv.htm\"><IMG BORDER=\"0\" SRC=\"/netaicon/PTO/manual.gif\"
+        ALT=\"[Manual Search]\" valign=middle></A>\n<a href=\"/netahtml/PTO/srchnum.htm\"><img
+        src=\"/netaicon/PTO/number.gif\" alt=\"[Number Search]\" border=\"0\" valign=middle></a>\n<A
+        HREF=\"/netahtml/PTO/help/help.htm\"><IMG BORDER=\"0\" valign=middle SRC=\"/netaicon/PTO/help.gif\"
+        ALT=\"[Help]\"></A>\n</td></tr>\n<tr><td align=center>\n<a href=\"#bottom\"><img
+        src=\"/netaicon/PTO/bottom.gif\" alt=\"[Bottom]\" valign=middle border=0></A>\n</td></tr>\n
+        \  <tr><td align=center>\n   <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/ShowShoppingCart?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8011234.PN.%26OS%3DPN%2F8011234&backLabel1=Back%20to%20Document%3A%208011234\"><img
+        border=0 src=\"/netaicon/PTO/cart.gif\" border=0 valign=middle alt\n=\"[View
+        Shopping Cart]\"></A>\n   <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/AddToShoppingCart?docNumber=8011234&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8011234.PN.%26OS%3DPN%2F8011234&backLabel1=Back%20to%20Document%3A%208011234\">\n
+        \  <img border=0 src=\"/netaicon/PTO/order.gif\" valign=middle alt=\"[Add
+        to Shopping Cart]\"></A>\n   </td></tr>\n   <tr><td align=center>\n   <a href=http://pdfpiw.uspto.gov/.piw?Docid=08011234&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3D8011234.PN.%2526OS%3DPN%2F8011234%2526RS%3DPN%2F8011234&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+        src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n\n
+        \  </td></tr>\n</TABLE>\n</center>\n<TABLE WIDTH=\"100%\">\n<TR><TD ALIGN=\"LEFT\"
+        width=\"50%\">&nbsp;</TD>\n<TD ALIGN=RIGHT VALIGN=BOTTOM WIDTH=50%><FONT SIZE=-1>(
+        <STRONG>1</STRONG></FONT> <FONT SIZE=-2>of</FONT> <STRONG><FONT SIZE=-1>1</STRONG>
+        )</FONT></TD></TR></TABLE>\n<HR>\n<TABLE WIDTH=\"100%\">\n<TR>\t<TD ALIGN=\"LEFT\"
+        WIDTH=\"50%\"><B>United States Patent </B></TD>\n\t<TD ALIGN=\"RIGHT\" WIDTH=\"50%\"><B><A
+        Name=h1 HREF=#h0></A><A  HREF=#h2></A><B><I></I></B>8,011,234</B></TD>\n</TR>\n
+        \      <TR><TD ALIGN=\"LEFT\" WIDTH=\"50%\"><b>\n           Kandler\n </B>\n
+        \      </TD>\n       <TD ALIGN=\"RIGHT\" WIDTH=\"50%\"> <B>\n       September
+        6, 2011\n</B></TD>\n       </TR>\n       </TABLE>\n         <HR>\n         <font
+        size=\"+1\">Sensor system for a steering wheel of a motor vehicle\n</font><BR>\n
+        \        <BR><CENTER><B>Abstract</B></CENTER>\n         <P> A sensor system
+        for a steering wheel of a motor vehicle is provided,\n     characterized in
+        that, in one form, in and/or on a steering wheel rim at\n     least one sensor
+        device for recording the effects of an acceleration is\n     arranged. Rapid
+        and effective reactions can thus be made to impact\n     events, for example.\n</P>\n
+        \        <HR>\n<TABLE WIDTH=\"100%\"> <TR> <TH scope=\"row\" VALIGN=\"TOP\"
+        ALIGN=\"LEFT\" WIDTH=\"10%\">Inventors:</TH> <TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n
+        <B>Kandler; Marcus</B> (Florssbachtal, <B>DE</B>) </TD> </TR>\n<TR> <TH scope=\"row\"
+        VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">Assignee:</TH>\n<TD ALIGN=\"LEFT\"
+        WIDTH=\"90%\">\n\n<B>Takata-Petri AG</B>\n (Aschaffenburg, \n<B>DE</B>)\n<BR>\n\n</TD>\n</TR>\n
+        \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\"
+        NOWRAP>Family ID:\n         </TD><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>38608355\n</B></TD></TR>\n
+        \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\"
+        NOWRAP>Appl. No.:\n         </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>12/306,172</B></TD></TR>\n
+        \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">Filed:\n
+        \        </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>June 5, 2007</B></TD></TR>\n
+        \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">PCT
+        Filed:\n         </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\"><B>\n         June
+        05, 2007\n         </B></TD></TR>\n         <TR><TH scope=\"row\" VALIGN=\"TOP\"
+        ALIGN=\"LEFT\" WIDTH=\"10%\">PCT No.:\n         </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\"><B>\n
+        \        PCT/EP2007/055511\n         </B></TD></TR>\n           <TR><TH scope=\"row\"
+        VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"15%\">371(c)(1),(2),(4) Date:\n           </TH><TD
+        ALIGN=\"LEFT\" WIDTH=\"85%\"><B>\n           December 22, 2008\n           </B></TD></TR>\n
+        \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\"
+        NOWRAP>PCT Pub. No.:\n         </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>\n
+        \        WO2008/003558\n         </B></TD></TR>\n         <TR><TH scope=\"row\"
+        VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\" NOWRAP>PCT Pub. Date:\n         </TH><TD
+        ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>\n         January 10, 2008\n         </B></TD></TR>\n
+        \      </TABLE>\n<HR> <CENTER><B>Prior Publication Data</B></CENTER> <HR>
+        <TABLE WIDTH=\"100%\"> <TR><TH scope=\"col\"></TH><TH scope=\"col\"></TH><TD></TD></TR>
+        <TR><TD align=\"left\">\n</TD><TH scope='col' align=center><B><U>Document
+        Identifier</U></B></TH><TH scope='col' align=center><B><U>Publication Date</U></B></TH></TR><TR><TD
+        align=center> </TD><TD align=center> US 20090199676 A1</TD><TD align=center>Aug
+        13, 2009</TD></TR><TR><TD align=center> \n</TD>\n</TR> </TABLE>\n       <HR>\n<CENTER><B>Foreign
+        Application Priority Data</B></CENTER> <HR align=center width=\"30%\"> <TABLE
+        WIDTH=\"100%\"> <TR><TH scope=\"col\"></TH><TD></TD><TD></TD><TH scope=\"col\"></TH><TD></TD></TR>
+        <TR><TD align=\"center\">\nJul 3, 2006\n[DE]</TD><TD></TD><TD></TD><TD align='left'>\n10
+        2006 031 207</TD></TR><TR><TD align=center>\n\n</TD>\n</TR> </TABLE>\n<p>\n<TABLE
+        WIDTH=\"100%\">\n     <TR><TD VALIGN=TOP ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Current
+        U.S. Class:</B></TD>\n     <TD VALIGN=TOP ALIGN=\"RIGHT\" WIDTH=\"70%\"><B>73/117.02</B></TD></TR>\n
+        \    <TR><TD VALIGN=TOP ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Current CPC Class:
+        </B></TD>\n     <TD VALIGN=TOP ALIGN=\"RIGHT\" WIDTH=\"70%\">B60R 21/0132&nbsp(20130101);
+        B62D 1/046&nbsp(20130101); B62D 1/06&nbsp(20130101); B60R 2021/01566&nbsp(20130101)</TD></TR>\n
+        \    <TR><TD VALIGN=TOP ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Current International
+        Class: </B></TD>\n     <TD VALIGN=TOP ALIGN=\"RIGHT\" WIDTH=\"70%\">G01M 17/06&nbsp(20060101)</TD></TR>\n
+        \        <TR><TD VALIGN=TOP ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Field of Search:
+        </B></TD>\n         <TD ALIGN=\"RIGHT\" VALIGN=\"TOP\" WIDTH=\"70%\">\n         \n\n
+        ;73/117.01,117.02\n         </TD></TR>\n       </TABLE>\n<HR><CENTER><B>References
+        Cited  <a href=\"/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2Fsearch-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/8011234\">[Referenced
+        By]</A></B></CENTER>       <HR>\n         <CENTER><b>U.S. Patent Documents</b></CENTER>\n<TABLE
+        WIDTH=\"100%\"> <TR><TH scope=\"col\" WIDTH=\"33%\"></TH> <TH scope=\"col\"
+        WIDTH=\"33%\"></TH> <TH scope=\"col\" WIDTH=\"34%\"></TH></TR> <TR> <TD ALIGN=\"left\">\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6293361\">6293361</a></TD><TD
+        align =left>\nSeptember 2001</TD><TD align=left>\nMueller</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7044021\">7044021</a></TD><TD
+        align =left>\nMay 2006</TD><TD align=left>\nLorenz</TD></TR><TR><TD align=left>\n<a
+        href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7602278\">7602278</a></TD><TD
+        align =left>\nOctober 2009</TD><TD align=left>\nProst-Fin et al.</TD></TR><TR><TD
+        align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7710279\">7710279</a></TD><TD
+        align =left>\nMay 2010</TD><TD align=left>\nFields</TD></TR><TR><TD align=left>\n<a
+        href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20030111278&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2003/0111278</a></TD><TD align =left>\nJune 2003</TD><TD
+        align=left>\nHauer et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20040025624&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2004/0025624</a></TD><TD align =left>\nFebruary 2004</TD><TD
+        align=left>\nKreuzer</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20040267422&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2004/0267422</a></TD><TD align =left>\nDecember 2004</TD><TD
+        align=left>\nBossler et al.</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20060022442&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2006/0022442</a></TD><TD align =left>\nFebruary 2006</TD><TD
+        align=left>\nRubboli</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20100030429&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+        target=\"_blank\">2010/0030429</a></TD><TD align =left>\nFebruary 2010</TD><TD
+        align=left>\nKuramori</TD></TR><TR><TD align=left>\n\n</TD>\n</TR> </TABLE>
+        \        <CENTER><b>Foreign Patent Documents</b></CENTER>\n<TABLE WIDTH=\"100%\">
+        <TR><TD></TD><TH scope=\"col\"></TH> <TD></TD><TH scope=\"col\"></TH> <TD></TD><TH
+        scope=\"col\"></TH></TR> <TR> <TD ALIGN=\"left\">\n</TD><TD align=left>42
+        42 230</TD><TD></TD><TD align=left>\nJun 1994</TD><TD></TD><TD align=left>\nDE</TD></TR><TR><TD
+        align=left>\n</TD><TD align=left>198 02 249</TD><TD></TD><TD align=left>\nSep
+        1999</TD><TD></TD><TD align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>100 48 956</TD><TD></TD><TD align=left>\nMay 2002</TD><TD></TD><TD
+        align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD align=left>202 12 398</TD><TD></TD><TD
+        align=left>\nJan 2003</TD><TD></TD><TD align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>203 09 603</TD><TD></TD><TD align=left>\nOct 2003</TD><TD></TD><TD
+        align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD align=left>203 09 877</TD><TD></TD><TD
+        align=left>\nDec 2003</TD><TD></TD><TD align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>10 2004 062 040</TD><TD></TD><TD align=left>\nJul 2006</TD><TD></TD><TD
+        align=left>\nDE</TD></TR><TR><TD align=left>\n</TD><TD align=left>20 2006
+        005 593</TD><TD></TD><TD align=left>\nOct 2006</TD><TD></TD><TD align=left>\nDE</TD></TR><TR><TD
+        align=left>\n</TD><TD align=left>0 930 192</TD><TD></TD><TD align=left>\nJul
+        1999</TD><TD></TD><TD align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>1 319 571</TD><TD></TD><TD align=left>\nJun 2003</TD><TD></TD><TD
+        align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD align=left>1 491 409</TD><TD></TD><TD
+        align=left>\nDec 2004</TD><TD></TD><TD align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>1 621 442</TD><TD></TD><TD align=left>\nFeb 2006</TD><TD></TD><TD
+        align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD align=left>1 842 761</TD><TD></TD><TD
+        align=left>\nOct 2007</TD><TD></TD><TD align=left>\nEP</TD></TR><TR><TD align=left>\n</TD><TD
+        align=left>2006/069746</TD><TD></TD><TD align=left>\nJul 2006</TD><TD></TD><TD
+        align=left>\nWO</TD></TR><TR><TD align=left>\n\n</TD>\n</TR> </TABLE> <TABLE
+        WIDTH=\"90%\"> <BR> <CENTER><B>Other References</B></CENTER> <TR><TD><ALIGN=LEFT><BR>English
+        translation of the International Preliminary Report on Patentability (Chapter
+        I of the Patent Cooperation Treaty) from the\nInternational Bureau of WIPO
+        for International Application No. PCT/EP2007/055511 dated Jan. 29, 2009, 7
+        pages. cited by other\n.<BR>Notification of the First Office Action issued
+        in counterpart Chinese Application No. 200780018063.8 dated Jun. 2, 2010 (6
+        pages) and an English translation of the same (5 pages). cited by other. </TD></TR></TABLE>
+        <BR>         <I>Primary Examiner:</I> McCall; Eric S\n<BR>\n         <I>Attorney,
+        Agent or Firm:</I> <coma>Fitch Even Tabin & Flannery\n<BR>\n           <HR>\n<CENTER><B><I>Claims</B></I></CENTER>
+        <HR> <BR><BR>The invention claimed is: <BR><BR> 1.  A sensor system for a
+        steering wheel of a motor vehicle, characterized in that at least one acceleration
+        sensor for sensing acceleration acting on the vehicle is\nmounted to a rim
+        of the steering wheel, and the steering wheel rim has at least one electrical
+        outer conductor and at least one electrical inner conductor for forming a
+        coaxial arrangement.\n<BR><BR> 2.  The sensor system as claimed in claim 1,
+        characterized in that the acceleration sensor senses the field effect, the
+        force effect and/or the resulting deformation of part of the steering wheel
+        relative to the at least one outer conductor\nand/or to the at least one inner
+        conductor.\n<BR><BR> 3.  The sensor system as claimed in claim 1, characterized
+        in that the acceleration sensor senses a distance between two parts of the
+        steering wheel rim.\n<BR><BR> 4.  The sensor system as claimed in claim 1,
+        characterized in that a skeleton of the steering wheel rim is embodied at
+        least partially as the inner conductor.\n<BR><BR> 5.  The sensor system as
+        claimed in claim 1, characterized in that an electrically conductive material
+        is embodied in the steering wheel rim, at least partially as the outer conductor.\n<BR><BR>
+        6.  The sensor system as claimed in claim 5 wherein the electrically conductive
+        material comprises a steering wheel heating device.\n<BR><BR> 7.  The sensor
+        system as claimed in claim 1, characterized in that at least one dielectric
+        element is arranged in the steering wheel rim.\n<BR><BR> 8.  The sensor system
+        as claimed in claim 7, characterized in that the dielectric element is arranged
+        as a foamed material jacket and/or liquid container in the steering wheel
+        rim.\n<BR><BR> 9.  The sensor system as claimed in claim 1, characterized
+        in that the steering wheel rim is electrically insulated with respect to a
+        steering wheel plate.\n<BR><BR> 10.  The sensor system as claimed in claim
+        1, characterized in that a triggering signal which is generated by sensor
+        means fires an airbag and/or triggers passive or active safety systems.\n<BR><BR>
+        11.  The sensor system as claimed in claim 10, characterized in that the triggering
+        signal is not output by the acceleration sensor until the acceleration exceeds
+        a predetermined value.\n<BR><BR> 12.  A sensor system for a steering wheel
+        of a motor vehicle, characterized in that at least one acceleration sensor
+        for sensing acceleration acting on the vehicle is mounted to a rim of the
+        steering wheel, and the at least one acceleration\nsensor has a capacitive
+        and/or an inductive sensor unit or is coupled to a capacitive and/or inductive
+        sensor unit, wherein the sensor unit is configured to receive a frequency-independent
+        signal or a frequency-dependent signal.\n<BR><BR> 13.  The sensor system as
+        claimed in claim 12, characterized in that the capacitive and/or inductive
+        sensor unit are coupled to parts of the steering wheel.\n<BR><BR> 14.  The
+        sensor system as claimed in claim 13 wherein the parts to which the capacitive
+        and/or inductive sensor unit is coupled comprise the at least one outer conductor
+        and the at least one inner conductor, with different masses, rigidities\nand/or
+        densities to permit a signal for sensing the acceleration to be generated
+        from the deformation of the parts.\n<BR><BR> 15.  A sensor system for a steering
+        wheel of a motor vehicle, characterized in that at least one acceleration
+        sensor for sensing acceleration acting on the vehicle is mounted to a rim
+        of the steering wheel, and the acceleration sensor comprises\na transmitting
+        means has at least one antenna loop for emitting a coaxial wave, a TE wave,
+        a TM wave, a TEM wave and/or a wave, and a sensor for detecting a reflection
+        of the coaxial wave, of the TE wave, of the TM wave, of the TEM wave and/or
+        of the\nwave.\n<BR><BR> 16.  The sensor system as claimed in claim 15, characterized
+        in that at least two conductor loops are arranged in the steering wheel rim.\n<BR><BR>
+        17.  The sensor system as claimed in claim 15, characterized in that four
+        conductor loops are arranged symmetrically in the steering wheel rim, each
+        in a quadrant.\n<BR><BR> 18.  The sensor system as claimed in claim 15, characterized
+        in that at least one antenna loop and/or a conductor loop is configured to
+        be used for direction-indicating detection of a force effect.\n<BR><BR> 19.
+        \ The sensor system as claimed in claim 15, characterized in that a receiver
+        means senses a reflection factor.\n<BR><BR> 20.  The sensor system as claimed
+        in claim 15, characterized in that a receiver means senses a change in a property
+        of the coaxial wave.\n<BR><BR> 21.  The sensor system as claimed in claim
+        20 wherein the property of the coaxial wave sensed by the receiver means comprises
+        a field line change and/or attenuation as a function of a relative movement
+        of parts of the steering wheel.\n<BR><BR> 22.  A steering wheel for a motor
+        vehicle, the steering wheel comprising: a rim;  at least one acceleration
+        sensor mounted to the rim for sensing acceleration acting on the rim;  and
+        at least one electrical outer conductor and at least one\nelectrical inner
+        conductor of the at least one acceleration sensor that form a coaxial relationship.
+        <HR> <CENTER><B><I> Description</B></I></CENTER> <HR> <BR><BR>CROSS-REFERENCE
+        TO RELATED APPLICATIONS\n<BR><BR> This application is a U.S.  national phase
+        application filed under 35 U.S.C.  .sctn.371 of International Application
+        PCT/EP2007/055511, filed on Jun.  5, 2007, designating the United States,
+        which claims priority from DE 10 2006 031 207.4, filed\nJul.  3, 2006, which
+        are hereby incorporated herein by reference in their entirety.\n<BR><BR>FIELD
+        OF THE INVENTION\n<BR><BR> The invention relates to a sensor system for a
+        steering wheel and to a steering wheel.\n<BR><BR>BACKGROUND OF THE INVENTION\n<BR><BR>
+        In vehicle engineering there is a constant need to improve the active and
+        passive safety of a motor vehicle.  In order to improve both the active and
+        passive safety it is necessary for travel data of the motor vehicle to be
+        acquired and further\nprocessed quickly and reliably.  This is the only way
+        that safety-related devices for active safety (for example ABS systems) or
+        for passive safety (for example airbags) can be actuated.\n<BR><BR> These
+        systems can operate reliably only if relevant data is acquired efficiently
+        by means of sensors.  For example, in the event of an impact an impulse is
+        applied to the motor vehicle in a very short time.\n<BR><BR>SUMMARY OF THE
+        INVENTION\n<BR><BR> The present invention is based on the object of providing
+        a device with which it is possible to react, in particular, to impact events
+        quickly and efficiently.\n<BR><BR> The object is achieved by virtue of the
+        fact that at least one sensor means for sensing the effect of an acceleration
+        is arranged in and/or on a steering wheel rim.\n<BR><BR> It is particularly
+        advantageous if the steering wheel rim has at least one electrical outer conductor
+        and at least one electrical inner conductor for forming a coaxial arrangement.
+        \ As a result, module-integral components can be used within the\nscope of
+        the sensor means.\n<BR><BR> In addition it is advantageous if the sensor means
+        senses the field effect, the force effect and/or the resulting deformation
+        of part of the steering wheel relative to the at least one outer conductor
+        and/or to the at least one inner conductor. \nThese variables can be sensed
+        satisfactorily and constitute a measure of the acceleration or its effect.
+        \ An effect is, for example, an oscillation which propagates in the steering
+        wheel as far as the steering wheel rim.\n<BR><BR> A simple design is obtained
+        if the sensor means senses the distance between two parts of the steering
+        wheel rim.\n<BR><BR> An advantageous measurement principle is obtained if
+        the at least one sensor means has a capacitive and/or an inductive sensor
+        unit or is coupled to a capacitive and/or inductive sensor unit.  In conjunction
+        with a coaxial arrangement it is\nadvantageous if the capacitive and/or inductive
+        sensor unit is coupled to parts of the steering wheel, in particular the at
+        least one outer conductor and at least one inner conductor with different
+        masses, rigidity and/or densities so that a signal for\nsensing the acceleration
+        can be generated from the deformation of the parts.\n<BR><BR> An advantageous
+        embodiment of the sensor system has a transmitting means, in particular at
+        least one antenna loop for emitting a coaxial wave, a TE wave, a TM wave,
+        a TEM wave and/or a wave, and a sensor means for detecting a reflection of
+        the\ncoaxial wave, of the TE wave, of the TM wave, of the TEM wave and/or
+        of the wave.  It is particularly advantageous here if at least two conductor
+        loops are arranged in the steering wheel rim.  If four conductor loops are
+        advantageously arranged\nsymmetrically in the steering wheel rim, in particular
+        each in a quadrant, direction sensing is possible in a particularly efficient
+        way.  It is also advantageous if at least one antenna loop and/or at least
+        one conductor loop can be used for\ndirection-indicating detection of a force
+        effect.\n<BR><BR> Furthermore it is advantageous if the receiver means senses
+        a change in a property of the coaxial wave, in particular a field line change
+        and/or attenuation as a function of a relative movement of parts of the steering
+        wheel.  The receiver means\nadvantageously senses the reflection factor.\n<BR><BR>
+        A particularly simple design is obtained if the skeleton of the steering wheel
+        rim is embodied at least partially as an inner conductor.  A further advantageous
+        embodiment is that a steering wheel heating device is embodied in the steering
+        wheel\nrim, at least partially as an outer conductor.\n<BR><BR> The change
+        in signals in the interior of the steering wheel rim can be influenced by
+        arranging at least one dielectric element in the steering wheel rim.  It is
+        particularly advantageous if the dielectric element is arranged as a foamed
+        material\njacket and/or liquid container in the steering wheel rim.\n<BR><BR>
+        The steering wheel rim is advantageously electrically insulated with respect
+        to the steering wheel plate.\n<BR><BR> According to the invention, the influence
+        of an acceleration can be sensed, and in this context it is advantageous if
+        a triggering means for an airbag fires the airbag as a function of a triggering
+        signal which is generated by the sensor means.\n<BR><BR> So that the sensor
+        means does not respond when customary accelerations occur in the motor vehicle,
+        it is advantageous that the triggering signal is not output by the sensor
+        means until the effect of the acceleration exceeds a predetermined\nvalue.\n<BR><BR>
+        The object is also achieved by means of a steering wheel having a sensor system
+        according to the invention. <BR><BR>BRIEF DESCRIPTION OF THE DRAWINGS\n<BR><BR>
+        The invention is explained in more detail below with reference to the figures
+        of the drawings and using a plurality of exemplary embodiments.  In said drawings:\n<BR><BR>
+        FIG. 1 is a schematic sectional view through a steering wheel rim with a first
+        embodiment of the sensor system;\n<BR><BR> FIG. 2 is a schematic sectional
+        view through a steering wheel rim with a second embodiment of the sensor system;\n<BR><BR>
+        FIG. 3A is a cross section through a steering wheel rim with a coaxial arrangement;\n<BR><BR>
+        FIG. 3B is a longitudinal section through a steering wheel rim with a coaxial
+        arrangement;\n<BR><BR> FIG. 4 is a cross section through a steering wheel
+        rim with small liquid pockets according to the third embodiment;\n<BR><BR>
+        FIG. 5 is a cross section through a steering wheel rim with an antenna loop;\n<BR><BR>
+        FIG. 6 is a schematic illustration of the decoupling of the steering wheel
+        rim from the steering wheel plate; and\n<BR><BR> FIG. 7 is a schematic illustration
+        of a steering wheel with four integrated conductor loops.\n<BR><BR>DETAILED
+        DESCRIPTION OF THE PREFERRED EMBODIMENTS\n<BR><BR> In the event of an impact
+        a negative acceleration acts via a force effect to bring about different deformations
+        of the bodywork of the motor vehicle and parts of the motor vehicle.  The
+        acceleration and its force effect depend here on the mass\nof the respective
+        part of the motor vehicle, i.e. when there is an identical force effect, relatively
+        lightweight parts of the motor vehicle are accelerated less than relatively
+        heavy parts of the motor vehicle.  The acceleration can also be manifest in\nthe
+        form of an oscillation.\n<BR><BR> In the text which follows, different embodiments
+        of a sensor system according to the invention are presented, in each of which
+        embodiments a sensor means 1, with which the acceleration B acting on the
+        vehicle can be sensed quickly and\nefficiently, is provided.\n<BR><BR> In
+        this context, in the first three embodiments the sensor means 1 is coupled
+        to a coaxial arrangement having an outer conductor 1A and an inner conductor
+        1B.  The input signals 4 of the sensor means 1 are generated by means of electrical\ninteractions
+        between the outer conductor 1A and the inner conductor 1B, with the interactions
+        resulting from the acceleration effects acting on the steering wheel or parts
+        thereof.\n<BR><BR> The first group of embodiments relates to changes in the
+        capacitance C and/or the inductance L in the steering wheel rim 10 which are
+        converted into output signals 5 by the sensor means 1.  The output signals
+        5 are used to address other parts of\nthe motor vehicle or trigger them.  An
+        output signal 5 can therefore be used to trigger an airbag (not illustrated)
+        in the steering wheel if a predetermined value for the acceleration B is reached).\n<BR><BR>
+        In addition, the sensor means 1 has an inductive sensor unit 2 and/or a capacitive
+        sensor unit 3.\n<BR><BR> The changes in the capacitance and/or the inductances
+        are brought about by changes in the distances between parts of the steering
+        wheel rim 10, specifically the outer conductor 1A and the inner conductor
+        1B.  The changes in distance can be\nattributed to different accelerations
+        (for example force effects) within the steering wheel rim 10.\n<BR><BR> FIG.
+        1 illustrates a first embodiment in which the capacitance is used as a measurement
+        variable.\n<BR><BR> FIG. 1 illustrates a section through a steering wheel
+        rim 10 which has the following design from the inside to the outside.  The
+        skeleton of the steering wheel rim 10, which forms the electrically conductive
+        inner conductor 1A of a coaxial\narrangement here is arranged in the interior.
+        \ The skeleton 1A is surrounded by a foamed layer, which is embodied here
+        as a dielectric element 30.\n<BR><BR> The foamed layer 30 is surrounded by
+        two shielding means in this embodiment.  A heating web 1B on the circumference
+        of the steering wheel rim 10 forms the outer conductor 1B of the coaxial arrangement.
+        \ In addition, but not absolutely\nnecessarily, a further shielding layer
+        31 is arranged inside the outer conductor 1A.  Basically, a plurality of heating
+        webs can also be used.\n<BR><BR> On the outside, the steering wheel rim is
+        surrounded by a sheath 32 which can be composed of wood, leather or plastic.\n<BR><BR>
+        The coaxial arrangement with an inner conductor 1B and outer conductor 1A
+        is to be conceived of in a first approximation as a coaxial cable whose capacitance
+        C is given by\n<BR><BR> .times..pi..times..times..times.  ##EQU00001##\n<BR><BR>
+        Here l is the length of the coaxial arrangement (for example the length of
+        the steering wheel rim 10, r.sub.I is the radius of the inner conductor 1B
+        and r.sub.A is the radius of the outer conductor 1A.  In the embodiment according
+        to FIG. 1,\nthe steering wheel skeleton 1B does not have a circular cross
+        section so that this equation applies only approximately.\n<BR><BR> As a result
+        of an acceleration B which acts on the steering wheel rim 10, the geometric
+        relationships in the steering wheel rim 10 change.  As a result of a compression
+        of the dielectric element 30, i.e. the foamed layer, the distance between\nthe
+        inner conductor 1B and the outer conductor 1A changes, which can be measured
+        as a change in capacitance according to the above equation.  If the distance
+        between the outer conductor 1A and the inner conductor 1B decreases (given
+        a constant diameter\nof the inner conductor 1B), the capacitance drops.\n<BR><BR>
+        In a second embodiment according to FIG. 2, the basic design of the first
+        embodiment is adopted so that reference can be made to the corresponding explanations.\n<BR><BR>
+        However, the dielectric element 30 is divided into two layers 30A, 30B here.
+        \ The foamed component in the first layer 30A has here a different density
+        or a different compression module from the foamed component in the second
+        layer 30B.  A\ndifference in the compression module indicates the degree to
+        which the foam can be compressed under loading.\n<BR><BR> The two embodiments
+        according to FIGS. 1 and 2 have been described in relation to a capacitive
+        measurement method.\n<BR><BR> Alternatively or additionally it is also possible
+        to apply an inductive measurement method.  The acceleration or force effect
+        on the steering wheel rim and its parts also brings about a change in the
+        inductance L.\n<BR><BR> In the case of a coaxial cable arrangement, which
+        can be approximately assumed, the inductance is given as\n<BR><BR> .mu..times..mu..times..times..pi..times..times.
+        \ ##EQU00002##\n<BR><BR> If the distance r.sub.A between the outer conductor
+        1A and inner conductor 1B decreases, the inductance drops.\n<BR><BR> The embodiments
+        according to FIGS. 1 and 2 have been illustrated here independently of the
+        frequency.  The embodiments can, however, readily also have a frequency-dependent
+        evaluation so that amplitude signals and/or phase signals can be\nevaluated.\n<BR><BR>
+        A third embodiment of the sensor system according to the invention is also
+        based on a coaxial arrangement, but the effect of an acceleration is determined
+        in a different way.\n<BR><BR> Here, the same coaxial basis configuration as
+        that described in FIG. 1 or 2 is assumed.  Here, the influence of the field
+        lines of a coaxial wave and/or a wave which is located in the steering wheel
+        rim 10 is used as the measurement variable. \nHere, the dielectric constant
+        of the dielectric 30 (for example foamed material) is responsible for the
+        propagation of the coaxial wave.\n<BR><BR> In the text which follows, the
+        basic principles of this embodiment are presented in relation to a steering
+        wheel rim, with reference being made to FIGS. 3A and 3B.  FIG. 3A shows a
+        cross section through a coaxial arrangement, and FIG. 3B shows a\nlongitudinal
+        section.  The curvature of the steering wheel rim is ignored in FIGS. 3A and
+        3B.\n<BR><BR> The electrical field lines of the coaxial wave (TEM wave) in
+        which no field strength components occur in the direction of the line axis
+        (perpendicular to the plane of the drawing in FIG. 3A) run radially in the
+        cross-sectional plane.  The\ncharacter of the field is also determined by
+        the equipotential lines 40 (annular) shown as a dashed line in FIG. 3A.  Between
+        two adjacent lines 40 of equal potential the same voltage difference .DELTA.U=U/m
+        is present if U is the total voltage between\nthe conductors 1A, 1B and m
+        is the number of strips of equal potential difference.  In FIG. 3A, m=3 since
+        three concentric rings are assumed.\n<BR><BR> In contrast, the field lines
+        divide the cross section into n strips 41 of equal capacitance and in FIG.
+        3A n=16.  The capacitance C.sub.S of such a strip 41 of equal capacitance
+        results from the series connection of the elementary capacitances\nC.sub.E
+        (box), C.sub.S=C.sub.E/m which are formed by the lines of equal potential
+        and bounded by the field lines.\n<BR><BR> The line capacitance per cm line
+        length, referred to as capacitance per unit length C', can then be determined
+        by a parallel connection of the in n=16 equal capacitances C.sub.S, that is
+        to say from the sum\n<BR><BR> '.times..times.  ##EQU00003##\n<BR><BR> As a
+        numerical value equation in pF/cm:\n<BR><BR> '.times..times.  ##EQU00004##\n<BR><BR>
+        The inductance of the line per centimeter line length, referred to as the
+        inductance per unit length L', can also be obtained from the field form.  For
+        a homogeneous dielectric with permeability .mu..sub.r the following applies:\n<BR><BR>
+        '.mu..times..mu..times.  ##EQU00005## or in numbers (nH/cm)\n<BR><BR> '.times..pi..times..times..mu..times.
+        \ ##EQU00006##\n<BR><BR> The characteristic impedance Z (in Ohms) is the quotient
+        of the voltage and current of the progressive coaxial wave measured at any
+        point on a loss-free high-frequency line.  It is real for loss-free lines
+        and therefore:\n<BR><BR> ''.times..mu..times..mu.  ##EQU00007## .times..times..mu..times..times.
+        \ ##EQU00007.2## .times..times..mu..times..mu..times..mu..times..times.  ##EQU00007.3##\n<BR><BR>
+        In the above equation, rn signifies the number of dielectrics or permeabilities.\n<BR><BR>
+        Since the characteristic impedance therefore constitutes a constant value
+        for the total coaxial value for the total line path, it can also be given
+        as a function of the internal diameter D of the outer diameter 1A and of the
+        external diameter of\nthe inner conductor 1B:\n<BR><BR> .times..times.  ##EQU00008##
+        where .di-elect cons..sub.r is the relative dielectric constant of the dielectric
+        between the inner conductor 1A, and outer conductor 1B.\n<BR><BR> The determining
+        characteristic variable for a coaxial connection is therefore the characteristic
+        impedance Z.\n<BR><BR> From the above relationship for the characteristic
+        impedance Z it becomes clear that a change in the diameter has an influence
+        on the characteristic impedance Z which can be detected.  This is described
+        in more detail below.  If, for example,\nthe diameter D is smaller, the characteristic
+        impedance Z also drops.\n<BR><BR> Attenuation and Skin Effect\n<BR><BR> The
+        sum of the following loss components produces the attenuation of electromagnetic
+        waves on the coaxial line:\n<BR><BR> .alpha..sub.1 resistive attenuation of
+        the inner conductor 1B\n<BR><BR> .alpha..sub.A resistive attenuation of the
+        outer conductor 1A\n<BR><BR> .alpha..sub.G leakage attenuation\n<BR><BR> For
+        the attenuation .alpha.  the following applies generally .alpha.=.alpha..sub.R+.alpha..sub.G.
+        \ Here, .alpha..sub.L=.alpha..sub.i+.alpha..sub.a the absolute value of what
+        is referred to as the longitudinal attenuation.\n<BR><BR> The resistive attenuation
+        values are decisively influenced by the skin effect which is effective at
+        high frequencies.\n<BR><BR> For the calculation of the loss values it is necessary
+        that the currents only flow in a uniformly distributed fashion in what is
+        referred to as an equivalent conductive layer thickness.  In the case of nonmagnetic
+        materials--where\n.mu..sub.r=1--the conduction layer thickness s is obtained
+        as a numerical value equation (cm; Hz):\n<BR><BR> .times.  ##EQU00009##\n<BR><BR>
+        The correction factor k.sub.1 is dependent on the conductor material used
+        and is, for example, standardized for silver k.sub.1=1.0 and for gold k.sub.1=1.17.
+        \ In addition, the specific surface resistivity Q' is defined as the resistance
+        of a\npiece of the surface of the thickness s with the length 1 cm and the
+        width 1 cm.  Therefore, for .mu..sub.r=1 and with the conductivity N(s/M)
+        the following applies\n<BR><BR> '.times..times..times..times..times..times..times..OMEGA..times..times.
+        \ ##EQU00010##\n<BR><BR> It is apparent from this that the resistance losses
+        .alpha..sub.R of the inner conductor .alpha..sub.i and of the outer conductor
+        .alpha..sub.a are essentially dependent on {square root over (f)}, and on
+        the conductivity and thickness of the\nconductive layer which act in an inversely
+        proportional fashion.\n<BR><BR> Given the same conductor materials, for .alpha..sub.R=.alpha..sub.i+.alpha..sub.a
+        the following applies\n<BR><BR> .alpha..times..times..times..pi..times..times..times.''
+        ##EQU00011##\n<BR><BR> In the case of conductors with rough surfaces, the
+        current paths are longer and the equivalent resistances and losses are greater
+        than in the case of conductors with smooth surfaces.  Contact points should
+        therefore have short current paths.\n<BR><BR> The effect of the dielectric
+        losses in the conductance per unit length G' is generally described by means
+        of the expression .alpha..sub.G=.pi.f {square root over (L'C' tan .delta..di-elect
+        cons.)}\n<BR><BR> The conductance losses grow proportionally with f if .delta..di-elect
+        cons.  is approximately independent of the frequency.\n<BR><BR> Reflection
+        Factor\n<BR><BR> As a determining value for the quality of a coaxial connection,
+        the reflection factor r which is related to the nominal value of the characteristic
+        impedance Z.sub.L is defined as:\n<BR><BR> ##EQU00012## with Z as the measured
+        characteristic impedance at the respective location of the line and Z.sub.L
+        is the characteristic impedance on the line (nominal value).\n<BR><BR> Likewise,
+        the reflection factor can be determined by acquiring the voltage distribution
+        along a measuring line:\n<BR><BR> ##EQU00013##\n<BR><BR> Measuring methods
+        for this are defined by DIN 47275 part 3.  In this context, the variables
+        of the ripple factor\n<BR><BR> ##EQU00014## and adaptation factor\n<BR><BR>
+        ##EQU00015## are defined.  The smaller the reflection factor at a frequency
+        the better the coaxial connection system.\n<BR><BR> Further embodiments make
+        use of these relationships by sensing changes in the field lines or changes
+        in the attenuation of the coaxial wave as a function of the effect of the
+        acceleration.\n<BR><BR> In the steering wheel rim 10, the dielectric 30, 30A,
+        30B influences the propagation of the coaxial wave.\n<BR><BR> A third embodiment
+        which utilizes these effects is illustrated in FIG. 4.  The basic design of
+        the skeleton 1B as an inner conductor, an outer conductor 1B and the first
+        dielectric element 30A correspond to the subject matter of FIGS. 1 and 2.\n<BR><BR>
+        In a third embodiment according to FIG. 4, cavities 33 which are filled with
+        liquid are arranged as the dielectric element 30A in the foamed material layer.
+        \ Alternatively, liquid hoses can also be included.\n<BR><BR> In the event
+        of an impact, the filled cavities 33 in the steering wheel rim experience
+        a force effect owing to the acceleration.  The dielectric properties in the
+        steering wheel rim 10 therefore change, which in turn leads to a detectable
+        change\nin the wave propagation; signals are changed or delayed.\n<BR><BR>
+        These changes in the signals can additionally or alternatively be used for
+        the signals which result from deformations owing to the capacitive or inductive
+        signals.\n<BR><BR> These changes in the signals can also additionally be used
+        for the changes in the characteristic resistance due to changes in the geometry.\n<BR><BR>
+        FIG. 5 is a schematic illustration of a fourth embodiment in which, for example,
+        an antenna loop 36 is arranged in the interior of the steering wheel 10 in
+        addition to the skeleton, it being possible to couple said antenna loop 36
+        to the\nskeleton 1B.  This antenna emits a wave, and in the event of a crash
+        the wave properties of the field lines of the emitted field change.  These
+        changes (frequency dependent or non-frequency dependent) can be detected in
+        a direction-indicating fashion as\neffects of accelerations and can be used
+        within the scope of a crash sensor.  This embodiment therefore does not emerge
+        directly from a coaxial arrangement.\n<BR><BR> All the illustrated embodiments
+        have in common the fact that it is possible to define a threshold value below
+        which the sensor system does not output a crash signal.  Therefore, the steering
+        wheel can be deformed through normal loading when\ndriving, in which case
+        the deformation variable and/or the deformation speed are clearly differentiated
+        from those in impact events.\n<BR><BR> FIG. 6 illustrates how a means of electrically
+        isolating the steering wheel rim 10 from the plate 11 can be embodied.  In
+        this context, an electrically nonconductive section, which insulates the plate
+        11 electrically from the steering wheel, is\nintroduced into a spoke 35 of
+        the steering wheel.\n<BR><BR> FIG. 7 illustrates an embodiment in which four
+        conductor loops 36a, 36b, 36c, 36d are arranged in the steering wheel rim
+        10.  The conductor loops 36a, 36b, 36c, 36d are each arranged in the four
+        quadrants.  When the steering wheel moves it is\npossible to detect the position
+        of the respective conductor loops 36a, 36b, 36c, 36d so that, for example,
+        information about the type of crash event (head-on crash, side crash, roll
+        over etc.) can also be derived from this position information.\n<BR><BR> The
+        invention is not restricted in its embodiment to the preferred exemplary embodiments
+        specified above.  Instead, a number of variants are conceivable which also
+        make use of the sensor system according to the invention in embodiments which
+        are\nbasically of a different nature.\n<BR><BR><CENTER><B>* * * * *</B></CENTER>\n<HR>\n
+        \  <CENTER>\n   <a href=http://pdfpiw.uspto.gov/.piw?Docid=08011234&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3D8011234.PN.%2526OS%3DPN%2F8011234%2526RS%3DPN%2F8011234&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+        src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n
+        \  <TABLE>\n   <tr><td align=center><A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/ShowShoppingCart?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8011234.PN.%26OS%3DPN%2F8011234&backLabel1=Back%20to%20Document%3A%208011234\"><img
+        border=0 src=\"/netaicon/PTO/cart.gif\" borde\nr=0 valign=middle alt=\"[View
+        Shopping Cart]\"></A>\n   <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/AddToShoppingCart?docNumber=8011234&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8011234.PN.%26OS%3DPN%2F8011234&backLabel1=Back%20to%20Document%3A%208011234\">\n
+        \  <img border=0 src=\"/netaicon/PTO/order.gif\" valign=middle alt=\"[Add
+        to Shopping Cart]\"></A>\n   </td></tr>\n   <tr><td align=center>\n   <a href=\"#top\"><img
+        valign=middle src=\"/netaicon/PTO/top.gif\" border=0 alt=\"[Top]\"></a>\n
+        \  </td></tr>\n   </TABLE>\n   <a name=\"bottom\"></a>\n   <a href=\"/netahtml/PTO/index.html\"><img
+        src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\" border=\"0\" valign=middle></a>\n
+        \  <a href=\"/netahtml/PTO/search-bool.html\"><img src=\"/netaicon/PTO/boolean.gif\"
+        alt=\"[Boolean Search]\" border=\"0\" valign=middle></a>\n   <A HREF=\"/netahtml/PTO/search-adv.htm\"><IMG
+        BORDER=\"0\" SRC=\"/netaicon/PTO/manual.gif\" ALT=\"[Manual Search]\" valign=middle></A>\n
+        \  <a href=\"/netahtml/PTO/srchnum.htm\"><img src=\"/netaicon/PTO/number.gif\"
+        alt=\"[Number Search]\" border=\"0\" valign=middle></a>\n   <A HREF=\"/netahtml/PTO/help/help.htm\"><IMG
+        BORDER=\"0\" SRC=\"/netaicon/PTO/help.gif\" ALT=\"[Help]\" valign=middle></A>\n
+        \  </center>\n</BODY>\n</HTML>"
+    http_version: 
+  recorded_at: Wed, 09 Apr 2014 22:11:48 GMT
+recorded_with: VCR 2.5.0

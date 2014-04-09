@@ -29,7 +29,7 @@ module PatentAgent
         filed:           {gross: /Filed:(.*?<b>.*?)<\/b>/mi,            fine: /<b>(.*?)<\/b>/mi},
         inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,             fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
                             :filter => ->(x) { x.delete(",").strip} },
-        text:            {gross: /<HR> <CENTER>(.*?)\*\*<\/b>/mi,       fine: /Description(.*?)<\/b>/mi},
+        text:            {gross: /<B><I> Description(.*?)\* \*<\/b>/mi, fine: /Description(.*?)<\/b>/mi},
         parent_case:     {gross: /Parent Case Text(.*?)<CENTER>/mi,     fine: /<hr>(.*?)<\/hr>/mi},
         figures:         {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
       }.each { |m, value| define_method(m) { instance_variable_get "@#{m}" } }
@@ -42,7 +42,10 @@ module PatentAgent
       def parse
         FIELDS.each do |field, search|
           val = parse_field(field, search)
-          instance_variable_set("@#{field}",val)
+          # if the name ends in s, store as an array, otherwise
+          # convert to a string (first element of array)
+          result = field.match(/s$/) ? val : val[0].to_s
+          instance_variable_set("@#{field}",result)
         end
         self
       end

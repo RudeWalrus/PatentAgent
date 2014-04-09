@@ -17,6 +17,12 @@ module PatentAgent
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
+      #lazy utility method that initializes and fetches
+      def self.get(pnum)
+        new(pnum).fetch
+      end
+
+      
       def initialize(pnum, options = {})
         set_options(options)
         @patent_num = PatentNum.new(pnum)
@@ -70,6 +76,8 @@ module PatentAgent
         return @fields.send(method) if @fields.respond_to?(method)
         super
       end
+
+      alias :name :patent_num
     end
   end   
 end
