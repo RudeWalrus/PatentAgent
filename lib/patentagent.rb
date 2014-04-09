@@ -4,19 +4,21 @@ require 'set'
 require 'logger'
 
 $: << File.dirname(__FILE__) + '../patentagent'
+$: << File.dirname(__FILE__) + '../patentagent/us'
 
 require 'patentagent/patent'
 require 'patentagent/util'
 require 'patentagent/logging'
 require 'patentagent/patent_num'
+require 'patentagent/client'
 
 # require 'patentagent/ops/ops_utility'
 # require 'patentagent/ops/ops_reader'
 # require 'patentagent/ops/ops_patent'
 
 require 'patentagent/us/urls'
-require 'patentagent/us/client'
 require 'patentagent/us/patent'
+require 'patentagent/us/fields'
 require 'patentagent/us/claims'
 require 'patentagent/us/forward_citations'
 
