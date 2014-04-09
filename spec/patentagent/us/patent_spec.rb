@@ -2,8 +2,8 @@ require 'spec_helper'
 
 module PatentAgent
   describe USPatent do
-      
-    let(:pnum)          {"US6266379"}
+    let(:num)           {"6266379"}
+    let(:pnum)          {"US" + num}
     #let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
     subject(:patent)    {USPatent.new(pnum)}
 
@@ -61,16 +61,28 @@ module PatentAgent
         USPatent.new(pnum).fetch.valid?.should be_false
       end
     end
-        
+    context '#fetch', vcr: true do
+      subject(:result) {patent.fetch}
+
+      it "returns an instance of USPatent" do
+        expect(result).to be_kind_of(USPatent)
+        expect(result).to eq(patent)
+      end
+      it "have html" do
+        expect(result.html).to match(num)
+      end
+         
+    end   
     context "#parse", vcr: true do
-      let(:data) {patent.fetch.parse}
+      subject(:data) {patent.fetch.parse}
      
-      it "#parse returns an instance of USPatent" do
+      it "returns an instance of USPatent" do
         expect(data).to be_kind_of(USPatent)
         expect(data).to eq(patent)
       end
+
       it "#valid_html? is true" do
-        expect(data.valid_html?).to be_true
+        expect(data).to be_valid_html
        end
        
       it "Has a valid title" do
