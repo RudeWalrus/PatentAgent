@@ -23,11 +23,16 @@ require 'patentagent/us/claims'
 require 'patentagent/us/forward_citations'
 
 module PatentAgent
+  extend PatentNumUtils
   class << self
     def version
         version_path = File.dirname(__FILE__) + "/../VERSION"
         return File.read(version_path).chomp if File.file?(version_path)
         "0.0.1"
+    end
+
+    def validate_patent_numbers(nums)
+      valid = *nums.find_all { |pnum| valid_patent_number?(pnum) }
     end
   end
 end
