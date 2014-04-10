@@ -23,7 +23,7 @@ module PatentAgent
       context "#parse" do
         before  {claims.parse}
 
-        it "returns an instnance of itself on #parse" do
+        it "returns an instance of itself on #parse" do
           the_claim = claims.parse
           expect(the_claim).to eq(claims)
         end

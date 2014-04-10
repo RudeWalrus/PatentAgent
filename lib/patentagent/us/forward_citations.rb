@@ -1,3 +1,7 @@
+# Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
+# Copyright:: Copyright (c) 2014 RudeWalrus
+# License::   Creative Commons 3
+
 require "patentagent/us/urls"
 require "patentagent/client"
 

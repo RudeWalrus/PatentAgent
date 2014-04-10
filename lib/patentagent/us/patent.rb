@@ -1,3 +1,7 @@
+# Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
+# Copyright:: Copyright (c) 2014 RudeWalrus
+# License::   Creative Commons 3
+
 require "patentagent/util"
 require "patentagent/logging"
 require "patentagent/client"
@@ -7,7 +11,9 @@ require "patentagent/us/fields"
 
 module PatentAgent
   module USPTO
+    #
     # The basic patent parser class
+    #
     class Patent
       include Util
       include Logging
@@ -17,11 +23,15 @@ module PatentAgent
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
-      #lazy utility method that initializes and fetches
-      def self.get(pnum)
-        new(pnum).fetch
+      #
+      # allows calling fetch on directly on Patent class
+      # initializes and fetches
+      # 
+      # @return [Patent] A new instance of USPTO::Patent
+      #
+      def self.fetch(pnum, options = {})
+        new(pnum, options).fetch
       end
-
       
       def initialize(pnum, options = {})
         set_options(options)
@@ -33,10 +43,7 @@ module PatentAgent
            log "#{e}"
       end
       
-      def self.fetch(pnum, options = {})
-        patent = new(pnum, options)
-        patent.fetch
-      end
+      
 
       def set_options(opts)
         @options ||= {:debug => false, :fc => nil }

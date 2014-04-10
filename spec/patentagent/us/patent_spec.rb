@@ -56,9 +56,9 @@ module PatentAgent
         end
       end
 
-      context "Patent#get", vcr: true do
+      context "Patent#fetch", vcr: true do
         it "gets the full patent using class method" do
-          pat = Patent.get("US8011234")
+          pat = Patent.fetch("US8011234")
           expect(pat).to be_valid
         end
       end
@@ -66,7 +66,7 @@ module PatentAgent
       context '#fetch', vcr: true do
         subject(:result) {patent.fetch}
 
-        context 'Valid' do
+        context 'valid' do
           it "returns an instance of Patent" do
             expect(result).to be_kind_of(Patent)
             expect(result).to eq(patent)
@@ -75,9 +75,6 @@ module PatentAgent
           it "is valid and has html" do
             expect(result.html).to match(num)
             expect(result).to be_valid
-          end
-
-          it "#valid_html? is true" do
             expect(result).to be_valid_html
           end
         end

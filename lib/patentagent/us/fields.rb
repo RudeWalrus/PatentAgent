@@ -1,3 +1,7 @@
+# Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
+# Copyright:: Copyright (c) 2014 RudeWalrus
+# License::   Creative Commons 3
+
 require "patentagent/util"
 require "patentagent/logging"
 require "patentagent/client"
@@ -29,7 +33,7 @@ module PatentAgent
         filed:           {gross: /Filed:(.*?<b>.*?)<\/b>/mi,            fine: /<b>(.*?)<\/b>/mi},
         inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,             fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
                             :filter => ->(x) { x.delete(",").strip} },
-        text:            {gross: /<B><I> Description(.*?)\* \*<\/b>/mi, fine: /Description(.*?)<\/b>/mi},
+        text:            {gross: /<B><I> Description(.*?)\* \*<\/b>/mi, fine: /Description(.*?)\* \*/mi},
         parent_case:     {gross: /Parent Case Text(.*?)<CENTER>/mi,     fine: /<hr>(.*?)<\/hr>/mi},
         figures:         {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
       }.each { |m, value| define_method(m) { instance_variable_get "@#{m}" } }
@@ -58,7 +62,7 @@ module PatentAgent
       # 
       def parse_field(field, params)
         
-        # run the gross filter
+        # run the gross filter which leaves us with a subtring
         gross = @html[params[:gross]]
 
         raise "Missing Field" if gross.nil?

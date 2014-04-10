@@ -1,3 +1,7 @@
+# Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
+# Copyright:: Copyright (c) 2014 RudeWalrus
+# License::   Creative Commons 3
+
 module PatentAgent
   module USPTO
 
@@ -5,7 +9,11 @@ module PatentAgent
     
     class Claims
       include Logging
+      include Enumerable
+
       attr_reader :total, :dep_count, :indep_count, :dep_claims, :indep_claims
+
+      alias :count :total
       
       # error raised when a bad claim is found
       MalformedClaim = Class.new(RuntimeError)
@@ -17,9 +25,12 @@ module PatentAgent
         @parsed_claims = {}
       end
       
-      def parse
+      #
+      # parses all the claims
+      #
+      def parse(text = @text)
         
-        claim_text = @text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
+        claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
 
         raise "No Claims" if claim_text.nil?
       
@@ -36,6 +47,7 @@ module PatentAgent
         log "Claims:" , {count: @count, indep: @indep_count, dep: @dep_count, claims: self }
         
         self
+
         rescue RuntimeError => e
           log "Error in claims parsing. #{e}"
           return ["Not found"]
@@ -49,21 +61,27 @@ module PatentAgent
         @parsed_claims[index]
       end
 
+      def each
+        @parsed_claims.each { |key, value| yield key, value}
+      end
+
       private
       
       def process(claim)
         # grab the claim number, parent and whether independant/dependant
-        num    = claim[/^\d+/].to_i
-        dep    = /claim (\d+)/.match(claim) 
-        parent = dep.nil? ? num : dep[1].to_i
+        num     = claim[/^\d+/].to_i
+        dep_num = claim.match(/claim (\d+)/)
+        dep     = !!dep_num
+        parent  = dep_num.nil? ? num : dep_num[1].to_i
         
-        if dep.nil?
-          @indep_count += 1
-          @indep_claims << num
-        else
+        if dep
           @dep_count += 1
           @dep_claims << num
+        else
+          @indep_count += 1
+          @indep_claims << num
         end
+        
         @total += 1
         @parsed_claims[num] = Claim.new(parent, dep, claim)
       end
