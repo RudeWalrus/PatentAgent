@@ -9,6 +9,7 @@ $: << File.dirname(__FILE__) + '../patentagent/us'
 require 'patentagent/patent'
 require 'patentagent/util'
 require 'patentagent/logging'
+require 'patentagent/patent_num_utils'
 require 'patentagent/patent_num'
 require 'patentagent/client'
 
@@ -23,13 +24,10 @@ require 'patentagent/us/claims'
 require 'patentagent/us/forward_citations'
 
 module PatentAgent
+
   extend PatentNumUtils
   class << self
-    def version
-        version_path = File.dirname(__FILE__) + "/../VERSION"
-        return File.read(version_path).chomp if File.file?(version_path)
-        "0.0.1"
-    end
+    attr_accessor :debug
 
     #
     # validates a list of patent numbers

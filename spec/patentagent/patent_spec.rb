@@ -2,8 +2,18 @@ require 'spec_helper'
 
 module PatentAgent
   describe Patent do
+    subject(:patent) {Patent.new("US6262379")}
+
     context "#new" do
-      it {should_not be_valid}
+      it "defaults to USPTO object" do
+        patent.authority.should eq(:pto)
+      end
+      it "constructs to EPO when chosen" do
+        pat = Patent.new("US6262379", authority: :epo)
+        pat.authority.should eq(:epo)
+      end
+
+      it {should be_valid}
       
       it "Given a string, it should return a valid patent" do
         pat = Patent.new("US6262379")
