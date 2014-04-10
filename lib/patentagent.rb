@@ -31,8 +31,15 @@ module PatentAgent
         "0.0.1"
     end
 
+    #
+    # validates a list of patent numbers
+    #
+    # @returns - an array of valid numbers if array passed in
+    #          - or a string if a string passed in
+    #
     def validate_patent_numbers(nums)
-      valid = *nums.find_all { |pnum| valid_patent_number?(pnum) }
+      valid = [*nums].find_all { |pnum| valid_patent_number?(pnum) }
+      valid.size == 1 ? valid[0] : valid
     end
   end
 end
