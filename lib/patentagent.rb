@@ -37,8 +37,8 @@ module PatentAgent
     # @returns - an array of valid numbers if array passed in
     #          - or a string if a string passed in
     #
-    def validate_patent_numbers(nums)
-      valid = [*nums].find_all { |pnum| valid_patent_number?(pnum) }
+    def validate_patent_numbers(*nums)
+      valid = [*nums].flatten.find_all { |pnum| valid_patent_number?(pnum) }
       valid.size == 1 ? valid[0] : valid
     end
   end

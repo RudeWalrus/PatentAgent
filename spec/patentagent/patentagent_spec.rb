@@ -19,6 +19,13 @@ module PatentAgent
         expect(result).to be_kind_of(String)
       end
 
+      it "accepts several strings, returns array" do
+        mixed = all_good + all_bad
+        result = PatentAgent.validate_patent_numbers("US5551212", "6661113")
+        expect(result).to include("US5551212", "6661113")
+        expect(result).to be_kind_of(Array)
+      end
+
       it "accepts good array list" do
         result = PatentAgent.validate_patent_numbers(all_good)
         expect(result).to eq(all_good)
