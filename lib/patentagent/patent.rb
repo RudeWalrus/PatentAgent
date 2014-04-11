@@ -35,6 +35,16 @@ module PatentAgent
       end
     end
 
+    #
+    # allows calling fetch on directly on Patent class
+    # initializes and fetches
+    # 
+    # @return [Patent] A new instance of PatentAgent::Patent
+    #
+    def self.fetch(pnum, options = {})
+      new(pnum, options).fetch
+    end
+
     def authority
       @options[:authority]
     end
