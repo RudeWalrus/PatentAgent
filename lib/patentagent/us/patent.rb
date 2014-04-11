@@ -4,7 +4,7 @@
 
 require "patentagent/util"
 require "patentagent/logging"
-require "patentagent/client"
+require "patentagent/reader"
 require "patentagent/us/urls"
 require "patentagent/us/fields"
 
@@ -17,9 +17,10 @@ module PatentAgent
     class Patent
       include Util
       include Logging
+      
 
       attr_reader :options, :html, :patent_num, :fields, :claims
-      
+
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
@@ -43,8 +44,6 @@ module PatentAgent
            log "#{e}"
       end
       
-      
-
       def set_options(opts)
         @options ||= {:debug => false, :fc => nil }
         @options.merge!(opts)
@@ -53,7 +52,7 @@ module PatentAgent
       
       def fetch(patent_number = @patent_num)
         url     = USPTO::URL.patent_url(patent_number)
-        @html   = Client.get_html(patent_number, url)
+        @html   = Reader.get_html(patent_number, url)
         parse if @html
         self
       end

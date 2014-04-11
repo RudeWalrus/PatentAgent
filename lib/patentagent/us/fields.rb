@@ -4,7 +4,6 @@
 
 require "patentagent/util"
 require "patentagent/logging"
-require "patentagent/client"
 require "patentagent/us/urls"
 
 

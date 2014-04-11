@@ -3,7 +3,7 @@
 # License::   Creative Commons 3
 
 require "patentagent/us/urls"
-require "patentagent/client"
+require "patentagent/reader"
 
 
 module PatentAgent
@@ -43,7 +43,7 @@ module PatentAgent
 
       def get_html(page=1)
         url   = URL.fc_url(@parent,page)
-        html  = Client.get_html(@parent, url)
+        html  = Reader.get_html(@parent, url)
         @html = clean_html(html)
       end
 

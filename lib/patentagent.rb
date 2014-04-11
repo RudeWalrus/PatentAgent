@@ -11,7 +11,8 @@ require 'patentagent/util'
 require 'patentagent/logging'
 require 'patentagent/patent_num_utils'
 require 'patentagent/patent_num'
-require 'patentagent/client'
+require 'patentagent/reader'
+require 'patentagent/claims'
 
 # require 'patentagent/ops/ops_utility'
 # require 'patentagent/ops/ops_reader'
@@ -20,7 +21,6 @@ require 'patentagent/client'
 require 'patentagent/us/urls'
 require 'patentagent/us/patent'
 require 'patentagent/us/fields'
-require 'patentagent/us/claims'
 require 'patentagent/us/forward_citations'
 
 module PatentAgent

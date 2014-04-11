@@ -17,8 +17,6 @@ module PatentAgent
         end
       end
 
-
-
       it "Generates a US url" do
         path = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=6266379.PN.&OS=PN/6266379&RS=PN/6266379"
         URL.patent_url(pnum).should eq path
