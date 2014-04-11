@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    patentagent (0.0.3)
+    patentagent (0.4.0.pre)
       nokogiri
       rest-client
 

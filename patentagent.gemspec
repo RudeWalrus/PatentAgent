@@ -4,7 +4,7 @@ require 'patentagent/version'
 
 Gem::Specification.new do |s|
   s.name        = "patentagent"
-  s.version     = Patentagent::VERSION
+  s.version     = Patentagent::Version
   s.authors     = ["RudeWalrus"]
   s.email       = ["boss@rudewalrus.com"]
   s.homepage    = "https://github.com/RudeWalrus/PatentAgent"
