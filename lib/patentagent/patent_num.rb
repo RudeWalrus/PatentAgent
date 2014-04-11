@@ -13,6 +13,13 @@ module PatentAgent
     
     # error raised when passed a bad patent number
     InvalidPatentNumber = Class.new(RuntimeError)
+    
+    # if passed a PatentNum, just return it and don't create a new one
+    #
+    def self.new(arg)
+      return if arg.class == self.class
+      super
+    end
 
     def initialize(pat_num)
       @clean = pat_num.to_s

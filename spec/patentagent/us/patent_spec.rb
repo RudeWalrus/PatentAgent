@@ -115,6 +115,19 @@ module PatentAgent
           it "has 29 dep claims" do
              result.claims.dep_claims.should have(29).items
           end
+
+          it "has 41 parsed claims" do
+            result.claims.parsed_claims.should have(41).items
+          end
+
+          it "can read an individual claim" do
+            result.claims[15].text.should match "15.  A digital transmitter "
+          end
+
+          it "#each" do
+            result.claims.each {|k,v| expect(v.text).to be_kind_of(String)} 
+            #
+          end
         end   
       end
 

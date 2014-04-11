@@ -11,7 +11,7 @@ module PatentAgent
       include Logging
       include Enumerable
 
-      attr_reader :total, :dep_count, :indep_count, :dep_claims, :indep_claims
+      attr_reader :total, :dep_count, :indep_count, :dep_claims, :indep_claims, :parsed_claims
 
       alias :count :total
       
@@ -61,8 +61,12 @@ module PatentAgent
         @parsed_claims[index]
       end
 
-      def each
-        @parsed_claims.each { |key, value| yield key, value}
+      #
+      # convinience method that iterates over the claims hash
+      # and returns the claim text
+      # @return [String]
+      def each(&block)
+        @parsed_claims.each { |key, obj| block.call(key, obj)}
       end
 
       private
