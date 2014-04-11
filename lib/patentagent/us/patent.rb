@@ -24,22 +24,23 @@ module PatentAgent
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
-      #
-      # allows calling fetch on directly on Patent class
-      # initializes and fetches
-      # 
-      # @return [Patent] A new instance of USPTO::Patent
-      #
-      def self.fetch(pnum, options = {})
-        new(pnum, options).fetch
-      end
+      # #
+      # # allows calling fetch on directly on Patent class
+      # # initializes and fetches
+      # # 
+      # # @return [Patent] A new instance of USPTO::Patent
+      # #
+      # def self.fetch(pnum, options = {})
+      #   new(pnum, options).fetch
+      # end
       
       def initialize(pnum, options = {})
         set_options(options)
-        @patent_num = PatentNum.new(pnum)
+        @patent_num = pnum
 
-        raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless @patent_num.valid?
+        raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
         
+        fetch
         rescue InvalidPatentNumber => e
            log "#{e}"
       end
@@ -56,9 +57,12 @@ module PatentAgent
         parse if @html
         self
       end
-            
+      def valid_patnum?
+       @patent_num && @patent_num.respond_to?(:valid?)
+      end
+
       def valid?
-       @patent_num && !!@html
+       @patent_num && @patent_num.respond_to?(:valid?) && !!@html
       end
       
       def valid_html?

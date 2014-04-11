@@ -24,6 +24,677 @@ http_interactions:
       - text/html
     body:
       encoding: UTF-8
+      string: &1 !ruby/string
+        str: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>United States Patent:
+          8031234</TITLE></HEAD>\n<BODY BGCOLOR=\"#FFFFFF\">\n<a name=\"top\"></a>\n<center>\n<IMG
+          SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US Patent & Trademark Office,
+          Patent Full Text and Image Database]\">\n<br>\n<TABLE>\n<tr><td align=center>\n<a
+          href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\" alt=\"[Home]\"
+          border=\"0\" valign=middle></a>\n<a href=\"/netahtml/PTO/search-bool.html\"><img
+          src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\"
+          valign=middle></a>\n<A HREF=\"/netahtml/PTO/search-adv.htm\"><IMG BORDER=\"0\"
+          SRC=\"/netaicon/PTO/manual.gif\" ALT=\"[Manual Search]\" valign=middle></A>\n<a
+          href=\"/netahtml/PTO/srchnum.htm\"><img src=\"/netaicon/PTO/number.gif\"
+          alt=\"[Number Search]\" border=\"0\" valign=middle></a>\n<A HREF=\"/netahtml/PTO/help/help.htm\"><IMG
+          BORDER=\"0\" valign=middle SRC=\"/netaicon/PTO/help.gif\" ALT=\"[Help]\"></A>\n</td></tr>\n<tr><td
+          align=center>\n<a href=\"#bottom\"><img src=\"/netaicon/PTO/bottom.gif\"
+          alt=\"[Bottom]\" valign=middle border=0></A>\n</td></tr>\n   <tr><td align=center>\n
+          \  <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/ShowShoppingCart?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8031234.PN.%26OS%3DPN%2F8031234&backLabel1=Back%20to%20Document%3A%208031234\"><img
+          border=0 src=\"/netaicon/PTO/cart.gif\" border=0 valign=middle alt\n=\"[View
+          Shopping Cart]\"></A>\n   <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/AddToShoppingCart?docNumber=8031234&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8031234.PN.%26OS%3DPN%2F8031234&backLabel1=Back%20to%20Document%3A%208031234\">\n
+          \  <img border=0 src=\"/netaicon/PTO/order.gif\" valign=middle alt=\"[Add
+          to Shopping Cart]\"></A>\n   </td></tr>\n   <tr><td align=center>\n   <a
+          href=http://pdfpiw.uspto.gov/.piw?Docid=08031234&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3D8031234.PN.%2526OS%3DPN%2F8031234%2526RS%3DPN%2F8031234&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+          src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n\n
+          \  </td></tr>\n</TABLE>\n</center>\n<TABLE WIDTH=\"100%\">\n<TR><TD ALIGN=\"LEFT\"
+          width=\"50%\">&nbsp;</TD>\n<TD ALIGN=RIGHT VALIGN=BOTTOM WIDTH=50%><FONT
+          SIZE=-1>( <STRONG>1</STRONG></FONT> <FONT SIZE=-2>of</FONT> <STRONG><FONT
+          SIZE=-1>1</STRONG> )</FONT></TD></TR></TABLE>\n<HR>\n<TABLE WIDTH=\"100%\">\n<TR>\t<TD
+          ALIGN=\"LEFT\" WIDTH=\"50%\"><B>United States Patent </B></TD>\n\t<TD ALIGN=\"RIGHT\"
+          WIDTH=\"50%\"><B><A Name=h1 HREF=#h0></A><A  HREF=#h2></A><B><I></I></B>8,031,234</B></TD>\n</TR>\n
+          \      <TR><TD ALIGN=\"LEFT\" WIDTH=\"50%\"><b>\n           Wada\n </B>\n
+          \      </TD>\n       <TD ALIGN=\"RIGHT\" WIDTH=\"50%\"> <B>\n       October
+          4, 2011\n</B></TD>\n       </TR>\n       </TABLE>\n         <HR>\n         <font
+          size=\"+1\">Imaging apparatus and method for driving imaging apparatus\n</font><BR>\n
+          \        <BR><CENTER><B>Abstract</B></CENTER>\n         <P> An imaging apparatus
+          is provided and includes: an imaging device\n     including a first color
+          pixel, a second color pixel, a third color pixel,\n     and the luminance-detecting
+          pixels; a controlling section that generates\n     first complementary color
+          information by adding data of the first color\n     pixel and data of the
+          second color pixel adjacent to the first color\n     pixel, generates second
+          complementary color information by adding data of\n     the second color
+          pixel and data of the third color pixel adjacent to the\n     second color
+          pixel, and generates luminance information by adding\n     respective data
+          of luminance-detecting pixels adjacent to each other,\n     when data of
+          a reduced image having a reduced resolution as compared with\n     a resolution
+          for the whole pixels of the imaging device is generated, and\n     a signal
+          processing section that signal-processes the first complementary\n     color
+          information, the second complementary color information, and the\n     luminance
+          information to reproduce a taken image.\n</P>\n         <HR>\n<TABLE WIDTH=\"100%\">
+          <TR> <TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">Inventors:</TH>
+          <TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n <B>Wada; Tetsu</B> (Miyagi, <B>JP</B>)
+          </TD> </TR>\n<TR> <TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">Assignee:</TH>\n<TD
+          ALIGN=\"LEFT\" WIDTH=\"90%\">\n\n<B>Fujifilm Corporation</B>\n (Tokyo, \n<B>JP</B>)\n<BR>\n\n</TD>\n</TR>\n
+          \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\"
+          NOWRAP>Family ID:\n         </TD><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>40136053\n</B></TD></TR>\n
+          \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\"
+          NOWRAP>Appl. No.:\n         </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>12/138,245</B></TD></TR>\n
+          \        <TR><TH scope=\"row\" VALIGN=\"TOP\" ALIGN=\"LEFT\" WIDTH=\"10%\">Filed:\n
+          \        </TH><TD ALIGN=\"LEFT\" WIDTH=\"90%\">\n         <B>June 12, 2008</B></TD></TR>\n
+          \      </TABLE>\n<HR> <CENTER><B>Prior Publication Data</B></CENTER> <HR>
+          <TABLE WIDTH=\"100%\"> <TR><TH scope=\"col\"></TH><TH scope=\"col\"></TH><TD></TD></TR>
+          <TR><TD align=\"left\">\n</TD><TH scope='col' align=center><B><U>Document
+          Identifier</U></B></TH><TH scope='col' align=center><B><U>Publication Date</U></B></TH></TR><TR><TD
+          align=center> </TD><TD align=center> US 20080316326 A1</TD><TD align=center>Dec
+          25, 2008</TD></TR><TR><TD align=center> \n</TD>\n</TR> </TABLE>\n       <HR>\n<CENTER><B>Foreign
+          Application Priority Data</B></CENTER> <HR align=center width=\"30%\"> <TABLE
+          WIDTH=\"100%\"> <TR><TH scope=\"col\"></TH><TD></TD><TD></TD><TH scope=\"col\"></TH><TD></TD></TR>
+          <TR><TD align=\"center\">\nJun 13, 2007\n[JP]</TD><TD></TD><TD></TD><TD
+          align='left'>\nP2007-156270</TD></TR><TR><TD align=center>\n\n</TD>\n</TR>
+          </TABLE>\n<p>\n<TABLE WIDTH=\"100%\">\n     <TR><TD VALIGN=TOP ALIGN=\"LEFT\"
+          WIDTH=\"30%\"><B>Current U.S. Class:</B></TD>\n     <TD VALIGN=TOP ALIGN=\"RIGHT\"
+          WIDTH=\"70%\"><B>348/222.1</B>      ; 348/311</TD></TR>\n     <TR><TD VALIGN=TOP
+          ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Current CPC Class: </B></TD>\n     <TD VALIGN=TOP
+          ALIGN=\"RIGHT\" WIDTH=\"70%\">H04N 3/1562&nbsp(20130101); H04N 5/23245&nbsp(20130101);
+          H04N 5/343&nbsp(20130101); H04N 5/347&nbsp(20130101); H04N 9/045&nbsp(20130101)</TD></TR>\n
+          \    <TR><TD VALIGN=TOP ALIGN=\"LEFT\" WIDTH=\"30%\"><B>Current International
+          Class: </B></TD>\n     <TD VALIGN=TOP ALIGN=\"RIGHT\" WIDTH=\"70%\">H04N
+          5/228&nbsp(20060101); H04N 5/335&nbsp(20110101)</TD></TR>\n       </TABLE>\n<HR><CENTER><B>References
+          Cited  <a href=\"/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2Fsearch-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/8031234\">[Referenced
+          By]</A></B></CENTER>       <HR>\n         <CENTER><b>U.S. Patent Documents</b></CENTER>\n<TABLE
+          WIDTH=\"100%\"> <TR><TH scope=\"col\" WIDTH=\"33%\"></TH> <TH scope=\"col\"
+          WIDTH=\"33%\"></TH> <TH scope=\"col\" WIDTH=\"34%\"></TH></TR> <TR> <TD
+          ALIGN=\"left\">\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F5323233\">5323233</a></TD><TD
+          align =left>\nJune 1994</TD><TD align=left>\nYamagami et al.</TD></TR><TR><TD
+          align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F6476865\">6476865</a></TD><TD
+          align =left>\nNovember 2002</TD><TD align=left>\nGindele et al.</TD></TR><TR><TD
+          align=left>\n<a href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7164497\">7164497</a></TD><TD
+          align =left>\nJanuary 2007</TD><TD align=left>\nItoh</TD></TR><TR><TD align=left>\n<a
+          href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7626619\">7626619</a></TD><TD
+          align =left>\nDecember 2009</TD><TD align=left>\nWada</TD></TR><TR><TD align=left>\n<a
+          href=\"/netacgi/nph-Parser?Sect2=PTO1&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=1&f=G&l=50&d=PALL&RefSrch=yes&Query=PN%2F7839437\">7839437</a></TD><TD
+          align =left>\nNovember 2010</TD><TD align=left>\nKasai et al.</TD></TR><TR><TD
+          align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20060139468&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+          target=\"_blank\">2006/0139468</a></TD><TD align =left>\nJune 2006</TD><TD
+          align=left>\nWada</TD></TR><TR><TD align=left>\n<a href=\"http://appft.uspto.gov/netacgi/nph-Parser?TERM1=20060192882&Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=0&f=S&l=50\"
+          target=\"_blank\">2006/0192882</a></TD><TD align =left>\nAugust 2006</TD><TD
+          align=left>\nArakawa</TD></TR><TR><TD align=left>\n\n</TD>\n</TR> </TABLE>
+          \        <CENTER><b>Foreign Patent Documents</b></CENTER>\n<TABLE WIDTH=\"100%\">
+          <TR><TD></TD><TH scope=\"col\"></TH> <TD></TD><TH scope=\"col\"></TH> <TD></TD><TH
+          scope=\"col\"></TH></TR> <TR> <TD ALIGN=\"left\">\n</TD><TD align=left>2006-157600</TD><TD></TD><TD
+          align=left>\nJun 2006</TD><TD></TD><TD align=left>\nJP</TD></TR><TR><TD
+          align=left>\n\n</TD>\n</TR> </TABLE>         <I>Primary Examiner:</I> Nguyen;
+          Luong T\n<BR>\n         <I>Attorney, Agent or Firm:</I> <coma>Birch, Stewart,
+          Kolasch & Birch, LLP\n<BR>\n           <HR>\n<CENTER><B><I>Claims</B></I></CENTER>
+          <HR> <BR><BR>What is claimed is: <BR><BR> 1.  An imaging apparatus comprising:
+          an imaging device including a pixel array of color pixels and luminance-detecting
+          pixels, wherein the color pixels includes a first color\npixel that detects
+          an amount of incident light of a first color among three primary colors,
+          a second color pixel that detect an amount of incident light of a second
+          color among the three primary colors, and a third color pixel that detects
+          an amount of\nincident light of a third color among the three primary colors,
+          the luminance-detecting pixels detect luminance information and are arranged
+          adjacent to respective color pixels, and the pixel array includes a line
+          in which the first color pixel and the\nsecond color pixel are repeatedly
+          arranged, a line in which the second color pixel and the third color pixel
+          are repeatedly arranged, and a line in which only the luminance-detecting
+          pixels are arranged;  a controlling section that generates first\ncomplementary
+          color information by adding data of the first color pixel and data of the
+          second color pixel adjacent to the first color pixel, generates second complementary
+          color information by adding data of the second color pixel and data of the
+          third\ncolor pixel adjacent to the second color pixel, and generates luminance
+          information by adding respective data of luminance-detecting pixels adjacent
+          to each other, when data of a reduced image having a reduced resolution
+          as compared with a resolution for\nthe whole pixels of the imaging device
+          is generated, and a signal processing section that signal-processes the
+          first complementary color information, the second complementary color information,
+          and the luminance information to reproduce a taken image.\n<BR><BR> 2.  The
+          imaging apparatus according to claim 1, wherein the color pixels are arranged
+          in a first checkered pattern having a constant pitch in a longitudinal direction
+          and a lateral direction thereof, and the luminance-detecting pixels are\narranged
+          in a second checkered pattern in which each of the luminance-detecting pixels
+          is deviated by one-half of the constant pitch with respect to the longitudinal
+          direction and the lateral direction of the color pixels.\n<BR><BR> 3.  The
+          imaging apparatus according to claim 1, wherein the pixel array of the imaging
+          device is a square lattice array of a plurality of pixels, and among the
+          plurality of pixels, pixels disposed at checkerwise positions are the\nluminance-detecting
+          pixels and pixels disposed at remaining checkerwise positions are the color
+          pixels.\n<BR><BR> 4.  The imaging apparatus according to claim 1, wherein
+          the imaging device is a CCD including an addition readout section that performs
+          addition between data of the color pixels and addition between data of the
+          luminance information pixels at a\ntime of reading out data from respective
+          pixels of the imaging device.\n<BR><BR> 5.  The imaging apparatus according
+          to claim 1 wherein the imaging device is a CMOS including a data addition
+          section that performs addition between data of the color pixels and addition
+          between data of the luminance information pixels after\nreading out data
+          from respective pixels of the imaging device.\n<BR><BR> 6.  A method for
+          driving an imaging apparatus that includes an imaging device including a
+          pixel array of color pixels and luminance-detecting pixels, wherein the
+          color pixels includes a first color pixel that detects an amount of incident
+          light\nof a first color among three primary colors, a second color pixel
+          that detect an amount of incident light of a second color among the three
+          primary colors, and a third color pixel that detects an amount of incident
+          light of a third color among the three\nprimary colors, the luminance-detecting
+          pixels detect luminance information and are arranged adjacent to respective
+          color pixels, and the pixel array includes a line in which the first color
+          pixel and the second color pixel are repeatedly arranged, a\nline in which
+          the second color pixel and the third color pixel are repeatedly arranged,
+          and a line in which only the luminance-detecting pixels are arranged, the
+          method comprising: generating first complementary color information by adding
+          data of the\nfirst color pixel and data of the second color pixel adjacent
+          to the first color pixel, generating second complementary color information
+          by adding data of the second color pixel and data of the third color pixel
+          adjacent to the second color pixel, and\ngenerating luminance information
+          by adding respective data of the luminance-detecting pixels adjacent to
+          each other, when data of a reduced image having a reduced resolution as
+          compared with a resolution for the whole pixels of the imaging device is\ngenerated,
+          and signal-processing the first complementary color information, the second
+          complementary color information and the luminance information to reproduce
+          a taken image.\n<BR><BR> 7.  The method for driving the imaging apparatus
+          according to claim 6, wherein the color pixels are arranged in a first checkered
+          pattern having a constant pitch in a longitudinal direction and a lateral
+          direction thereof, and the\nluminance-detecting pixels are arranged in a
+          second checkered pattern in which each of the luminance-detecting pixels
+          is deviated by one-half of the constant pitch with respect to the longitudinal
+          direction and the lateral direction of the color pixels.\n<BR><BR> 8.  The
+          method for driving the imaging apparatus according to claim 6, wherein the
+          pixel array of the imaging device is a square lattice array of a plurality
+          of pixels, and among the plurality of pixels, pixels disposed at checkerwise
+          positions\nare the luminance-detecting pixels and pixels disposed at remaining
+          checkerwise positions are the color pixels.\n<BR><BR> 9.  The method for
+          driving the imaging apparatus according to claim 6, wherein the imaging
+          device is a CCD, and the method further comprises performing addition between
+          data of the color pixels and addition between data of the luminance\ninformation
+          pixels at a time of reading out data from respective pixels of the imaging
+          device.\n<BR><BR> 10.  The method for driving, the imaging apparatus according
+          to claim 6, wherein the imaging device is a CMOS, and the method further
+          comprises performing addition between data of the color pixels and addition
+          between data of the luminance\ninformation pixels after reading out data
+          from respective pixels of the imaging device. <HR> <CENTER><B><I> Description</B></I></CENTER>
+          <HR> <BR><BR> This application is based on and claims priority under 35
+          U.S.C.  .sctn.119 from Japanese Patent\nApplication No. 2007-156270 filed
+          Jun.  13, 2007, the entire disclosure of which is herein incorporated by
+          reference.\n<BR><BR>BACKGROUND OF THE INVENTION\n<BR><BR> 1.  Field of the
+          Invention\n<BR><BR> The present invention relates to an imaging apparatus
+          and a method for driving the imaging apparatus, in particular, to an imaging
+          apparatus equipped with an imaging device having pixels for detecting colors
+          of each of R (red), G (green), B\n(blue), and a pixel for detecting luminance
+          of W (white), and to a method for driving the apparatus.\n<BR><BR> 2.  Description
+          of Related Art\n<BR><BR> A solid-state imaging device for photographing
+          color images to be mounted on a digital camera has color filters of, for
+          example, Bayer-arrayed three primary colors of R, G and B. However, if only
+          color filters of R, G and B are used, the\nluminance resolution of a taken
+          image deteriorates when an object has unbalanced color.\n<BR><BR> Consequently,
+          conventionally, among respective pixels constituting a solid-state imaging
+          device, checkerwise disposed pixels are used as pixels for detecting luminance,
+          and each of color filters of R, G, B three primary colors is formed on\nrespective
+          pixels at remaining checkerwise disposed positions, so that the luminance
+          resolution of a raken image does not depend on the color of an object.\n<BR><BR>
+          When a digital camera mounted with a solid-state imaging device for photographing
+          a color image, in which pixels for detecting luminance are formed, is used
+          for photographing, for example, moving images, there is such a case that
+          reduced image\ndata are read out from the solid-state imaging device in
+          order to enhance the frame rate.  On this occasion, image data are not read
+          out from pixels for detecting luminance, but image data are read out only
+          from pixels for detecting color having a color\nfilter of R, G or B, thereby
+          making image resolution one-half both longitudinally and horizontally with
+          high accuracy.  However, in recent solid-state imaging devices, the high
+          pixelation has reached the technical limit and a signal charge amount that\ncan
+          be received with one pixel is very small.  Accordingly, when image data
+          are read out from a solid-state imaging device while performing pixel skipping,
+          the luminance sensitivity becomes low.\n<BR><BR> In order to solve the problem,
+          JP-A-2006-157600 or US 2006/0139468 A1 realizes to obtain images reduced
+          to one-half without lowering the luminance sensitivity by reading out pixel
+          date without performing the skipping when reading out reduced\nimage data
+          from a solid-state imaging device.\n<BR><BR> Meanwhile, in the solid-state
+          imaging device as disclosed in JP-A-2006-157600 or US 2006/0139468 A1, a
+          filter Y for detecting luminance or a color filter R, G or B is provided
+          on the surface of individual pixel disposed and formed longitudinally\nand
+          horizontally.  The filter Y is provided on the surface of pixels that are
+          disposed at checked positions, and the color filter R, G or B is provided
+          on the surface of pixels that are disposed at remaining checked positions.
+          \ On the individual surfaces\nof pixels in even-numbered lines, filters
+          are so arranged as \"Y, G, Y, G, .  . . \", and on the individual surfaces
+          of pixels in odd-numbered lines, a line in which filters are so arranged
+          as \"R, Y, B, Y, R, .  . . \" and a line in which filters are so\narranged
+          as \"B, Y, R, Y, B, .  . . \" are disposed alternately.  Then, when image
+          data taken with the solid-state imaging device are used to generate a reduced
+          image having one-half resolution both longitudinally and horizontally, in
+          this embodiment,\nimage data of two pixels adjacent to each other in the
+          longitudinal direction (vertical direction) are added and read out from
+          the solid-state imaging device.  Here, the pair of two pixels in the longitudinal
+          direction is constituted of a Y pixel being a\npixel having the filter Y
+          and a pixel having any one of color filters R, G and B, and the pair vertically
+          adjacent to a pair constituted of an R pixel and a Y pixel is a pair constituted
+          of a B pixel and a Y pixel.  But, when a reduced image is going to\nbe generated
+          at a ratio smaller than one-half in order to further enhancing the frame
+          rate upon reading out image data, the pixel date must be skipped in the
+          vertical direction.  Thus, there is a room for further improvement from
+          the standpoint of\nsatisfying both high readout speed at a high frame rate
+          and high image quality.\n<BR><BR>SUMMARY OF THE INVENTION\n<BR><BR> An object
+          of the invention is to provide an imaging apparatus capable of realize high
+          image quality without performing the skipping while reading out image data
+          at a high frame rate, and a method for driving the imaging apparatus.\n<BR><BR>
+          The above object can be achieved by constitutions below.  (1) An imaging
+          apparatus comprising:\n<BR><BR> an imaging device including a pixel array
+          of color pixels and luminance-detecting pixels, wherein the color pixels
+          includes a first color pixel that detects an amount of incident light of
+          a first color among three primary colors, a second color\npixel that detect
+          an amount of incident light of a second color among the three primary colors,
+          and a third color pixel that detects an amount of incident light of a third
+          color among the three primary colors, the luminance-detecting pixels detect\nluminance
+          information and are arranged adjacent to the respective color pixels, and
+          the pixel array includes a line in which the first color pixel and the second
+          color pixel are repeatedly arranged, a line in which the second color pixel
+          and the third\ncolor pixel are repeatedly arranged, and a line in which
+          only the luminance-detecting pixels are arranged;\n<BR><BR> a controlling
+          section that generates first complementary color information by adding data
+          of the first color pixel and data of the second color pixel adjacent to
+          the first color pixel, generates second complementary color information
+          by adding\ndata of the second color pixel and data of the third color pixel
+          adjacent to the second color pixel, and generates luminance information
+          by adding respective data of luminance-detecting pixels adjacent to each
+          other, when data of a reduced image having a\nreduced resolution as compared
+          with a resolution for the whole pixels of the imaging device is generated,
+          and\n<BR><BR> a signal processing section that signal-processes the first
+          complementary color information, the second complementary color information,
+          and the luminance information to reproduce a taken image.  (2) The imaging
+          apparatus as described in the\nabove (1), wherein the color pixels are arranged
+          in a checkered pattern having a constant pitch in a longitudinal direction
+          and a lateral direction thereof, and the luminance-detecting pixels are
+          arranged in a checkered pattern in which each of the\nluminance-detecting
+          pixels is deviated by one-half of the constant pitch with respect to the
+          longitudinal direction and the lateral direction of the color pixels.  (3)
+          The imaging apparatus as described in the above (1), wherein the pixel array
+          of the\nimaging device is a square lattice array of a plurality of pixels,
+          and among the plurality of pixels, pixels disposed at checkerwise positions
+          are the luminance-detecting pixels and pixels disposed at remaining checkerwise
+          positions are the color pixels. (4) The imaging apparatus as described in
+          any one of the above (1) to (3), wherein the imaging device is a CCD including
+          an addition readout section that performs addition between data of the color
+          pixels and addition between data of the luminance\ninformation pixels at
+          a time of reading out data from respective pixels of the imaging device.
+          \ (5) The imaging apparatus as described in any one of the above (1) to
+          (3), wherein the imaging device is a CMOS including a data addition section
+          that\nperforms addition between data of the color pixels and addition between
+          data of the luminance information pixels after reading out data from respective
+          pixels of the imaging device.  (6) A method for driving an imaging apparatus
+          that includes an imaging\ndevice including a pixel array of color pixels
+          and luminance-detecting pixels, wherein\n<BR><BR> the color pixels includes
+          a first color pixel that detects an amount of incident light of a first
+          color among three primary colors, a second color pixel that detect an amount
+          of incident light of a second color among the three primary colors,\nand
+          a third color pixel that detects an amount of incident light of a third
+          color among the three primary colors,\n<BR><BR> the luminance-detecting
+          pixels detect luminance information and are arranged adjacent to the respective
+          color pixels, and\n<BR><BR> the pixel array includes a line in which the
+          first color pixel and the second color pixel are repeatedly arranged, a
+          fine in which the second color pixel and the third color pixel are repeatedly
+          arranged, and a line in which only the\nluminance-detecting pixels are arranged,\n<BR><BR>
+          the method comprising:\n<BR><BR> generating first complementary color information
+          by adding data of the first color pixel and data of the second color pixel
+          adjacent to the first color pixel, generating second complementary color
+          information by adding data of the second color\npixel and data of the third
+          color pixel adjacent to the second color pixel, and generating luminance
+          information by adding respective data of the luminance-detecting pixels
+          adjacent to each other, when data of a reduced image having a reduced resolution\nas
+          compared with a resolution for the whole pixels of the imaging device is
+          generated, and\n<BR><BR> signal-processing the first complementary color
+          information, the second complementary color information and the luminance
+          information to reproduce a taken image.  (7) The method for driving the
+          imaging apparatus as described in the above (6),\nwherein the color pixels
+          are arranged in a checkered pattern having a constant pitch in a longitudinal
+          direction and a lateral direction thereof, and the luminance-detecting pixels
+          are arranged in a checkered pattern in which each of the\nluminance-detecting
+          pixels is deviated by one-half of the constant pitch with respect to the
+          longitudinal direction and the lateral direction of the color pixels.  (8)
+          The method for driving the imaging apparatus as described in the above (6),
+          wherein\nthe pixel array of the imaging device is a square lattice array
+          of a plurality of pixels, and among the plurality of pixels, pixels disposed
+          at checkerwise positions are the luminance-detecting pixels and pixels disposed
+          at remaining checkerwise\npositions are the color pixels.  (9) The method
+          for driving the imaging apparatus as describe in any one of the above (6)
+          to (8), wherein the imaging device is a CCD, and the method further comprises
+          performing addition between data of the color pixels\nand addition between
+          data of the luminance information pixels at a time of reading out data from
+          respective pixels of the imaging device.  (10) The method for driving the
+          imaging apparatus as described in any one of the above (6) to (8), wherein
+          the\nimaging device is a CMOS, and the method further comprises performing
+          addition between data of the color pixels and addition between data of the
+          luminance information pixels after reading out data from respective pixels
+          of the imaging device.\n<BR><BR> An imaging device according to an aspect
+          of the invention has a pixel array constituted of a line in which a first
+          color pixel and a second color pixel are repeatedly arranged, a line in
+          which the second color pixel and a third color pixel are\nrepeatedly arranged,
+          and a line in which luminance-detecting pixels alone are arranged.  In such
+          pixel array, in order to perform readout without the skipping, pairs of
+          data of the first color pixel and data of the second color pixel are read
+          out up to a\nspecific number from the line in which the first color pixel
+          and the second color pixel are repeatedly arranged upon generating first
+          complementary color information.  At this time, since the first color pixel
+          and the second color pixel are repeatedly\ndisposed in the same line, the
+          readout can be performed without the skipping.  In the same way, pairs of
+          data of the second color pixel and data of the third color pixel can be
+          read out up to a specific number without the skipping from the line in which\nthe
+          second color pixel and the third color pixel are repeatedly arranged upon
+          generating second complementary color information.  In addition, since a
+          line constituted of luminance-detecting pixels alone is formed, when reading
+          out data of a pair of the\nluminance-detecting pixels, it is possible to
+          perform the readout without the skipping.  By this means, even if the number
+          of pairs formed by adding data of color pixels and adding data of luminance
+          information pixels increases in order to read out image\ndata at a high
+          frame rate when generating data of a reduced image having reduced resolution
+          as compared with the resolution for the whole pixels of the imaging device,
+          the readout can be performed without the skipping, to make it possible to
+          reproduce\nnot only an image having been reduced to one-half but also a
+          reduced image having an intended reduction ratio. <BR><BR>BRIEF DESCRIPTION
+          OF THE DRAWINGS\n<BR><BR> The features of the invention will appear more
+          fully upon consideration of the exemplary embodiments of the inventions,
+          which are schematically set forth in the drawings, in which:\n<BR><BR> FIG.
+          1 is a block diagram of an imaging apparatus according to an exemplary embodiment
+          of the present invention;\n<BR><BR> FIG. 2 is a detailed block diagram of
+          a signal processing part;\n<BR><BR> FIG. 3 is a surface schematic drawing
+          showing a pixel array of the imaging device;\n<BR><BR> FIG. 4 is a surface
+          schematic drawing of the imaging device for describing a processing of adding
+          data of pixels and reading out the added data;\n<BR><BR> FIG. 5 is a surface
+          schematic drawing showing an example of another addition and readout in
+          the imaging device as shown in FIG. 4; and\n<BR><BR> FIG. 6 is a surface
+          schematic drawing showing a pixel array of an imaging device according to
+          another exemplary embodiment.\n<BR><BR>DETAILED DESCRIPTION OF THE EXEMPLARY
+          EMBODIMENTS\n<BR><BR> According to an exemplary embodiment of the invention,
+          it is possible to provide an imaging apparatus capable of realizing high
+          image quality without performing the skipping while reading out image data
+          at a high frame rate, and to provide a\nmethod for driving the imaging apparatus.\n<BR><BR>
+          Hereinafter, exemplary embodiments of the present invention will be described
+          in detail on the basis of drawings.\n<BR><BR> FIG. 1 is a block diagram
+          of an imaging apparatus according to an exemplary embodiment of the invention.
+          \ In this embodiment, a digital still camera will be taken as an example
+          for the description, but the invention may be applied to digital\ncameras
+          of other types such as cameras mounted on small electronic apparatuses such
+          as digital video cameras and cell phones.\n<BR><BR> The digital still camera
+          as shone in FIG. 1 is equipped with an imaging lens 10, an imaging device
+          11 of a CCD type, and a diaphragm 12, an infrared ray cut filter 13, and
+          an optical low-pass filter 14 arranged between the imaging lens 1 and\nimaging
+          device 11.  A CPU 15 that controls the whole of the digital still camera
+          controls a light-emitting part 16 and a light-receiving part 17 for a flash
+          lamp, controls a lens-driving part 18 to adjust the position of the photographing
+          lens 10 to the\nfocus position, and controls the aperture of the diaphragm
+          via a diaphragm-driving part 19 to adjust the amount of exposure so as to
+          give correct amount of exposure.\n<BR><BR> To the imaging device 11, in
+          the embodiment, there are provided a luminance-detecting pixel for detecting
+          a luminance detection signal (W), in addition to a color pixel that detects
+          a signal corresponding to the amount of red (R) incident light,\na color
+          pixel that detects a signal corresponding to the amount of green (G) incident
+          light, and a color pixel that detects a signal corresponding to the amount
+          of blue (B) incident light.  Meanwhile, the imaging device 11 may be of
+          another system such\nas a CMOS type instead of a CCD type.\n<BR><BR> The
+          CPU 15 drives the imaging device 11 via an imaging device-driving part 20
+          in such a way that is described in detail later to make an object image
+          taken through the imaging lens 10 be output as a color signal.  To the CPU
+          15, an instruction\nsignal of a user is input through an operation part
+          21 and the CPU 15 performs various types of controls according to the instruction.\n<BR><BR>
+          The operation part 21 includes a shutter button, wherein the focus is adjusted
+          when the shutter button is in a half-depressed state (switch S1), and an
+          image is taken when the shutter button is in a fully depressed state (switch
+          S2).\n<BR><BR> The electric control system of digital still cameras is equipped
+          with an analog signal processing part 22 connected to the output of the
+          imaging device 11, and an A/D conversion circuit 23 for converting respective
+          R, G, B color signals and\nluminance detection signal Y output from the
+          analog signal processing part 22 to digital signals respectively, which
+          are controlled by the CPU 15.\n<BR><BR> Further, the electric control system
+          of a digital still camera is equipped with a memory-controlling part 25
+          connected to a main memory (frame memory) 24, a digital signal processing
+          part 26 that performs signal processing, the detail of which\nwill be described
+          later, a compression/expansion processing part 27 that compresses a taken
+          image to a JPEG image and expands a compressed image, an accumulation part
+          28 that accumulates photometric data to make the gain of white balance be
+          adjusted, an\nexternal memory-controlling part 30 to which an attachable/detachable
+          recording medium 29 is connected, and a display-controlling part 32 to which
+          a liquid crystal display part 31 mounted on the backside or the like of
+          a camera is connected, which are\nconnected with each other by a control
+          bus 33 and a data bus 34 and controlled by instruction from the CPU 15.\n<BR><BR>
+          FIG. 2 is a detailed block diagram of the digital signal processing part
+          26 as shown in FIG. 1.  The digital signal processing part 26 is equipped
+          with an offset correction circuit 41 for importing digital RGB color signals
+          and a luminance\ndetection signal Y output from the A/D conversion circuit
+          23 to perform offset processing, a gain correction circuit 42 for striking
+          the white balance, and a gamma correction circuit 43 that performs gamma
+          correction for color signals having been\nsubjected to the white balance
+          correction.  In the case where linear matrix processing or knee correction
+          is performed for signals having been subjected to the offset correction,
+          it is performed between the gain correction circuit 42 and the gamma\ncorrection
+          circuit 43.\n<BR><BR> The digital signal processing part 26 is further equipped
+          with an RGB interpolation operation part 44 for performing interpolation
+          operation for the RGB color signals having been subjected to the gamma correction
+          to give signals of RGB three\ncolors at respective pixel positions, an RGB/YC
+          conversion part 45 that obtains the luminance signal Y and color-difference
+          signals Cr and Cb from the RGB signals and a luminance detection signal
+          W, a noise filter 46 that reduces noise from the luminance\nsignal Y output
+          from the conversion part 45, a contour correction circuit 47 that performs
+          contour correction for the luminance signal Y after the noise reduction,
+          and a color-difference matrix circuit 48 for performing color tone correction
+          by\nmultiplying color-difference signals Cr, Cb and a color-difference matrix
+          together to perform color tone correction.\n<BR><BR> The RGB interpolation
+          operation part 44 is unnecessary for an imaging device of a three plate
+          type, but the imaging device 11 used in the embodiment is an imaging device
+          of a single plate type and only a signal of one color among R, G and B or\nthe
+          luminance detection signal Y is output from respective pixels.  Therefore,
+          for colors that are not output, that is, in the case of a pixel that outputs
+          R, levels of color signals of G and B at this pixel position is obtained
+          from G and B signals of\nsurrounding pixels by interpolation operation.\n<BR><BR>
+          FIG. 3 is a surface schematic drawing showing the pixel array of the imaging
+          device 11 used in this embodiment.  FIG. 4 is a surface schematic drawing
+          of the imaging device, which describes the processing upon adding and reading
+          out data of\npixels.  In the solid-state imaging device 11, many pixels
+          are arrayed in a square lattice state, and, among these, a part constituted
+          of 5.times.5=25 pixels are shown in FIG. 3.\n<BR><BR> As shown in FIG. 3,
+          in the imaging device 11, filters are so arranged as \"W, G, W, G .  . .
+          \" on each surface of pixels in even-numbered lines, and for odd-numbered
+          lines, a line in which filters are so arranged as \"R, W, B, W, R .  . .
+          \" on\neach surface of pixels and another line in which filters are so arranged
+          as \"B, W, R, W, B .  . . \" are disposed alternately.\n<BR><BR> The filter
+          W may be said that it is a filter having spectral properties having correlation
+          with the luminance information, that is, a luminance filter, which covers
+          an ND filter, a transparent filter, a white filter, a gray filter and the
+          like. \nOn this occasion, it is possible to say that a constitution in which
+          no filter is arranged on a pixel surface to allow light to directly enter
+          the pixel surface is also a constitution in which the luminance filter is
+          arranged.\n<BR><BR> Hereinafter, the description will be continued while
+          denoting a pixel having the filter R as \"an R pixel\", a pixel having the
+          filter G as \"a G pixel\", a pixel having the filter B as \"a B pixel\",
+          and a pixel having the filter W as \"a W pixel\".\n<BR><BR> In this embodiment,
+          the imaging device 11 has a pixel array constituted of a line in which the
+          R pixel and the G pixel are repeatedly arranged in an oblique direction,
+          a line in which the G pixel and the B pixel are repeatedly arranged in an\noblique
+          direction, and a line in which the W pixels alone are arranged in an oblique
+          direction.  Here, \"an oblique direction\" means the direction in which
+          each of the line constituted of R and B pixels, the line constituted of
+          G and B pixels, and the\nline constituted of W pixels alone extends, in
+          the state where the vertical direction in FIG. 3 is inclined by 45 degrees
+          in counterclockwise direction.  In the imaging device 11, each of R, G and
+          B pixels are formed at the ratio of one relative to two W\npixels, in other
+          words, the ratio of the number of R, G, B and W pixels is 1:2:1:4.\n<BR><BR>
+          When generating, for example, a still image having the maximum resolution
+          while using image data picked up with the imaging device 11 that has the
+          above-described constitution, R, G, B and W image data are separately read
+          out from respective\npixels of the imaging device 11 in a conventional manner,
+          which are subjected to image processing in the digital signal processing
+          part 26.\n<BR><BR> In contrast, when generating a reduced image having low
+          resolution while using image data taken with the imaging device 11, in this
+          embodiment, as shown in FIG. 4 by surrounding with a dotted line, the CPU
+          15 controls the imaging device-driving\npart 20 so as to add image data
+          of two pixels adjacent to each other in the oblique direction as an addition
+          pair and to read out the added data from the imaging device 11.  When the
+          imaging device 11 is of a CCD type, image data (signal charge amount)\nmay
+          be added on a vertical transfer path, or, when the imaging device 11 is
+          of a CMOS type, the signal amount having been read out by a transistor for
+          reading out signal in accordance with the signal charge amount of respective
+          pixels may be added.\n<BR><BR> In this embodiment, all the pixels in the
+          oblique direction can be used for the addition upon forming the addition
+          pair, therefore a phenomenon, in which some signal amounts of pixels that
+          are not included in the addition pair are discharged\nwithout being read
+          out as in cases of the background art, can be avoided.\n<BR><BR> Hereinafter,
+          when data of a reduced image having reduced resolution as compared with
+          the resolution for the whole pixels of the imaging device are generated,
+          a means for reproducing a taken image on the basis of data of R, G, B color
+          pixels and\ndata of the W luminance-detecting pixel will be described.  Here,
+          the original R signal read out from the imaging device 11 is denoted as
+          \"R\", the original G signal is denoted as \"G\", the original B signal
+          is denoted as \"B\" and the original W signal is\ndenoted as \"W\".\n<BR><BR>
+          The addition in the imaging device 11 of FIG. 4 in the oblique direction
+          gives formulae below.  In the formulae, Ye represents complementary yellow
+          for the RGB three primary colors, and Cy represents complementary cyan.
+          \ R+G=Ye G+B=Cy\nW+W=2W.apprxeq.2R+2G+2B\n<BR><BR> As shown by above formulae,
+          in the embodiment, the complementary color information is generated from
+          data of two color pixels that are disposed adjacently to each other among
+          data of color pixels of the three primary colors.  Specifically, R\n(data
+          of a first color pixel) and G (data of a second color pixel) adjacent to
+          the R are added to generate Ye (first complementary color information),
+          and G and B (data of a third color pixel) adjacent to the G are added to
+          generate Cy (second\ncomplementary color information).\n<BR><BR> From the
+          above formulae, approximate formulae below can be obtained.  W-Ye.apprxeq.B
+          W-Cy.apprxeq.R Ye+Cy-W.apprxeq.G\n<BR><BR> As the result, RGB can be obtained
+          from general formulae below.  Meanwhile, in the formulae below, A(r), A(g)
+          or A(b) represents a constant term that is set for each of RGB.  R.apprxeq..alpha.(r)W+.beta.(r)Ye+.gamma.(r)Cy+A(r)\nG.apprxeq..alpha.(g)W+.beta.(g)Ye+.gamma.(g)Cy+A(g)
+          B.apprxeq..alpha.(b)W+.beta.(b)Ye+.gamma.(b)Cy+A(b)\n<BR><BR> As described
+          above, R, G and B can be calculated by subjecting W, Ye, Cy, and the constant
+          term A to matrix calculation, wherein the calculated R, G and B are output
+          respectively to the RGB/YC conversion part 45.\n<BR><BR> In the imaging
+          apparatus of this embodiment, the imaging device 11 has a pixel array constituted
+          of a line in which the R pixel and the G pixel are repeatedly arranged,
+          a line in which the G pixel and the B pixel are repeatedly arranged, and
+          a\nline in which W pixels alone are arranged, in the oblique direction.
+          \ Consequently, it is possible to read out the addition pair constituted
+          of data of R and G pixels from the line in which the R pixel and the G pixel
+          are repeatedly arranged up to an\nintended number, and to generate the complementary
+          color information Ye.  On this occasion, since the R pixel and the G pixel
+          are repeatedly arranged in the same line, the readout can be performed without
+          the skipping.  In the same way, when generating\nthe complementary color
+          information Cy, it is possible to read out the addition pair constituted
+          of G and B pixels from the line in which the G pixel and the B pixel are
+          repeatedly arranged up to an intended number without performing the skipping.
+          \nFurther, since a line that is constituted of the W pixel alone is formed,
+          data of the W pixel can be read out without performing the skipping when
+          it is read out.  Then, from the obtained complementary color information
+          Ye, Cy, and luminance information\nW, an approximate value of RGB can be
+          obtained.  As the result, when reading out image date at a high frame rate
+          as is the case for picking up a moving image, even if the number of pairs
+          for adding data of color pixels and data of a luminance information\npixel
+          increases in order to generate data of a reduced image for which the resolution
+          has been reduced as compared with the resolution for the whole pixels of
+          the imaging device, it is possible to perform the readout without the skipping,
+          and to\nreproduce not only a reduced image of one-half reduction, but also
+          a reduced image of an intended reduction ratio with high image quality.\n<BR><BR>
+          The pattern of the addition and readout in the pixel array of this embodiment
+          is not limited to one as shown in FIG. 4.  For example, as shown in FIG.
+          5, for a first row in which the R pixel, W pixel, B pixel, W pixel and R
+          pixel are aligned in\nthis order and a second row arranged just under the
+          first row in which the W pixel, G pixel, W pixel, G pixel and W pixel are
+          aligned in this order, date of each of pixels in the first row and data
+          of a pixel positioned at diagonally lower right in the\nsecond row may be
+          added as a pair to be read out.  When this is done, since the positional
+          relation of a pair to be added relative to the pixel array becomes orderly,
+          the deterioration of an image due to the addition can be suppressed.\n<BR><BR>
+          Next, another embodiment of the imaging apparatus according to the invention
+          will be shown.  Meanwhile, in the embodiment as described below, for members
+          and the like having the equivalent constitution and/or action as those having
+          already been\ndescribed, the same symbol or corresponding symbol is given
+          in the drawing and the description thereof is simplified or omitted.\n<BR><BR>
+          FIG. 6 is a surface schematic drawing showing a pixel array of the imaging
+          device 11 according to another embodiment.  As shown in FIG. 6, in the imaging
+          device 11, the R pixel, G pixel and B pixel are checkerwise arrayed in the
+          vertical\ndirection and horizontal direction at the same pitch (so-called
+          Bayer array), and W pixels are checkerwise arrayed at positions deviated
+          by one-half pitch in the longitudinal and lateral directions.  W pixels
+          are arrayed at the same pitch as that of\ncolor pixels for the longitudinal
+          and lateral directions.\n<BR><BR> The imaging device 11 has such pixel array
+          that is constituted of a column in which the R pixel (first color pixel)
+          and the G pixel (second color pixel) are repeatedly aligned in the longitudinal
+          direction, a column in which the G pixel and the\nB pixel (third color pixel)
+          are repeatedly aligned in the longitudinal direction, and a column in which
+          W pixels alone are aligned in the longitudinal direction.\n<BR><BR> When
+          generating a reduced image having low resolution while using image data
+          picked up with the imaging device 11, in the embodiment, as shown in FIG.
+          6 by surrounding with a rectangle, the CPU 15 controls the imaging device-driving
+          part 20 so\nas to add image data of two pixels adjacent to each other in
+          the direction in which the column extends as an addition pair and to read
+          out the added data from the imaging device 11.  When the imaging device
+          11 is of a CCD type, image data (signal charge\namount) may be added on
+          a vertical transfer path, or, when the imaging device 11 is of a CMOS type,
+          the signal amount having been read out by a transistor for reading out signal
+          in accordance with the signal charge amount of respective pixels may be\nadded.
+          \ In this embodiment, all the pixels can be used for the addition upon repeatedly
+          forming the addition pair in the longitudinal direction, therefore a phenomenon,
+          in which some signal amounts of pixels that are not included in the addition
+          pair are\ndischarged without being read out as in cases of the background
+          art, can be avoided.\n<BR><BR> On this occasion, it is possible to obtain
+          pixel data of RGB by approximation from the complementary color information
+          Ye and Cy, and luminance information W calculated by use of the same calculation
+          formula as in the aforementioned embodiment\non the basis of data of RGB
+          color pixels and data of the luminance-detecting pixel.\n<BR><BR><CENTER><B>*
+          * * * *</B></CENTER>\n<HR>\n   <CENTER>\n   <a href=http://pdfpiw.uspto.gov/.piw?Docid=08031234&homeurl=http%3A%2F%2Fpatft.uspto.gov%2Fnetacgi%2Fnph-Parser%3FSect1%3DPTO1%2526Sect2%3DHITOFF%2526d%3DPALL%2526p%3D1%2526u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%2526r%3D1%2526f%3DG%2526l%3D50%2526s1%3D8031234.PN.%2526OS%3DPN%2F8031234%2526RS%3DPN%2F8031234&PageNum=&Rtype=&SectionNum=&idkey=NONE&Input=View+first+page><img
+          src=\"/netaicon/PTO/image.gif\" alt=\"[Image]\" border=\"0\" valign=\"middle\"></A>\n
+          \  <TABLE>\n   <tr><td align=center><A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/ShowShoppingCart?backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8031234.PN.%26OS%3DPN%2F8031234&backLabel1=Back%20to%20Document%3A%208031234\"><img
+          border=0 src=\"/netaicon/PTO/cart.gif\" borde\nr=0 valign=middle alt=\"[View
+          Shopping Cart]\"></A>\n   <A HREF=\"http://ebiz1.uspto.gov/vision-service/ShoppingCart_P/AddToShoppingCart?docNumber=8031234&backUrl1=http%3A//patft.uspto.gov/netacgi/nph-Parser?Sect1%3DPTO1%26Sect2%3DHITOFF%26d%3DPALL%26p%3D1%26u%3D%2Fnetahtml%2FPTO%2Fsrchnum.htm%26r%3D1%26f%3DG%26l%3D50%26s1%3D8031234.PN.%26OS%3DPN%2F8031234&backLabel1=Back%20to%20Document%3A%208031234\">\n
+          \  <img border=0 src=\"/netaicon/PTO/order.gif\" valign=middle alt=\"[Add
+          to Shopping Cart]\"></A>\n   </td></tr>\n   <tr><td align=center>\n   <a
+          href=\"#top\"><img valign=middle src=\"/netaicon/PTO/top.gif\" border=0
+          alt=\"[Top]\"></a>\n   </td></tr>\n   </TABLE>\n   <a name=\"bottom\"></a>\n
+          \  <a href=\"/netahtml/PTO/index.html\"><img src=\"/netaicon/PTO/home.gif\"
+          alt=\"[Home]\" border=\"0\" valign=middle></a>\n   <a href=\"/netahtml/PTO/search-bool.html\"><img
+          src=\"/netaicon/PTO/boolean.gif\" alt=\"[Boolean Search]\" border=\"0\"
+          valign=middle></a>\n   <A HREF=\"/netahtml/PTO/search-adv.htm\"><IMG BORDER=\"0\"
+          SRC=\"/netaicon/PTO/manual.gif\" ALT=\"[Manual Search]\" valign=middle></A>\n
+          \  <a href=\"/netahtml/PTO/srchnum.htm\"><img src=\"/netaicon/PTO/number.gif\"
+          alt=\"[Number Search]\" border=\"0\" valign=middle></a>\n   <A HREF=\"/netahtml/PTO/help/help.htm\"><IMG
+          BORDER=\"0\" SRC=\"/netaicon/PTO/help.gif\" ALT=\"[Help]\" valign=middle></A>\n
+          \  </center>\n</BODY>\n</HTML>"
+        net_http_res: !ruby/object:Net::HTTPOK
+          http_version: '1.0'
+          code: '200'
+          message: Script results follow
+          header:
+            server:
+            - NetAnswer Server 1.0
+            content-type:
+            - text/html
+          body: *1
+          read: true
+          uri: 
+          decode_content: false
+          __read_body_previously_called: true
+        args:
+          :method: :get
+          :url: http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1=8031234.PN.&OS=PN/8031234&RS=PN/8031234
+          :headers: {}
+        code: 200
+    http_version: 
+  recorded_at: Fri, 11 Apr 2014 01:10:55 GMT
+- request:
+    method: get
+    uri: http://patft.uspto.gov/netacgi/nph-Parser?OS=PN/8031234&RS=PN/8031234&Sect1=PTO1&Sect2=HITOFF&d=PALL&f=G&l=50&p=1&r=1&s1=8031234.PN.&u=/netahtml/PTO/srchnum.htm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: Script results follow
+    headers:
+      Server:
+      - NetAnswer Server 1.0
+      Content-Type:
+      - text/html
+    body:
+      encoding: UTF-8
       string: "<HTML>\n<HEAD>\n<BASE TARGET=\"_top\">\n<TITLE>United States Patent:
         8031234</TITLE></HEAD>\n<BODY BGCOLOR=\"#FFFFFF\">\n<a name=\"top\"></a>\n<center>\n<IMG
         SRC=\"/netaicon/PTO/patfthdr.gif\" alt=\"[US Patent & Trademark Office, Patent
@@ -633,5 +1304,5 @@ http_interactions:
         BORDER=\"0\" SRC=\"/netaicon/PTO/help.gif\" ALT=\"[Help]\" valign=middle></A>\n
         \  </center>\n</BODY>\n</HTML>"
     http_version: 
-  recorded_at: Fri, 11 Apr 2014 01:10:55 GMT
+  recorded_at: Fri, 11 Apr 2014 19:44:20 GMT
 recorded_with: VCR 2.5.0

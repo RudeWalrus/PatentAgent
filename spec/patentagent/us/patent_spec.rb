@@ -3,27 +3,22 @@ require 'spec_helper'
 module PatentAgent
   module USPTO
     describe Patent do
-      let(:num)           {"6266379"}
-      let(:pnum)          {"US" + num}
-      subject(:patent)        {Patent.new(pnum)}
+      let(:number)           {"6266379"}
+      let(:cc)                {"US"}
+      let(:patent_num)       {cc + number}
+      let(:pnum)             {PatentNum.new(patent_num)}
+      subject(:patent)       {Patent.new(pnum)}
       
-      context "#new", vcr: true do    
+      context "#initialize", vcr: true do    
         
         it {should be}
           
         its(:patent_num) {should be_valid} 
-        
-        it "has a valid PatentNum member" do
-          expect(patent.patent_num.number).to eq "6266379"
-          expect(patent.patent_num.country_code).to eq "US"
-        end
-
         its(:options) {should have_key(:debug)}
-        
-        it {should_not be_valid_html}
-        it {should_not be_valid}
-      
         its(:debug) {should be_false}
+        its("patent_num.number") {should eq number}
+        its("patent_num.cc") {should eq cc}
+
      
         it "is not valid with invalid patent number" do
           Patent.new("US555").should_not be_valid
@@ -45,7 +40,7 @@ module PatentAgent
         it "prints log message when enabled" do
           pat = Patent.new(pnum, :debug => true)
           pat.should_receive(:log).at_least(:once)
-          pat.fetch.parse
+          pat.fetch
         end
       end
       
@@ -56,86 +51,49 @@ module PatentAgent
         end
       end
 
-      context "Patent#fetch", vcr: true do
-        it "gets the full patent using class method" do
-          pat = Patent.fetch("US8011234")
-          expect(pat).to be_valid
-        end
-      end
+      # context "Patent#fetch", vcr: true do
+      #   it "gets the full patent using class method" do
+      #     pat = Patent.fetch("US8011234")
+      #     expect(pat).to be_valid
+      #   end
+      # end
 
       context '#fetch', vcr: true do
-        subject(:result) {patent.fetch}
-
-        context 'valid' do
-          it "returns an instance of Patent" do
-            expect(result).to be_kind_of(Patent)
-            expect(result).to eq(patent)
-          end
-
-          it "is valid and has html" do
-            expect(result.html).to match(num)
-            expect(result).to be_valid
-            expect(result).to be_valid_html
-          end
+        it "is class of USPTO::Patent" do
+          expect(patent).to be_kind_of(PatentAgent::USPTO::Patent)
         end
-         
-        context "Fields:" do
-          it "Has a valid title" do
-            result.title.should  match("Digital transmitter with equalization")
-          end
-         
-          it "has one inventor" do
-            result.inventors.should have(1).items
-          end
 
-          it "has an App Number" do
-             result.app_number.should  match("08/882,252")
-          end
-         
-          it "has an Filed Date " do
-             result.filed.should  match("June 25, 1997")
-          end
+        it "is valid and has html" do
+          expect(patent.html).to match(number)
+          expect(patent).to be_valid
+          expect(patent).to be_valid_html
+        end
+ 
+        context "Fields:" do
+          its(:title)       {should match "Digital transmitter with equalization"}
+          its(:app_number)  {should match "08/882,252"}
+          its(:filed)       {should match "June 25, 1997"}
+          its(:inventors)   {should have(1).items}
          
           it "has many Figures" do
-             result.figures.should have_at_least(1).items
-             result.figures.should be_kind_of(Array)
+             patent.figures.should have_at_least(1).items
+             patent.figures.should be_kind_of(Array)
           end
         end
 
         context "Claims: " do
-       
-          it "has 41 claims" do
-             expect(result.claims.count).to eq(41)
+          its("claims.count")         {should eq 41}
+          its("claims.indep_claims")  {should have(12).items}
+          its("claims.dep_claims")    {should have(29).items}
+          its("claims.parsed_claims") {should have(41).items}
+          
+          it "array access" do
+            expect(patent.claims[15].text).to  match "15.  A digital transmitter "
           end
-         
-          it "has 12 indep claims" do
-             result.claims.indep_claims.should have(12).items
-          end
-         
-          it "has 29 dep claims" do
-             result.claims.dep_claims.should have(29).items
-          end
-
-          it "has 41 parsed claims" do
-            result.claims.parsed_claims.should have(41).items
-          end
-
-          it "can read an individual claim" do
-            result.claims[15].text.should match "15.  A digital transmitter "
-          end
-
           it "#each" do
-            result.claims.each {|k,v| expect(v.text).to be_kind_of(String)} 
-            #
+              patent.claims.each {|k,v| expect(v.text).to be_kind_of(String)} 
           end
         end   
-      end
-
-      context "Patent Methods", vcr: true do
-        it "US6252976 has Parent Case Text" do
-          patent = Patent.new("US6252976").fetch.parse
-          #expect(patent.parent_case).to be_true
-        end
       end
     end
   end

@@ -4,8 +4,9 @@ module PatentAgent
   module USPTO
     describe Fields do
       let(:num)           {"6266379"}
-      let(:pnum)          {"US" + num}
-      let(:patent)        {Patent.new(pnum).fetch}
+      let(:cc)            {"US"}
+      let(:pnum)          {cc + num}
+      let(:patent)        {Patent.new(PatentNum.new(pnum))}
       subject(:fields)    {Fields.new(patent)}
 
       context "#new", vcr: true do     
