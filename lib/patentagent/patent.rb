@@ -12,25 +12,26 @@ module PatentAgent
       debug:     false,
       logging:   true  
     }
-    attr_reader :number, :patent
+    attr_reader :pat_num, :patent
     
     extend Forwardable
 
-    def_delegators :number, :number
-    def_delegators :patent, :title, :abstract, :assignee, :app_number
+    def_delegators :pat_num, :number, :cc, :kind
+    def_delegators :patent, :fetch, :title, :abstract, :assignees, :app_number
     def_delegators :patent, :inventors, :priority_date, :claims
     
     def initialize(pnum, options = {})
       set_options options
-      @number = PatentNum.new(pnum)
+      @pat_num = PatentNum.new(pnum)
 
+      return unless valid?
       @patent = case @options[:authority]
       when :pto
-        USPTO::Patent.new(@patent_num)
+        USPTO::Patent.new(@pat_num)
       # when :epo
       #   OPS::Patent.new(@patent_num)
       else
-        USPTO::Patent.new(@patent_num)
+        USPTO::Patent.new(@pat_num)
       end
     end
 
@@ -47,7 +48,7 @@ module PatentAgent
     end
 
     def valid?
-      @number && @number.valid?
+      @pat_num && @pat_num.valid?
     end
 
     def fetched?

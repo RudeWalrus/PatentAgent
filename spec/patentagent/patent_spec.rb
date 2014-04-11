@@ -2,28 +2,68 @@ require 'spec_helper'
 
 module PatentAgent
   describe Patent do
-    subject(:patent) {Patent.new("US6262379")}
+    let(:number)     {"8031234"}
+    let(:pnum)       {"US" + number}
+    subject(:patent) {Patent.new(pnum)}
 
     context "#new" do
+      it "class is Patent" do
+        expect(patent).to be_kind_of(PatentAgent::Patent)
+      end
+
+      it "contructs from string" do
+        expect(patent).to be_valid
+        expect(patent.number).to eq(number)
+      end
+
+      it "contructs from PatNum" do
+        pat = Patent.new(pnum)
+        expect(pat).to be_valid
+      end
+
+      it "delegates number to PatNum" do
+        expect(patent.number).to eq(number)
+      end
+
+
+      [:number, :title, :abstract, :assignees, :inventors, :priority_date].each do |field|
+        it "responds to ##{field}" do
+          expect(patent).to respond_to(field)
+        end
+      end
+
       it "defaults to USPTO object" do
         patent.authority.should eq(:pto)
       end
+      
       it "constructs to EPO when chosen" do
-        pat = Patent.new("US6262379", authority: :epo)
+        pat = Patent.new(pnum, authority: :epo)
         pat.authority.should eq(:epo)
       end
 
-      it {should be_valid}
-      
-      it "Given a string, it should return a valid patent" do
-        pat = Patent.new("US6262379")
+      it "given a PatentNum, returns a valid patent" do
+        num = PatentNum.new(pnum)
+        pat = Patent.new(num)
         expect(pat).to be_valid
       end
 
-      it "Given a PatentNum, it should return a valid patent" do
-        num = PatentNum.new("US6266379")
-        pat = Patent.new(num)
-        expect(pat).to be_valid
+      it "returns invalid for bogus patent number" do
+        num = Patent.new("US555")
+        expect(num).to_not be_valid
+      end
+    end
+
+    context "#fetch", vcr: true do
+      before {patent.fetch}
+    
+      it "returns valid #title" do
+        expect(patent.title).to eq("Imaging apparatus and method for driving imaging apparatus")
+      end
+      it "returns valid #inventors" do
+        expect(patent.inventors).to include("Wada; Tetsu")
+      end
+      it "returns valid #assignees" do
+        expect(patent.assignees).to include("Fujifilm Corporation")
       end
     end
   end

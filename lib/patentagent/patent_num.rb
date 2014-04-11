@@ -8,7 +8,8 @@ module PatentAgent
   class PatentNum
     include PatentNumUtils
 
-    attr_reader  :country_code, :number, :kind
+    attr_reader   :country_code, :number, :kind
+    alias         :cc :country_code
     
     # error raised when passed a bad patent number
     InvalidPatentNumber = Class.new(RuntimeError)
@@ -27,8 +28,7 @@ module PatentAgent
       @clean
     end
 
-    def valid?
-      @number
-    end
+    def valid?(); @number; end
+
   end 
 end
