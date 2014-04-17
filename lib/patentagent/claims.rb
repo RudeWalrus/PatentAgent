@@ -4,7 +4,9 @@
 
 module PatentAgent
 
-  Claim = Struct.new(:parent, :dep, :text)
+  Claim = Struct.new(:parent, :dep, :text) do
+    def to_hash; {parent: parent, dep: dep, text: text }; end
+  end
   
   class Claims
     include Logging
@@ -18,7 +20,7 @@ module PatentAgent
     MalformedClaim = Class.new(RuntimeError)
     
     def initialize(text)
-      @dep_claims, @indep_claims = [], [], []
+      @dep_claims, @indep_claims = [], []
       @total, @dep_count, @indep_count = 0, 0, 0
       @text = text
       @parsed_claims = {}
@@ -33,7 +35,7 @@ module PatentAgent
 
       raise "No Claims" if claim_text.nil?
     
-      # lets get the individual claims. The parens in the regex force the results to
+      # get the individual claims. The parens in the regex force the results to
       # be placed into a capture group (an array within the array). The claim is element
       # 0 of this array
       m = claim_text.scan( /<br><br>\s*(\d+\..*?)((?=<br><br>\s*\d+\.)|(?=<hr>))/mi)

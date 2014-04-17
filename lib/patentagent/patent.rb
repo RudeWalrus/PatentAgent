@@ -42,7 +42,7 @@ module PatentAgent
     # @return [Patent] A new instance of PatentAgent::Patent
     #
     def self.fetch(pnum, options = {})
-      new(pnum, options).fetch
+      new(pnum, options)
     end
 
     def authority

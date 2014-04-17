@@ -44,7 +44,7 @@ module PatentAgent
         end
       end
       
-      context "HTTP Errors" do
+      describe "HTTP Errors" do
         it "#valid? returns false on HTTP error" do
           RestClient.stub(:get).and_raise("HTTP Error")
           Patent.new(pnum).fetch.valid?.should be_false
@@ -58,7 +58,7 @@ module PatentAgent
       #   end
       # end
 
-      context '#fetch', vcr: true do
+      describe '#fetch', vcr: true do
         it "is class of USPTO::Patent" do
           expect(patent).to be_kind_of(PatentAgent::USPTO::Patent)
         end
@@ -94,6 +94,18 @@ module PatentAgent
               patent.claims.each {|k,v| expect(v.text).to be_kind_of(String)} 
           end
         end   
+      end
+
+      describe '#to_hash', vcr: true do
+        subject(:hash) {patent.to_hash}
+        its(:size) {should eq 10}
+        
+        it ":inventors" do
+          hash[:inventors].should eq ["Dally; William J."]
+        end
+        it ":assignees" do
+          hash[:assignees].should eq ["Massachusetts Institute of Technology"]
+        end
       end
     end
   end

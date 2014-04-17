@@ -37,6 +37,22 @@ module PatentAgent
         figures:         {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
       }.each { |m, value| define_method(m) { instance_variable_get "@#{m}" } }
 
+      # class method
+      #
+      # each block to iterate through all the fields
+      # 
+      # useful for setters/getters 
+      # @returns [field,obj] for each entry in the FIELDS hash
+      def self.each(&blk)
+        FIELDS.each() do |field, obj|
+          yield field, obj
+        end
+      end
+
+      def self.count
+        FIELDS.size
+      end
+
       def initialize(patent)
         @patent = patent.patent_num
         @html   = patent.html
@@ -51,6 +67,14 @@ module PatentAgent
           instance_variable_set("@#{field}",result)
         end
         self
+      end
+
+      def to_hash
+        hash = {}
+        Fields.each do |field, search|
+          hash[field] = instance_variable_get("@#{field.to_sym}")
+        end
+        hash
       end
 
       private
@@ -95,7 +119,11 @@ module PatentAgent
       end
 
       def log_field(field, message)
-        log(field, message, true) #if (@options[:dump] && @options[:dump].match(field.to_s))
+        log(field, message, true) #if field_enabled
+      end
+
+      def field_enabled(field)
+        (@options[:dump] && @options[:dump].match(field.to_s))
       end
     end
   end

@@ -18,21 +18,13 @@ module PatentAgent
       include Util
       include Logging
       
-
       attr_reader :options, :html, :patent_num, :fields, :claims
+      
+      extend Forwardable
+      def_delegators :patent_num, :number, :kind, :cc
 
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
-      
-      # #
-      # # allows calling fetch on directly on Patent class
-      # # initializes and fetches
-      # # 
-      # # @return [Patent] A new instance of USPTO::Patent
-      # #
-      # def self.fetch(pnum, options = {})
-      #   new(pnum, options).fetch
-      # end
       
       def initialize(pnum, options = {})
         set_options(options)
@@ -41,8 +33,9 @@ module PatentAgent
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
         
         fetch
+
         rescue InvalidPatentNumber => e
-           log "#{e}"
+          log "#{e}"
       end
       
       def set_options(opts)
@@ -79,6 +72,11 @@ module PatentAgent
         log "processed:", @patent_num
         self  
       end
+
+      def to_hash
+        @fields.to_hash
+      end
+      
       #
       # delegate calls for the fields to the PatentFields object
       #

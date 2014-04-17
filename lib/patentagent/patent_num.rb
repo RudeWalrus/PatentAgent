@@ -1,13 +1,12 @@
 # Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
 # Copyright:: Copyright (c) 2014 RudeWalrus
 # License::   Creative Commons 3
-require 'patentagent/patent_num_utils'
+require "patentagent/patent_num_utils"
 
 module PatentAgent
   
   class PatentNum
     include PatentNumUtils
-
     attr_reader   :country_code, :number, :kind
     alias         :cc :country_code
     
@@ -31,12 +30,14 @@ module PatentAgent
       puts "Bogus patent number #{pat_num}"
     end 
 
+    def full; "#{cc}#{number}"; end
+
     def to_s
       return "invalid" unless valid?
       @clean
     end
 
-    def valid?(); @number; end
 
+    def valid?(); @number; end
   end 
 end

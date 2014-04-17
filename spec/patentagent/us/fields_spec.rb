@@ -71,6 +71,16 @@ module PatentAgent
            data.figures.should be_kind_of(Array)
         end
       end
+
+      context "self.each" do
+        it "returns each field" do
+          @count = 0
+          Fields.each do |field, obj|
+            @count += 1
+          end
+        expect(@count).to eq Fields.count
+        end
+      end
     end
   end
 end
