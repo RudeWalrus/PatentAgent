@@ -99,12 +99,14 @@ module PatentAgent
       describe '#to_hash', vcr: true do
         subject(:hash) {patent.to_hash}
         its(:size) {should eq 10}
-        
+        it ":title" do
+          expect(hash.fetch(:title)).to eq "Digital transmitter with equalization"
+        end
         it ":inventors" do
-          hash[:inventors].should eq ["Dally; William J."]
+          expect(hash.fetch(:inventors)).to eq ["Dally; William J."]
         end
         it ":assignees" do
-          hash[:assignees].should eq ["Massachusetts Institute of Technology"]
+          expect(hash.fetch(:assignees)).to eq ["Massachusetts Institute of Technology"]
         end
       end
     end

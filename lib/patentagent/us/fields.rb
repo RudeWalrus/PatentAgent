@@ -53,6 +53,11 @@ module PatentAgent
         FIELDS.size
       end
 
+      def self.add field, gross, fine, &block
+        FIELDS[field] = {gross: gross, fine: fine, filter: block}
+        define_method(field) {instance_variable_get "@#{field}" }
+      end
+
       def initialize(patent)
         @patent = patent.patent_num
         @html   = patent.html
@@ -115,7 +120,7 @@ module PatentAgent
         result
 
         rescue => e
-          ["Not Found: #{e}"]
+          ["Field parse error: Not Found: #{field} #{params[:gross]} #{@html}"]
       end
 
       def log_field(field, message)

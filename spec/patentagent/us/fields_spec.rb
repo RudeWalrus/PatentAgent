@@ -2,14 +2,14 @@ require 'spec_helper'
 
 module PatentAgent
   module USPTO
-    describe Fields do
+    describe Fields, vcr: true do
       let(:num)           {"6266379"}
       let(:cc)            {"US"}
       let(:pnum)          {cc + num}
       let(:patent)        {Patent.new(PatentNum.new(pnum))}
       subject(:fields)    {Fields.new(patent)}
 
-      context "#new", vcr: true do     
+      context "#initialize" do     
         it {should be}
         
         it "has a valid PatentNum member" do
@@ -35,7 +35,7 @@ module PatentAgent
         end
       end  
 
-      context "#parse", vcr: true do
+      context "#parse" do
         subject(:data) {fields.parse}
        
         it "returns an instance of Fields" do
@@ -81,6 +81,21 @@ module PatentAgent
         expect(@count).to eq Fields.count
         end
       end
+
+      context "self.add" do
+        before do
+          gross = /Primary Examiner:<\/I>(.*?)<BR>/mi
+          fine = /<\/I>(.*?)<BR>/mi
+          Fields.add :prime_examiner, gross,fine
+        end
+
+        it "Adds a search method instance variable" do
+          expect(fields).to respond_to(:prime_examiner)
+        end
+        it "Adds a search method" do
+          expect(fields.parse.prime_examiner).to eq "Ghebretinsae; Temesghen"
+        end
+      end 
     end
   end
 end
