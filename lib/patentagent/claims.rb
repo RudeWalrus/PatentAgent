@@ -19,18 +19,27 @@ module PatentAgent
     # error raised when a bad claim is found
     MalformedClaim = Class.new(RuntimeError)
     
-    def initialize(text)
+    def initialize(text=nil)
       @dep_claims, @indep_claims = [], []
       @total, @dep_count, @indep_count = 0, 0, 0
       @text = text
       @parsed_claims = {}
+    end
+
+    def set_src(text)
+      @text = text
+      return self
+    end
+
+    def valid?
+      !!@text
     end
     
     #
     # parses all the claims
     #
     def parse(text = @text)
-      
+      raise NoTextSource, "No text source for claims" if !valid?
       claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
 
       raise "No Claims" if claim_text.nil?

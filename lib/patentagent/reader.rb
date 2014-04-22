@@ -5,6 +5,15 @@
 require "patentagent/logging"
 
 module PatentAgent
+    include Logging
+
+    def self.read_html(url)
+      RestClient.get(url).to_str
+      rescue => e
+          log "#{e} for #{url}"
+          nil
+    end
+
     class Reader
       include Logging
       

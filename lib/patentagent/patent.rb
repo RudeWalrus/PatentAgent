@@ -2,8 +2,8 @@
 # Copyright:: Copyright (c) 2014 RudeWalrus
 # License::   Creative Commons 3
 
-require "patentagent/patent_num"
-require 'forwardable'
+require "patentagent/patent_number"
+require "forwardable"
 
 module PatentAgent    
   class Patent
@@ -17,24 +17,7 @@ module PatentAgent
     extend Forwardable
 
     def_delegators :pat_num, :number, :cc, :kind
-    def_delegators :patent, :fetch, :title, :abstract, :assignees, :app_number
-    def_delegators :patent, :inventors, :priority_date, :claims
     
-    def initialize(pnum, options = {})
-      set_options options
-      @pat_num = PatentNum.new(pnum)
-
-      return unless valid?
-      @patent = case @options[:authority]
-      when :pto
-        USPTO::Patent.new(@pat_num)
-      # when :epo
-      #   OPS::Patent.new(@patent_num)
-      else
-        USPTO::Patent.new(@pat_num)
-      end
-    end
-
     #
     # allows calling fetch on directly on Patent class
     # initializes and fetches
@@ -42,7 +25,31 @@ module PatentAgent
     # @return [Patent] A new instance of PatentAgent::Patent
     #
     def self.fetch(pnum, options = {})
-      new(pnum, options)
+      new(pnum, options).fetch
+    end
+
+    def self.config(pnum, opts = {})
+      yield self if block_given?
+    end
+    
+    def initialize(pnum, options = {})
+      set_options options
+      @pat_num = PatentNumber.new(pnum)
+
+      return unless valid?
+     
+      @patent = case @options[:authority]
+      when :pto
+        USPTO::UsPtoPatent.new(@pat_num)
+      # when :epo
+      #   OPS::Patent.new(@patent_num)
+      else
+        USPTO::UsPtoPatent.new(@pat_num)
+      end
+    end
+
+    def fetch
+      @patent.fetch
     end
 
     def authority
@@ -53,9 +60,6 @@ module PatentAgent
       @options[:debug]
     end
 
-    def self.config(pnum, opts = {})
-      yield self if block_given?
-    end
 
     def valid?
       @pat_num && @pat_num.valid?
@@ -66,6 +70,17 @@ module PatentAgent
     end
 
     private
+      #
+      # delegate calls for the fields to the PatentFields object
+      #
+      def method_missing(method, *args)
+        return @patent.send(method) if @patent.respond_to?(method)
+        super
+      end
+
+      def respond_to_missing?(method, include_private = false)
+        @patent.respond_to?(method) || super
+      end
 
     def set_options(opts)
         @options ||= DEFAULT_OPTIONS

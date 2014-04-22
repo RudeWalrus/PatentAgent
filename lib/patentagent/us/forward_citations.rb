@@ -12,7 +12,7 @@ module PatentAgent
       #
       # Receives a patent number or PatentNum
       def initialize(parent)
-        @parent        = PatentNum.new(parent)
+        @parent        = PatentNumber.new(parent)
         @fc_references = []
       end
 

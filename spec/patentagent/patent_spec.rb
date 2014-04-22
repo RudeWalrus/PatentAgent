@@ -6,9 +6,9 @@ module PatentAgent
     let(:pnum)       {"US" + number}
     subject(:patent) {Patent.new(pnum)}
 
-    context "#new" do
+    context "#initialize" do
       it "class is Patent" do
-        expect(patent).to be_kind_of(PatentAgent::Patent)
+        expect(patent).to be_kind_of(Patent)
       end
 
       it "contructs from string" do
@@ -16,17 +16,18 @@ module PatentAgent
         expect(patent.number).to eq(number)
       end
 
-      it "contructs from PatNum" do
-        pat = Patent.new(pnum)
+      it "contructs from PatentNumber" do
+        num = PatentNumber.new(pnum)
+        pat = Patent.new(num)
         expect(pat).to be_valid
       end
 
-      it "delegates number to PatNum" do
+      it "delegates number to PatentNumber" do
         expect(patent.number).to eq(number)
       end
 
 
-      [:number, :title, :abstract, :assignees, :inventors, :priority_date].each do |field|
+      [:number, :title, :abstract, :assignees, :inventors, :filed].each do |field|
         it "responds to ##{field}" do
           expect(patent).to respond_to(field)
         end
@@ -42,7 +43,7 @@ module PatentAgent
       end
 
       it "given a PatentNum, returns a valid patent" do
-        num = PatentNum.new(pnum)
+        num = PatentNumber.new(pnum)
         pat = Patent.new(num)
         expect(pat).to be_valid
       end

@@ -3,7 +3,7 @@ require 'spec_helper'
 module PatentAgent
   describe Reader, vcr: true do
     let(:num)         {"US6266379"}
-    let(:patent)      {PatentNum.new(num)}
+    let(:patent)      {PatentNumber.new(num)}
     let(:url)         {USPTO::URL.patent_url(patent)}
     subject(:reader)  {Reader.new(patent, url)}
     

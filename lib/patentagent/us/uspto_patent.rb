@@ -3,23 +3,24 @@
 # License::   Creative Commons 3
 
 require "patentagent/util"
-require "patentagent/logging"
 require "patentagent/reader"
+require "patentagent/logging"
 require "patentagent/us/urls"
 require "patentagent/us/fields"
 
 
 module PatentAgent
   module USPTO
-    #
-    # The basic patent parser class
-    #
-    class Patent
+    class UsPtoPatent
+      #
+      # The basic patent parser class
+      #
       include Util
       include Logging
       
       attr_reader :options, :html, :patent_num, :fields, :claims
-      
+      alias :name :patent_num
+
       extend Forwardable
       def_delegators :patent_num, :number, :kind, :cc
 
@@ -28,14 +29,14 @@ module PatentAgent
       
       def initialize(pnum, options = {})
         set_options(options)
-        @patent_num = pnum
+        @patent_num = PatentNumber.new(pnum)
+        @fields = Fields.new
+        @claims = Claims.new
 
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
-        
-        fetch
 
-        rescue InvalidPatentNumber => e
-          log "#{e}"
+        rescue InvalidPatentNumber => error
+          log "#{error}"
       end
       
       def set_options(opts)
@@ -45,38 +46,40 @@ module PatentAgent
       end
       
       def fetch(patent_number = @patent_num)
-        url     = USPTO::URL.patent_url(patent_number)
-        @html   = Reader.get_html(patent_number, url)
-        parse if @html
+        if html
+          @fields.set_src(@html).parse
+          @claims.set_src(@html).parse
+        end
+        log "processed:", patent_number
         self
       end
+
       def valid_patnum?
        @patent_num && @patent_num.respond_to?(:valid?)
       end
 
       def valid?
-       @patent_num && @patent_num.respond_to?(:valid?) && !!@html
+       valid_patnum? && !!@html
       end
       
       def valid_html?
         !!@html
       end
-  
+
       def invalid_patent?
         !!@html[/No patents have matched your query/mi]
-      end
-      
-      def parse
-        @fields = Fields.new(self).parse
-        @claims = Claims.new(@html).parse
-        log "processed:", @patent_num
-        self  
       end
 
       def to_hash
         @fields.to_hash
       end
       
+      private
+      
+      def html(patent_number = @patent_num)
+        url     = USPTO::URL.patent_url(patent_number)
+        @html ||= PatentAgent.read_html(url)
+      end
       #
       # delegate calls for the fields to the PatentFields object
       #
@@ -85,7 +88,9 @@ module PatentAgent
         super
       end
 
-      alias :name :patent_num
+      def respond_to_missing?(method, include_private = false)
+        @fields.respond_to?(method) || super
+      end
     end
   end   
 end

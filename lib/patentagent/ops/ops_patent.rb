@@ -2,6 +2,19 @@ require 'nokogiri'
 require 'set'
 require 'json'
 
+# 
+# from the EPO.org website
+#
+# For using EPODOC format
+#epodoc
+#   => Input consists of 3 possible parts:
+#   -  number (the epodoc number string) - mandatory
+#   -  kind code (KC) - optional docdb kind code
+#   -  date (date) - optional 
+#
+# => Note, the date format used in OPS is ALWAYS YYYYMMDD.
+#
+
 module PatentAgent
   module OPS  
    
@@ -31,7 +44,7 @@ module PatentAgent
       full = "#{country}.#{id}.#{kind}"
       date =  doc.css("date").text
       published = !!(kind[0] =~ /^B/)
-      { :full => id, :date => date,:country => country,:number => id,:kind => kind,:published => published}
+      { full: id, date: date, country: country, number: id, kind: kind, published: published}
     end
 
     # create a proc version of the above to pass to map, each, etc.
@@ -40,18 +53,17 @@ module PatentAgent
     end
 
 
-    class Patent
+    class OpsPatent
       #include PatentAgent::Support
       
       attr_accessor :biblio, :family, :fc, :doc_number, :error_state
       
       def initialize(pnum, options = {})   
-      
         # setup options first with defaults
-        @options ||= {:country =>"US", :debug => false, :fc => nil, :error_state => false }
+        @options ||= {country: "US", debug:false, fc: nil, error_state: false }
         @options.merge!(options)
       
-        @doc_number = valid_patent_number?(pnum)
+        @doc_number = PatentNumber.new(pnum)
         raise "Invalid Patent Number" if @doc_number.nil?
         
         ops_data = Reader.read(@doc_number)
@@ -84,6 +96,7 @@ module PatentAgent
         
         _fc = ForwardCitation.from_xml(@fc)
         log "Forward Citations", _fc.citations
+        
         tree = fetch_fc
         log "Normalized Forward Citations", tree
         print "Processed (#{@doc_number}\n)"
@@ -112,35 +125,35 @@ module PatentAgent
       end
     
       def patent_number(doc = biblio)
-        with_logging { OPS.get_publication_data doc.css('publication-reference document-id[@document-id-type = "docdb"]').first}
+        OPS.get_publication_data doc.css('publication-reference document-id[@document-id-type = "docdb"]').first
       end
     
       def assignees(doc = biblio)
-        with_logging { doc.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text) }
+        doc.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text)
       end
     
       def inventors(doc = biblio)
-        with_logging { doc.css('inventors inventor[@data-format="epodoc"]').map {|item|  item.text.strip.delete(",") } }
+        doc.css('inventors inventor[@data-format="epodoc"]').map {|item|  item.text.strip.delete(",") }
       end
       
       def classification_ipcr(doc = biblio)
-        with_logging {  doc.css("classification-ipcr text").map { |item|  item.text.delete(" ") } }
+        doc.css("classification-ipcr text").map { |item|  item.text.delete(" ") }
       end
 
       def classification_national(doc = biblio)
-        with_logging {  doc.css("classification-national text").map { |item|  item.text.delete(" ") } }
+        doc.css("classification-national text").map { |item|  item.text.delete(" ") }
       end
 
       def classification_ecla(doc = biblio)
-        with_logging { doc.css("classification-ecla classification-symbol").map { |item|  item.text.delete(" ") } }
+        doc.css("classification-ecla classification-symbol").map { |item|  item.text.delete(" ") }
       end
 
       def title(doc = biblio)
-        with_logging { doc.css('invention-title[@lang="en"]').text}
+        doc.css('invention-title[@lang="en"]').text
       end
     
       def abstract(doc = biblio)
-        with_logging { doc.css('abstract[@lang="en"] p').text }
+        doc.css('abstract[@lang="en"] p').text
       end
     
       def application(doc = biblio)
@@ -162,7 +175,7 @@ module PatentAgent
       end
 
       def references(doc = biblio)
-        with_logging { doc.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort } 
+        doc.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort 
       end
     
       def forward_citations
@@ -177,7 +190,7 @@ module PatentAgent
       end
     
       def family_tree
-        with_logging  {@family.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map &pub_data}
+        @family.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map &pub_data
       end
   
       #
@@ -213,7 +226,6 @@ module PatentAgent
             #puts "Adding #{data[:number]} to #{family}"
             families[family] << data
           end
-
         end
         citations.to_a
         #    puts "FC families result:"
@@ -248,8 +260,6 @@ module PatentAgent
         end
         members
       end
- 
-
     end
     
     class ForwardCitation
@@ -304,10 +314,5 @@ module PatentAgent
         {full: full, number: id, country: country, kind:  kind, date: date, published: published }
       end
     end
-  
-    
-
-    
-  
   end
 end

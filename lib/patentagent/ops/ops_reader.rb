@@ -5,18 +5,20 @@ module PatentAgent
   module OPS
     class Reader
     
-      BIBLIO_URL        = "http://ops.epo.org/2.6.2/rest-services/published-data/publication/epodoc/biblio"
-      FAMILY_BIBLIO_DOC = "http://ops.epo.org/2.6.2/rest-services/family/publication/docdb/biblio"
-      FAMILY_BIBLIO     = "http://ops.epo.org/2.6.2/rest-services/family/publication/epodoc/biblio"
-      FAMILY_BIBLIO_EZ  = "http://ops.epo.org/2.6.2/rest-services/family/publication/epodoc/"
-      FAMILY_ERROR      = "http://ops.epo.org/2.6.2/rest-services/family/"
-      FAMILY_URL        = "http://ops.epo.org/2.6.2/rest-services/family/publication/original/"
+      BIBLIO_URL        = "http://ops.epo.org/rest-services/published-data/publication/epodoc/biblio"
+      FAMILY_BIBLIO_DOC = "http://ops.epo.org/rest-services/family/publication/docdb/biblio"
+      FAMILY_BIBLIO     = "http://ops.epo.org/rest-services/family/publication/epodoc/biblio"
+      FAMILY_BIBLIO_EZ  = "http://ops.epo.org/rest-services/family/publication/epodoc/"
+      FAMILY_ERROR      = "http://ops.epo.org/rest-services/family/"
+      FAMILY_URL        = "http://ops.epo.org/rest-services/family/publication/original/"
 
-      FC                = "http://ops.epo.org/2.6.2/rest-services/published-data/search/"
-      APP               = "http://ops.epo.org/2.6.2/rest-services/published-data/application/epodoc/biblio"
+      FC                = "http://ops.epo.org/rest-services/published-data/search/"
+      APP               = "http://ops.epo.org/rest-services/published-data/application/epodoc/biblio"
 
       attr_reader :doc_num, :biblio, :family, :fc, :error_state
     
+      #
+      # Takes a patent number and a hash of nodes
       def initialize(patent, nodes)
         @doc_num = patent
       
@@ -103,10 +105,10 @@ module PatentAgent
         end
 
         def retry_ambiguous_response response
-          resp =  Nokogiri::HTML(response)
+          resp        =  Nokogiri::HTML(response)
           resp.css("cause").text.match /Ambiguous/
-          resolution = resp.css("resolution").last.text
-          source = RestClient.get(FAMILY_ERROR + resolution)
+          resolution  = resp.css("resolution").last.text
+          source      = RestClient.get(FAMILY_ERROR + resolution)
         end
 
         def make_ops_forward_cite_url(doc_number)

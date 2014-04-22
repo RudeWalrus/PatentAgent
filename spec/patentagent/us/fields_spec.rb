@@ -6,16 +6,11 @@ module PatentAgent
       let(:num)           {"6266379"}
       let(:cc)            {"US"}
       let(:pnum)          {cc + num}
-      let(:patent)        {Patent.new(PatentNum.new(pnum))}
-      subject(:fields)    {Fields.new(patent)}
+      let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
+      subject(:fields)    {Fields.new(html)}
 
       context "#initialize" do     
         it {should be}
-        
-        it "has a valid PatentNum member" do
-          expect(fields.patent.number).to eq "6266379"
-          expect(fields.patent.country_code).to eq "US"
-        end
 
         it "has html" do
           expect(fields.html).to match(num)
@@ -34,6 +29,12 @@ module PatentAgent
            expect(fields.figures).to be_false
         end
       end  
+
+      context "#parse_field" do
+        it "parses a single field" do
+          fields.parse_field(:title).should match("Digital transmitter with equalization") 
+        end
+      end
 
       context "#parse" do
         subject(:data) {fields.parse}

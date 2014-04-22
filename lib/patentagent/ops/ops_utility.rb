@@ -30,7 +30,7 @@ module PatentAgent
         full = "#{country}.#{id}.#{kind}"
         date =  doc.css("date").text
         published = !!(kind[0] =~ /^B/)
-        { :full => id, :date => date,:country => country,:number => id,:kind => kind,:published => published}
+        { full: id, date: date, country: country, number: id, kind: kind, published: published}
       end
 
       # create a proc version of the above to pass to map, each, etc.

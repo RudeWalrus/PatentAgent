@@ -4,7 +4,7 @@ module PatentAgent
   module USPTO
     describe URL do
       let(:num) {"6266379"}
-      let(:pnum) {PatentNum.new(num)}
+      let(:pnum) {PatentNumber.new(num)}
 
       context "Private Methods" do 
         it "Returns the number part of a patent" do

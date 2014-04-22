@@ -2,7 +2,7 @@
 # Copyright:: Copyright (c) 2014 RudeWalrus
 # License::   Creative Commons 3
 
-require "patentagent/patent_num"
+require "patentagent/patent_number"
 
 module PatentAgent
   module USPTO
@@ -21,7 +21,7 @@ module PatentAgent
 
       protected
       def self.get_num_part_of_patent(num)
-        return PatentNum.new(num).number
+        return PatentNumber.new(num).number
       end
     end
   end

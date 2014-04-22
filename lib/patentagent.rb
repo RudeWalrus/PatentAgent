@@ -9,23 +9,21 @@ $: << File.dirname(__FILE__) + '../patentagent/us'
 require 'patentagent/patent'
 require 'patentagent/util'
 require 'patentagent/logging'
-require 'patentagent/patent_num'
-require 'patentagent/patent_num_utils.rb'
+require 'patentagent/patent_number'
 require 'patentagent/reader'
 require 'patentagent/claims'
 
-# require 'patentagent/ops/ops_utility'
-# require 'patentagent/ops/ops_reader'
-# require 'patentagent/ops/ops_patent'
+require 'patentagent/ops/ops_utility'
+require 'patentagent/ops/ops_reader'
+require 'patentagent/ops/ops_patent'
 
 require 'patentagent/us/urls'
-require 'patentagent/us/patent'
+require 'patentagent/us/uspto_patent'
 require 'patentagent/us/fields'
 require 'patentagent/us/forward_citations'
 
 module PatentAgent
 
-  extend PatentNumUtils
   class << self
     attr_accessor :debug
 
@@ -36,7 +34,7 @@ module PatentAgent
     #          - or a string if a string passed in
     #
     def validate_patent_numbers(*nums)
-      valid = [*nums].flatten.find_all { |pnum| valid_patent_number?(pnum) }
+      valid = [*nums].flatten.find_all { |pnum| PatentNumber.valid_patent_number?(pnum) }
       valid.size == 1 ? valid[0] : valid
     end
   end

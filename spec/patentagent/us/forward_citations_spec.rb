@@ -4,14 +4,14 @@ module PatentAgent
   module USPTO
     describe ForwardCitation do
       let(:num)         {"US5539735"}
-      let(:pnum)        {PatentNum.new(num)}
+      let(:pnum)        {PatentNumber.new(num)}
       subject(:patent)  {ForwardCitation.new(pnum)}
     
       context "#new" do
         it "constructs from a string" do
           expect(patent).to be 
         end
-        it "constructs from a PatentNum" do
+        it "constructs from a PatentNumber" do
           expect(pnum).to be
         end
       end
