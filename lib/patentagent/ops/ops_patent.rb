@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'set'
 require 'json'
-
 # 
 # from the EPO.org website
 #
@@ -17,15 +16,6 @@ require 'json'
 
 module PatentAgent
   module OPS  
-   
-    # figures out if a patent is published or not
-    def self.is_published?(id, kind, country)
-      return true if (country == "US" && id =~ /^[5678]\d{6}/)
-      return true if (kind[0] =~ /^B/)
-      return true if (kind[1].to_i > 1 )
-      return false
-    end
-  
     #
     # convert patent date to a Time object
     #
@@ -33,28 +23,26 @@ module PatentAgent
       /(\d{4})(\d{2})(\d{2})/.match(text.to_s)
       Time.utc($1, $2, $3) unless $1.nil?
     end
-    
-    #
-    # generic routine to create a publication data Hash
-    #
-    def self.get_publication_data(doc)
-      country = doc.css("country").text
-      id = doc.css("doc-number").text
-      kind = doc.css("kind").text
-      full = "#{country}.#{id}.#{kind}"
-      date =  doc.css("date").text
-      published = !!(kind[0] =~ /^B/)
-      { full: id, date: date, country: country, number: id, kind: kind, published: published}
-    end
 
     # create a proc version of the above to pass to map, each, etc.
     def self.pub_data 
       method(:get_publication_data).to_proc
     end
-
+    #
+    # generic routine to create a publication data Hash
+    #
+    def self.get_publication_data(doc)
+      country   = doc.css("country").text
+      id        = doc.css("doc-number").text
+      kind      = doc.css("kind").text
+      full      = "#{country}.#{id}.#{kind}"
+      date      =  doc.css("date").text
+      published = !!(kind[0] =~ /^B/)
+      { full: id, date: date, country: country, number: id, kind: kind, published: published}
+    end
 
     class OpsPatent
-      #include PatentAgent::Support
+      include Logging
       
       attr_accessor :biblio, :family, :fc, :doc_number, :error_state
       
@@ -66,8 +54,12 @@ module PatentAgent
         @doc_number = PatentNumber.new(pnum)
         raise "Invalid Patent Number" if @doc_number.nil?
         
-        ops_data = Reader.read(@doc_number)
-        @biblio, @family, @fc = ops_data.data  
+        @ops_data = Reader.read(@doc_number, auth: true)
+        @biblio, @family, @fc = @ops_data.data  
+      end
+
+      def valid?
+        @ops_data
       end
 
       def invalid?
@@ -106,19 +98,19 @@ module PatentAgent
         return nil if @error_state
 
         result = patent_number
-      
-        result[:title]          = title
-        result[:abstract]       = abstract
-        result[:priority]       = priority
-        result[:application]    = application
-        result[:assignees]      = assignees
-        result[:classification_ipcr]      = classification_ipcr
-        result[:classification_ecla]      = classification_ecla
-        result[:classification_national]      = classification_national
-        result[:inventors]      = inventors
-        result[:references]     = references
-        result[:family]         = family_tree
-        result[:fc]             = forward_citations
+        
+        result[:title]                   = title
+        result[:abstract]                = abstract
+        result[:priority]                = priority
+        result[:application]             = application
+        result[:assignees]               = assignees
+        result[:classification_ipcr]     = classification_ipcr
+        result[:classification_ecla]     = classification_ecla
+        result[:classification_national] = classification_national
+        result[:inventors]               = inventors
+        result[:references]              = references
+        result[:family]                  = family_tree
+        result[:fc]                      = forward_citations
         #result[:fc_clean]       = fetch_fc
         
         result
@@ -131,9 +123,24 @@ module PatentAgent
       def assignees(doc = biblio)
         doc.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text)
       end
+
+      def issue_date(node)
+        node.css('publication-reference document-id date').first
+      end
     
       def inventors(doc = biblio)
         doc.css('inventors inventor[@data-format="epodoc"]').map {|item|  item.text.strip.delete(",") }
+      end
+
+      def classification(node)
+        node.css('patent-classifications patent-classification').map {|el|
+          section = el.css("section").text
+          _class = el.css("class").text
+          subclass = el.css("subclass").text  # !> assigned but unused variable - subclass
+          main_group = el.css("main-group").text
+          subgroup = el.css("subgroup").text
+          section + _class + main_group + subgroup
+        }
       end
       
       def classification_ipcr(doc = biblio)
@@ -157,21 +164,17 @@ module PatentAgent
       end
     
       def application(doc = biblio)
-        with_logging { 
-          item = doc.css('application-reference document-id[@document-id-type="epodoc"]').first
-          doc_number = item.css('doc-number').text
-          date = OPS.to_patent_date item.css('date').text
-          {date: date, doc_number: doc_number}
-        }
+        item       = doc.css('application-reference document-id[@document-id-type="epodoc"]').first
+        doc_number = item.css('doc-number').text
+        date       = OPS.to_patent_date item.css('date').text
+        {date: date, doc_number: doc_number}
       end
 
       def priority(doc = biblio)
-        with_logging { 
-          item = doc.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').last
-          doc_number = item.css('doc-number').text
-          date = OPS.to_patent_date item.css('date').text
-          {date: date, doc_number: doc_number}
-        }
+        item       = doc.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').last
+        doc_number = item.css('doc-number').text
+        date       = OPS.to_patent_date item.css('date').text
+        {date: date, doc_number: doc_number}
       end
 
       def references(doc = biblio)
@@ -190,14 +193,24 @@ module PatentAgent
       end
     
       def family_tree
-        @family.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map &pub_data
+        @family.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map &OPS.pub_data
       end
+
+      def family(node)
+        nodes.css("ops|family-member").each {|node|  e # !> shadowing outer local variable - node
+            el   = node.css("publication-reference document-id").first
+            cc   = el.css("country").text
+            num  = el.css("doc-number").text
+            kind = el.css("kind").text
+            "#{cc}#{num}.#{kind}"
+        }
+end
   
       #
       # grabs the forward-sited references for doc_number
       #
       def fetch_fc
-        families = Hash.new{|h, k| h[k] = []}
+        families  = Hash.new{|h, k| h[k] = []}
         citations = Set.new
 
         #for each reference get a family-id (we'll group these later)
@@ -260,6 +273,9 @@ module PatentAgent
         end
         members
       end
+
+      
+      
     end
     
     class ForwardCitation
@@ -267,7 +283,9 @@ module PatentAgent
       
       def initialize(citations_array)
         @citations = citations_array
-        #Support.log "Forward Citations", @citations
+      end
+      def count
+        @citations.size
       end
       def self.from_xml(xml)
         citations = xml.css("document-id").map {|item| PublicationData.from_xml(item) }
@@ -280,6 +298,9 @@ module PatentAgent
     
       def initialize(family_array)
         @families = family_array
+      end
+      def count
+        @families.size
       end
       def self.from_xml(xml)
         families = xml.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map do |item|
@@ -296,22 +317,22 @@ module PatentAgent
     class PublicationData
       attr_reader :full, :number, :country, :kind, :date, :published
       def initialize(attribs)
-        @number = attribs[:number]
-        @country = attribs[:country]
-        @kind = attribs[:kind]
-        @date = attribs[:date]
-        @published = attribs[:published]
-        @full = attribs[:full]
+        @number     = attribs[:number]
+        @country    = attribs[:country]
+        @kind       = attribs[:kind]
+        @date       = attribs[:date]
+        @published  = attribs[:published]
+        @full       = attribs[:full]
       end
       
       def self.from_xml(xml)
-        id = xml.css("doc-number").text
-        kind = xml.css("kind").text
-        country = xml.css("country").text
-        published = OPS.is_published?(id, kind, country)
-        date = OPS.to_patent_date(xml.css("date").text)
-        full = "#{country}.#{id}.#{kind}"
-        {full: full, number: id, country: country, kind:  kind, date: date, published: published }
+        id        = xml.css("doc-number").text
+        kind      = xml.css("kind").text
+        country   = xml.css("country").text
+        published = PatentNumber.is_published?(id, kind, country)
+        date      = OPS.to_patent_date(xml.css("date").text)
+        full      = "#{country}.#{id}.#{kind}"
+        {full: full, number: id, country: country, kind: kind, date: date, published: published}
       end
     end
   end

@@ -40,11 +40,11 @@ module PatentAgent
      
       @patent = case @options[:authority]
       when :pto
-        USPTO::UsPtoPatent.new(@pat_num)
+        PTO::PTOPatent.new(@pat_num)
       # when :epo
       #   OPS::Patent.new(@patent_num)
       else
-        USPTO::UsPtoPatent.new(@pat_num)
+        PTO::PTOPatent.new(@pat_num)
       end
     end
 

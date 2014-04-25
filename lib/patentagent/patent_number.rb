@@ -21,7 +21,7 @@ module PatentAgent
 
     def initialize(patent_number)
       @clean = patent_number.to_s
-      @country_code, @number, @kind   = PatentNumber.valid_patent_number?(patent_number)
+      @country_code, @number, @kind   = PatentNumber.valid_patent_number(patent_number)
       raise InvalidPatentNumber unless valid?
 
       rescue InvalidPatentNumber
@@ -48,7 +48,7 @@ module PatentAgent
     #       =>  number is number. 5 to 9 digits. Checked against US valid numbers too
     #       =>  kind is kind. This is something like A1 or B2
     #
-    def self.valid_patent_number?(num)
+    def self.valid_patent_number(num)
       pnum = cleanup_number(num)
       if pnum =~ /\A([A-Z]{2})?(\d{5,9})\.?([A-Z]\d)?\Z/ then
         cc      = get_country_code($1)
@@ -69,6 +69,19 @@ module PatentAgent
         end
       end
     end
+
+    def self.valid_patent_number?(num)
+      !!valid_patent_number(num)
+    end
+
+    #
+    # convienece methods for getting part of a patent number
+    #
+    def self.cc_of(num);      p = valid_patent_number(num); p ? p[0] : "invalid" ; end
+    
+    def self.number_of(num);  p = valid_patent_number(num); p ? p[1] : "invalid"; end
+    
+    def self.kind_of(num);    p = valid_patent_number(num); p ? p[2] : "invalid"; end
     
     private
       # formats the patent number to make it valid for HTML search

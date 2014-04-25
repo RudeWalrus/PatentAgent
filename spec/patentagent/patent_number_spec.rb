@@ -36,7 +36,32 @@ module PatentAgent
       end
     end    
 
-    context PatentNumber do
+    context "Class Methods" do
+      let(:good)         {"US7,267,263.B1"}
+      let(:bad)         {"US9,267,263.B1"}
+
+      it "#cc_of " do
+        PatentNumber.cc_of(good).should eq "US"
+      end
+      it "#number_of" do
+        PatentNumber.number_of(good).should eq "7267263"
+      end
+      it "#kind_of" do
+        PatentNumber.kind_of(good).should eq "B1"
+      end
+
+      it "bad: #cc_of " do
+        PatentNumber.cc_of(bad).should eq "invalid"
+      end
+      it "#number_of" do
+        PatentNumber.number_of(bad).should eq "invalid"
+      end
+      it "#kind_of" do
+        PatentNumber.kind_of(bad).should eq "invalid"
+      end
+    end
+
+    context "methods" do
       let(:num)         {"US7,267,263.B1"}
       subject(:patent)  {PatentNumber.new(num) }
 
@@ -86,9 +111,14 @@ module PatentAgent
           end
 
           %w[12345 62134 745454 811511 555555].each do |pnum|
-            it "Should check for too short#{pnum}" do
+            it "check for too short#{pnum}" do
               pat = PatentNumber.new(pnum)
               expect(pat.valid?).to be_false
+            end
+            it "self.cc_of, self.number_of, self.kind_of are invalid for #{pnum}" do
+              expect(PatentNumber.cc_of(pnum)).to eq "invalid"
+              expect(PatentNumber.kind_of(pnum)).to eq "invalid"
+              expect(PatentNumber.number_of(pnum)).to eq "invalid"
             end
           end
 
