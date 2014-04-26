@@ -124,8 +124,7 @@ module PatentAgent
       result = Nokogiri::HTML(response)
 
       rescue => e
-        error = "for #{url} @ #{doc_number}\n ==> #{e.response}"
-        p error
+        p error = "for #{url} @ #{doc_number}\n ==> #{e.response}"
         case e.response.code
           when 403
             p "-EPO Robot #{error}"

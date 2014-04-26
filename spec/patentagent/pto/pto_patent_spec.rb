@@ -77,7 +77,7 @@ module PatentAgent
           its("claims.count")         {should eq 41}
           its("claims.indep_claims")  {should have(12).items}
           its("claims.dep_claims")    {should have(29).items}
-          its("claims.parsed_claims") {should have(41).items}
+          its("claims")               {should have(41).items}
           
           it "array access" do
             expect(patent.claims[15].text).to  match "15.  A digital transmitter "
@@ -91,15 +91,17 @@ module PatentAgent
       describe '#to_hash', vcr: true do
         subject(:hash) {patent.fetch.to_hash}
 
-        it ":title" do
-          expect(hash.fetch(:title)).to eq "Digital transmitter with equalization"
+      {
+        title:      "Digital transmitter with equalization",
+        inventors:  ["Dally; William J."],
+        assignees:  ["Massachusetts Institute of Technology"],
+        filed:      "June 25, 1997"
+      }.each do |key, value|
+        it ":#{key}" do
+            expect(hash).to have_key key
+            expect(hash[key]).to eq value
         end
-        it ":inventors" do
-          expect(hash.fetch(:inventors)).to eq ["Dally; William J."]
-        end
-        it ":assignees" do
-          expect(hash.fetch(:assignees)).to eq ["Massachusetts Institute of Technology"]
-        end
+      end
         
         # it "Size is 10" do
         #   expect(hash.size).to eq 10

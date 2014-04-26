@@ -31,12 +31,12 @@ module PatentAgent
     #
     # generic routine to create a publication data Hash
     #
-    def self.get_publication_data(doc)
-      country   = doc.css("country").text
-      id        = doc.css("doc-number").text
-      kind      = doc.css("kind").text
+    def self.get_publication_data(el)
+      country   = el.css("country").text
+      id        = el.css("doc-number").text
+      kind      = el.css("kind").text
       full      = "#{country}.#{id}.#{kind}"
-      date      =  doc.css("date").text
+      date      =  el.css("date").text
       published = !!(kind[0] =~ /^B/)
       { full: id, date: date, country: country, number: id, kind: kind, published: published}
     end
@@ -44,27 +44,34 @@ module PatentAgent
     class OpsPatent
       include Logging
       
-      attr_accessor :biblio, :family, :fc, :doc_number, :error_state
+      attr_accessor :biblio, :family, :fc, :patent_num, :error_state
       
       def initialize(pnum, options = {})   
         # setup options first with defaults
-        @options ||= {country: "US", debug:false, fc: nil, error_state: false }
-        @options.merge!(options)
-      
-        @doc_number = PatentNumber.new(pnum)
-        raise "Invalid Patent Number" if @doc_number.nil?
+        setup_options options
+        @patent_num = PatentNumber.new(pnum)
         
-        @ops_data = Reader.read(@doc_number, auth: true)
+        raise "Invalid Patent Number" unless @patent_num.valid?
+        
+        @ops_data = Reader.read(@patent_num, auth: true)
         @biblio, @family, @fc = @ops_data.data  
       end
 
-      def valid?
-        @ops_data
+      def setup_options(options)
+        @options ||= {
+          country: "US",
+          debug: false,
+          fc: nil,
+          auth: false,
+          error_state: false
+        }
+        
+        @options.merge!(options)
       end
 
-      def invalid?
-        @error_state
-      end
+      def valid?; @ops_data; end
+
+      def invalid?; @error_state; end
 
       def process
         return nil if error_state

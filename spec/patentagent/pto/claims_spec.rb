@@ -5,7 +5,7 @@ module PatentAgent::PTO
   describe Claims do
     let(:num)           {"6266379"}
     let(:pnum)          {"US" + num}
-    let(:claim_text)    {File.read(File.dirname(__FILE__) + "/../fixtures/#{pnum}.html") }
+    let(:claim_text)    {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
     subject(:claims)    {Claims.new(claim_text)}
 
     describe '#new' do

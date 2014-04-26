@@ -39,7 +39,7 @@ module PatentAgent
           patent.should be_valid
           patent.count.should eq 323
           patent.pages.should eq 7
-          patent.fc_references.should have(323).items
+          patent.should have(323).items
         end
       end
     end

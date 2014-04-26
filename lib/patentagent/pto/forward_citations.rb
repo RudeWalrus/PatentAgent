@@ -4,22 +4,20 @@
 
 module PatentAgent
   module PTO
-    class ForwardCitation
+    class ForwardCitation < Array
       attr_reader :parent, :html, :url, :fc_references
       attr_reader :count, :pages
       #
       # Receives a patent number or PatentNum
       def initialize(parent)
         @parent        = PatentNumber.new(parent)
-        @fc_references = []
       end
 
       def valid?
-        @count
+        self.count
       end
       
       def fetch
-        @fc_references = []
 
         # first grab the html and compute counts
         # the first grab will have the first page of data
@@ -33,7 +31,6 @@ module PatentAgent
           parse_fc_html(html)
         end
 
-        @fc_references
         self
       end
 
@@ -60,7 +57,7 @@ module PatentAgent
         # it grabs the patent numbers and stores them in the 
         # @fc_references array patent numbers
         # 
-        html.scan(/<a\s+href=[^>]*>([re\d,]+)<\/a>.*?>/mi).inject(@fc_references) {|o,m| o << m[0] }
+        html.scan(/<a\s+href=[^>]*>([re\d,]+)<\/a>.*?>/mi).inject(self) {|o,m| o << m[0] }
       end
       
       #

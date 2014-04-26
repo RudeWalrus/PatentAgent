@@ -5,12 +5,13 @@ require 'patentagent/patent'
 require 'patentagent/logging'
 require 'patentagent/patent_number'
 
-require 'patentagent/claims'
+
 
 require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
 
 require 'patentagent/pto/pto_reader'
+require 'patentagent/pto/claims'
 require 'patentagent/pto/pto_patent'
 require 'patentagent/pto/fields'
 require 'patentagent/pto/forward_citations'

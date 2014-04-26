@@ -3,12 +3,13 @@
 # License::   Creative Commons 3
 
 module PatentAgent
-
+ module PTO
+  
   Claim = Struct.new(:parent, :dep, :text) do
     def to_hash; {parent: parent, dep: dep, text: text }; end
   end
   
-  class Claims
+  class Claims < Hash
     include Logging
     include Enumerable
 
@@ -23,7 +24,6 @@ module PatentAgent
       @dep_claims, @indep_claims = [], []
       @total, @dep_count, @indep_count = 0, 0, 0
       @text = text
-      @parsed_claims = {}
     end
 
     def set_src(text)
@@ -67,18 +67,6 @@ module PatentAgent
       @total
     end
 
-    def [](index)
-      @parsed_claims[index]
-    end
-
-    #
-    # convinience method that iterates over the claims hash
-    # and returns the claim text
-    # @return [String]
-    def each(&block)
-      @parsed_claims.each { |key, obj| block.call(key, obj)}
-    end
-
     private
     
     def process(claim)
@@ -97,8 +85,8 @@ module PatentAgent
       end
       
       @total += 1
-      @parsed_claims[num] = Claim.new(parent, dep, claim)
+      self[num] = Claim.new(parent, dep, claim)
     end
   end
-
+end
 end
