@@ -19,20 +19,25 @@ module PatentAgent
       super
     end
 
-    def initialize(patent_number)
-      @clean = patent_number.to_s
+    def initialize(arg)
+      patent_number = arg.to_s
+      @clean = patent_number
       @country_code, @number, @kind   = PatentNumber.valid_patent_number(patent_number)
       raise InvalidPatentNumber unless valid?
 
       rescue InvalidPatentNumber
         puts "Bogus patent number #{patent_number}"
+    end
+
+    def to_patent
+      self
     end 
 
-    def full; "#{cc}#{number}"; end
+    def full;     "#{cc}#{number}";                 end
 
-    def to_s; valid? ? @clean : "invalid"; end
+    def to_s;     valid? ? @clean : "invalid";      end
 
-    def valid?(); @number; end
+    def valid?(); @number;                          end
 
     # figures out if a patent is published or not
     def self.is_published?(id, kind, country)
@@ -77,11 +82,11 @@ module PatentAgent
     #
     # convienece methods for getting part of a patent number
     #
-    def self.cc_of(num);      p = valid_patent_number(num); p ? p[0] : "invalid" ; end
+    def self.cc_of(num);      p = valid_patent_number(num); p ? p[0] : "invalid" ;    end
     
-    def self.number_of(num);  p = valid_patent_number(num); p ? p[1] : "invalid"; end
+    def self.number_of(num);  p = valid_patent_number(num); p ? p[1] : "invalid";     end
     
-    def self.kind_of(num);    p = valid_patent_number(num); p ? p[2] : "invalid"; end
+    def self.kind_of(num);    p = valid_patent_number(num); p ? p[2] : "invalid";     end
     
     private
       # formats the patent number to make it valid for HTML search
@@ -103,8 +108,23 @@ module PatentAgent
         num.match(/([A-Z]{2})/) {|m| m[1] == "RE" ? "US" : m[1]} || "US"
       end
 
-      def self.get_number(cc,num); return cc == "RE" ? "RE#{num}" : num; end
+      def self.get_number(cc,num);  return cc == "RE" ? "RE#{num}" : num;           end
 
-      def self.cleanup_number(num); num.to_s.upcase.delete(",").delete(" "); end
+      def self.cleanup_number(num); num.to_s.upcase.delete(",").delete(" ");        end
   end 
+
+  #
+  # coersion function for converting things to PatentNumbers
+  module_function
+
+  def PatentNumber(arg)
+    case arg
+    when PatentNumber           then arg
+    when String, Integer        then PatentNumber.new(arg)
+    when ->(n) {n.respond_to? :to_patent}
+      arg.to_patent
+    else
+      rais TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
+    end
+  end
 end

@@ -49,7 +49,7 @@ module PatentAgent::PTO
       end
 
       it "retrieves a Claim obj by index" do
-        expect(claims[3]).to           be_kind_of(Claim)
+        expect(claims[3]).to           be_kind_of(Claims::Claim)
       end
 
       it "retrieves a patent claim text by index" do

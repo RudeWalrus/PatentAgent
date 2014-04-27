@@ -9,6 +9,7 @@ module PatentAgent
       #
       # The basic patent parser class
       #
+      include PatentAgent
       include Logging
       
       attr_reader :options, :html, :patent_num, :fields, :claims
@@ -22,7 +23,7 @@ module PatentAgent
       
       def initialize(pnum, options = {})
         set_options(options)
-        @patent_num = PatentNumber.new(pnum)
+        @patent_num = PatentNumber(pnum)
         @fields = Fields.new
         @claims = Claims.new
 

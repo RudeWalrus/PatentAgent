@@ -1,8 +1,32 @@
 require 'spec_helper'
 require 'patentagent/patent_number'
 
+include PatentAgent
+
 module PatentAgent
   describe PatentNumber do
+    let(:num)   {7123456}
+    let(:pnum)  {num.to_s}
+    let(:p_obj) {PatentNumber.new(pnum)}
+
+    describe "PatentNumber() coersion" do
+      it "Coerses PatentNumber" do
+        PatentNumber(p_obj).should eq p_obj
+      end
+
+      it "Coerses String" do
+        obj = PatentNumber(pnum)
+        obj.should be_kind_of PatentNumber
+        obj.number.should eq pnum
+      end
+
+      it "Coerses Integer" do
+        obj = PatentNumber(num)
+        obj.should be_kind_of PatentNumber
+        obj.number.should eq pnum
+      end
+
+    end
     
     describe "Valid Patent Numbers" do
       @test= ->(num){
@@ -12,7 +36,7 @@ module PatentAgent
         end
       }
       
-      %w[4,555,666 5,121,121 6,333,333 7,555,991].each do |num|    
+      %w[4,555,666 5,121,121 6,333,333 7,555,991 8,333,121].each do |num|    
         @test.call(num)
         @test.call(num.delete(','))
         @test.call("US#{num}")
@@ -38,26 +62,17 @@ module PatentAgent
 
     context "Class Methods" do
       let(:good)         {"US7,267,263.B1"}
-      let(:bad)         {"US9,267,263.B1"}
+      let(:bad)         {"US3,267,263.B1"}
 
-      it "#cc_of " do
-        PatentNumber.cc_of(good).should eq "US"
+      {cc_of: "US", kind_of: "B1", number_of: "7267263"}.each do |proc, value|
+        it "checks :#{proc} with good" do
+          PatentNumber.send(proc.to_sym, good). should eq value
+        end
       end
-      it "#number_of" do
-        PatentNumber.number_of(good).should eq "7267263"
-      end
-      it "#kind_of" do
-        PatentNumber.kind_of(good).should eq "B1"
-      end
-
-      it "bad: #cc_of " do
-        PatentNumber.cc_of(bad).should eq "invalid"
-      end
-      it "#number_of" do
-        PatentNumber.number_of(bad).should eq "invalid"
-      end
-      it "#kind_of" do
-        PatentNumber.kind_of(bad).should eq "invalid"
+      %w[cc_of kind_of number_of].each do |proc|
+        it "checks :#{proc} with bad" do
+          PatentNumber.send(proc.to_sym, bad). should eq "invalid"
+        end
       end
     end
 
