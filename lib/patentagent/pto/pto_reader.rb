@@ -6,18 +6,38 @@ require 'patentagent'
 module PatentAgent
   module PTO
     class PTOReader
-      
-      
-      class << self
       include PatentAgent
       include Logging
+      
+      attr_reader :valid, :text
+      
+      HTTPError = Class.new(RuntimeError)
 
-      def read(num)
-        get_from_url(patent_url(PatentNumber(num)))
+      def initialize(num)
+        @patent = PatentNumber(num)
       end
 
-      def read_fc(num, page)
-        get_from_url(fc_url(PatentNumber(num), page))
+      def read
+        @url = patent_url(@patent)
+        @text = get_from_url()
+          rescue => e
+            "HTTP Error"
+      end
+
+      def read_fc(page)
+        @url = fc_url(@patent, page)
+        @text = get_from_url()
+        rescue => e
+            "HTTP Error"
+      end
+
+
+      def self.read(num)
+        new(num).read
+      end
+
+      def self.read_fc(num, page)
+        new(num).read_fc(page)
       end
 
       private
@@ -41,9 +61,8 @@ module PatentAgent
         RestClient.get(url).to_str
         rescue => e
           log "#{e} for #{url}"
-          nil
+          raise HTTPError
       end
-    end
     end
   end
 end

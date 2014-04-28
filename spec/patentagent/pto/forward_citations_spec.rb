@@ -21,7 +21,7 @@ module PatentAgent
           it "Calculates the right number of references for #{cnt}" do
             this_page = cnt < 50 ? cnt : 50
             hits = "hits 1 through #{this_page} out of #{cnt}"
-            PTOReader.stub(:get_from_url).and_return(hits)
+            ForwardCitation.any_instance.stub(:get_html).and_return(hits)
             patent.fetch
             expect(patent.count).to eq cnt
             expect(patent.pages).to eq (cnt.to_f / 50.0).ceil

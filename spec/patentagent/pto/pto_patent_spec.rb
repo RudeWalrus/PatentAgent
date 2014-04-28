@@ -9,7 +9,7 @@ module PatentAgent
       let(:pnum)             {PatentNumber.new(patent_num)}
       subject(:patent)       {PTOPatent.new(pnum)}
       
-      context "#initialize", vcr: true do    
+      describe "#initialize", vcr: true do    
         
         it {should be}
         it {should be_kind_of(PTOPatent)}
@@ -42,8 +42,9 @@ module PatentAgent
       
       describe "HTTP Errors" do
         it "#valid? returns false on HTTP error" do
-          RestClient.stub(:get).and_raise("HTTP Error")
-          PTOPatent.new(pnum).fetch.valid?.should be_false
+          PTOReader.stub(:read).and_raise("HTTP Error")
+          p = PTOPatent.new(pnum)
+          p.should_not be_valid
         end
       end
 

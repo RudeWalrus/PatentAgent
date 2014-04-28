@@ -9,7 +9,7 @@ module PatentAgent
       let(:html)          {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
       subject(:fields)    {Fields.new(html)}
 
-      context "#initialize" do     
+      describe "#initialize" do     
         it {should be}
         it {should be_kind_of(Fields)}
 
@@ -31,7 +31,7 @@ module PatentAgent
         end
       end  
 
-      context "validate data" do
+      describe "validate data" do
         its(:abstract)    {should match("An equalizer provided in a digital transmitter compensates for attenuation") }
         its(:title)       {should match("Digital transmitter with equalization")}
         its(:inventors)   {should have(1).items }
@@ -42,13 +42,13 @@ module PatentAgent
         its(:figures)     {should be_kind_of(Array)}     
       end
 
-      context "#parse_field" do
+      describe "#parse_field" do
         it "parses a single field" do
           fields.parse_field(:title).should match("Digital transmitter with equalization") 
         end
       end
 
-      context "self.each" do
+      describe "self.each" do
         it "returns each field" do
           @count = 0
           Fields.each do |field, obj|
@@ -58,7 +58,7 @@ module PatentAgent
         end
       end
 
-      context "self.add" do
+      describe "self.add" do
         before do
           gross = /Primary Examiner:<\/I>(.*?)<BR>/mi
           fine = /<\/I>(.*?)<BR>/mi

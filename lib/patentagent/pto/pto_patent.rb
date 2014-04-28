@@ -24,14 +24,15 @@ module PatentAgent
       def initialize(pnum, options = {})
         set_options(options)
         @patent_num = PatentNumber(pnum)
-        @html   = fetch(@patent_num)
-        @fields = Fields.new(html)
-        @claims = Claims.new(html)
+        @html       = fetch(@patent_num)
+        @fields     = Fields.new(html)
+        @claims     = Claims.new(html)
         log "Processed: #{@patent_num.to_s}"
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
 
-        rescue InvalidPatentNumber => error
+        rescue => error
           log "#{error}"
+          @error = true
       end
       
       def set_options(opts)
@@ -48,7 +49,7 @@ module PatentAgent
         @patent_num && @patent_num.respond_to?(:valid?) && @patent_num.valid?
       end
 
-      def valid?; valid_patnum? && !!@html; end
+      def valid?; !@error && valid_patnum? && !!@html; end
       
       def valid_html?; !!@html; end
 

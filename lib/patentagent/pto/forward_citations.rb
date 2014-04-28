@@ -5,12 +5,13 @@
 module PatentAgent
   module PTO
     class ForwardCitation < Array
+      include PatentAgent
       attr_reader :parent, :html, :url, :fc_references
       attr_reader :count, :pages
       #
       # Receives a patent number or PatentNum
       def initialize(parent)
-        @parent        = PatentNumber.new(parent)
+        @parent        = PatentNumber(parent)
       end
 
       def valid?
@@ -18,17 +19,16 @@ module PatentAgent
       end
       
       def fetch
-
         # first grab the html and compute counts
         # the first grab will have the first page of data
-        get_html(1)
+        @html = get_html(1)
         get_counts
         parse_fc_html
         
         # now do the remainder of the pages
         (2..@pages).each do |page|
-          html = get_html(page)
-          parse_fc_html(html)
+          @html = get_html(page)
+          parse_fc_html(@html)
         end
 
         self
@@ -38,13 +38,14 @@ module PatentAgent
 
       def get_html(page)
         html  = PTOReader.read_fc(@parent, page)
-        @html = clean_html(html)
+        clean_html(html)
       end
 
       #
       # 
       #
       def get_counts(page=1)
+        @html
         @count, @pages = compute_counts @html
       end
 
