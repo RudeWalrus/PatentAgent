@@ -17,17 +17,31 @@ module PatentAgent
     def initialize(pnum, options = {})
       set_options options
       @pnum = PatentNumber(pnum)
-      ops = OPS::OpsPatent.new(pnum)
-      @family = ops.family
-      @patent = @family[0]
+
+      @ops = OPS::OpsPatent.new(pnum)
+      @pto = PTO::PTOPatent.new(pnum)
+      
+      # @family = @ops.family
+      # @patent = @family[0] 
+      
+    end
+      #
+      # map the Claims structs to hashes
+      #
+    def claims
+      @claims ||= begin
+        @claims = {}
+        @pto.claims.each {|k,v| @claims[k] = v.to_hash }
+        @claims
+      end
     end
 
     def patent
-      @patent || {}
+      @patent ||= (family[0] || {})
     end
 
     def family
-      @family || []
+      @family ||= (@ops.family || [])
     end
 
     private
