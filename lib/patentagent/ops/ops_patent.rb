@@ -16,36 +16,11 @@ require 'json'
 
 module PatentAgent
   module OPS  
-    #
-    # convert patent date to a Time object
-    #
-    def self.to_patent_date(text)
-      /(\d{4})(\d{2})(\d{2})/.match(text.to_s)
-      Time.utc($1, $2, $3) unless $1.nil?
-    end
-
-    # create a proc version of the above to pass to map, each, etc.
-    def self.pub_data 
-      method(:get_publication_data).to_proc
-    end
-    #
-    # generic routine to create a publication data Hash
-    #
-    def self.get_publication_data(el)
-      country   = el.css("country").text
-      id        = el.css("doc-number").text
-      kind      = el.css("kind").text
-      full      = "#{country}.#{id}.#{kind}"
-      date      =  el.css("date").text
-      published = !!(kind[0] =~ /^B/)
-      { full: id, date: date, country: country, number: id, kind: kind, published: published}
-    end
-
     class OpsPatent
       include PatentAgent
       include Logging
       
-      attr_accessor  :patent_num, :error_state, :family_members
+      attr_accessor  :patent_num, :error_state, :family_members, :target
       
       def initialize(pnum, options = {})   
         # setup options first with defaults
@@ -57,21 +32,34 @@ module PatentAgent
         # returns a Nokogiri document
         @family_members = []
         @nodes = Reader.get_family(@patent_num)
+        @fields = parse 
+        
+        # the publicly viewable methods
+        @target = @fields[0].to_hash
+      end
 
-
-
-        # loop through the nodes (each family) and process each one
-        @family = @nodes.css("ops|family-member").map {|node|
+      #
+      # iterate through teh family members and parse them. 
+      # @Returns: Array of family members (each is a Hash)
+      def parse
+        @nodes.css("ops|family-member").map {|node|
           add_family_member(node)
           item = OPSFields.new(node)
-        }  
+        } 
+      end
+      
+      #
+      # @returns: Array. All of the parsed data. Each element of the the array is a family member.
+      #                   element 0 is the base patent
+      def to_a
+        @fields.map(&:to_hash) || []
       end
       #
       # delegate calls for the fields to the OPSFields object
       # the primary patent is the first one in the array
       #
       def method_missing(method, *args)
-        return @family[0].send(method) if @family[0].respond_to?(method)
+        return @fields[0].send(method) if @fields[0].respond_to?(method)
         super
       end
 
@@ -86,6 +74,15 @@ module PatentAgent
           kind = el.css("kind").text
           @family_members << "#{cc}#{num}.#{kind}"
       end
+
+      def cache; @cache ||= {};  end
+
+      def family; to_a || []; end
+      
+      def valid?; @ops_data; end
+
+      def invalid?; @error_state; end
+      
       def setup_options(options)
         @options ||= {
           country: "US",
@@ -96,34 +93,6 @@ module PatentAgent
         }
         @options.merge!(options)
       end
-
-      def valid?; @ops_data; end
-
-      def invalid?; @error_state; end
-
-      def to_a
-        array = family.map {|patent| patent.to_hash }
-      end
-      
-      # def process
-      #   return nil if error_state
-        
-        
-      #   family = Family.from_xml(@family)
-      #   log "Family", family.families
-        
-      #   _fc = ForwardCitation.from_xml(@fc)
-      #   log "Forward Citations", _fc.citations
-        
-      #   tree = fetch_fc
-      #   log "Normalized Forward Citations", tree
-      #   print "Processed (#{@patent_number}\n)"
-      # end
-     
-      def cache; @cache ||= {};  end
-
-      def family; @family ||= []; end
-      
       def forward_citations
         fc.css("document-id").map do |item|
           country = item.css("country").text
@@ -200,6 +169,21 @@ module PatentAgent
         end
         members
       end 
+
+      # def process
+      #   return nil if error_state
+        
+        
+      #   family = Family.from_xml(@family)
+      #   log "Family", family.families
+        
+      #   _fc = ForwardCitation.from_xml(@fc)
+      #   log "Forward Citations", _fc.citations
+        
+      #   tree = fetch_fc
+      #   log "Normalized Forward Citations", tree
+      #   print "Processed (#{@patent_number}\n)"
+      # end
     end
     
     class ForwardCitation
@@ -252,5 +236,30 @@ module PatentAgent
         {full: full, number: id, country: country, kind: kind, date: date, published: published}
       end
     end 
+
+    #
+    # convert patent date to a Time object
+    #
+    def self.to_patent_date(text)
+      /(\d{4})(\d{2})(\d{2})/.match(text.to_s)
+      Time.utc($1, $2, $3) unless $1.nil?
+    end
+
+    # create a proc version of the above to pass to map, each, etc.
+    def self.pub_data 
+      method(:get_publication_data).to_proc
+    end
+    #
+    # generic routine to create a publication data Hash
+    #
+    def self.get_publication_data(el)
+      country   = el.css("country").text
+      id        = el.css("doc-number").text
+      kind      = el.css("kind").text
+      full      = "#{country}.#{id}.#{kind}"
+      date      =  el.css("date").text
+      published = !!(kind[0] =~ /^B/)
+      { full: id, date: date, country: country, number: id, kind: kind, published: published}
+    end
   end
 end

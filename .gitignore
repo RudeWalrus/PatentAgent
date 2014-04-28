@@ -7,3 +7,5 @@ pkg/*
 .ruby*
 tmp/*
 spec.opts
+Guardfile
+patentagent.log

@@ -20,9 +20,9 @@ module PatentAgent::OPS
       classification_nationals: ->(n) {n.css("classification-national text").map { |el|  el.text.delete(" ")} },
       references:           ->(n) {n.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort },
       issue_date:           ->(n) {n.css('publication-reference document-id date').first.text},
-      priorities:           ->(n) {n.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').map { |el| OPSFields.to_doc_date(el)} },
-      classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| OPSFields.to_classification(el)} },
-      applications:         ->(n) {n.css('application-reference document-id[document-id-type="epodoc"]').map { |el| OPSFields.to_doc_date(el)} }
+      priorities:           ->(n) {n.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').map { |el| to_doc_date(el)} },
+      classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| to_classification(el)} },
+      applications:         ->(n) {n.css('application-reference document-id[document-id-type="epodoc"]').map { |el| to_doc_date(el)} }
     }.each { |k, value| define_method(k) { instance_variable_get "@#{k}" }}
 
     #
@@ -30,17 +30,18 @@ module PatentAgent::OPS
     #
 
     # formatters for hashes
-
+    def self.keys; FIELDS.keys; end
+    
     def self.to_doc_date(el); { doc_number: el.css('doc-number').text, date: el.css('date').text }; end
 
     def self.to_classification(el)
-      {
-      section:    el.css("section").text,
-      class:      el.css("class").text,
-      subclass:   el.css("subclass").text, 
-      main_group: el.css("main-group").text,
-      subgroup:   el.css("subgroup").text
-      }
+      section    =   el.css("section").text
+      _class     =   el.css("class").text
+      subclass   =   el.css("subclass").text 
+      main_group =   el.css("main-group").text
+      subgroup   =   el.css("subgroup").text
+      full = section + _class + subclass +  main_group + '/' + subgroup 
+      {full: full, section: section, class: _class, subclass: subclass, main_group: main_group, subgroup: subgroup }
     end
     #
     # enumerators
@@ -88,6 +89,5 @@ module PatentAgent::OPS
     def set_key( key, value )
       instance_variable_set("@#{key}",value)
     end
-
   end
 end

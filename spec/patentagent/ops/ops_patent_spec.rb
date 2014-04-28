@@ -17,9 +17,20 @@ module PatentAgent::OPS
     its(:family_members)   {should include("US7139271.B1", "US7286566.B1")}
     its(:to_a)        {should be_kind_of Array}
     its("to_a.size")  {should eq 9}
+    its(:target)      {should be_kind_of Hash}
     
+    it "#to_a" do
+      patent.to_a.should be_kind_of Array
+      patent.to_a.size.should eq 9
+      9.times {|x| 
+        patent.to_a[x][:inventors].should satisfy {|x| x.grep "PARRUCK BIDYUT"}
+        patent.to_a[x].should be
+    }
+    end
+
     it "Finds correct number of family members" do
-      patent.family.count.should eq 9
+      patent.family.should be_kind_of Array
+      patent.family.size.should eq 9
     end
 
     it "Has the right title for primary patent" do

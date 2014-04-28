@@ -7,66 +7,27 @@ require "forwardable"
 
 module PatentAgent    
   class Patent
-    DEFAULT_OPTIONS = {
-      authority: :pto,
-      debug:     false,
-      logging:   true  
-    }
-    attr_reader :pat_num, :patent
     
+    attr_reader :pnum
+    include PatentAgent
     extend Forwardable
-
-    def_delegators :pat_num, :number, :cc, :kind
+    def_delegators :pnum, :number, :cc, :kind
     
-    #
-    # allows calling fetch on directly on Patent class
-    # initializes and fetches
-    # 
-    # @return [Patent] A new instance of PatentAgent::Patent
-    #
-    def self.fetch(pnum, options = {})
-      new(pnum, options).fetch
-    end
-
-    def self.config(pnum, opts = {})
-      yield self if block_given?
-    end
     
     def initialize(pnum, options = {})
       set_options options
-      @pat_num = PatentNumber.new(pnum)
-
-      return unless valid?
-     
-      @patent = case @options[:authority]
-      when :pto
-        PTO::PTOPatent.new(@pat_num)
-      # when :epo
-      #   OPS::Patent.new(@patent_num)
-      else
-        PTO::PTOPatent.new(@pat_num)
-      end
+      @pnum = PatentNumber(pnum)
+      ops = OPS::OpsPatent.new(pnum)
+      @family = ops.family
+      @patent = @family[0]
     end
 
-    def fetch
-      @patent.fetch
+    def patent
+      @patent || {}
     end
 
-    def authority
-      @options[:authority]
-    end
-
-    def debug
-      @options[:debug]
-    end
-
-
-    def valid?
-      @pat_num && @pat_num.valid?
-    end
-
-    def fetched?
-      number && inventors && priority_date
+    def family
+      @family || []
     end
 
     private
@@ -83,9 +44,9 @@ module PatentAgent
       end
 
     def set_options(opts)
-        @options ||= DEFAULT_OPTIONS
-        @options.merge!(opts)
-        PatentAgent.debug = @options[:debug]
+        #@options.merge!(opts)
+        @options = {}
+        PatentAgent.debug = @options.fetch(:debug) {false}
       end
   end
 end

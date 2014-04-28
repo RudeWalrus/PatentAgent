@@ -25,14 +25,23 @@ module PatentAgent::OPS
     its(:issue_date)  {should eq "20061121"}
     
     it "#classifications" do
-      cls = fields.classifications.map{|h| h.values.inject(&:+)}
-      cls.should include "H04L47621", "H04L125601", "H04L125602"
+      cls = fields.classifications.map{|h| h[:full]}
+      cls.should include "H04L47/621", "H04L12/5601", "H04L12/5602"
     end
     it "has correct priority" do
       fields.priority.should eq "20010207"
     end
     it "has correct application" do
       fields.applications[0][:date].should eq "20011012"
+    end
+    
+    describe "#to_hash" do
+      before {@hash = fields.to_hash}
+      OPSFields.keys.each {|key|
+        it "creates field for :#{key}" do
+          @hash[key].should be
+        end
+      }
     end
   end
 end

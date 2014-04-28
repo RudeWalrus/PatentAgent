@@ -23,15 +23,15 @@ http_interactions:
       Content-Type:
       - application/xml
       Date:
-      - Mon, 28 Apr 2014 03:09:53 GMT
+      - Mon, 28 Apr 2014 19:29:05 GMT
       Etag:
-      - '"0f4942eecba1f4fe0aa7535b159f307c6"'
+      - '"03e268152f5e269dcd43f326cca98b049"'
       Server:
       - Apache
       X-Anonymousquotaperday-Used:
-      - '7374883'
+      - '20421618'
       X-Anonymousquotaperminute-Used:
-      - '1'
+      - '4'
       X-Api:
       - ops-v3.1
       X-Epo-Client-Ip:
@@ -39,7 +39,7 @@ http_interactions:
       X-Epo-Forwarded:
       - "[67.170.203.170]"
       X-Individualquotaperhour-Used:
-      - '2269387'
+      - '3403544'
       X-Powered-By:
       - 'Servlet 2.4; JBoss-4.3.0.GA_CP07 (build: SVNTag=JBPAPP_4_3_0_GA_CP07 date=200911251949)/JBossWeb-2.0'
       X-Throttling-Control:
@@ -58,7 +58,7 @@ http_interactions:
         bnM9Imh0dHA6Ly93d3cuZXBvLm9yZy9leGNoYW5nZSIgeG1sbnM6b3BzPSJo
         dHRwOi8vb3BzLmVwby5vcmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3Lncz
         Lm9yZy8xOTk5L3hsaW5rIj4KICAgIDxvcHM6bWV0YSBuYW1lPSJlbGFwc2Vk
-        LXRpbWUiIHZhbHVlPSIzMiIvPgogICAgPG9wczpwYXRlbnQtZmFtaWx5IGxl
+        LXRpbWUiIHZhbHVlPSIyOSIvPgogICAgPG9wczpwYXRlbnQtZmFtaWx5IGxl
         Z2FsPSJmYWxzZSI+CiAgICAgICAgPG9wczpwdWJsaWNhdGlvbi1yZWZlcmVu
         Y2U+CiAgICAgICAgICAgIDxkb2N1bWVudC1pZCBkb2N1bWVudC1pZC10eXBl
         PSJlcG9kb2MiPgogICAgICAgICAgICAgICAgPGRvYy1udW1iZXI+VVM3MTM5
@@ -12659,5 +12659,5 @@ http_interactions:
         ICAgICAgIDwvb3BzOmZhbWlseS1tZW1iZXI+CiAgICA8L29wczpwYXRlbnQt
         ZmFtaWx5Pgo8L29wczp3b3JsZC1wYXRlbnQtZGF0YT4=
     http_version: 
-  recorded_at: Mon, 28 Apr 2014 03:09:54 GMT
+  recorded_at: Mon, 28 Apr 2014 19:29:06 GMT
 recorded_with: VCR 2.5.0
