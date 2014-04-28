@@ -99,4 +99,4 @@ end
 
 
 data = Ops.new("family.xml")
-p data.get_priority
+p data.family

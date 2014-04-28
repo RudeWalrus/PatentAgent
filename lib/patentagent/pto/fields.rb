@@ -6,15 +6,20 @@
 module PatentAgent
   module PTO
     class Fields
-
       include Logging
 
-      # TODO: add these fields
-      # :ipc_codes, :back_citations, :fwd_citations, :pct
-      
-      # 
-      # create the fields and define getter methods for them
-      #
+      # error raised when passed a bad patent number
+      NoTextSource = Class.new(RuntimeError)
+
+      attr_reader :html
+
+      def initialize(html)
+        @html = html
+        raise NoTextSource, "No HTML source for Fields" unless @html
+        parse
+      end
+
+    
       # Fields includes the field name, a gross filter search, a fine filter search and an optional filter proc
       #
       FIELDS    = {
@@ -38,9 +43,9 @@ module PatentAgent
         FIELDS.each() { |field, obj| yield field, obj }
       end
 
-      def self.count
-        FIELDS.size
-      end
+      def self.count; FIELDS.size; end
+      
+      def self.keys; FIELDS.keys; end
 
       #
       # allows a user to add fields to the search
@@ -49,35 +54,11 @@ module PatentAgent
         define_method(field) {instance_variable_get "@#{field}" }
       end
 
-      #
-      # instance methods
-      #
-
-      # error raised when passed a bad patent number
-      NoTextSource = Class.new(RuntimeError)
-
-      attr_reader :html
-
-      def initialize(html=nil)
-        @html = html
-      end
-
-
-      def set_src(text)
-        @html = text
-        return self
-      end
-
-      def valid?
-        !!@html
-      end
-
+    
       #
       # parses all of the fields
       # @returns: self (can be chained)
       def parse
-        raise NoTextSource, "No HTML source for Fields" if !valid?
-
         FIELDS.each do |field, search|
           parse_single_field(field, search)
         end
@@ -86,11 +67,7 @@ module PatentAgent
 
       #
       # convenience method to parse a single field by key
-      # @returns: self
-      def parse_field(field)
-        hash = FIELDS[field]
-        parse_single_field(field, hash)
-      end
+      def parse_field(field); parse_single_field(field, FIELDS[field]); end
 
       def to_hash
         hash = {}
@@ -136,7 +113,7 @@ module PatentAgent
         item
 
         rescue => e
-          ["Field parse error: Not Found: #{field} #{params[:gross]} #{@html}"]
+          log "Field parse error: Not Found: #{field} "
       end
         
       def log_field(field, message)

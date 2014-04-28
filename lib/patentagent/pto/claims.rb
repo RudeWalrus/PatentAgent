@@ -20,15 +20,11 @@ module PatentAgent
       # error raised when a bad claim is found
       MalformedClaim = Class.new(RuntimeError)
       
-      def initialize(text=nil)
+      def initialize(html)
         @dep_claims, @indep_claims = [], []
         @total, @dep_count, @indep_count = 0, 0, 0
-        @text = text
-      end
-
-      def set_src(text)
-        @text = text
-        return self
+        @text = html
+        parse
       end
 
       def valid?;     !!@text;     end

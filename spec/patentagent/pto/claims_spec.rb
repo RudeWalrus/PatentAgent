@@ -8,24 +8,8 @@ module PatentAgent::PTO
     let(:claim_text)    {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.html") }
     subject(:claims)    {Claims.new(claim_text)}
 
-    describe '#new' do
-      it "#initialize an empty class" do
-        expect(claims.count).to         eq 0
-        expect(claims.dep_count).to     eq 0
-        expect(claims.indep_count).to   eq 0
-        expect(claims.total).to         eq 0
-        expect(claims.dep_claims).to    eq []
-        expect(claims.indep_claims).to  eq []
-      end
-    end
       
-    context "#parse" do
-      before  {claims.parse}
-
-      it "returns an instance of itself on #parse" do
-        the_claim = claims.parse
-        expect(the_claim).to eq(claims)
-      end
+    context "#initialize" do
 
       it "has the right count" do  
         expect(claims.count).to         eq 41

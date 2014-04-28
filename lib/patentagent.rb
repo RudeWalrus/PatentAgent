@@ -9,7 +9,7 @@ require 'patentagent/patent_number'
 
 require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
-require 'patentagent/ops/fields'
+require 'patentagent/ops/ops_fields'
 
 require 'patentagent/pto/pto_reader'
 require 'patentagent/pto/claims'

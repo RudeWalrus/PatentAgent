@@ -38,12 +38,6 @@ module PatentAgent
           pat = PTOPatent.new(pnum, :debug => true)
           pat.debug.should be_true
         end
-
-        it "prints log message when enabled" do
-          pat = PTOPatent.new(pnum, :debug => true)
-          pat.should_receive(:log).at_least(:once)
-          pat.fetch
-        end
       end
       
       describe "HTTP Errors" do
@@ -54,7 +48,7 @@ module PatentAgent
       end
 
       describe '#fetch', vcr: true do
-        subject(:patent) {PTOPatent.new(pnum).fetch}
+        subject(:patent) {PTOPatent.new(pnum)}
 
         it "is valid and has html" do
           expect(patent).to be_valid
@@ -89,7 +83,7 @@ module PatentAgent
       end
 
       describe '#to_hash', vcr: true do
-        subject(:hash) {patent.fetch.to_hash}
+        subject(:hash) {patent.to_hash}
 
       {
         title:      "Digital transmitter with equalization",
@@ -102,10 +96,6 @@ module PatentAgent
             expect(hash[key]).to eq value
         end
       end
-        
-        # it "Size is 10" do
-        #   expect(hash.size).to eq 10
-        # end
         
       end
     end

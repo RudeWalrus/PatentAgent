@@ -42,9 +42,10 @@ module PatentAgent
     end
 
     class OpsPatent
+      include PatentAgent
       include Logging
       
-      attr_accessor :biblio, :family, :fc, :patent_num, :error_state
+      attr_accessor  :patent_num, :error_state, :family_members
       
       def initialize(pnum, options = {})   
         # setup options first with defaults
@@ -52,11 +53,39 @@ module PatentAgent
         @patent_num = PatentNumber(pnum)
         
         raise "Invalid Patent Number" unless @patent_num.valid?
-        @fields = Fields.new
-        @ops_data = Reader.read(@patent_num, auth: true)
-        @biblio, @family, @fc = @ops_data.data  
+
+        # returns a Nokogiri document
+        @family_members = []
+        @nodes = Reader.get_family(@patent_num)
+
+
+
+        # loop through the nodes (each family) and process each one
+        @family = @nodes.css("ops|family-member").map {|node|
+          add_family_member(node)
+          item = OPSFields.new(node)
+        }  
+      end
+      #
+      # delegate calls for the fields to the OPSFields object
+      # the primary patent is the first one in the array
+      #
+      def method_missing(method, *args)
+        return @family[0].send(method) if @family[0].respond_to?(method)
+        super
       end
 
+      def respond_to_missing?(method, include_private = false)
+        @family[0].respond_to?(method) || super
+      end
+
+      def add_family_member(node)
+          el   = node.css("publication-reference document-id").first
+          cc   = el.css("country").text
+          num  = el.css("doc-number").text
+          kind = el.css("kind").text
+          @family_members << "#{cc}#{num}.#{kind}"
+      end
       def setup_options(options)
         @options ||= {
           country: "US",
@@ -72,6 +101,10 @@ module PatentAgent
 
       def invalid?; @error_state; end
 
+      def to_a
+        array = family.map {|patent| patent.to_hash }
+      end
+      
       # def process
       #   return nil if error_state
         
@@ -86,9 +119,10 @@ module PatentAgent
       #   log "Normalized Forward Citations", tree
       #   print "Processed (#{@patent_number}\n)"
       # end
-    
-    
-    
+     
+      def cache; @cache ||= {};  end
+
+      def family; @family ||= []; end
       
       def forward_citations
         fc.css("document-id").map do |item|
@@ -99,11 +133,6 @@ module PatentAgent
         end
       end
     
-      def family_tree
-        @family.css('family-member > publication-reference document-id[@document-id-type="docdb"]').map &OPS.pub_data
-      end
-
-  
       #
       # grabs the forward-sited references for doc_number
       #
@@ -222,6 +251,6 @@ module PatentAgent
         full      = "#{country}.#{id}.#{kind}"
         {full: full, number: id, country: country, kind: kind, date: date, published: published}
       end
-    end
+    end 
   end
 end

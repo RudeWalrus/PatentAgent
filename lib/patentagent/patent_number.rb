@@ -29,9 +29,7 @@ module PatentAgent
         puts "Bogus patent number #{patent_number}"
     end
 
-    def to_patent
-      self
-    end 
+    def to_patent; self;                           end
 
     def full;     "#{cc}#{number}";                 end
 
@@ -124,7 +122,7 @@ module PatentAgent
     when ->(n) {n.respond_to? :to_patent}
       arg.to_patent
     else
-      rais TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
+      raise TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
     end
   end
 end

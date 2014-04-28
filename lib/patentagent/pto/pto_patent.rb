@@ -24,9 +24,10 @@ module PatentAgent
       def initialize(pnum, options = {})
         set_options(options)
         @patent_num = PatentNumber(pnum)
-        @fields = Fields.new
-        @claims = Claims.new
-
+        @html   = fetch(@patent_num)
+        @fields = Fields.new(html)
+        @claims = Claims.new(html)
+        log "Processed: #{@patent_num.to_s}"
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
 
         rescue InvalidPatentNumber => error
@@ -40,40 +41,21 @@ module PatentAgent
       end
       
       def fetch(patent_number = @patent_num)
-        if html
-          @fields.set_src(@html).parse
-          @claims.set_src(@html).parse
-        end
-        log "processed:", patent_number
-        self
+        PTOReader.read(patent_number)
       end
 
       def valid_patnum?
-       @patent_num && @patent_num.respond_to?(:valid?)
+        @patent_num && @patent_num.respond_to?(:valid?) && @patent_num.valid?
       end
 
-      def valid?
-       valid_patnum? && !!@html
-      end
+      def valid?; valid_patnum? && !!@html; end
       
-      def valid_html?
-        !!@html
-      end
+      def valid_html?; !!@html; end
 
-      def invalid_patent?
-        !!@html[/No patents have matched your query/mi]
-      end
 
-      def to_hash
-        @fields.to_hash
-      end
+      def to_hash; @fields.to_hash; end
       
       private
-      
-      def html(patent_number = @patent_num)
-        #url     = USPTO::URL.patent_url(patent_number)
-        @html ||= PTOReader.read(patent_number)
-      end
       #
       # delegate calls for the fields to the PatentFields object
       #
