@@ -20,9 +20,8 @@ module PatentAgent
 
       @ops = OPS::OpsPatent.new(pnum)
       @pto = PTO::PTOPatent.new(pnum)
-      
-      # @family = @ops.family
-      # @patent = @family[0] 
+
+      rationalize
       
     end
       #
@@ -34,6 +33,15 @@ module PatentAgent
         @pto.claims.each {|k,v| @claims[k] = v.to_hash }
         @claims
       end
+    end
+
+    def rationalize
+      # brute force now
+      p "Title: #{@pto.title == @ops.title}"
+      p "Abstract: #{@pto.abstract == @ops.abstract}"
+      p "Assignees: #{@pto.assignees}:#{@ops.assignees}"
+      p "Filed: #{@pto.file_date}:#{@ops.file_date}"
+      p "Inventors: #{@pto.inventors}:#{@ops.inventors}"
     end
 
     def patent

@@ -4,6 +4,8 @@ $: << File.dirname(__FILE__) + '../patentagent/pto'
 require 'patentagent/patent'
 require 'patentagent/logging'
 require 'patentagent/patent_number'
+require 'patentagent/dispatcher'
+require 'patentagent/client'
 
 
 

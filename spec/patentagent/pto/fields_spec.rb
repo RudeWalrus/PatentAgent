@@ -23,7 +23,7 @@ module PatentAgent
            expect(fields.abstract).to be
            expect(fields.assignees).to be
            expect(fields.app_number).to be
-           expect(fields.filed).to be
+           expect(fields.file_date).to be
            expect(fields.inventors).to be
            expect(fields.text).to be
            expect(fields.parent_case).to be
@@ -36,7 +36,7 @@ module PatentAgent
         its(:title)       {should match("Digital transmitter with equalization")}
         its(:inventors)   {should have(1).items }
         its(:app_number)  {should match("08/882,252") }
-        its(:filed)       {should match("June 25, 1997") }
+        its(:file_date)   {should match("June 25, 1997") }
         its(:text)        {should match("data modems have long")}
         its(:figures)     {should have_at_least(1).items}
         its(:figures)     {should be_kind_of(Array)}     

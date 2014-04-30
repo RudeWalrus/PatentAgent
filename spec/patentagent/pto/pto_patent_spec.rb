@@ -2,17 +2,18 @@ require 'spec_helper'
 
 module PatentAgent
   module PTO
-    describe PTOPatent do
+    describe PtoPatent do
       let(:number)           {"6266379"}
       let(:cc)                {"US"}
       let(:patent_num)       {cc + number}
       let(:pnum)             {PatentNumber.new(patent_num)}
-      subject(:patent)       {PTOPatent.new(pnum)}
+      let(:html)             {PTOReader.read(pnum)}
+      subject(:patent)       {PtoPatent.new(pnum, html)}
       
       describe "#initialize", vcr: true do    
         
         it {should be}
-        it {should be_kind_of(PTOPatent)}
+        it {should be_kind_of(PtoPatent)}
      
           
         its(:patent_num) {should be_valid} 
@@ -23,11 +24,11 @@ module PatentAgent
 
      
         it "is not valid with invalid patent number" do
-          PTOPatent.new("US555").should_not be_valid
+          PtoPatent.new("US555", html).should_not be_valid
         end
       
         it "invalid patent number raises an error" do
-          PTOPatent.new("MyPatent5555").should raise_error
+          PtoPatent.new("MyPatent5555", html).should raise_error
         end
 
         it "responds to #debug" do
@@ -35,21 +36,12 @@ module PatentAgent
         end
 
         it "prints debug output if enabled" do
-          pat = PTOPatent.new(pnum, :debug => true)
+          pat = PtoPatent.new(pnum, html, :debug => true)
           pat.debug.should be_true
-        end
-      end
-      
-      describe "HTTP Errors" do
-        it "#valid? returns false on HTTP error" do
-          PTOReader.stub(:read).and_raise("HTTP Error")
-          p = PTOPatent.new(pnum)
-          p.should_not be_valid
         end
       end
 
       describe '#fetch', vcr: true do
-        subject(:patent) {PTOPatent.new(pnum)}
 
         it "is valid and has html" do
           expect(patent).to be_valid
@@ -59,7 +51,7 @@ module PatentAgent
         context "Fields:" do
           its(:title)       {should match "Digital transmitter with equalization"}
           its(:app_number)  {should match "08/882,252"}
-          its(:filed)       {should match "June 25, 1997"}
+          its(:file_date)   {should match "June 25, 1997"}
           its(:inventors)   {should have(1).items}
          
           it "has many Figures" do
@@ -90,7 +82,7 @@ module PatentAgent
         title:      "Digital transmitter with equalization",
         inventors:  ["Dally; William J."],
         assignees:  ["Massachusetts Institute of Technology"],
-        filed:      "June 25, 1997"
+        file_date:      "June 25, 1997"
       }.each do |key, value|
         it ":#{key}" do
             expect(hash).to have_key key

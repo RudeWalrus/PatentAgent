@@ -22,7 +22,7 @@ module PatentAgent
       
       attr_accessor  :patent_num, :error_state, :family_members, :target
       
-      def initialize(pnum, options = {})   
+      def initialize(pnum, xml, options = {})   
         # setup options first with defaults
         setup_options options
         @patent_num = PatentNumber(pnum)
@@ -31,7 +31,8 @@ module PatentAgent
 
         # returns a Nokogiri document
         @family_members = []
-        @nodes = Reader.get_family(@patent_num)
+        #@nodes = Reader.get_family(@patent_num)
+        @nodes  = Nokogiri::XML(xml)
         @fields = parse 
         
         # the publicly viewable methods
@@ -75,7 +76,6 @@ module PatentAgent
           @family_members << "#{cc}#{num}.#{kind}"
       end
 
-      def cache; @cache ||= {};  end
 
       def family; to_a || []; end
       

@@ -5,7 +5,7 @@
 
 module PatentAgent
   module PTO
-    class PTOPatent
+    class PtoPatent
       #
       # The basic patent parser class
       #
@@ -21,13 +21,15 @@ module PatentAgent
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
-      def initialize(pnum, options = {})
+      def initialize(pnum, html, options = {})
         set_options(options)
         @patent_num = PatentNumber(pnum)
-        @html       = fetch(@patent_num)
+        #@html       = fetch(@patent_num)
+        @html       = html
         @fields     = Fields.new(html)
         @claims     = Claims.new(html)
         log "Processed: #{@patent_num.to_s}"
+        
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
 
         rescue => error
@@ -41,9 +43,9 @@ module PatentAgent
         self.debug = @options[:debug]
       end
       
-      def fetch(patent_number = @patent_num)
-        PTOReader.read(patent_number)
-      end
+      # def fetch(patent_number = @patent_num)
+      #   PTOReader.read(patent_number)
+      # end
 
       def valid_patnum?
         @patent_num && @patent_num.respond_to?(:valid?) && @patent_num.valid?

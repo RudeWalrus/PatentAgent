@@ -132,7 +132,7 @@ module PatentAgent
       else
         response  = RestClient.post(url, doc_number)
       end
-      result    = Nokogiri::XML(response)
+      response
 
       rescue => e
         p error = "for #{url} @ #{doc_number}\n ==> #{e.response}"

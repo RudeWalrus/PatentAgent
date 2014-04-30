@@ -20,6 +20,7 @@ module PatentAgent::OPS
       classification_nationals: ->(n) {n.css("classification-national text").map { |el|  el.text.delete(" ")} },
       references:           ->(n) {n.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort },
       issue_date:           ->(n) {n.css('publication-reference document-id date').first.text},
+      file_date:           ->(n) {n.css('application-reference document-id date').first.text},
       priorities:           ->(n) {n.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').map { |el| to_doc_date(el)} },
       classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| to_classification(el)} },
       applications:         ->(n) {n.css('application-reference document-id[document-id-type="epodoc"]').map { |el| to_doc_date(el)} }

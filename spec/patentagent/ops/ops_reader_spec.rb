@@ -34,7 +34,7 @@ module PatentAgent::OPS
   describe Reader, vcr: true do
     it "gets family biblio" do
       node = Reader.get_family("US7139271", auth: false)
-      node.should be_kind_of Nokogiri::XML::Document
+      node.should be_kind_of String
     end
 
     it "gets called with auth enabled" do

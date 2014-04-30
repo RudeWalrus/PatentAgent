@@ -3,15 +3,15 @@ require "spec_helper"
 module PatentAgent::OPS
 
   describe OpsPatent, vcr: true do
-    let(:num)      {"US7139271"}
-    subject(:patent)  {OpsPatent.new(num)}
+    let(:num)         {"US7139271"}
+    let(:xml)         {Reader.get_family(num, auth: false)}
+    subject(:patent)  {OpsPatent.new(num, xml)}
   
     before do
       ENV["OPS_CONSUMER_KEY"] = "1KDu067AJUlnCB0GLzJSC1ookqNxxZOn"
       ENV["OPS_SECRET_KEY"]   = "rRBKrsBaoOzWZ99G"
     end
 
-    its(:cache)     {should be_kind_of(Hash)}
     its(:family)    {should be_kind_of(Array)}
     its(:family_members)   {should be_kind_of(Array)}
     its(:family_members)   {should include("US7139271.B1", "US7286566.B1")}
