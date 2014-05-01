@@ -5,33 +5,33 @@
 module PatentAgent
   
   class PatentNumber
-    attr_reader   :country_code, :number, :kind
-    alias         :cc :country_code
+    attr_reader   :cc, :number, :kind
+    alias         :country_code :cc
     
     # error raised when passed a bad patent number
     InvalidPatentNumber = Class.new(RuntimeError)
     
-    #
-    # if passed a PatentNumber, just return it and don't create a new one
-    #
-    def self.new(arg)
-      return arg if arg.class == self.class
-      super
-    end
+    # #
+    # # if passed a PatentNumber, just return it and don't create a new one
+    # #
+    # def self.new(arg)
+    #   return arg if arg.class == self.class
+    #   super
+    # end
 
     def initialize(arg)
-      patent_number = arg.to_s
-      @clean = patent_number
-      @country_code, @number, @kind   = PatentNumber.valid_patent_number(patent_number)
+      @clean = arg.to_s
+      @cc, @number, @kind   = PatentNumber.valid_patent_number(@clean)
+      
       raise InvalidPatentNumber unless valid?
 
       rescue InvalidPatentNumber
-        puts "Bogus patent number #{patent_number}"
+        puts "Bogus patent number #{@clean}"
     end
 
     def to_patent; self;                           end
 
-    def full;     "#{cc}#{number}";                 end
+    def full;     "#{@cc}#{@number}";              end
 
     def to_s;     valid? ? @clean : "invalid";      end
 
@@ -40,6 +40,7 @@ module PatentAgent
     # figures out if a patent is published or not
     def self.is_published?(id, kind, country)
       return true if (country == "US" && id =~ /^[5678]\d{6}/)
+      return true if (country == "US" && id =~ /^RE\d{5}/)  # ALLOW reissues to be valid published
       return true if (kind[0] =~ /^B/)
       return true if (kind[1].to_i > 1 )
       return false
@@ -53,7 +54,7 @@ module PatentAgent
     #
     def self.valid_patent_number(num)
       pnum = cleanup_number(num)
-      if pnum =~ /\A([A-Z]{2})?(\d{5,9})\.?([A-Z]\d)?\Z/ then
+      if pnum =~ /\A([A-Z]{2}|(?:USRE))?(\d{5,9})\.?([A-Z]\d)?\Z/ then
         cc      = get_country_code($1)
         number  = get_number($1,$2)
         kind    = $3 || ""  # if nil, set it to a blank
@@ -80,11 +81,11 @@ module PatentAgent
     #
     # convienece methods for getting part of a patent number
     #
-    def self.cc_of(num);      p = valid_patent_number(num); p ? p[0] : "invalid" ;    end
+    def self.cc_of(num);      n = valid_patent_number(num); n ? n[0] : "invalid" ;    end
     
-    def self.number_of(num);  p = valid_patent_number(num); p ? p[1] : "invalid";     end
+    def self.number_of(num);  n = valid_patent_number(num); n ? n[1] : "invalid";     end
     
-    def self.kind_of(num);    p = valid_patent_number(num); p ? p[2] : "invalid";     end
+    def self.kind_of(num);    n = valid_patent_number(num); n ? n[2] : "invalid";     end
     
     private
       # formats the patent number to make it valid for HTML search
@@ -94,7 +95,7 @@ module PatentAgent
       #
       def self.valid_us_patent_number?(num)
         pnum = cleanup_number(num)
-        pnum.match(/(US)?([45678]\d{6})(\.[AB][12])?$|(RE\d{5}$)/) {|match| match[2] || match[4]}
+        pnum.match(/(US)?([45678]\d{6})(\.[AB][12])?$|(US)?(RE\d{5}$)/) {|match| match[2] || match[5]}
       end
   
       #
@@ -103,10 +104,14 @@ module PatentAgent
       #
       def self.get_country_code(num)
         return "US" if num.nil?
+        return "US" if num == "USRE"
         num.match(/([A-Z]{2})/) {|m| m[1] == "RE" ? "US" : m[1]} || "US"
       end
 
-      def self.get_number(cc,num);  return cc == "RE" ? "RE#{num}" : num;           end
+      def self.get_number(cc,num)
+        return "RE#{num}" if (cc == "RE" || cc =="USRE")
+        num
+      end
 
       def self.cleanup_number(num); num.to_s.upcase.delete(",").delete(" ");        end
   end 

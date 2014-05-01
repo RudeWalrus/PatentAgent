@@ -80,21 +80,14 @@ end
 def benchmark
   Benchmark.bm do |bm|
     
-    [15].each do |calls|
+    [100].each do |calls|
       puts "[ #{calls} requests ]"
 
-
-      bm.report("open            ") do
-        calls.times do |i|
-          open(url_for(i))
-        end
-      end
-
-      bm.report("request         ") do
-        calls.times do |i|
-          Typhoeus::Request.get(url_for(i))
-        end
-      end
+      # bm.report("request         ") do
+      #   calls.times do |i|
+      #     Typhoeus::Request.get(url_for(i))
+      #   end
+      # end
 
       bm.report("hydra           ") do
         calls.times do |i|
@@ -116,9 +109,3 @@ def benchmark
 end
  
  benchmark
-# >>        user     system      total        real
-# >> [ 15 requests ]
-# >> open              0.030000   0.030000   0.060000 ( 11.249879)
-# >> request           0.010000   0.030000   0.040000 ( 11.251260)
-# >> hydra             0.030000   0.020000   0.050000 (  4.673612)
-# >> hydra memoize     0.010000   0.010000   0.020000 (  2.406661)

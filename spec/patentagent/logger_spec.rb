@@ -8,30 +8,22 @@ module PatentAgent
   end
 
 
-  describe "PatentAgent::Logging" do
-    let(:p_log) {PatentLog.new}
+  describe PatentAgent::Logging do
+    subject(:p_log) {PatentLog.new}
 
     context 'PatentAgent' do
       it "has #log on self" do
         PatentAgent.should respond_to(:log)
       end
 
-      it "responds to create_log" do
-        PatentAgent.should respond_to(:create_log)
+      it "responds to initialize_log" do
+        PatentAgent.should respond_to(:initialize_log)
       end
     end
 
     context "mixin" do
-
-      it "responds to #log after mix-in" do
-        p_log.should respond_to(:log)
-      end
-
-      it "responds to #debug after mix-in" do
-        p_log.should respond_to(:debug)
-      end
-
-
+      it {should respond_to :log, :debug}
+      
       it "creates a log file" do
         log_file = "mylogfile.info"
         File.delete log_file if File.exists? log_file
@@ -39,13 +31,18 @@ module PatentAgent
         p_log.log "Header", "Data"
         File.exists?(log_file).should be_true
       end
+
+      # it "sets debug flag in PatentAgent" do
+      #   p_log.debug = true
+      #   PatentAgent.debug.should be_true
+      # end
     end
 
     context "testing different outputs" do
       let(:log_stream) {StringIO.new}
 
       before do
-        p_log.should_receive(:create_log).and_return(Logger.new(log_stream))
+        p_log.should_receive(:initialize_log).and_return(Logger.new(log_stream))
         p_log.debug = true
       end
 

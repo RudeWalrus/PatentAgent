@@ -9,11 +9,11 @@ module PatentAgent
     extend self
     
     def logger=(log_io, options = {})
-      @logger = create_log(log_io)
+      @logger = initialize_log(log_io)
     end
 
     def logger
-      @logger ||= create_log('patentagent.log')
+      @logger ||= initialize_log('patentagent.log')
     end
 
     def indent
@@ -56,7 +56,7 @@ module PatentAgent
     # Setup the logger.
     # param can be stdout, stderr, a FileIO object, or a filename.
     # 
-    def create_log(param="patentagent.log")
+    def initialize_log(param)
       if param.is_a?(String) then
         case param
           when 'stdout'
@@ -83,13 +83,6 @@ module PatentAgent
      result
     end
 
-    # module ClassMethods
-    #   #attr_accessor :indent, :debug
-    # end
-
-    # def self.included(base)
-    #   base.extend(ClassMethods)
-    # end
   end
 
   PatentAgent.extend Logging

@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'patentagent/patent_number'
 
 include PatentAgent
 
@@ -7,9 +6,12 @@ module PatentAgent
   describe PatentNumber do
     let(:num)   {7123456}
     let(:pnum)  {num.to_s}
-    let(:p_obj) {PatentNumber.new(pnum)}
+    subject(:p_obj) {PatentNumber.new(pnum)}
 
     describe "PatentNumber() coersion" do
+
+      it {should be}
+
       it "Coerses PatentNumber" do
         PatentNumber(p_obj).should eq p_obj
       end
@@ -145,24 +147,34 @@ module PatentAgent
         end
 
         context "ReIssue" do
-          %w[RE55571 RE35,312 RE23234 Re33333 RE33,333].each do |re|
+          %w[RE55571 RE35,312 RE23234 Re33333 RE33,333].each { |re|
             num = re.to_s.upcase.delete(',')
             reissue = PatentNumber.new(re)
-            it "is a #valid? object" do
+            it "#{re} is a #valid? object" do
               expect(reissue.valid?).to be_true
             end
 
-            it "has a #number" do
+            it "#{re} has a #number" do
               expect(reissue.number).to eq num
             end
 
-            it "has a US country code" do
+            it "#{re} has a US country code" do
               expect(reissue.country_code).to eq "US"
             end
 
-            it "has a kind code" do
+            it "#{re} has a kind code" do
               expect(reissue.kind).to eq ""
             end
+          }
+          it "special case: USRE" do
+            %w[USRE55571 USRE35,312 USRE23234 UsRe33333 UsRe33,333].each { |re|
+              num = re.to_s.upcase.delete(',')
+              reissue = PatentNumber.new(re)
+              expect(reissue.valid?).to be_true
+              expect(reissue.number).to eq num[2..-1]
+              expect(reissue.country_code).to eq "US"
+              expect(reissue.kind).to eq ""
+            }
           end
         end
       end

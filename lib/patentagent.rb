@@ -6,6 +6,7 @@ require 'patentagent/logging'
 require 'patentagent/patent_number'
 require 'patentagent/dispatcher'
 require 'patentagent/client'
+require 'patentagent/patent_hydra'
 
 
 
@@ -22,7 +23,7 @@ require 'patentagent/pto/forward_citations'
 module PatentAgent
 
   class << self
-    attr_accessor :debug
+    attr_accessor :debug, :ops_id, :ops_secret
 
     #
     # validates a list of patent numbers
@@ -34,5 +35,9 @@ module PatentAgent
       valid = [*nums].flatten.find_all { |pnum| PatentNumber.valid_patent_number(pnum) }
       valid.size == 1 ? valid[0] : valid
     end
+  end
+  
+  def self.configure
+    yield Config
   end
 end

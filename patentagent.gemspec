@@ -27,5 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webmock"
   s.add_development_dependency "timecop"
   s.add_runtime_dependency "rest-client"
+  s.add_runtime_dependency "typhoeus"
   s.add_runtime_dependency "nokogiri"
 end

@@ -31,24 +31,30 @@ module PatentAgent
 
         # returns a Nokogiri document
         @family_members = []
-        #@nodes = Reader.get_family(@patent_num)
         @nodes  = Nokogiri::XML(xml)
         @fields = parse 
+        
+        # release memory
+        @nodes = nil
         
         # the publicly viewable methods
         @target = @fields[0].to_hash
       end
 
       #
-      # iterate through teh family members and parse them. 
+      # iterate through the family members and parse them. 
       # @Returns: Array of family members (each is a Hash)
       def parse
         @nodes.css("ops|family-member").map {|node|
-          add_family_member(node)
+          @family_members << fmt_family_member(node)
           item = OPSFields.new(node)
         } 
       end
-      
+
+      def to_s
+        "#{@patent_num.full}: #{self.title}"
+      end
+
       #
       # @returns: Array. All of the parsed data. Each element of the the array is a family member.
       #                   element 0 is the base patent
@@ -68,12 +74,12 @@ module PatentAgent
         @family[0].respond_to?(method) || super
       end
 
-      def add_family_member(node)
+      def fmt_family_member(node)
           el   = node.css("publication-reference document-id").first
           cc   = el.css("country").text
           num  = el.css("doc-number").text
           kind = el.css("kind").text
-          @family_members << "#{cc}#{num}.#{kind}"
+          "#{cc}#{num}.#{kind}"
       end
 
 
@@ -93,6 +99,7 @@ module PatentAgent
         }
         @options.merge!(options)
       end
+
       def forward_citations
         fc.css("document-id").map do |item|
           country = item.css("country").text
