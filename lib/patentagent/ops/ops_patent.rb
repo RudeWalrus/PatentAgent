@@ -18,7 +18,6 @@ module PatentAgent
   module OPS  
     class OpsPatent
       include PatentAgent
-      include Logging
       
       attr_accessor  :patent_num, :error_state, :family_members, :target
       
@@ -47,7 +46,7 @@ module PatentAgent
       def parse
         @nodes.css("ops|family-member").map {|node|
           @family_members << fmt_family_member(node)
-          item = OpsFields.new(node)
+          item = OPS::Fields.new(node)
         } 
       end
 
@@ -171,7 +170,7 @@ module PatentAgent
         xml.search("[text()*=#{target}]").each do |item|
           data = item.ancestors("family-member").css('publication-reference document-id[@document-id-type="docdb"]').first
           pub_data = PublicationData.from_xml(data) 
-          #puts "Found #{pub_data[:id]}"
+          PatentAgent.dlog "OpsPatent", "Found #{pub_data[:id]}"
           members << pub_data if pub_data[:published]     
         end
         members

@@ -21,15 +21,18 @@ module PatentAgent
 
     class << self
       attr_accessor :hydra
-
-      def init_hydra
-        return @hydra if @hydra
-        @hydra = Typhoeus::Hydra.new(max_concurrency: 50) 
-        Typhoeus::Config.memoize = true
-        Typhoeus::Config.cache = HydraCache.new
-        @hydra
-      end
     end
+
+    def self.init_hydra
+      return @hydra if @hydra
+      @hydra = Typhoeus::Hydra.new(max_concurrency: 50) 
+      Typhoeus::Config.memoize = true
+      Typhoeus::Config.cache = hydra_cache
+      @hydra
+    end
+
+    def self.hydra_cache=(val); @hdyra_cache = val; end
+    def self.hydra_cache; @hydra_cache ||= HydraCache.new; end
 
     init_hydra
 
@@ -72,18 +75,19 @@ module PatentAgent
           elsif response.timed_out?
               @retry << patent
           elsif response.code == 0
-              puts "something is fucked up: #{patent.patent.full}"
+              PatentAgent.log "something is fucked up: #{patent.patent.full}"
               @retry << patent
           else
-              puts 'HTTP Request failed: ' + response.code.to_s
+              PatentAgent.log 'HTTP Request failed: ' + response.code.to_s
           end
         } 
 
         hydra.queue( request )
-        log "Queued: #{patent.patent.full} " + request.url
+        PatentAgent.dlog "Queued: #{patent.patent.full} " + request.url
       }
     end
 
+    # @Returns: Array of enqueued patent_client objects
     def run
       queue
       hydra.run
@@ -98,6 +102,7 @@ module PatentAgent
     end
     
     private
+    
     def post(url, body)
       Typhoeus::Request.new(url, method: :post, body: body )
     end

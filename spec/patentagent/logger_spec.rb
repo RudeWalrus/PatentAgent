@@ -2,75 +2,74 @@ require 'spec_helper'
 
 
 module PatentAgent
-# dummy class used for tests
-  class PatentLog 
-      include Logging
-  end
 
+  describe PatentAgent do
+    subject(:p) {PatentAgent}
+    let(:log_file) {"mylogfile.info"}
 
-  describe PatentAgent::Logging do
-    subject(:p_log) {PatentLog.new}
-
-    context 'PatentAgent' do
-      it "has #log on self" do
-        PatentAgent.should respond_to(:log)
-      end
-
-      it "responds to initialize_log" do
-        PatentAgent.should respond_to(:initialize_log)
-      end
-    end
-
-    context "mixin" do
-      it {should respond_to :log, :debug}
-      
-      it "creates a log file" do
-        log_file = "mylogfile.info"
-        File.delete log_file if File.exists? log_file
-        p_log.logger = log_file
-        p_log.log "Header", "Data"
-        File.exists?(log_file).should be_true
-      end
-
-      # it "sets debug flag in PatentAgent" do
-      #   p_log.debug = true
-      #   PatentAgent.debug.should be_true
-      # end
+    it {should respond_to :logger, :logger=, :log, :dlog}
+    its(:logger) {should be_kind_of Logger}
+    
+    it "creates a log file" do
+      File.delete log_file if File.exists? log_file
+      p.logger = log_file
+      p.log "Header", "Data"
+      File.exists?(log_file).should be_true
     end
 
     context "testing different outputs" do
       let(:log_stream) {StringIO.new}
 
       before do
-        p_log.should_receive(:initialize_log).and_return(Logger.new(log_stream))
-        p_log.debug = true
+        p.should_receive(:initialize_log).at_least(1).times.and_return(Logger.new(log_stream))
       end
 
       it "logs to STDOUT" do
-        p_log.logger = 'stdout'
-        p_log.log "Stdout", "Hello"
+        p.logger = STDOUT
+        p.log "Stdout", "Hello"
         log_stream.string.should match(/STDOUT/)
       end
 
       it "logs to STDERR" do
-        p_log.logger = 'stderr'
-        p_log.log "Stderr", "Hello"
+        p.logger = STDERR
+        p.log "Stderr", "Hello"
         log_stream.string.should match(/STDERR/)
       end
 
       it "logs an array" do
-        p_log.logger = "mylogfile.info"
-        p_log.log "Array", [1,2,3,4,5]
+        p.logger = "mylogfile.info"
+        p.log "Array", [1,2,3,4,5]
         log_stream.string.should match(/ARRAY/)
         log_stream.string.should match(/Count: 5/)
       end
 
       it "logs a hash" do
-        p_log.logger = "mylogfile.info"
-        p_log.log "Hash", {one: 1, two: 2, three: 3 }
+        p.logger = "mylogfile.info"
+        p.log "Hash", {one: 1, two: 2, three: 3 }
         log_stream.string.should match(/HASH/)
         log_stream.string.should match(/Count: 3/)
       end
     end
+
+    context "#dlog" do
+      let(:log_stream) {StringIO.new}
+      
+      before(:each) do
+        p.debug = false
+        p.logger = log_stream
+      end
+
+      it "#debug" do
+        expect{p.debug = true}.to change{p.logger.level}.from(Logger::INFO).to(Logger::DEBUG)
+      end
+
+      it "Debug output turns on with debug=true" do
+        p.dlog "STDOUT", "Test"
+        log_stream.string.should_not match /Test/
+        p.debug = true 
+        p.dlog "STDOUT", "Test"
+        log_stream.string.should match /Test/
+      end
+    end  
   end
 end

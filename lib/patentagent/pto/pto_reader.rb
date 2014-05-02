@@ -7,7 +7,6 @@ module PatentAgent
   module PTO
     class PTOReader
       include PatentAgent
-      include Logging
       
       attr_reader :valid, :text
       
@@ -60,7 +59,7 @@ module PatentAgent
       def get_from_url(url = @url)
         RestClient.get(url).to_str
         rescue => e
-          log "#{e} for #{url}"
+          PatentAgent.log "#{e} for #{url}"
           raise HTTPError
       end
     end

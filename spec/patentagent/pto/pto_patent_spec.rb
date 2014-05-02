@@ -12,13 +12,10 @@ module PatentAgent
       
       describe "#initialize", vcr: true do    
         
-        it {should be}
         it {should be_kind_of(PtoPatent)}
      
           
         its(:patent_num) {should be_valid} 
-        its(:options) {should have_key(:debug)}
-        its(:debug) {should be_false}
         its("patent_num.number") {should eq number}
         its("patent_num.cc") {should eq cc}
 
@@ -30,22 +27,12 @@ module PatentAgent
         it "invalid patent number raises an error" do
           PtoPatent.new("MyPatent5555", html).should raise_error
         end
-
-        it "responds to #debug" do
-          patent.respond_to?(:debug).should be_true
-        end
-
-        it "prints debug output if enabled" do
-          pat = PtoPatent.new(pnum, html, :debug => true)
-          pat.debug.should be_true
-        end
       end
 
-      describe '#fetch', vcr: true do
+      describe '#fetch', :vcr do
 
-        it "is valid and has html" do
+        it "is valid" do
           expect(patent).to be_valid
-          expect(patent).to be_valid_html
         end
  
         context "Fields:" do

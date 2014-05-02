@@ -30,7 +30,7 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "issued_at" : "1398999093520",
+          "issued_at" : "1399056186332",
           "application_name" : "74192625-e8f0-4cff-a47c-d2ced67ed2d5",
           "scope" : "",
           "status" : "approved",
@@ -40,11 +40,11 @@ http_interactions:
           "organization_id" : "0",
           "token_type" : "BearerToken",
           "client_id" : "1KDu067AJUlnCB0GLzJSC1ookqNxxZOn",
-          "access_token" : "I2dOjKA51SOGdnvHAwCJAluYZAGo",
+          "access_token" : "2XGq3DVJADLsRLX6MIXvaGWSTgSW",
           "organization_name" : "epo",
           "refresh_token_expires_in" : "0",
           "refresh_count" : "0"
         }
     http_version: 
-  recorded_at: Fri, 02 May 2014 03:11:34 GMT
+  recorded_at: Fri, 02 May 2014 19:03:07 GMT
 recorded_with: VCR 2.5.0

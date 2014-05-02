@@ -6,20 +6,16 @@
 module PatentAgent
   module PTO
     class Fields
-      include Logging
+      include Enumerable
 
       # error raised when passed a bad patent number
       NoTextSource = Class.new(RuntimeError)
-
-      attr_reader :html
+      ParseError = Class.new(RuntimeError)
 
       def initialize(html)
-        @html = html
-        raise NoTextSource, "No HTML source for Fields" unless @html
-        parse
+        parse html
       end
 
-    
       # Fields includes the field name, a gross filter search, a fine filter search and an optional filter proc
       #
       FIELDS    = {
@@ -47,27 +43,11 @@ module PatentAgent
       
       def self.keys; FIELDS.keys; end
 
-      #
       # allows a user to add fields to the search
       def self.add(field, gross, fine, &block)
         FIELDS[field] = {gross: gross, fine: fine, filter: block}
         define_method(field) {instance_variable_get "@#{field}" }
       end
-
-    
-      #
-      # parses all of the fields
-      # @returns: self (can be chained)
-      def parse
-        FIELDS.each do |field, search|
-          parse_single_field(field, search)
-        end
-        self
-      end
-
-      #
-      # convenience method to parse a single field by key
-      def parse_field(field); parse_single_field(field, FIELDS[field]); end
 
       def to_hash
         hash = {}
@@ -76,15 +56,37 @@ module PatentAgent
       end
     
       private
+
+      #
+      # parses all of the fields
+      # @returns: self (can be chained)
+      def parse html
+        FIELDS.each do |field, search|
+          parse_single_field(html, field, search)
+        end
+        self
+      end
+
+       #
+      # convenience method to parse a single field by key
+      def parse_field(html, field)
+       parse_single_field(html, field, FIELDS[field])
+      end
+
       #
       # The main parsing routine for reading the PTO Files
       # It takes a gross search and a fine search and populates the array with the results
       # if a proc is included, it runs the proc on each of the matched search results (for the fine search)
       # 
-      def parse_single_field(field, params) 
+      def parse_single_field(html, field, params) 
         # run the gross filter which leaves us with a subtring
-        gross = @html[params[:gross]]
-        raise "Missing Field" if gross.nil?
+
+        # set to nil to start
+        instance_variable_set("@#{field}",nil)
+        
+        gross = html[params[:gross]]
+      
+        return if gross.nil?
         
         log_field(field, gross)
         
@@ -104,7 +106,7 @@ module PatentAgent
           tmp
         end
 
-        log field, result
+        PatentAgent.dlog field, result
 
         # if the name ends in s, store as an array, otherwise
         # convert to a string (first element of array) 
@@ -112,12 +114,12 @@ module PatentAgent
         instance_variable_set("@#{field}",item)
         item
 
-        rescue => e
-          log "Field parse error: Not Found: #{field} "
+        rescue ParseError => e
+          PatentAgent.log "Field parse error: Not Found: #{field}} "
       end
         
       def log_field(field, message)
-        log(field, message, true) #if field_enabled
+        PatentAgent.dlog(field, message) #if field_enabled
       end
 
       def field_enabled(field)

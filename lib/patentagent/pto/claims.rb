@@ -5,7 +5,6 @@
 module PatentAgent
   module PTO
     class Claims < Hash
-      include Logging
 
       Claim = Struct.new(:parent, :dep, :text) do
           def to_hash; {parent: parent, dep: dep, text: text }; end
@@ -50,12 +49,12 @@ module PatentAgent
         # process each claim
         m.each{ |claim| process(claim[0].gsub("\n", " ").gsub(/<BR><BR>/, " ")) }
 
-        log "Claims:" , {count: @count, indep: @indep_count, dep: @dep_count, claims: self }
+        PatentAgent.dlog "Claims:" , {count: @count, indep: @indep_count, dep: @dep_count, claims: self }
         
         self
 
         rescue RuntimeError => e
-          log "Error in claims parsing. #{e}"
+          PatentAgent.log "Error in claims parsing. #{e}"
           return ["Not found"]
       end
 

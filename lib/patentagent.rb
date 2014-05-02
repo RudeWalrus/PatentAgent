@@ -4,7 +4,6 @@ $: << File.dirname(__FILE__) + '../patentagent/pto'
 require 'patentagent/patent'
 require 'patentagent/logging'
 require 'patentagent/patent_number'
-require 'patentagent/dispatcher'
 require 'patentagent/client'
 require 'patentagent/patent_hydra'
 
@@ -12,7 +11,7 @@ require 'patentagent/patent_hydra'
 
 require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
-require 'patentagent/ops/ops_fields'
+require 'patentagent/ops/fields'
 require 'patentagent/ops/ops_family'
 
 require 'patentagent/pto/pto_reader'
@@ -25,20 +24,31 @@ module PatentAgent
 
   class << self
     attr_accessor :debug, :ops_id, :ops_secret
+  end
 
-    #
-    # validates a list of patent numbers
-    #
-    # @returns - an array of valid numbers if array passed in
-    #          - or a string if a string passed in
-    #
-    def validate_patent_numbers(*nums)
-      valid = [*nums].flatten.find_all { |pnum| PatentNumber.valid_patent_number(pnum) }
-      valid.size == 1 ? valid[0] : valid
+  def self.debug=(val)
+    @debug = val
+    if val == TRUE
+      self.logger.level = Logger::DEBUG 
+    else
+      self.logger.level = Logger::INFO 
     end
+  end
+
+  # validates a list of patent numbers
+  #
+  # @returns - an array of valid numbers if array passed in
+  #          - or a string if a string passed in
+  #
+  def self.validate_patent_numbers(*nums)
+    valid = [*nums].flatten.find_all { |pnum| PatentNumber.valid_patent_number(pnum) }
+    valid.size == 1 ? valid[0] : valid
   end
   
   def self.configure
     yield Config
   end
+
+  extend PatentAgent::Logging
+
 end

@@ -12,7 +12,7 @@ module PatentAgent
       include PatentAgent
       include Logging
       
-      attr_reader :options, :html, :patent_num, :fields, :claims
+      attr_reader :options, :patent_num, :fields, :claims
       alias :name :patent_num
 
       extend Forwardable
@@ -21,27 +21,19 @@ module PatentAgent
       # error raised when passed a bad patent number
       InvalidPatentNumber = Class.new(RuntimeError)
       
-      def initialize(pnum, html, options = {})
-        set_options(options)
+      def initialize(pnum, html)
         @patent_num = PatentNumber(pnum)
-        #@html       = fetch(@patent_num)
-        @html       = html
         @fields     = Fields.new(html)
         @claims     = Claims.new(html)
-        log "Processed: #{@patent_num.to_s}"
+        PatentAgent.dlog "Processed: #{@patent_num.to_s}"
         
         raise InvalidPatentNumber,"Invalid Patent #{pnum}" unless valid_patnum?
 
-        rescue => error
-          log "#{error}"
+        rescue InvalidPatentNumber => error
+          PatentAgent.log "#{error}"
           @error = true
       end
       
-      def set_options(opts)
-        @options ||= {:debug => false, :fc => nil }
-        @options.merge!(opts)
-        self.debug = @options[:debug]
-      end
       
       # def fetch(patent_number = @patent_num)
       #   PTOReader.read(patent_number)
@@ -51,10 +43,7 @@ module PatentAgent
         @patent_num && @patent_num.respond_to?(:valid?) && @patent_num.valid?
       end
 
-      def valid?; !@error && valid_patnum? && !!@html; end
-      
-      def valid_html?; !!@html; end
-
+      def valid?; !@error && valid_patnum?; end
 
       def to_hash; @fields.to_hash; end
       

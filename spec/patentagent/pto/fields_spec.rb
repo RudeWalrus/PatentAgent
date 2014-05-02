@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module PatentAgent
   module PTO
-    describe Fields, vcr: true do
+    describe Fields, :vcr do
       let(:num)           {"6266379"}
       let(:cc)            {"US"}
       let(:pnum)          {cc + num}
@@ -10,12 +10,7 @@ module PatentAgent
       subject(:fields)    {Fields.new(html)}
 
       describe "#initialize" do     
-        it {should be}
-        it {should be_kind_of(Fields)}
-
-        it "has html" do
-          expect(fields.html).to match(num)
-        end
+        it {should be_kind_of Fields}
 
         it "fields exists " do
            expect(fields.patent_number).to be
@@ -44,7 +39,7 @@ module PatentAgent
 
       describe "#parse_field" do
         it "parses a single field" do
-          fields.parse_field(:title).should match("Digital transmitter with equalization") 
+          fields.send(:parse_field, html, :title).should match("Digital transmitter with equalization") 
         end
       end
 
@@ -69,7 +64,8 @@ module PatentAgent
           expect(fields).to respond_to(:prime_examiner)
         end
         it "Adds a search method" do
-          expect(fields.parse.prime_examiner).to eq "Ghebretinsae; Temesghen"
+          fields.send(:parse, html)
+          expect(fields.prime_examiner).to eq "Ghebretinsae; Temesghen"
         end
       end 
     end

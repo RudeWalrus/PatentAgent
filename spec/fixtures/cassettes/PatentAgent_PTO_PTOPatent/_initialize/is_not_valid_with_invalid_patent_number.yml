@@ -2,80 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://patft.uspto.gov/netacgi/nph-Parser?OS=PN/invalid&RS=PN/invalid&Sect1=PTO1&Sect2=HITOFF&d=PALL&f=G&l=50&p=1&r=1&s1=invalid.PN.&u=/netahtml/PTO/srchnum.htm
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - "*/*; q=0.5, application/xml"
-      Accept-Encoding:
-      - gzip, deflate
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: Script results follow
-    headers:
-      Server:
-      - NetAnswer Server 1.0
-      Content-Type:
-      - text/html
-    body:
-      encoding: UTF-8
-      string: |-
-        <HTML>
-        <HEAD>
-        <TITLE>Patent Database Search Results: <SRCH> in <BANR></TITLE>
-        </HEAD>
-        <BODY>
-        <center>
-        <IMG SRC="/netaicon/PTO/patfthdr.gif" WIDTH="500" HEIGHT="30">
-        </center>
-        <center>
-        <A HREF="/netahtml/PTO/help/help.htm">
-        <IMG BORDER="0" WIDTH="80" HEIGHT="30" SRC="/netaicon/PTO/help.gif" ALT="[Help]"></A>
-        <a href="/netahtml/PTO">
-        <img src="/netaicon/PTO/home.gif" alt="[Home]" border="0" width="80" height="30"></a>
-        <a href="/netahtml/PTO/search-bool.html">
-        <img src="/netaicon/PTO/boolean.gif" alt="[Boolean Search]" border="0" width="80" height="30"></a>
-        <A HREF="/netahtml/PTO/search-adv.htm">
-        <IMG WIDTH="80" HEIGHT="30" BORDER="0" SRC="/netaicon/PTO/manual.gif" ALT="[Manual]"></A>
-        <a href="/netahtml/PTO/srchnum.htm">
-        <img src="/netaicon/PTO/number.gif" alt="[Number Search]" border="0" width="80" height="30"></a>
-        <A HREF="http://www.uspto.gov/go/ptcs/">
-        <IMG WIDTH="80" HEIGHT="30" BORDER="0" SRC="/netaicon/PTO/copy.gif" ALT="[Order Copy]"></A>
-        <A HREF="http://www.uspto.gov/go/ptdl/">
-        <IMG width=80 height=30 border=0 SRC="/netaicon/PTO/ptdl.gif" ALT="[PTDLs]"></A>
-        </center>
-        <i>Searching <BANR>...</i><BR></p>
-        <B>Results of Search in <BANR> db for:<BR> <RSCH></B>: 0 patents.<BR><BR>No patents have matched your query
-        <TABLE CELLSPACING=4 CELLPADDING=1>
-        <TR>
-        <TD VALIGN="TOP" ALIGN="LEFT">
-        <form action="/netacgi/nph-Parser" method="GET">
-            <INPUT TYPE="HIDDEN" NAME="Sect1" VALUE="PTO2">
-            <INPUT TYPE="HIDDEN" NAME="Sect2" VALUE="HITOFF">
-            <INPUT TYPE="HIDDEN" NAME="p" VALUE="1">
-            <INPUT TYPE="HIDDEN" NAME="u" VALUE="/netahtml/PTO/search-adv.htm">
-            <INPUT TYPE="HIDDEN" NAME="r" VALUE="0">
-            <INPUT TYPE="HIDDEN" NAME="f" VALUE="S">
-            <INPUT TYPE="HIDDEN" NAME="l" VALUE="50">
-        <INPUT type="hidden" name="d" value="<DBNM>">
-        <INPUT type="submit" value="Refine Search">
-        </TD>
-        <TD VALIGN="TOP" ALIGN="LEFT" COLSPAN=4>
-        <INPUT size=50 name="Query" value="<SRCH>">
-        </TD>
-        </FORM>
-        </TR>
-        </TABLE>
-        </BODY></HTML>
-    http_version: 
-  recorded_at: Mon, 28 Apr 2014 05:54:09 GMT
-- request:
-    method: get
     uri: http://patft.uspto.gov/netacgi/nph-Parser?OS=PN/6266379&RS=PN/6266379&Sect1=PTO1&Sect2=HITOFF&d=PALL&f=G&l=50&p=1&r=1&s1=6266379.PN.&u=/netahtml/PTO/srchnum.htm
     body:
       encoding: US-ASCII
@@ -756,5 +682,5 @@ http_interactions:
         BORDER=\"0\" SRC=\"/netaicon/PTO/help.gif\" ALT=\"[Help]\" valign=middle></A>\n
         \  </center>\n</BODY>\n</HTML>"
     http_version: 
-  recorded_at: Wed, 30 Apr 2014 00:59:20 GMT
+  recorded_at: Fri, 02 May 2014 18:45:04 GMT
 recorded_with: VCR 2.5.0

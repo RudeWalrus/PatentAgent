@@ -4,7 +4,6 @@ module PatentAgent
   module OPS  
     class OpsFamily
       include PatentAgent
-      include Logging
       include Enumerable
       
       attr_accessor  :patent_num, :members, :family_id
@@ -17,7 +16,7 @@ module PatentAgent
         # need to get the family id from the first one......
         #
         nodes      = Nokogiri::XML(xml).css("ops|family-member")
-        @members   = nodes.map {|node| OpsFields.new(node) }  
+        @members   = nodes.map {|node| OPS::Fields.new(node) }  
       end
 
       def first

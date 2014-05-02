@@ -130,17 +130,16 @@ module PatentAgent
 
       ops = res.find{|o| o.job_id == 1}
       pto = res.find{|o| o.job_id == 2}
-      fc  = res.find{|o| o.job_id == 3}
+      #fc  = res.find{|o| o.job_id == 3}
       
-      pto_data   = pto.to_pto_patent
+      pto_data     = pto.to_pto_patent
       ops_data     = ops.to_ops_patent
-      fc_initial   = fc.to_pto_patent
+      #fc_initial   = fc.to_pto_patent
 
-      fc_data = PTO::ForwardCitation.new(patent, fc_initial.html)
-      fc_data.names.each{|x| p x }
+      fc_data = PTO::ForwardCitation.new(patent)
+      #fc_data.names.each{|x| p x }
       fc_patents = fc_data.get_full_fc
-
-      fc_patents.each {|x| p x.inspect}
+      #fc_patents.each {|x| p x.claims.inspect}
       
       result = [pto_data, ops_data, fc_data]
     end

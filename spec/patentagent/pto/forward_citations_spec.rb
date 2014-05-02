@@ -5,21 +5,21 @@ module PatentAgent
     describe ForwardCitation do
       let(:num)         {"US5539735"}
       let(:pnum)        {PatentNumber.new(num)}
-      let(:html)        {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}_fc.html")}
-      subject(:patents)  {ForwardCitation.new(pnum, html)}
+      #let(:html)        {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}_fc.html")}
+      subject(:patents)  {ForwardCitation.new(pnum)}
     
       context "#new", :vcr do
          it {should respond_to :names, :patents}
       end
 
       context "internal methods" do
-
         [5,10,50,200,1000].each do |cnt|
           it "Calculates the right number of references for #{cnt}" do
             this_page = cnt < 50 ? cnt : 50
             hits = "hits 1 through #{this_page} out of #{cnt}"
-            ForwardCitation.any_instance.stub(:fetch).and_return(true)
-            f = ForwardCitation.new(pnum, hits)
+            ForwardCitation.any_instance.stub(:fetch_remainder_from).and_return(true)
+            ForwardCitation.any_instance.stub(:fetch_first_page).and_return(hits)
+            f = ForwardCitation.new(pnum)
             expect(f.count).to eq cnt
             expect(f.pages).to eq (cnt.to_f / 50.0).ceil
           end

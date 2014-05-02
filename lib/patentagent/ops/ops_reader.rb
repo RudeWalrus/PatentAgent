@@ -4,7 +4,6 @@ require 'typhoeus'
 require 'json'
 require 'base64'
 require 'patentagent/patent_number'
-require 'patentagent/logging'
 
 
 module PatentAgent
@@ -70,11 +69,11 @@ module PatentAgent
 
           @token = JSON.parse(result.body)["access_token"]
           @time = Time.now
-          log "Authorizaton token is valid: #{@token}:#{@time.asctime}"
+          PatentAgent.dlog "Oauth", "Authorizaton token is valid: #{@token}:#{@time.asctime}"
           @token
 
           rescue => e
-            p error = "Error for getting OAuth token @ #{id}:#{secret}\n ==> #{e}"
+            PatentAgent.log "Error for getting OAuth token @ #{id}:#{secret}\n ==> #{e}"
         end
       end
     end

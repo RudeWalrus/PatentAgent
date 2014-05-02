@@ -3,36 +3,59 @@
 # License::   Creative Commons 3
 
 require "patentagent/patent_number"
+require 'typhoeus'
 require "forwardable"
 
-module PatentAgent    
+module PatentAgent  
   class Patent
-    
-    attr_reader :pnum
     include PatentAgent
     extend Forwardable
+    
+    attr_accessor :hydra, :pnum
+    attr_accessor :patent, :results, :family, :pto, :fc, :claims
+
     def_delegators :pnum, :number, :cc, :kind
+    #
+    # get the patent info for patent
+    #
+    # Steps are:
     
-    
-    def initialize(pnum, options = {})
-      set_options options
-      @pnum = PatentNumber(pnum)
+    def initialize(patent)
+      @pnum  = PatentNumber(patent)
 
-      @ops = OPS::OpsPatent.new(pnum)
-      @pto = PTO::PTOPatent.new(pnum)
+      # objects to get the OPS, PTO and forward citations data
+      ops_client   = OpsBiblioFamilyUrl.new(pnum, 1)
+      pto_client   = PtoUrl.new(pnum, 2)
+      fc_client    = PtoFCUrl.new(pnum, 1, 3)
 
-      rationalize
-      
+      @hydra = PatentHydra.new(ops_client, pto_client, fc_client)
+      run
     end
-      #
+
+    def run
+      res = @hydra.run
+
+      ops_data = res.find{|o| o.job_id == 1}
+      pto_data = res.find{|o| o.job_id == 2}
+      
+      @pto          = pto_data.to_pto_patent
+      @family       = ops_data.to_ops_patent
+      @ops          = @family.first
+
+      fc           = PTO::ForwardCitation.new(pnum)
+      fc_patents   = fc.get_full_fc
+      
+      result       = [pto, family, fc]
+      self
+    end
+
       # map the Claims structs to hashes
-      #
     def claims
       @claims ||= begin
         @claims = {}
         @pto.claims.each {|k,v| @claims[k] = v.to_hash }
         @claims
-      end
+     end
     end
 
     def rationalize
@@ -45,30 +68,26 @@ module PatentAgent
     end
 
     def patent
-      @patent ||= (family[0] || {})
+      @patent ||= (family[0].to_hash || {} )
     end
 
-    def family
-      @family ||= (@ops.family || [])
-    end
+    def family; @family.members || []; end
+
+    
+    def pto; @pto || []; end
+    
 
     private
       #
       # delegate calls for the fields to the PatentFields object
       #
       def method_missing(method, *args)
-        return @patent.send(method) if @patent.respond_to?(method)
+        return patent.send(method) if patent.respond_to?(method)
         super
       end
 
       def respond_to_missing?(method, include_private = false)
-        @patent.respond_to?(method) || super
-      end
-
-    def set_options(opts)
-        #@options.merge!(opts)
-        @options = {}
-        PatentAgent.debug = @options.fetch(:debug) {false}
+        patent.respond_to?(method) || super
       end
   end
 end

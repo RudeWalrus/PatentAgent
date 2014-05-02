@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'typhoeus'
 
 module PatentAgent
   describe Patent do
@@ -6,31 +7,31 @@ module PatentAgent
     let(:pnum)       {"US" + number}
     subject(:patent) {Patent.new(pnum)}
 
-    # describe "#initialize", vcr: true do
-    #   it {should be_kind_of Patent}
-    #   its(:patent) {should be_kind_of Hash}
-    #   its(:family) {should be_kind_of Array}
-    #   its(:number) {should eq number}
-    #   its(:cc) {should eq "US"}
+    describe "#initialize", :vcr do
+      it {should be_kind_of Patent}
+      its(:patent) {should be_kind_of Hash}
+      its(:family) {should be_kind_of Array}
+      its(:number) {should eq number}
+      its(:cc) {should eq "US"}
 
-    #   context "Gets a family" do
-    #     subject{patent.family}
-    #     it "family#count" do
-    #       patent.family.count.should eq 9
-    #     end
-    #     its(:ops) {should be_kind_of Hash}
-    #   end
+      context "Gets a family" do
+        it "family#size" do
+          patent.family.size.should eq 9
+        end
+      end
 
-    #   it "has claims" do
-    #     patent.claims.count.should eq 11
-    #     patent.claims.should be_kind_of Hash
-    #     1.upto(11) { |i| patent.claims[i].should be_kind_of Hash }
-    #   end
-
-    #   it "rationalizes common fields" do
-    #     patent.title.should eq "Title"
-    #   end
       
-    # end
+
+      it "has claims" do
+        patent.claims.count.should eq 11
+        patent.claims.should be_kind_of Hash
+        1.upto(11) { |i| patent.claims[i].should be_kind_of Hash }
+      end
+
+      it "rationalizes common fields" do
+        patent.rationalize
+      end
+      
+    end
   end
 end

@@ -38,17 +38,6 @@ module PatentAgent
     end
 
     context "#run" do
-      let(:xml)    {File.read(File.dirname(__FILE__) + "/../fixtures/US7139271.xml") }
-      it "hits OPS and PTO" do
-        pto = Typhoeus::Response.new(code: 200, body: "{'pto' : '#{patent}'}")
-        ops = Typhoeus::Response.new(code: 200, body: xml)
-        Typhoeus.stub(/ops\.epo\.org/).and_return(ops)
-        Typhoeus.stub(/patft\.uspto\.gov/).and_return(pto)
-        result = client.run
-        expect(result).to be_kind_of Array
-        expect(result).to have(3).items
-      end
-
       it "hits the website" do
         result = Client.new("US7139271").run
         expect(result).to have(3).items

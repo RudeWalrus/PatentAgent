@@ -6,21 +6,23 @@ module PatentAgent
   module PTO
     class ForwardCitation < Array
       include PatentAgent
-      include Logging
 
-      attr_reader :parent, :html, :count, :pages
+      attr_reader :parent, :count, :pages
       attr_reader :patents, :names
       
       # Receives a patent number or PatentNum
       # param: html is the html of the first fc page from PTO (which has total count of fcs)
-      def initialize(parent, html)
+      def initialize(parent)
         @parent  = PatentNumber(parent)
         @patents = []
         @names   = []
 
+        first_page = fetch_first_page
+
         # first compute counts(i.e. number of FCs)
-        @count, @page = compute_counts html
-        fetch(html)
+        @count, @page = compute_counts first_page
+        
+        fetch_remainder_from (first_page)
       end
 
       def get_full_fc
@@ -34,7 +36,7 @@ module PatentAgent
       end
       private
 
-      def fetch(html)
+      def fetch_remainder_from(html)
         # Each PTO page contains up to 50 citations so if counts > 50, then
         # we need to grab multiple pages. If so, grab the HTML for the pages
         html_objs     = get_html
@@ -46,6 +48,10 @@ module PatentAgent
         html_objs.each{ |obj| parse_fc_html(obj.html) }
       end
 
+      def fetch_first_page
+       ar = PatentHydra.new(PtoFCUrl.new(@parent,1)).run
+       ar[0].html
+      end
       # gets pages 2 to ... n of a patents forward cites.
       def get_html
         return [] unless @pages > 1
@@ -56,7 +62,7 @@ module PatentAgent
       #
       # computes the total forward references and the number of total pages
       #
-      def compute_counts(html=@html)
+      def compute_counts(html)
         text = clean_html(html)
         # snarf the count of total hits and hits on this page
         text.match(/hits \d+ through \d+.\s*out of (\d+)/mi) do |m|

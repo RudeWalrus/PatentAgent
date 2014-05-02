@@ -26,7 +26,7 @@ module PatentAgent
       raise InvalidPatentNumber unless valid?
 
       rescue InvalidPatentNumber
-        puts "Bogus patent number #{@clean}"
+        PatentAgent.log "Bogus patent number #{@clean}"
     end
 
     def to_patent; self;                           end

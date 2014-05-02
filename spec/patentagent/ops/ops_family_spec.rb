@@ -14,7 +14,7 @@ module PatentAgent::OPS
     its("members.size") {should eq 9}
 
     it "#members returns an Array of OpsFields" do
-      patent.members.should be_all {|x| x.is_a? OpsFields }
+      patent.members.should be_all {|x| x.is_a? Fields }
     end
 
     it "#[]" do

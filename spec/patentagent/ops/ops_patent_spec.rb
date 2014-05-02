@@ -12,12 +12,12 @@ module PatentAgent::OPS
       ENV["OPS_SECRET_KEY"]   = "rRBKrsBaoOzWZ99G"
     end
 
-    its(:family)    {should be_kind_of(Array)}
-    its(:family_members)   {should be_kind_of(Array)}
-    its(:family_members)   {should include("US7139271.B1", "US7286566.B1")}
-    its(:to_a)        {should be_kind_of Array}
-    its("to_a.size")  {should eq 9}
-    its(:target)      {should be_kind_of Hash}
+    its(:family)            {should be_kind_of(Array)}
+    its(:family_members)    {should be_kind_of(Array)}
+    its(:family_members)    {should include("US7139271.B1", "US7286566.B1")}
+    its(:to_a)              {should be_kind_of Array}
+    its("to_a.size")        {should eq 9}
+    its(:target)            {should be_kind_of Hash}
     
     it "#to_a" do
       patent.to_a.should be_kind_of Array
