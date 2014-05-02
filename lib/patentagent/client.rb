@@ -25,13 +25,15 @@ module PatentAgent
 
     attr_accessor :text, :valid, :patent, :job_id
     alias :xml :text
+    
     class << self
       attr_accessor :id, :secret
     end
 
-    def initialize(patent, auth=false)
+    def initialize(patent, job_id=1, options ={})
       @patent = PatentNumber(patent)
       @pnum   = @patent.cc + @patent.number
+      @job_id = job_id
     end
 
     def to_request()
@@ -41,7 +43,7 @@ module PatentAgent
     # converts itself to an ops_patent
     #
     def to_ops_patent
-      OPS::OpsPatent.new(@patent, @text)
+      OPS::OpsFamily.new(@patent, @text)
     end
     
     def number; @patent.full; end
@@ -64,9 +66,10 @@ module PatentAgent
     attr_accessor :text, :valid, :patent, :job_id
     alias :html :text
 
-    def initialize(patent)
+    def initialize(patent, job_id = 1, options = {})
       @patent = PatentNumber(patent)
       @pnum   = @patent.number
+      @job_id = job_id
     end
     
     def to_url; raise "Not implemented"; end
@@ -93,9 +96,9 @@ module PatentAgent
   end
 
   class PtoFCUrl < PtoBaseUrl
-    def initialize(patent, pg)
+    def initialize(patent, pg, job_id = 1)
       @pg = pg
-      super(patent)
+      super(patent, job_id)
     end
     def to_url
       "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=#{@pg}&u=/netahtml/search-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/#{@pnum}"
@@ -106,7 +109,7 @@ module PatentAgent
     include Typhoeus
     
     attr_accessor :hydra
-    attr_reader   :results, :ops, :pto, :fc
+    attr_accessor :patent, :results, :ops, :pto, :fc
 
     #
     # get the patent info for patent
@@ -114,23 +117,32 @@ module PatentAgent
     # Steps are:
     
     def initialize(patent)
-      @ops = OpsBiblioFamilyUrl.new(patent)
-      @pto = PtoUrl.new(patent)
-      @fc  = PtoFCUrl.new(patent, 1)
+      @patent = patent
+      @ops    = OpsBiblioFamilyUrl.new(patent, 1)
+      @pto    = PtoUrl.new(patent, 2)
+      @fc     = PtoFCUrl.new(patent, 1, 3)
 
-      @hydra= PatentHydra.new(ops, pto, @fc)
+      @hydra= PatentHydra.new(ops, pto, fc)
     end
 
     def run
       res = @hydra.run
 
-      pto = res.find{|o| o.respond_to? :html}
-      ops = res.find{|o| o.respond_to? :xml}
+      ops = res.find{|o| o.job_id == 1}
+      pto = res.find{|o| o.job_id == 2}
+      fc  = res.find{|o| o.job_id == 3}
       
-      pto_patent  = pto.to_pto_patent
-      ops_patent  = ops.to_ops_patent
+      pto_data   = pto.to_pto_patent
+      ops_data     = ops.to_ops_patent
+      fc_initial   = fc.to_pto_patent
 
-      result = [pto_patent, ops_patent]
+      fc_data = PTO::ForwardCitation.new(patent, fc_initial.html)
+      fc_data.names.each{|x| p x }
+      fc_patents = fc_data.get_full_fc
+
+      fc_patents.each {|x| p x.inspect}
+      
+      result = [pto_data, ops_data, fc_data]
     end
   end
 

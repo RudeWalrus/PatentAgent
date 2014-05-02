@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
 
   s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.test_files    = `git ls-files -- {spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = %w[lib]
 
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "vcr"
   s.add_development_dependency "webmock"
   s.add_development_dependency "timecop"
-  s.add_runtime_dependency "rest-client"
   s.add_runtime_dependency "typhoeus"
+  s.add_runtime_dependency "rest-client"
   s.add_runtime_dependency "nokogiri"
 end

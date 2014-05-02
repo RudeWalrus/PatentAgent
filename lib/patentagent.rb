@@ -13,6 +13,7 @@ require 'patentagent/patent_hydra'
 require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
 require 'patentagent/ops/ops_fields'
+require 'patentagent/ops/ops_family'
 
 require 'patentagent/pto/pto_reader'
 require 'patentagent/pto/claims'

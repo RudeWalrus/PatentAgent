@@ -15,29 +15,38 @@ module PatentAgent
       # param: html is the html of the first fc page from PTO (which has total count of fcs)
       def initialize(parent, html)
         @parent  = PatentNumber(parent)
-        @html    = html
         @patents = []
         @names   = []
-        compute_counts
+
+        # first compute counts(i.e. number of FCs)
+        @count, @page = compute_counts html
+        fetch(html)
       end
 
-      def fetch
-        # first compute counts(i.e. number of FCs)
+      def get_full_fc
+        # 
+        # 1) get URLs for each patent number
+        # 2) get the html for each patent (from the Hydra)
+        # 3) turn the HTML into PTOPatent objects.
+        url_objs   = urls_from @names
+        html_objs  = html_from_urls url_objs
+        patent_from_html html_objs
+      end
+      private
+
+      def fetch(html)
         # Each PTO page contains up to 50 citations so if counts > 50, then
         # we need to grab multiple pages. If so, grab the HTML for the pages
-        html_objs = get_html
+        html_objs     = get_html
 
         # do the first page from the @html passed in
-        parse_fc_html(@html)
+        parse_fc_html(html)
 
         # and now the remainder from the Hydra
         html_objs.each{ |obj| parse_fc_html(obj.html) }
       end
 
-      private
-
       # gets pages 2 to ... n of a patents forward cites.
-      #
       def get_html
         return [] unless @pages > 1
         clients  = (2..@pages).map {|pg| PtoFCUrl.new(@parent, pg)}
@@ -72,8 +81,8 @@ module PatentAgent
         string.gsub(/<\/?([bi]|strong)>/mi, "")
       end
 
-      def urls_from_names
-        @names.map{|patent| PtoUrl.new(patent)}
+      def urls_from(names)
+        names.map{|patent| PtoUrl.new(patent)}
       end
 
       #
@@ -88,15 +97,7 @@ module PatentAgent
         objs.map(&:to_pto_patent)
       end
 
-      def get_full_fc
-        # 
-        # 1) get URLs for each patent number
-        # 2) get the html for each patent (from the Hydra)
-        # 3) turn the HTML into PTOPatent objects.
-        url_objs   = urls_from_names
-        html_objs  = html_from_urls url_objs
-        @results   = patent_from_html htm_objs
-      end
+      
 
     end
   end

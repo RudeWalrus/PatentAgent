@@ -5,6 +5,7 @@ module PatentAgent
   describe "Ops/Base Url" do
     let(:patent)        {"US7139271"}
     subject(:family)    {OpsBiblioFamilyUrl.new(patent)}
+    
     %w[to_url text job_id valid].each { |method|
       it "Responds to #{method}" do
         OpsBiblioFamilyUrl.new(patent).should respond_to method.to_sym
@@ -23,6 +24,7 @@ module PatentAgent
 
       its(:ops) {should be_a OpsBiblioFamilyUrl}
       its(:pto) {should be_a PtoUrl}
+      its(:fc)  {should be_a PtoFCUrl}
       
       %w[ops pto fc].each do |org|
         its(org.to_sym) {should respond_to :to_request}
@@ -44,12 +46,12 @@ module PatentAgent
         Typhoeus.stub(/patft\.uspto\.gov/).and_return(pto)
         result = client.run
         expect(result).to be_kind_of Array
-        expect(result).to have(2).items
+        expect(result).to have(3).items
       end
 
       it "hits the website" do
         result = Client.new("US7139271").run
-        expect(result).to have(2).items
+        expect(result).to have(3).items
       end
     end
   end

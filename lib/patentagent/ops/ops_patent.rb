@@ -47,7 +47,7 @@ module PatentAgent
       def parse
         @nodes.css("ops|family-member").map {|node|
           @family_members << fmt_family_member(node)
-          item = OPSFields.new(node)
+          item = OpsFields.new(node)
         } 
       end
 

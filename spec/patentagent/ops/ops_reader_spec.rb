@@ -8,7 +8,7 @@ module PatentAgent::OPS
     let(:secret)  {"rRBKrsBaoOzWZ99G"}
 
     it "fetches a bearer token"  do
-      token = Reader::OAuth.get_token(id, secret)
+      token = Reader::OAuth.request_token(id, secret)
       expect(token).to_not be_nil
       expect(token).to match /\w+/
     end
@@ -16,17 +16,17 @@ module PatentAgent::OPS
     describe "Expires token" do
       before  {Timecop.freeze(Time.now)}
       after   {Timecop.return}
-      it "reuses token if time is less than 20 minutes" do 
-        token1 = Reader::OAuth.get_token(id, secret)
+      it "reuses token if time is less than 20 minutes" do
+        #Reader::OAuth.should_receive(:get_token)
+        Reader::OAuth.request_token(id, secret)
         Timecop.travel(Time.now + 600)  # 10 minutes in the future
-        token2 = Reader::OAuth.get_token(id, secret)
-        token1.should eq token2
+        Reader::OAuth.request_token(id, secret)
       end
       it "gets new token if time is greater than 20 minutes" do 
-        token1 = Reader::OAuth.get_token(id, secret)
+        #Reader::OAuth.should_receive(:get_token).exactly(2).times
+        Reader::OAuth.request_token(id, secret)
         Timecop.travel(Time.now + 1201) #20m + 1 sec in the future
-        token2 = Reader::OAuth.get_token(id, secret)
-        token1.should_not eq token2
+        Reader::OAuth.request_token(id, secret)
       end
     end
   end

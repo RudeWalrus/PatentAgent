@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'rest-client'
+require 'typhoeus'
 require 'json'
 require 'base64'
 require 'patentagent/patent_number'
@@ -38,12 +39,21 @@ module PatentAgent
         include Logging
         attr_accessor :id, :secret, :time, :token
       
-        def get_token(id=nil, secret=nil)
+        def request_token(id=nil, secret=nil)
 
           # if there's a valid token and its been less than 20 minutes (1200s)
           #  then we can simply re-use the token
-          return @token if @token && (Time.now - @time < 1200)
+          return @token if @token and ((Time.now - time) < 1200)
+          
+          get_token(id,secret)
+        end
 
+        def time
+          @time ||= Time.now
+        end
+
+        private
+        def get_token(id, secret)
           id     ||=  ENV["OPS_CONSUMER_KEY"]
           secret ||=  ENV["OPS_SECRET_KEY"]
           
@@ -51,15 +61,16 @@ module PatentAgent
           # and base64 encoded using HTTP Basic Authentication 
           # 
           auth  = Base64.encode64("#{id}:#{secret}")
+          result  = Typhoeus::Request.new(
+              URL[:auth_url],
+              method: :post, 
+              headers: {Authorization: auth, content_type: "application/x-www-form-urlencoded"},
+              body: "grant_type=client_credentials"
+              ).run
 
-          body  = RestClient.post(URL[:auth_url], 
-            "grant_type=client_credentials",
-            Authorization: auth, content_type: "application/x-www-form-urlencoded"
-          )
-
-          @token = JSON.parse(body)["access_token"]
+          @token = JSON.parse(result.body)["access_token"]
           @time = Time.now
-          log "Authorizaton token is valid: #{token}:#{@time.asctime}"
+          log "Authorizaton token is valid: #{@token}:#{@time.asctime}"
           @token
 
           rescue => e

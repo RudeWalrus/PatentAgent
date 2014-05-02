@@ -1,10 +1,10 @@
 module PatentAgent::OPS
-  class OPSFields
+  class OpsFields
 
     attr_reader :priority
     
     def initialize(node)
-      @node = node
+      node = node
       parse node
     end
 
@@ -16,13 +16,13 @@ module PatentAgent::OPS
       assignees:            ->(n) {n.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text)},
       inventors:            ->(n) {n.css('inventors inventor[@data-format="epodoc"] inventor-name name').map {|el| el.text.strip } },
       classification_ipcrs: ->(n) {n.css("classification-ipcr text").map { |el|  el.text.delete(" ") }},
-      classification_eclas: ->(n) {n.css("classification-ecla classification-symbol").map { |el|  el.text.delete(" ")} },
-      classification_nationals: ->(n) {n.css("classification-national text").map { |el|  el.text.delete(" ")} },
+      #classification_eclas: ->(n) {n.css("classification-ecla classification-symbol").map { |el|  el.text.delete(" ")} },
+      #classification_nationals: ->(n) {n.css("classification-national text").map { |el|  el.text.delete(" ")} },
+      classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| to_classification(el)} },
       references:           ->(n) {n.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort },
       issue_date:           ->(n) {n.css('publication-reference document-id date').first.text},
       file_date:           ->(n) {n.css('application-reference document-id date').first.text},
       priorities:           ->(n) {n.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').map { |el| to_doc_date(el)} },
-      classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| to_classification(el)} },
       applications:         ->(n) {n.css('application-reference document-id[document-id-type="epodoc"]').map { |el| to_doc_date(el)} }
     }.each { |k, value| define_method(k) { instance_variable_get "@#{k}" }}
 
@@ -62,12 +62,11 @@ module PatentAgent::OPS
     # instance methods
     #
 
-    def parse(node=@node)
+    def parse(node)
       FIELDS.each {|key,func|
-        result = Array(func.call(node)).map { |x| x.respond_to?(:gsub) ? x.gsub(/\u2002/, '') : x  }
+        result = Array(func.call(node)).map { |x| x.respond_to?(:gsub) ? x.gsub(/\u2002/, '') : x }
         item = key.match(/s$/) ? result : result[0].to_s
         instance_variable_set("@#{key}",item)
-        result
       }
       find_priority
     end
@@ -83,12 +82,17 @@ module PatentAgent::OPS
     private
 
     def find_priority
-      date  = priorities.map { |h| h[:date] }.min
-      set_key :priority,   date
+      dates  = priorities.map { |h| h[:date] }.min
+      set_key :priority,   dates
     end
     
     def set_key( key, value )
       instance_variable_set("@#{key}",value)
+    end
+
+    def fmt_date(date)
+      date.match /(\d{4})(\d{2})(\d{2})/
+      {year: $1, month: $2, day: $3, full: date}
     end
   end
 end

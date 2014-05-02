@@ -3,21 +3,21 @@ require "patentagent/ops/ops_fields"
 
 
 module PatentAgent::OPS
-  describe OPSFields do
+  describe OpsFields do
     let(:num)           {"7139271"}
     let(:cc)            {"US"}
     let(:pnum)          {cc + num}
     let(:xml)           {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}.xml")}
     let(:node)          {Nokogiri::XML(xml).css("ops|family-member").first }
-    subject(:fields)    {OPSFields.new(node)}
+    subject(:fields)    {OpsFields.new(node)}
   
     it                {should be}
     it                {should respond_to :keys}
     it                {should respond_to :title, :inventors, :issue_date, :references}
     its(:keys)        {should include :title, :inventors, :issue_date, :references}
-    its("keys.size")  {should eq OPSFields.count}
+    its("keys.size")  {should eq OpsFields.count}
     its(:to_hash)     {should be_kind_of Hash}
-    its("to_hash.size")     {should eq OPSFields.count}
+    its("to_hash.size")     {should eq OpsFields.count}
  
     its(:patent_number)   {should eq "US7139271"}
     its(:title)       {should eq "Using an embedded indication of egress application type to determine which type of egress processing to perform"}
@@ -37,7 +37,7 @@ module PatentAgent::OPS
     
     describe "#to_hash" do
       before {@hash = fields.to_hash}
-      OPSFields.keys.each {|key|
+      OpsFields.keys.each {|key|
         it "creates field for :#{key}" do
           @hash[key].should be
         end
