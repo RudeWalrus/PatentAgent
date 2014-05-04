@@ -2,9 +2,8 @@ PATH
   remote: .
   specs:
     patentagent (0.4.0.pre)
-      nokogiri
-      rest-client
-      typhoeus
+      nokogiri (~> 1.5, >= 1.5.6)
+      typhoeus (~> 0.6, >= 0.6.8)
 
 GEM
   remote: http://rubygems.org/
@@ -44,7 +43,6 @@ GEM
       rb-inotify (>= 0.9)
     lumberjack (1.0.5)
     method_source (0.8.2)
-    mime-types (1.21)
     nio4r (1.0.0)
     nokogiri (1.5.6)
     pry (0.9.12.6)
@@ -61,8 +59,6 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -94,7 +90,7 @@ DEPENDENCIES
   pry-stack_explorer
   rake
   rb-fsevent
-  rspec
-  timecop
-  vcr
-  webmock
+  rspec (>= 2.12.0)
+  timecop (~> 0.7.1)
+  vcr (>= 2.5.0)
+  webmock (>= 1.12.0)

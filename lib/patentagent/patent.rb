@@ -12,24 +12,24 @@ module PatentAgent
     include PatentAgent
     extend Forwardable
     
-    attr_accessor  :patent, :results, :family, :pto, :fc, :claims
-
+    attr_reader  :patent, :family, :pto, :fc, :claims
+    
     def_delegators :patent, :number, :cc, :kind
   
     def initialize(patent)
       @patent = PatentNumber(patent)
 
       # objects to get the OPS, PTO and forward citations data
-      @hydra = Hydra.new(
+      hydra = Hydra.new(
           OpsBiblioFamilyClient.new(patent, 1), 
           PtoPatentClient.new(patent, 2),
           PtoFCClient.new(patent, 1, 3)
       )
-      run
+      run hydra
     end
 
-    def run
-      res = @hydra.run
+    def run hydra
+      res = hydra.run
 
       @family  = res.find_for_job_id(1).to_patent
       @pto     = res.find_for_job_id(2).to_patent

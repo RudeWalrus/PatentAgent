@@ -11,7 +11,7 @@ module PatentAgent
     describe "#initialize", :vcr do
       it {should be_kind_of Patent}
       it {should respond_to :number, :cc, :kind}
-      it {should respond_to :patent, :results, :family, :pto, :fc, :claims}
+      it {should respond_to :patent, :family, :pto, :fc, :claims}
       its(:family) {should be_kind_of Array}
       its(:number) {should eq number}
       its(:cc) {should eq "US"}
