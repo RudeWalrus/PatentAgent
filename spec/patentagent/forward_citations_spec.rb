@@ -3,16 +3,16 @@ require 'spec_helper'
 module PatentAgent
 
   describe ForwardCitations do
-    let(:num)         {"US5539735"}
+    let(:num)         {"US7139271"}
     let(:pnum)        {PatentNumber.new(num)}
-    #let(:html)        {File.read(File.dirname(__FILE__) + "/../../fixtures/#{pnum}_fc.html")}
-    subject(:patents)  {ForwardCitations.new(pnum)}
+    let(:html)        {File.read(File.dirname(__FILE__) + "/../fixtures/#{pnum}_fc.html")}
+    subject(:patents)  {ForwardCitations.new(pnum, html)}
   
     describe "#new", :vcr do
       #PatentAgent.loud
       it {should respond_to :parent}
-      it {should have(324).items }
-      it {patents.pages.should eq 7}
+      it {should have(31).items }
+      it {patents.pages.should eq 1}
     end
 
     describe "internal methods" do
@@ -22,7 +22,7 @@ module PatentAgent
           hits = "hits 1 through #{this_page} out of #{cnt}"
           ForwardCitations.any_instance.stub(:fetch_remainder_from).and_return(true)
           ForwardCitations.any_instance.stub(:fetch_first_page).and_return(hits)
-          f = ForwardCitations.new(pnum)
+          f = ForwardCitations.new(pnum, hits)
           expect(f.pages).to eq (cnt.to_f / 50.0).ceil
         end
       end

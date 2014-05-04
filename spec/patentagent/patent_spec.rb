@@ -12,7 +12,6 @@ module PatentAgent
       it {should be_kind_of Patent}
       it {should respond_to :number, :cc, :kind}
       it {should respond_to :patent, :results, :family, :pto, :fc, :claims}
-      its(:patent) {should be_kind_of Hash}
       its(:family) {should be_kind_of Array}
       its(:number) {should eq number}
       its(:cc) {should eq "US"}
@@ -21,11 +20,6 @@ module PatentAgent
         it "family#size" do
           patent.family.size.should eq 9
         end
-      end
-      
-      context "PatentHydra" do
-        its(:hydra)         {should respond_to :run}
-        its("hydra.hydra")  {should be_a Typhoeus::Hydra}
       end
       
       it "has claims" do

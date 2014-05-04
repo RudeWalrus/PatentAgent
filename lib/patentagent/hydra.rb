@@ -79,7 +79,7 @@ module PatentAgent
           # and process the return values (specifically the 404s for OPS)
           if response.success?
               patent.text = response.body
-              PatentAgent.log "Hydra got: #{patent.patent.full}"
+              PatentAgent.dlog "Hydra got: #{patent.patent.full}"
               @results << patent
           elsif response.timed_out?
               @retry << patent
@@ -92,7 +92,7 @@ module PatentAgent
         } 
 
         hydra.queue( request )
-        PatentAgent.log "Queued: #{patent.patent.full} " + request.url
+        PatentAgent.dlog "Queued: #{patent.patent.full} " + request.url
       }
     end
 

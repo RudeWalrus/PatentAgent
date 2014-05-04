@@ -23,7 +23,7 @@ module PatentAgent
       @hydra = Hydra.new(
           OpsBiblioFamilyClient.new(patent, 1), 
           PtoPatentClient.new(patent, 2),
-          PtoFCClient.new(patent, 3)
+          PtoFCClient.new(patent, 1, 3)
       )
       run
     end
@@ -33,11 +33,8 @@ module PatentAgent
 
       @family  = res.find_for_job_id(1).to_patent
       @pto     = res.find_for_job_id(2).to_patent
-      binding.pry
       @fc      = res.find_for_job_id(3).to_patent
       @ops     = @family.first
-
-      @fc           = fc_data.to_patent
       #fc_patents   = fc.get_full_fc
       
       result       = [pto, family, fc]
@@ -48,7 +45,7 @@ module PatentAgent
     def claims
       @claims ||= begin
         @claims = {}
-        @pto.claims.each {|k,v| @claims[k] = v.to_hash }
+        @pto.claims.each {|k,v| @claims[k] = v.to_h }
         @claims
      end
     end
