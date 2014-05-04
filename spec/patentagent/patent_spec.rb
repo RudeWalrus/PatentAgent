@@ -3,13 +3,14 @@ require 'typhoeus'
 
 module PatentAgent
   describe Patent do
+    #PatentAgent.debug = true
     let(:number)     {"7139271"}
     let(:pnum)       {"US" + number}
     subject(:patent) {Patent.new(pnum)}
 
     describe "#initialize", :vcr do
       it {should be_kind_of Patent}
-      it {should respond_to :pnum, :number, :cc, :kind}
+      it {should respond_to :number, :cc, :kind}
       it {should respond_to :patent, :results, :family, :pto, :fc, :claims}
       its(:patent) {should be_kind_of Hash}
       its(:family) {should be_kind_of Array}

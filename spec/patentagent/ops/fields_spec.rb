@@ -17,8 +17,8 @@ module PatentAgent::OPS
     it                {should respond_to :title, :inventors, :issue_date, :references}
     its(:keys)        {should include :title, :inventors, :issue_date, :references}
     its("keys.size")  {should eq f.count}
-    its(:to_hash)     {should be_kind_of Hash}
-    its("to_hash.size")     {should eq f.count}
+    its(:to_h)        {should be_kind_of Hash}
+    its("to_h.size")   {should eq f.count}
  
     its(:patent_number)   {should eq "US7139271"}
     its(:title)       {should eq "Using an embedded indication of egress application type to determine which type of egress processing to perform"}
@@ -36,8 +36,8 @@ module PatentAgent::OPS
       fields.applications[0][:date].should eq "20011012"
     end
     
-    describe "#to_hash" do
-      before {@hash = fields.to_hash}
+    describe "#to_h" do
+      before {@hash = fields.to_h}
       Fields.keys.each {|key|
         it "creates field for :#{key}" do
           @hash[key].should be

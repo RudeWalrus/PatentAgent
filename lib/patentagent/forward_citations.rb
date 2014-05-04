@@ -10,10 +10,10 @@ module PatentAgent
     
     # Receives a patent number or PatentNum
     # param: html is the html of the first fc page from PTO (which has total count of fcs)
-    def initialize(parent)
+    def initialize(parent, html_from_first_page)
       @parent  = PatentNumber(parent)
 
-      html_from_first_page = fetch_first_page
+      # if we want to get it ourselves: fetch_first_page
 
       # first compute counts(i.e. number of FCs)
       @count, @pages = compute_counts_from html_from_first_page
@@ -23,10 +23,10 @@ module PatentAgent
 
     private
     
-    def fetch_first_page
-     ar = Hydra.new(PtoFCClient.new(@parent,1)).run
-     ar[0].text
-    end
+    # def fetch_first_page
+    #  ar = Hydra.new(PtoFCClient.new(@parent,1)).run
+    #  ar[0].text
+    # end
 
     def fetch_remainder_from(html)
       # Each PTO page contains up to 50 citations so if counts > 50, then

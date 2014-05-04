@@ -7,7 +7,7 @@ module PatentAgent
       let(:cc)                {"US"}
       let(:patent_num)       {cc + number}
       let(:pnum)             {PatentNumber.new(patent_num)}
-      let(:html)             {PTOReader.read(pnum)}
+      let(:html)             {File.read(File.dirname(__FILE__) + "/../../fixtures/US6266379.html") }
       subject(:patent)       {PtoPatent.new(pnum, html)}
       
       describe "#initialize", :vcr do 
@@ -49,7 +49,7 @@ module PatentAgent
         end   
       end
 
-      describe '#to_hash', vcr: true do
+      describe '#to_h', vcr: true do
         subject(:hash) {patent.to_h}
 
         {

@@ -1,6 +1,5 @@
 require 'typhoeus'
 
-
 module PatentAgent
   class HydraArray < Array
     # convenience method to find a result by job_id
@@ -23,6 +22,7 @@ module PatentAgent
       def initialize;   @cache = {}; end
       def get(request); @cache[request]; end
       def set(request, response); @cache[request] = response; end
+      def size; @cache.size; end
     end
 
     class << self
@@ -37,6 +37,8 @@ module PatentAgent
       @hydra
     end
 
+    def self.cache_size; hydra_cache.size || 0; end;
+
     def self.hydra_cache=(val); @hdyra_cache = val; end
     def self.hydra_cache; @hydra_cache ||= Cache.new; end
 
@@ -44,13 +46,12 @@ module PatentAgent
 
 
     # Expects a list of objects that respond to 
-    # =>  #to_url 
     # =>  #to_request
     # These should implement interfaces that descend from the 
     # PatentAgent::Client class
     def initialize(*list)
-      #Make sure its an array and only take items that responds to #to_url
-      @list = Array(list).flatten.select{|o| o.respond_to?(:to_url)}  
+      #Make sure its an array and only take items that responds to #to_request
+      @list = Array(list).flatten.select{|o| o.respond_to?(:to_request)}  
       @results = HydraArray.new
       @retry = []
     end
@@ -66,9 +67,8 @@ module PatentAgent
       add list
     end
 
-    # A list is an arrays of patents. Each patent should respond to 
-    # => a #to_url message
-    # => a #to_request message
+    # list is an arrays of patents. Each patent should respond to 
+    # a #to_request message 
     def add(list)
       list.each {|patent|
         request = request_from patent
@@ -79,7 +79,7 @@ module PatentAgent
           # and process the return values (specifically the 404s for OPS)
           if response.success?
               patent.text = response.body
-              #p "Hydra got: #{patent.patent.full}"
+              PatentAgent.log "Hydra got: #{patent.patent.full}"
               @results << patent
           elsif response.timed_out?
               @retry << patent
@@ -92,7 +92,7 @@ module PatentAgent
         } 
 
         hydra.queue( request )
-        PatentAgent.dlog "Queued: #{patent.patent.full} " + request.url
+        PatentAgent.log "Queued: #{patent.patent.full} " + request.url
       }
     end
 
@@ -108,6 +108,11 @@ module PatentAgent
       end
 
       @results
+    end
+
+    def fetch_single_item
+      run
+      @results[0]
     end
     
     private

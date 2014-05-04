@@ -11,7 +11,7 @@ module PatentAgent::OPS
 
     it            {should respond_to :members, :first, :[] }
     its(:members) {should be_a Array}
-    its("members.size") {should eq 9}
+    its(:members) {should have(9).items}
 
     it "#members returns an Array of OpsFields" do
       patent.members.should be_all {|x| x.is_a? Fields }

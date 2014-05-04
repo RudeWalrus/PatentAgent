@@ -74,7 +74,7 @@ module PatentAgent::OPS
 
     def keys; FIELDS.keys; end
 
-    def to_hash
+    def to_h
       hash = {}
       FIELDS.each { |field, search| hash[field] = instance_variable_get("@#{field.to_sym}")  }
       hash

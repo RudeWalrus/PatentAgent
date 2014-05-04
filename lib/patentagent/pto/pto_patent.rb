@@ -20,13 +20,10 @@ module PatentAgent
         @patent     = PatentNumber(pnum)
         @fields     = Fields.new(html)
         @claims     = Claims.new(html)
-        
-        PatentAgent.dlog "Processed: #{@patent.to_s}"  
+        PatentAgent.dlog "Processed: #{@patent.to_s}" 
       end
 
       def to_h; @fields.to_h; end
-      
-      def to_url; PtoClient.new(patnum); end;
 
       private
       #

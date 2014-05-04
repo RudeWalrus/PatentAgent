@@ -6,11 +6,11 @@ module PatentAgent
       include PatentAgent
       include Enumerable
       
-      attr_accessor  :patent_num, :members, :family_id
+      attr_accessor  :patent, :members, :family_id
       
       def initialize(pnum, xml)   
 
-        @patent_num = PatentNumber(pnum)
+        @patent = PatentNumber(pnum)
         
         # returns a Nokogiri NodeSet
         # need to get the family id from the first one......

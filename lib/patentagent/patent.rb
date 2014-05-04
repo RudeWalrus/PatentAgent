@@ -5,43 +5,39 @@
 require "patentagent/patent_number"
 require 'typhoeus'
 require "forwardable"
+require 'pry'
 
 module PatentAgent  
   class Patent
     include PatentAgent
     extend Forwardable
     
-    attr_accessor :results, :family, :pto, :fc, :claims
+    attr_accessor  :patent, :results, :family, :pto, :fc, :claims
 
-    def_delegators :pnum, :number, :cc, :kind
-    #
-    # get the patent info for patent
-    #
-    # Steps are:
-    
+    def_delegators :patent, :number, :cc, :kind
+  
     def initialize(patent)
-      @pnum  = PatentNumber(patent)
+      @patent = PatentNumber(patent)
 
       # objects to get the OPS, PTO and forward citations data
-      ops_client   = OpsBiblioFamilyUrl.new(pnum, 1)
-      pto_client   = PtoUrl.new(pnum, 2)
-      fc_client    = PtoFCUrl.new(pnum, 1, 3)
-
-      @hydra       = Hydra.new(ops_client, pto_client, fc_client)
+      @hydra = Hydra.new(
+          OpsBiblioFamilyClient.new(patent, 1), 
+          PtoPatentClient.new(patent, 2),
+          PtoFCClient.new(patent, 3)
+      )
       run
     end
 
     def run
       res = @hydra.run
 
-      ops_data = res.find_for_job_id 1
-      pto_data = res.find_for_job_id 2
-      
-      @pto          = pto_data.to_pto_patent
-      @family       = ops_data.to_ops_patent
-      @ops          = @family.first
+      @family  = res.find_for_job_id(1).to_patent
+      @pto     = res.find_for_job_id(2).to_patent
+      binding.pry
+      @fc      = res.find_for_job_id(3).to_patent
+      @ops     = @family.first
 
-      fc           = PTO::ForwardCitationNames.new(pnum)
+      @fc           = fc_data.to_patent
       #fc_patents   = fc.get_full_fc
       
       result       = [pto, family, fc]

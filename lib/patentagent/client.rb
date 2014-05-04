@@ -99,6 +99,9 @@ module PatentAgent
     end
     def to_url
       "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=#{@pg}&u=/netahtml/search-adv.htm&r=0&f=S&l=50&d=PALL&Query=ref/#{@pnum}"
+    end
+    def to_patent
+      ForwardCitations.new(patent, text)
     end  
   end
 
@@ -115,22 +118,6 @@ module PatentAgent
     def run
       url_objects = @hydra.run
       @results = url_objects.map(&:to_ops_patent)
-    end
-
-    class FCClient
-      attr_reader  :results
-      # takes an array of family members and fetches them from OPS
-      #
-      def initialize(list)
-        # build a list of OPSUrl objects to fetch
-        pto = list.map{|patent| OpsBiblioFamilyUrl.new(patent)}
-        @hydra = PatentHydra.new(ops_urls)
-      end
-
-      def run
-        url_objects = @hydra.run
-        @results = url_objects.map(&:to_ops_patent)
-      end
     end
   end
 end

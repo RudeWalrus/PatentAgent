@@ -10,13 +10,10 @@ require 'patentagent/forward_citations'
 require 'patentagent/fc_patents'
 
 
-
-require 'patentagent/ops/ops_reader'
 require 'patentagent/ops/ops_patent'
 require 'patentagent/ops/fields'
 require 'patentagent/ops/ops_family'
 
-require 'patentagent/pto/pto_reader'
 require 'patentagent/pto/claims'
 require 'patentagent/pto/pto_patent'
 require 'patentagent/pto/fields'
