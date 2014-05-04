@@ -9,8 +9,6 @@ require 'patentagent/hydra'
 require 'patentagent/forward_citations'
 require 'patentagent/fc_patents'
 
-
-require 'patentagent/ops/ops_patent'
 require 'patentagent/ops/fields'
 require 'patentagent/ops/ops_family'
 
