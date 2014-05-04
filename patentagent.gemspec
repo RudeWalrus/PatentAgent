@@ -22,11 +22,10 @@ Gem::Specification.new do |s|
 
   # specify any dependencies here; for example:
   s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "vcr"
-  s.add_development_dependency "webmock"
-  s.add_development_dependency "timecop"
-  s.add_runtime_dependency "typhoeus"
-  s.add_runtime_dependency "rest-client"
-  s.add_runtime_dependency "nokogiri"
+  s.add_development_dependency "rspec", '>= 2.12.2'
+  s.add_development_dependency "vcr", '>= 2.5.0'
+  s.add_development_dependency "webmock", '>= 1.12.0'
+  s.add_development_dependency "timecop", '~>0.7.1'
+  s.add_runtime_dependency "typhoeus", '>= 0.6.8'
+  s.add_runtime_dependency "nokogiri", '>= 1.5.6' 
 end
