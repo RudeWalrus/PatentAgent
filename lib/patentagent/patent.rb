@@ -59,8 +59,8 @@ module PatentAgent
       p "Inventors: #{@pto.inventors}:#{@ops.inventors}"
     end
 
-    def patent
-      @patent ||= (family[0].to_hash || {} )
+    def first
+      family[0].to_h || {}
     end
 
     def family; @family.members || []; end

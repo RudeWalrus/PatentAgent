@@ -5,14 +5,6 @@ require "benchmark"
 
 @hydra = Typhoeus::Hydra.new(max_concurrency: 3) 
 
-# require_relative 'localhost_server.rb'
-# require_relative 'server.rb'
-# URL = "http://localhost:300"
-# LocalhostServer.new(TESTSERVER.new, 3000)
-# LocalhostServer.new(TESTSERVER.new, 3001)
-# LocalhostServer.new(TESTSERVER.new, 3002)
-
-# hydra = Typhoeus::Hydra.new(max_concurrency: 3)
 
 patents = %w[5551212 6661212 7771212 7123456 8012345 7136291] # !> assigned but unused variable - patents
 PTO_SEARCH_URL = "http://patft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=/netahtml/PTO/srchnum.htm&r=1&f=G&l=50&s1="

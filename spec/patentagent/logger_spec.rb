@@ -2,7 +2,7 @@ require 'spec_helper'
 
 
 module PatentAgent
-
+  
   describe PatentAgent do
     subject(:p) {PatentAgent}
     let(:log_file) {"mylogfile.info"}
@@ -10,11 +10,14 @@ module PatentAgent
     it {should respond_to :logger, :logger=, :log, :dlog}
     its(:logger) {should be_kind_of Logger}
     
-    it "creates a log file" do
-      File.delete log_file if File.exists? log_file
-      p.logger = log_file
-      p.log "Header", "Data"
-      File.exists?(log_file).should be_true
+    context "Writes to a file" do
+      before {File.delete "mylogfile.info" if File.exists? "mylogfile.info"}
+      after {File.delete "mylogfile.info" if File.exists? "mylogfile.info"}
+      it "mylogfile.info" do
+        p.logger = log_file
+        p.log "Header", "Data"
+        File.exists?(log_file).should be_true
+      end
     end
 
     context "testing different outputs" do

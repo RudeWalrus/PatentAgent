@@ -6,7 +6,7 @@ module PatentAgent
       include PatentAgent
       include Enumerable
       
-      attr_accessor  :patent, :members, :family_id
+      attr_reader  :patent, :members, :family_id, :names
       
       def initialize(pnum, xml)   
 
@@ -17,10 +17,15 @@ module PatentAgent
         #
         nodes      = Nokogiri::XML(xml).css("ops|family-member")
         @members   = nodes.map {|node| OPS::Fields.new(node) }  
+        @names     = @members.map(&:patent_number)
       end
 
       def first
         members[0]
+      end
+
+      def family_id
+        first.family_id
       end
 
       def [](index); members[index]; end

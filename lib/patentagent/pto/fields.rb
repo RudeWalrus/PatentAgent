@@ -20,6 +20,7 @@ module PatentAgent
       #
       FIELDS    = {
         patent_number:   {gross: /<title>(.*?)<\/title>/mi,             fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
+        family_id:       {gross: /family id:.*?(<([ib])>\s*\d{1,8}\s*<\/\2>)/mi,       fine: /<[ib]>\s*(\d{1,8})/mi},
         title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi,  fine:  />(.*?)</mi},
         abstract:        {gross: /Abstract(.*?)<hr>/mi,                 fine: /<p>(.*?)<\/p>/mi},
         assignees:       {gross: /Assignee:(.*?)<\/tr>/mi,              fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},

@@ -29,8 +29,7 @@ module PatentAgent
       # parses all the claims
       #
       def parse(text)
-        claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
-
+        claim_text = text[/(?:Claims.*?center> <hr>)(.*?)(?:<hr>)/mi]
         raise NoClaims if claim_text.nil?
       
         # get the individual claims. The parens in the regex force the results to

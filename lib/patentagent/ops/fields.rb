@@ -8,6 +8,13 @@ module PatentAgent::OPS
       parse node
     end
 
+    #
+    # allows fields to be added
+    def self.field(field,  &block)
+      FIELDS[field] = block
+      define_method(field) {instance_variable_get "@#{field}" }
+    end
+
     FIELDS = {
       family_id:            ->(n) {n.at_css('exchange-document')['family-id']},
       patent_number:        ->(n) {n.css('publication-reference document-id [@document-id-type="epodoc"] doc-number').first.text},
@@ -51,12 +58,7 @@ module PatentAgent::OPS
 
     def self.count; FIELDS.size; end
 
-    #
-    # allows fields to be added
-    def self.add(field,  &block)
-      FIELDS[field] = block
-      define_method(field) {instance_variable_get "@#{field}" }
-    end
+    
 
     #
     # instance methods

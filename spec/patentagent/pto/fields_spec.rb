@@ -14,6 +14,7 @@ module PatentAgent
 
         it "fields exists " do
            expect(fields.patent_number).to be
+           expect(fields.family_id).to be
            expect(fields.title).to be
            expect(fields.abstract).to be
            expect(fields.assignees).to be
@@ -28,6 +29,7 @@ module PatentAgent
 
       describe "validate data" do
         its(:abstract)    {should match("An equalizer provided in a digital transmitter compensates for attenuation") }
+        its(:family_id)   {should match("26727888")}
         its(:title)       {should match("Digital transmitter with equalization")}
         its(:inventors)   {should have(1).items }
         its(:app_number)  {should match("08/882,252") }
