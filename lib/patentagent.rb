@@ -5,7 +5,9 @@ require 'patentagent/patent'
 require 'patentagent/logging'
 require 'patentagent/patent_number'
 require 'patentagent/client'
-require 'patentagent/patent_hydra'
+require 'patentagent/hydra'
+require 'patentagent/forward_citations'
+require 'patentagent/fc_patents'
 
 
 
@@ -18,7 +20,6 @@ require 'patentagent/pto/pto_reader'
 require 'patentagent/pto/claims'
 require 'patentagent/pto/pto_patent'
 require 'patentagent/pto/fields'
-require 'patentagent/pto/forward_citations'
 
 module PatentAgent
 

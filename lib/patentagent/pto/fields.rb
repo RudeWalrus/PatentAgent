@@ -49,7 +49,7 @@ module PatentAgent
         define_method(field) {instance_variable_get "@#{field}" }
       end
 
-      def to_hash
+      def to_h
         hash = {}
         Fields.each { |field, search| hash[field] = instance_variable_get("@#{field.to_sym}") }
         hash

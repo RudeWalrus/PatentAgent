@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 module PatentAgent
-  describe PatentHydra, vcr: true do
+  describe Hydra, vcr: true do
     let(:patent)      {"US7139271"}
-    let(:pto)         {PtoUrl.new(patent)}
-    let(:ops)         {OpsBiblioFamilyUrl.new(patent)}
+    let(:pto)         {PtoClient.new(patent)}
+    let(:ops)         {OpsBiblioFamilyClient.new(patent)}
 
     context "OPS" do
-      let(:hydra)     {PatentHydra.new(ops)}
+      let(:hydra)     {Hydra.new(ops)}
       subject(:res)   {(hydra.run)[0]}
 
       its(:text)        {should match patent}

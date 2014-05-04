@@ -70,6 +70,14 @@ module PatentAgent
         p.dlog "STDOUT", "Test"
         log_stream.string.should match /Test/
       end
-    end  
+    end
+
+    describe "quiet" do
+      before {PatentAgent.logger.level = Logger::INFO}
+      after  {PatentAgent.logger.level = Logger::INFO}
+      it "Goes quiet on #quiet" do
+        expect{PatentAgent.quiet}.to change{PatentAgent.logger.level}.from(Logger::INFO).to(Logger::FATAL)
+      end
+    end 
   end
 end

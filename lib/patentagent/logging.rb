@@ -13,6 +13,14 @@ module PatentAgent
       @logger = initialize_log(log)
     end
 
+    def quiet
+      logger.level = Logger::FATAL
+    end
+
+    def loud
+      logger.level = Logger::DEBUG
+    end
+
     # a standard logging function that can print out
     # many kinds of objects from PatentAgent (Hashes, Arrays, etc)
     # Dumps data into whatever PatentAgent.logger points

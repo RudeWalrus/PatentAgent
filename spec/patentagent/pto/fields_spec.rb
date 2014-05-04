@@ -53,6 +53,11 @@ module PatentAgent
         end
       end
 
+      describe "#to_h" do
+        its(:to_h)  {should be_kind_of Hash}
+        its(:to_h)  {should have(Fields.count).items}
+      end
+
       describe "self.add" do
         before do
           gross = /Primary Examiner:<\/I>(.*?)<BR>/mi

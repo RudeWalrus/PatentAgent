@@ -2,8 +2,14 @@ require 'typhoeus'
 
 
 module PatentAgent
-  class PatentHydra
-    include Logging
+  class HydraArray < Array
+    # convenience method to find a result by job_id
+    def find_for_job_id(id)
+      find{|o| o.job_id == id}
+    end
+  end
+
+  class Hydra
     
     # used to cache patent request calls. Should speed up the
     # operation when lots of patents refer to the same references
@@ -13,7 +19,7 @@ module PatentAgent
     # sessions. Figure out a way to use say Dalli and tie it to
     # Memcache but leave open other potential caches (even Mongo....)
     #
-    class HydraCache
+    class Cache
       def initialize;   @cache = {}; end
       def get(request); @cache[request]; end
       def set(request, response); @cache[request] = response; end
@@ -32,7 +38,7 @@ module PatentAgent
     end
 
     def self.hydra_cache=(val); @hdyra_cache = val; end
-    def self.hydra_cache; @hydra_cache ||= HydraCache.new; end
+    def self.hydra_cache; @hydra_cache ||= Cache.new; end
 
     init_hydra
 
@@ -40,16 +46,14 @@ module PatentAgent
     # Expects a list of objects that respond to 
     # =>  #to_url 
     # =>  #to_request
-    # These should be based on the OpsBaseURL and PtoBaseURL classes
-    #
+    # These should implement interfaces that descend from the 
+    # PatentAgent::Client class
     def initialize(*list)
       #Make sure its an array and only take items that responds to #to_url
       @list = Array(list).flatten.select{|o| o.respond_to?(:to_url)}  
-      @results = []
+      @results = HydraArray.new
       @retry = []
     end
-    
-    USERAGENT = {"User-Agent" => "Mozilla/5.0 (X11; U; Linux x86_64; en-US; rv:1.9.2.10) Gecko/20100915 Ubuntu/10.04 (lucid) Firefox/3.6.10" }
 
     def hydra
       self.class.hydra
@@ -57,17 +61,22 @@ module PatentAgent
 
     # clears results and initiates a queue of requests for Hydra
     def queue(list=@list)
-      @results = []
+      @results = HydraArray.new
       @retry   = []
       add list
     end
 
-    # list objects should respond to a #to_url message
+    # A list is an arrays of patents. Each patent should respond to 
+    # => a #to_url message
+    # => a #to_request message
     def add(list)
       list.each {|patent|
         request = request_from patent
         
         request.on_complete { |response|
+          #
+          # TODO: replace this simple if-then-else with a case
+          # and process the return values (specifically the 404s for OPS)
           if response.success?
               patent.text = response.body
               #p "Hydra got: #{patent.patent.full}"
@@ -78,7 +87,7 @@ module PatentAgent
               PatentAgent.log "something is fucked up: #{patent.patent.full}"
               @retry << patent
           else
-              PatentAgent.log 'HTTP Request failed: ' + response.code.to_s
+              PatentAgent.log 'HTTP Request failed: ' + response.code.to_s + ' ' + response.body
           end
         } 
 
@@ -95,7 +104,7 @@ module PatentAgent
       #TODO: should check the @retry array and retry one time
       #
       if !@retry.empty?
-        puts "There were errors. Should probably retry them"
+        PatentAgent.log "There were errors. Should probably retry them"
       end
 
       @results

@@ -2,6 +2,12 @@ require 'spec_helper'
 
 module PatentAgent::PTO
 
+  describe Claim do
+    subject {Claim.new("1", "true", "Blah, blah, bla")}
+    it  {should respond_to :parent, :dep, :text}
+    it  {subject.to_h.should be_kind_of Hash}
+  end
+      
   describe Claims do
     let(:num)           {"6266379"}
     let(:pnum)          {"US" + num}
@@ -10,7 +16,9 @@ module PatentAgent::PTO
 
       
     context "#initialize" do
-
+      it  {should respond_to :total, :dep_count, :indep_count }
+      it  {should respond_to :dep_claims, :indep_claims }
+      
       it "has the right count" do  
         expect(claims.count).to         eq 41
         expect(claims.total).to         eq 41
@@ -33,7 +41,7 @@ module PatentAgent::PTO
       end
 
       it "retrieves a Claim obj by index" do
-        expect(claims[3]).to           be_kind_of(Claims::Claim)
+        expect(claims[3]).to           be_kind_of(Claim)
       end
 
       it "retrieves a patent claim text by index" do

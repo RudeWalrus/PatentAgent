@@ -4,13 +4,9 @@
 
 module PatentAgent
   module PTO
+    Claim = Struct.new(:parent, :dep, :text)
+
     class Claims < Hash
-
-      Claim = Struct.new(:parent, :dep, :text) do
-          def to_hash; {parent: parent, dep: dep, text: text }; end
-      end
-      
-
       attr_reader :total, :dep_count, :indep_count
       attr_reader :dep_claims, :indep_claims
 
@@ -18,26 +14,24 @@ module PatentAgent
       
       # error raised when a bad claim is found
       MalformedClaim = Class.new(RuntimeError)
+      NoClaims       = Class.new(RuntimeError)
       
-      def initialize(html)
+      def initialize(html = :html_error)
         @dep_claims, @indep_claims = [], []
         @total, @dep_count, @indep_count = 0, 0, 0
-        @text = html
-        parse
+        
+        parse  html 
       end
-
-      def valid?;     !!@text;     end
       
       def count;      @total;      end
 
       #
       # parses all the claims
       #
-      def parse(text = @text)
-        raise NoTextSource, "No text source for claims" unless valid?
+      def parse(text)
         claim_text = text[/(?:Claims<\/b><\/i><\/center> <hr>)(.*?)(?:<hr>)/mi]
 
-        raise "No Claims" if claim_text.nil?
+        raise NoClaims if claim_text.nil?
       
         # get the individual claims. The parens in the regex force the results to
         # be placed into a capture group (an array within the array). The claim is element
@@ -52,6 +46,10 @@ module PatentAgent
         PatentAgent.dlog "Claims:" , {count: @count, indep: @indep_count, dep: @dep_count, claims: self }
         
         self
+
+        rescue NoClaims => e
+          PatentAgent.log "No claims found: #{e}"
+          return ["Not found"]
 
         rescue RuntimeError => e
           PatentAgent.log "Error in claims parsing. #{e}"

@@ -10,31 +10,18 @@ module PatentAgent
       let(:html)             {PTOReader.read(pnum)}
       subject(:patent)       {PtoPatent.new(pnum, html)}
       
-      describe "#initialize", vcr: true do    
-        
-        it {should be_kind_of(PtoPatent)}
-     
-          
-        its(:patent_num) {should be_valid} 
-        its("patent_num.number") {should eq number}
-        its("patent_num.cc") {should eq cc}
-
-     
-        it "is not valid with invalid patent number" do
-          PtoPatent.new("US555", html).should_not be_valid
-        end
+      describe "#initialize", :vcr do 
+        it                    {should be_kind_of(PtoPatent)}
+        it                    {should respond_to :patent, :fields, :claims}
       
+        its(:patent)           {should be_valid} 
+        its("patent.number")   {should eq number}
+        its("patent.cc")       {should eq cc}
+
         it "invalid patent number raises an error" do
           PtoPatent.new("MyPatent5555", html).should raise_error
         end
-      end
-
-      describe '#fetch', :vcr do
-
-        it "is valid" do
-          expect(patent).to be_valid
-        end
- 
+      
         context "Fields:" do
           its(:title)       {should match "Digital transmitter with equalization"}
           its(:app_number)  {should match "08/882,252"}
@@ -63,21 +50,20 @@ module PatentAgent
       end
 
       describe '#to_hash', vcr: true do
-        subject(:hash) {patent.to_hash}
+        subject(:hash) {patent.to_h}
 
-      {
-        title:      "Digital transmitter with equalization",
-        inventors:  ["Dally; William J."],
-        assignees:  ["Massachusetts Institute of Technology"],
-        file_date:      "June 25, 1997"
-      }.each do |key, value|
-        it ":#{key}" do
-            expect(hash).to have_key key
-            expect(hash[key]).to eq value
+        {
+          title:      "Digital transmitter with equalization",
+          inventors:  ["Dally; William J."],
+          assignees:  ["Massachusetts Institute of Technology"],
+          file_date:   "June 25, 1997"
+        }.each do |key, value|
+          it ":#{key}" do
+              expect(hash).to have_key key
+              expect(hash[key]).to eq value
+          end
         end
-      end
-        
-      end
+      end  
     end
   end
 end

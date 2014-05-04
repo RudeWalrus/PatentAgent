@@ -47,6 +47,8 @@ module PatentAgent
     end
 
     describe "Invalid Patent Numbers" do
+      before {PatentAgent.quiet}
+      after  {PatentAgent.logger.level = Logger::INFO}
       @test= ->(num){
         it "#valid_(us)_patent_number? for #{num}" do
           expect(PatentNumber.valid_us_patent_number?(num)).to be_false
@@ -68,12 +70,12 @@ module PatentAgent
 
       {cc_of: "US", kind_of: "B1", number_of: "7267263"}.each do |proc, value|
         it "checks :#{proc} with good" do
-          PatentNumber.send(proc.to_sym, good). should eq value
+          PatentNumber.send(proc.to_sym, good).should eq value
         end
       end
       %w[cc_of kind_of number_of].each do |proc|
         it "checks :#{proc} with bad" do
-          PatentNumber.send(proc.to_sym, bad). should eq "invalid"
+          PatentNumber.send(proc.to_sym, bad).should eq "invalid"
         end
       end
     end
@@ -119,7 +121,8 @@ module PatentAgent
         end
 
         context "Check invalid patent numbers" do
-
+          before {PatentAgent.quiet}
+          after  {PatentAgent.logger.level = Logger::INFO}
           %w[8267263.A7 8267263.C1 8267263-B1].each do |pnum|
             it "Should check invalid suffix: #{pnum}" do
               pat = PatentNumber.new(pnum)
