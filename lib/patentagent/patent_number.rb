@@ -11,6 +11,8 @@ module PatentAgent
     case arg
     when PatentNumber           then arg
     when String, Integer        then PatentNumber.new(arg)
+    when Array                                              # array of strings or PatentNumbers
+      arg.flatten.map{|n| PatentNumber(n)}
     when ->(n) {n.respond_to? :to_patent}
       arg.to_patent
     else

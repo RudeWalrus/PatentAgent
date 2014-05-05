@@ -10,3 +10,4 @@ spec.opts
 Guardfile
 patentagent.log
 example/*
+spec/fixtures/cassettes/*

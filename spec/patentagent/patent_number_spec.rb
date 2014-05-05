@@ -5,6 +5,7 @@ include PatentAgent
 module PatentAgent
   describe PatentNumber do
     let(:num)   {7123456}
+    let(:nums) {["8,705,606", "8,681,837", "8,675,483", "8,665,940", "8,659,325", "8,654,573", "8,564,328", "8,311,147"]}
     let(:pnum)  {num.to_s}
     subject(:p_obj) {PatentNumber.new(pnum)}
 
@@ -26,6 +27,19 @@ module PatentAgent
         obj = PatentNumber(num)
         obj.should be_kind_of PatentNumber
         obj.number.should eq pnum
+      end
+
+      it "coerces array of strings" do
+        objs = PatentNumber(nums)
+        objs.should have(8).items
+        objs.should be_all {|x| x.is_a? PatentNumber}
+      end
+
+      it "coerces array of PatentNumbers" do
+        pnums = nums.map{|x| PatentNumber(x) }
+        objs = PatentNumber(pnums)
+        objs.should have(8).items
+        objs.should be_all {|x| x.is_a? PatentNumber}
       end
 
     end

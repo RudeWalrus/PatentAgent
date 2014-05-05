@@ -67,6 +67,7 @@ module PatentAgent
     def to_h
       hash = {ops: @family.to_h}
       hash.merge!(pto: pto.to_h)
+      hash.merge!(fc: fc)
     end
 
     private
