@@ -36,11 +36,15 @@ module PatentAgent::OPS
       fields.applications[0][:date].should eq "20011012"
     end
     
+    it "#issued?" do
+      fields.should be_issued
+    end
+
     describe "#to_h" do
-      before {@hash = fields.to_h}
+      let(:hash) {fields.to_h}
       Fields.keys.each {|key|
-        it "creates field for :#{key}" do
-          @hash[key].should be
+        it "Has data for :#{key}" do
+          hash[key].should_not be_empty
         end
       }
     end

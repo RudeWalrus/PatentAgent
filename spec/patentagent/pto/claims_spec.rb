@@ -15,7 +15,7 @@ module PatentAgent::PTO
     subject(:claims)    {Claims.new(claim_text)}
 
       
-    context "#initialize" do
+    describe "#initialize" do
       it  {should respond_to :total, :dep_count, :indep_count }
       it  {should respond_to :dep_claims, :indep_claims }
       
@@ -59,6 +59,18 @@ module PatentAgent::PTO
         expect(claims[3].dep).to              be_true
         expect(claims[32].dep).to             be_true
       end
+    end
+
+    describe "#to_h" do
+      let(:hash) {claims.to_h}
+      it {hash[:count].should eq 41}
+      it {hash[:dep_count].should eq 29}
+      it {hash[:indep_count].should eq 12}
+      it {hash[:claims].should_not be_empty}
+      it {hash[:indep_claims].should_not be_empty}
+      it {hash[:indep_claims].should have(12).items}
+      it {hash[:dep_claims].should_not be_empty}
+      it {hash[:dep_claims].should have(29).items}
     end
   end
 

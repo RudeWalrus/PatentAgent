@@ -11,6 +11,7 @@ module PatentAgent
       attr_reader :patent, :fields, :claims
       alias :name :patent
 
+
       extend Forwardable
       def_delegators :patent, :number, :kind, :cc
       #alias to_h to_hash
@@ -23,7 +24,12 @@ module PatentAgent
         PatentAgent.dlog "Processed: #{@patent.to_s}" 
       end
 
-      def to_h; @fields.to_h; end
+      def to_h 
+        hash = @fields.to_h
+        hash.merge!(claims: @claims.to_h)
+      end
+
+       alias :to_hash :to_h
 
       private
       #

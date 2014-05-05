@@ -42,7 +42,7 @@ module PatentAgent
         # process each claim
         m.each{ |claim| process(claim[0].gsub("\n", " ").gsub(/<BR><BR>/, " ")) }
 
-        PatentAgent.dlog "Claims:" , {count: @count, indep: @indep_count, dep: @dep_count, claims: self }
+        PatentAgent.dlog "Claims:" , to_h
         
         self
 
@@ -53,6 +53,13 @@ module PatentAgent
         rescue RuntimeError => e
           PatentAgent.log "Error in claims parsing. #{e}"
           return ["Not found"]
+      end
+
+      def to_h
+        hash = {count: @total, indep_count: @indep_count, dep_count: @dep_count,
+            dep_claims: @dep_claims, indep_claims: @indep_claims }
+        claims = self.map {|k,v| {k => v.to_h} }
+        hash.merge(claims: claims)
       end
 
       private

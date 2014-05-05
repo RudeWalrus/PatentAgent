@@ -24,14 +24,14 @@ module PatentAgent
       
       it "has claims" do
         patent.should have(11).claims
-        patent.claims.should be_kind_of Hash
-        1.upto(11) { |i| patent.claims[i].should be_kind_of Hash }
+        patent.claims.should be_kind_of PatentAgent::PTO::Claims
+        1.upto(11) { |i| patent.claims[i].should be_kind_of PatentAgent::PTO::Claim }
       end
 
       it "rationalizes common fields" do
         patent.rationalize
       end
-      
+        
     end
   end
 end

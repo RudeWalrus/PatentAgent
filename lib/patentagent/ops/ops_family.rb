@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'json'
 
 module PatentAgent
   module OPS  
@@ -35,7 +36,19 @@ module PatentAgent
         members.each {|x| yield x}
       end
 
+      def to_h
+        hash   = {names: @names, family_id: family_id}
+        family = @members.map(&:to_h)
+        hash.merge(family: family)
+      end
+      
+      def family_issued
+        @members.select{|field| field.patent_number if field.issued?}.map{|field| field.patent_number}.sort
+      end
+
+      alias :to_hash :to_h
       protected
+
       #
       # delegate calls for the fields to the OPSFields object
       # the primary patent is the first one in the array

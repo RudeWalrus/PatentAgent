@@ -3,7 +3,21 @@
 # License::   Creative Commons 3
 
 module PatentAgent
-  
+  #
+  # coersion function for converting things to PatentNumbers
+  module_function
+
+  def PatentNumber(arg)
+    case arg
+    when PatentNumber           then arg
+    when String, Integer        then PatentNumber.new(arg)
+    when ->(n) {n.respond_to? :to_patent}
+      arg.to_patent
+    else
+      raise TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
+    end
+  end
+
   class PatentNumber
     attr_reader   :cc, :number, :kind
     alias         :country_code :cc
@@ -38,6 +52,11 @@ module PatentAgent
     def valid?(); @number;                          end
 
     # figures out if a patent is published or not
+    def self.published?(patent_number)
+      pat = PatentAgent.PatentNumber(patent_number)
+      is_published?(pat.number, pat.kind, pat.cc)
+    end
+
     def self.is_published?(id, kind, country)
       return true if (country == "US" && id =~ /^[5678]\d{6}/)
       return true if (country == "US" && id =~ /^RE\d{5}/)  # ALLOW reissues to be valid published
@@ -116,18 +135,5 @@ module PatentAgent
       def self.cleanup_number(num); num.to_s.upcase.delete(",").delete(" ");        end
   end 
 
-  #
-  # coersion function for converting things to PatentNumbers
-  module_function
-
-  def PatentNumber(arg)
-    case arg
-    when PatentNumber           then arg
-    when String, Integer        then PatentNumber.new(arg)
-    when ->(n) {n.respond_to? :to_patent}
-      arg.to_patent
-    else
-      raise TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
-    end
-  end
+  
 end

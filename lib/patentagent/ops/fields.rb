@@ -22,13 +22,13 @@ module PatentAgent::OPS
       abstract:             ->(n) {n.css('abstract[@lang="en"] p').text},  
       assignees:            ->(n) {n.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text)},
       inventors:            ->(n) {n.css('inventors inventor[@data-format="epodoc"] inventor-name name').map {|el| el.text.strip } },
-      classification_ipcrs: ->(n) {n.css("classification-ipcr text").map { |el|  el.text.delete(" ") }},
+      #classification_ipcrs: ->(n) {n.css("classification-ipcr text").map { |el|  el.text.delete(" ") }},
       #classification_eclas: ->(n) {n.css("classification-ecla classification-symbol").map { |el|  el.text.delete(" ")} },
       #classification_nationals: ->(n) {n.css("classification-national text").map { |el|  el.text.delete(" ")} },
       classifications:      ->(n) {n.css('patent-classifications patent-classification').map { |el| to_classification(el)} },
       references:           ->(n) {n.css('references-cited citation patcit document-id[@document-id-type="epodoc"] doc-number').map(&:text).sort },
       issue_date:           ->(n) {n.css('publication-reference document-id date').first.text},
-      file_date:           ->(n) {n.css('application-reference document-id date').first.text},
+      file_date:            ->(n) {n.css('application-reference document-id date').first.text},
       priorities:           ->(n) {n.css('priority-claims priority-claim document-id[@document-id-type="epodoc"]').map { |el| to_doc_date(el)} },
       applications:         ->(n) {n.css('application-reference document-id[document-id-type="epodoc"]').map { |el| to_doc_date(el)} }
     }.each { |k, value| define_method(k) { instance_variable_get "@#{k}" }}
@@ -57,9 +57,7 @@ module PatentAgent::OPS
     def self.each(&blk); FIELDS.each() { |field, obj| yield field, obj }; end
 
     def self.count; FIELDS.size; end
-
-    
-
+  
     #
     # instance methods
     #
@@ -81,11 +79,17 @@ module PatentAgent::OPS
       FIELDS.each { |field, search| hash[field] = instance_variable_get("@#{field.to_sym}")  }
       hash
     end
+
+    # is this a issued patent
+    def issued?
+      PatentAgent::PatentNumber.valid_patent_number?(patent_number)
+    end
     
+    alias :to_hash :to_h
     private
 
     def find_priority
-      dates  = priorities.map { |h| h[:date] }.min
+      dates  = priorities.map { |h| h[:date]}.min
       set_key :priority,   dates
     end
     
@@ -93,7 +97,7 @@ module PatentAgent::OPS
       instance_variable_set("@#{key}",value)
     end
 
-    def fmt_date(date)
+    def self.fmt_date(date)
       date.match /(\d{4})(\d{2})(\d{2})/
       {year: $1, month: $2, day: $3, full: date}
     end

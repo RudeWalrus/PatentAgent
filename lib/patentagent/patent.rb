@@ -12,7 +12,7 @@ module PatentAgent
     include PatentAgent
     extend Forwardable
     
-    attr_reader  :patent, :family, :pto, :fc, :claims
+    attr_reader  :patent, :family, :pto, :fc, :claims, :ops
     
     def_delegators :patent, :number, :cc, :kind
   
@@ -34,7 +34,7 @@ module PatentAgent
       @family  = res.find_for_job_id(1).to_patent
       @pto     = res.find_for_job_id(2).to_patent
       @fc      = res.find_for_job_id(3).to_patent
-      @ops     = @family.first
+      @ops     = @family
       #fc_patents   = fc.get_full_fc
       
       result       = [pto, family, fc]
@@ -43,11 +43,7 @@ module PatentAgent
 
       # map the Claims structs to hashes
     def claims
-      @claims ||= begin
-        @claims = {}
-        @pto.claims.each {|k,v| @claims[k] = v.to_h }
-        @claims
-     end
+      pto.claims
     end
 
     def rationalize
@@ -68,6 +64,10 @@ module PatentAgent
     
     def pto; @pto || []; end
     
+    def to_h
+      hash = {ops: @family.to_h}
+      hash.merge!(pto: pto.to_h)
+    end
 
     private
       #
