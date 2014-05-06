@@ -12,7 +12,10 @@ module PatentAgent
       def initialize(pnum, xml)   
 
         @patent = PatentNumber(pnum)
-        
+        parse(xml) 
+      end
+
+      def parse(xml)
         # returns a Nokogiri NodeSet
         # need to get the family id from the first one......
         #

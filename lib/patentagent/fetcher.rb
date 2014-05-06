@@ -1,21 +1,19 @@
 module PatentAgent
-class ForwardCitationPatents < Array
+  class Fetcher < Array
     include PatentAgent
 
     attr_accessor :parent, :names
     
     # Receives:
     # param:  parent: a patent number or PatentNum
-    # param:  names: a ForwardCitations object or array of patent numbers
-    def initialize(parent, names)
+    # param:  names: a list or array of patent numbers
+    def initialize(parent, *list)
       @parent  = PatentNumber(parent)
-      #names    =  ForwardCitations(names)  # TODO: implement this coersion/error check class later
-      @names   = PatentNumber(names)
+      @names   = PatentNumber(Array(list).flatten)
       #iterate(names)
     end
 
     def iterate(names)
-      # 
       # 1) get URLs for each patent number
       # 2) get the html for each patent (from the Hydra)
       # 3) turn the HTML into PTOPatent objects.
@@ -42,4 +40,17 @@ class ForwardCitationPatents < Array
       objs.map(&:to_patent)
     end
   end
+
+  class PtoPatentFetcher < Fetcher
+    def urls_from(names)
+      names.map{|patent| PtoPatentClient.new(patent)}
+    end
+  end
+  
+  class OpsPatentFetcher < Fetcher
+    def urls_from(names)
+      names.map{|patent| OpsBiblioFamilyClient.new(patent)}
+    end
+  end
+
 end

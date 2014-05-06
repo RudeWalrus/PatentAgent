@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 module PatentAgent
-  describe ForwardCitationPatents do
+  describe Fetcher do
     let(:parent)       {"US6266379"}
     let(:nums)         {["8,705,606", "8,681,837", "8,675,483", "8,665,940", "8,659,325", "8,654,573", "8,564,328", "8,311,147"]}
-    subject(:fc)       {ForwardCitationPatents.new(parent, nums)}
+    subject(:fc)       {Fetcher.new(parent, nums)}
     
     it          {should respond_to :parent, :names}
     its(:names) {should have(8).items }
