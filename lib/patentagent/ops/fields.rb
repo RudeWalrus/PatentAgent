@@ -63,13 +63,17 @@ module PatentAgent::OPS
     #
 
     def parse(node)
-      FIELDS.each {|key,func|
+      key = 0
+      FIELDS.each {|k,func|
+        key = k
         result = Array(func.call(node)).map { |x| x.respond_to?(:gsub) ? x.gsub(/\u2002/, '') : x }
         item = key.match(/s$/) ? result : result[0].to_s
-        PatentAgent.dlog "OPSData", item
+        PatentAgent.dlog "OPSData for key #{key}", item
         instance_variable_set("@#{key}",item)
       }
       find_priority
+    rescue => e
+      PatentAgent.log "OPS:", "Field <:#{key}> not found"
     end
 
     def keys; FIELDS.keys; end

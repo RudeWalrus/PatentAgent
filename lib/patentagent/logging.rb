@@ -65,6 +65,8 @@ module PatentAgent
     def fmt_log(header, obj)
       msg = "#{header.to_s.upcase}:#{"="*5+">"}"
       case obj
+        when String
+          msg += "#{indent}#{obj}\n"
         when Array
           msg += "Count: #{obj.size}\n"
           obj.each {|item| msg << "#{@indent}#{item}\n"}

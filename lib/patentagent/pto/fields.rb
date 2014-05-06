@@ -89,7 +89,7 @@ module PatentAgent
       
         return if gross.nil?
         
-        log_field(field, gross)
+        #log_field(field, gross)
         
         # run the fine search
         fine = gross.scan(params[:fine])
@@ -107,7 +107,7 @@ module PatentAgent
           tmp
         end
 
-        PatentAgent.dlog field, result
+        PatentAgent.dlog "PTO: <:#{field}>", result
 
         # if the name ends in s, store as an array, otherwise
         # convert to a string (first element of array) 
@@ -116,7 +116,7 @@ module PatentAgent
         item
 
         rescue ParseError => e
-          PatentAgent.log "Field parse error: Not Found: #{field}} "
+          PatentAgent.log "PTO", "Field <:#{field}> not found}"
       end
         
       def log_field(field, message)

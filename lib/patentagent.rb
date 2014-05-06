@@ -22,9 +22,9 @@ module PatentAgent
     attr_accessor :debug, :ops_id, :ops_secret
   end
 
-  def self.debug=(val)
+  def self.debug=(val=true)
     @debug = val
-    if val == TRUE
+    if val == true
       self.logger.level = Logger::DEBUG 
     else
       self.logger.level = Logger::INFO 
