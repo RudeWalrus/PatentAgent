@@ -1,5 +1,4 @@
-$: << File.dirname(__FILE__) + '../patentagent'
-$: << File.dirname(__FILE__) + '../patentagent/pto'
+$: << File.dirname(__FILE__) + '/patentagent'
 
 require 'patentagent/patent'
 require 'patentagent/logging'

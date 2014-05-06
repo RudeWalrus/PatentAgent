@@ -5,7 +5,6 @@
 require "patentagent/patent_number"
 require 'typhoeus'
 require "forwardable"
-require 'pry'
 
 module PatentAgent  
   class Patent
