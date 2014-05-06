@@ -44,7 +44,8 @@ module PatentAgent
 
     init_hydra
 
-
+    attr_reader :results, :retry
+    
     # Expects a list of objects that respond to 
     # =>  #to_request
     # These should implement interfaces that descend from the 
@@ -54,6 +55,7 @@ module PatentAgent
       @list = Array(list).flatten.select{|o| o.respond_to?(:to_request)}  
       @results = HydraArray.new
       @retry = []
+      queue
     end
 
     def hydra
@@ -98,7 +100,7 @@ module PatentAgent
 
     # @Returns: Array of enqueued patent_client objects
     def run
-      queue
+      #queue
       hydra.run
       #
       #TODO: should check the @retry array and retry one time

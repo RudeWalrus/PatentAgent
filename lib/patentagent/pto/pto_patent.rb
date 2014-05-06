@@ -19,9 +19,13 @@ module PatentAgent
       
       def initialize(pnum, html)
         @patent     = PatentNumber(pnum)
+        parse(html)
+      end
+
+      def parse(html)
         @fields     = Fields.new(html)
         @claims     = Claims.new(html)
-        PatentAgent.dlog "Processed: #{@patent.to_s}" 
+        PatentAgent.dlog "Processed: #{@patent.to_s}"
       end
 
       def to_h 

@@ -10,7 +10,7 @@ class ForwardCitationPatents < Array
     def initialize(parent, names)
       @parent  = PatentNumber(parent)
       #names    =  ForwardCitations(names)  # TODO: implement this coersion/error check class later
-      @names = names
+      @names   = PatentNumber(names)
       #iterate(names)
     end
 
@@ -21,13 +21,13 @@ class ForwardCitationPatents < Array
       # 3) turn the HTML into PTOPatent objects.
       url_objs   = urls_from names
       text_objs  = text_from_urls url_objs
-      patent_from_html html_objs
+      patent_from_text text_objs
     end
-    
+
     private
 
     def urls_from(names)
-      names.map{|patent| PtoClient.new(patent)}
+      names.map{|patent| PtoPatentClient.new(patent)}
     end
 
     #
@@ -37,7 +37,7 @@ class ForwardCitationPatents < Array
     end
     #
     # creates patent objects from objs
-    def patent_from_html(list)
+    def patent_from_text(list)
       objs = Array(list)
       objs.map(&:to_patent)
     end
