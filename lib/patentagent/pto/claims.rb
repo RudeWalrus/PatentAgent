@@ -58,7 +58,7 @@ module PatentAgent
       def to_h
         hash = {count: @total, indep_count: @indep_count, dep_count: @dep_count,
             dep_claims: @dep_claims, indep_claims: @indep_claims }
-        claims = self.map {|k,v| {k => v.to_h} }
+        claims = Hash[self.map {|k,v| [k, v.to_h] }]
         hash.merge(claims: claims)
       end
 

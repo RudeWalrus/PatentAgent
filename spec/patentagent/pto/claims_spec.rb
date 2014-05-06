@@ -67,6 +67,7 @@ module PatentAgent::PTO
       it {hash[:dep_count].should eq 29}
       it {hash[:indep_count].should eq 12}
       it {hash[:claims].should_not be_empty}
+      it {hash[:claims].should be_kind_of Hash}
       it {hash[:indep_claims].should_not be_empty}
       it {hash[:indep_claims].should have(12).items}
       it {hash[:dep_claims].should_not be_empty}
