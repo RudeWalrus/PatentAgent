@@ -1,14 +1,13 @@
 # Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
 # Copyright:: Copyright (c) 2014 RudeWalrus
 # License::   Creative Commons 3
-
-require "patentagent/patent_number"
+require 'patentagent/util'
 require 'typhoeus'
 require "forwardable"
 
 module PatentAgent  
   class Patent
-    include PatentAgent
+    include PatentAgent::Util
     extend Forwardable
     
     attr_reader  :patent, :family, :pto, :fc, :claims, :ops

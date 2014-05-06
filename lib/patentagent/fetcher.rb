@@ -1,6 +1,6 @@
 module PatentAgent
   class Fetcher < Array
-    include PatentAgent
+    include PatentAgent::Util
 
     attr_accessor :parent, :names
     

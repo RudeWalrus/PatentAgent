@@ -1,8 +1,11 @@
 require 'spec_helper'
+require 'patentagent/util'
 
-include PatentAgent
+include PatentAgent::Util
 
 module PatentAgent
+  
+
   describe PatentNumber do
     let(:num)   {7123456}
     let(:nums) {["8,705,606", "8,681,837", "8,675,483", "8,665,940", "8,659,325", "8,654,573", "8,564,328", "8,311,147"]}

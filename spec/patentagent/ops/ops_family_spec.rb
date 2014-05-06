@@ -37,7 +37,7 @@ module PatentAgent::OPS
 
     it "#map" do
       nums = %w[ US7139271  US2004062261  US7342942  US7298738  US7369574  US7286566  US7327760  US7295574  US7142564 ]
-      arr = patent.map{|x| x.patent_number }
+      arr = patent.map{|x| x.number }
       arr.should eq nums
     end
 

@@ -6,7 +6,7 @@
 module PatentAgent
   module PTO
     class PtoPatent
-      include PatentAgent
+      include PatentAgent::Util
       
       attr_reader :patent, :fields, :claims
       alias :name :patent

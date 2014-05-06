@@ -18,9 +18,9 @@ module PatentAgent::OPS
     its(:keys)        {should include :title, :inventors, :issue_date, :references}
     its("keys.size")  {should eq f.count}
     its(:to_h)        {should be_kind_of Hash}
-    its("to_h.size")   {should eq f.count}
+    its("to_h.size")  {should eq f.count}
  
-    its(:patent_number)   {should eq "US7139271"}
+    its(:number)       {should eq "US7139271"}
     its(:title)       {should eq "Using an embedded indication of egress application type to determine which type of egress processing to perform"}
     its(:inventors)   {should eq ["PARRUCK BIDYUT[US]", "RAMAKRISHNAN CHULANUR[US]"]}
     its(:issue_date)  {should eq "20061121"}

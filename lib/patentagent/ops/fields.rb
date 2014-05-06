@@ -16,8 +16,8 @@ module PatentAgent::OPS
     end
 
     FIELDS = {
+      number:               ->(n) {n.css('publication-reference document-id [@document-id-type="epodoc"] doc-number').first.text},
       family_id:            ->(n) {n.at_css('exchange-document')['family-id']},
-      patent_number:        ->(n) {n.css('publication-reference document-id [@document-id-type="epodoc"] doc-number').first.text},
       title:                ->(n) {n.css('invention-title[@lang="en"]').text},
       abstract:             ->(n) {n.css('abstract[@lang="en"] p').text},  
       assignees:            ->(n) {n.css('applicants applicant[@data-format="epodoc"] applicant-name name').map(&:text)},
@@ -82,7 +82,7 @@ module PatentAgent::OPS
 
     # is this a issued patent
     def issued?
-      PatentAgent::PatentNumber.valid_patent_number?(patent_number)
+      PatentAgent::PatentNumber.valid_patent_number?(self.number)
     end
     
     alias :to_hash :to_h

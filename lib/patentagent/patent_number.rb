@@ -1,26 +1,12 @@
 # Author::    Michael Sobelman  (mailto:boss@rudewalrus.com)
 # Copyright:: Copyright (c) 2014 RudeWalrus
 # License::   Creative Commons 3
+require 'patentagent/util'
 
 module PatentAgent
-  #
-  # coersion function for converting things to PatentNumbers
-  module_function
-
-  def PatentNumber(arg)
-    case arg
-    when PatentNumber           then arg
-    when String, Integer        then PatentNumber.new(arg)
-    when Array                                              # array of strings or PatentNumbers
-      arg.flatten.map{|n| PatentNumber(n)}
-    when ->(n) {n.respond_to? :to_patent}
-      arg.to_patent
-    else
-      raise TypeError, "Cannot convert #{arg.inspect} to PatentNumber"
-    end
-  end
-
   class PatentNumber
+    include PatentAgent::Util
+
     attr_reader   :cc, :number, :kind
     alias         :country_code :cc
     

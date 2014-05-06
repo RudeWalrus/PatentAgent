@@ -4,7 +4,7 @@ require 'json'
 module PatentAgent
   module OPS  
     class OpsFamily
-      include PatentAgent
+      include PatentAgent::Util
       include Enumerable
       
       attr_reader  :patent, :members, :family_id, :names
@@ -21,7 +21,7 @@ module PatentAgent
         #
         nodes      = Nokogiri::XML(xml).css("ops|family-member")
         @members   = nodes.map {|node| OPS::Fields.new(node) }  
-        @names     = @members.map(&:patent_number)
+        @names     = @members.map(&:number)
       end
 
       def first
@@ -46,7 +46,7 @@ module PatentAgent
       end
       
       def family_issued
-        @members.select{|field| field.patent_number if field.issued?}.map{|field| field.patent_number}.sort
+        @members.select{|field| field.number if field.issued?}.map{|field| field.number}.sort
       end
 
       alias :to_hash :to_h

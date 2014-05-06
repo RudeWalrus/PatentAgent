@@ -7,6 +7,7 @@ require 'patentagent/client'
 require 'patentagent/hydra'
 require 'patentagent/forward_citations'
 require 'patentagent/fetcher'
+require 'patentagent/util'
 
 require 'patentagent/ops/fields'
 require 'patentagent/ops/ops_family'

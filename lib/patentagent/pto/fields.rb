@@ -19,18 +19,18 @@ module PatentAgent
       # Fields includes the field name, a gross filter search, a fine filter search and an optional filter proc
       #
       FIELDS    = {
-        patent_number:   {gross: /<title>(.*?)<\/title>/mi,             fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
-        family_id:       {gross: /family id:.*?(<([ib])>\s*\d{1,8}\s*<\/\2>)/mi,       fine: /<[ib]>\s*(\d{1,8})/mi},
-        title:           {gross: /<font size=\"\+1\">(.*?)<\/font>/mi,  fine:  />(.*?)</mi},
-        abstract:        {gross: /Abstract(.*?)<hr>/mi,                 fine: /<p>(.*?)<\/p>/mi},
-        assignees:       {gross: /Assignee:(.*?)<\/tr>/mi,              fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
-        app_number:      {gross: /Appl. No.:(.*?<b>.*?)<\/b>/mi,        fine: /<b>(.*?)<\/b>/mi},
-        file_date:       {gross: /Filed:(.*?<b>.*?)<\/b>/mi,            fine: /<b>(.*?)<\/b>/mi},
-        inventors:       {gross: /Inventors:(.*?)<\/tr>/mi,             fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
+        number:     {gross: /<title>(.*?)<\/title>/mi,             fine: /[45678],?\d{3},?\d{3}|RE\d{5}/},
+        family_id:  {gross: /family id:.*?(<([ib])>\s*\d{1,8}\s*<\/\2>)/mi,       fine: /<[ib]>\s*(\d{1,8})/mi},
+        title:      {gross: /<font size=\"\+1\">(.*?)<\/font>/mi,  fine:  />(.*?)</mi},
+        abstract:   {gross: /Abstract(.*?)<hr>/mi,                 fine: /<p>(.*?)<\/p>/mi},
+        assignees:  {gross: /Assignee:(.*?)<\/tr>/mi,              fine: /<b>(.*?)<\/b>\s*\((.*?)\),?/mi},
+        app_number: {gross: /Appl. No.:(.*?<b>.*?)<\/b>/mi,        fine: /<b>(.*?)<\/b>/mi},
+        file_date:  {gross: /Filed:(.*?<b>.*?)<\/b>/mi,            fine: /<b>(.*?)<\/b>/mi},
+        inventors:  {gross: /Inventors:(.*?)<\/tr>/mi,             fine: /<b>(.*?)<\/b>\s*\(.*?\)/mi, 
                             :filter => ->(x) { x.delete(",").strip} },
-        text:            {gross: /<B><I> Description(.*?)\* \*<\/b>/mi, fine: /Description(.*?)\* \*/mi},
-        parent_case:     {gross: /Parent Case Text(.*?)<CENTER>/mi,     fine: /<hr>(.*?)<\/hr>/mi},
-        figures:         {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
+        text:       {gross: /<B><I> Description(.*?)\* \*<\/b>/mi, fine: /Description(.*?)\* \*/mi},
+        parent_case:{gross: /Parent Case Text(.*?)<CENTER>/mi,     fine: /<hr>(.*?)<\/hr>/mi},
+        figures:    {gross: /<BR><BR>BRIEF DESCRIPTION OF(.*?)<BR>DETAILED/mi, fine: /<BR><BR>(figs?\.?.*?)\.\n/mi}    
       }.each { |m, value| define_method(m) { instance_variable_get "@#{m}" }}
 
       #

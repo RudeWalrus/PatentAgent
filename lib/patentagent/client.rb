@@ -11,7 +11,7 @@ module PatentAgent
   UrlRequest = Struct.new(:url, :method, :body) 
   
   class Client
-    include PatentAgent
+    include PatentAgent::Util
     attr_accessor :text, :valid, :patent, :job_id
  
     def initialize(patent, job_id = 1, options = {})
@@ -26,8 +26,6 @@ module PatentAgent
   end
 
   class OpsClient < Client
-    include PatentAgent
-
     VER = "3.1"
   
     URL = {
@@ -71,7 +69,6 @@ module PatentAgent
   end
 
   class PtoClient < Client
-    include PatentAgent
     
     def to_request()
       UrlRequest.new(to_url, :get, nil)

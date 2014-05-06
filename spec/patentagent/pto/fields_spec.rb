@@ -13,7 +13,7 @@ module PatentAgent
         it {should be_kind_of Fields}
 
         it "fields exists " do
-           expect(fields.patent_number).to be
+           expect(fields.number).to be
            expect(fields.family_id).to be
            expect(fields.title).to be
            expect(fields.abstract).to be

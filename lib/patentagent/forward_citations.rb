@@ -4,7 +4,7 @@
 
 module PatentAgent
   class ForwardCitations < Array
-    include PatentAgent
+    include PatentAgent::Util
 
     attr_reader :parent, :pages
     
