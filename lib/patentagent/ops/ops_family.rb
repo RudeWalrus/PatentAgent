@@ -25,7 +25,7 @@ module PatentAgent
       end
 
       def first
-        members[0]
+        @first ||= members.find {|x| x.number.match @patent.number}
       end
 
       def family_id

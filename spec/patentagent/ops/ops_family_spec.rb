@@ -18,6 +18,7 @@ module PatentAgent::OPS
     end
 
     it "#[]" do
+      pp patent.first.number
       patent[0].should == patent.first
     end
 
