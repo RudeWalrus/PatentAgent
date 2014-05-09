@@ -46,6 +46,9 @@ module PatentAgent
       return [] unless @pages > 1
       clients  = (2..@pages).map {|pg| PtoFCClient.new(@parent, pg)}
       Hydra.new(clients).run
+
+    rescue => e
+      PatentAgent.log "Forward Citation", "no pages found"
     end
     
     #
@@ -54,11 +57,16 @@ module PatentAgent
     def compute_counts_from(html)
       text = clean_html(html)
       # snarf the count of total hits and hits on this page
-      text.match(/hits \d+ through \d+.\s*out of (\d+)/mi) do |m|
+      if text.match(/hits \d+ through \d+.\s*out of (\d+)/mi) {|m|
         @count =  m[1].to_i
         @pages = (@count.to_f / 50.0).ceil.to_i
+      }
+      else  # no forward citations
+        @count = 0
+        @pages = 0
       end
-      PatentAgent.dlog "Forward Citation for #{@parent} => Count: #{@count}: Pages: #{@pages}"
+      
+      PatentAgent.dlog "Forward Citation", "for #{@parent} => Count: #{@count}: Pages: #{@pages}"
        [@count, @pages]
     end
 
