@@ -5,8 +5,8 @@
 module Patentagent
   class Version
     MAJOR = 0
-    MINOR = 4
-    PATCH = 4
+    MINOR = 0
+    PATCH = 5
     PRE   = "pre"
   
     # @return [String]
