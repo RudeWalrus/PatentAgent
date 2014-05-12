@@ -13,11 +13,13 @@ module PatentAgent
 
     before { VCR.eject_cassette; VCR.turn_off!}
     PatentAgent.debug = false
-    pat = Patent.new("7139271")
+    #pat = Patent.new("6278783")
     #pat2 = Patent.new("7141214")
     #pp pat.ops.family_issued
-    pp pat.family_members.count
-    # #pp pat.fc
+    #pp pat.family_members.count
+    # pp pat.ops.us_family_issued
+    # pp pat.fc
+    # pp pat.forward_citations.count
     # #pp pat.ops
   end
 end

@@ -63,7 +63,8 @@ module PatentAgent::OPS
     #
 
     def parse(node)
-      key = 0
+      key = 0 # so we can use the key in the rescue
+
       FIELDS.each {|k,func|
         key = k
         result = Array(func.call(node)).map { |x| x.respond_to?(:gsub) ? x.gsub(/\u2002/, '') : x }
@@ -71,9 +72,11 @@ module PatentAgent::OPS
         PatentAgent.dlog "OPSData for key #{key}", item
         instance_variable_set("@#{key}",item)
       }
+      
       find_priority
+
     rescue => e
-      PatentAgent.log "OPS:", "Field <:#{key}> not found"
+      PatentAgent.log "OPS:#{self.number}", "Field <:#{key}> not found"
     end
 
     def keys; FIELDS.keys; end
@@ -93,8 +96,8 @@ module PatentAgent::OPS
     private
 
     def find_priority
-      dates  = priorities.map { |h| h[:date]}.min
-      set_key :priority,   dates
+      date  = priorities.map { |h| h[:date]}.min
+      set_key :priority,   date
     end
     
     def set_key( key, value )

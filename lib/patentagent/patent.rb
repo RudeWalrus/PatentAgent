@@ -10,7 +10,7 @@ module PatentAgent
     include PatentAgent::Util
     extend Forwardable
     
-    attr_reader  :patent, :family, :pto, :fc, :claims, :ops
+    attr_reader  :patent, :family, :pto, :fc, :claims, :ops, :family_members
     
     def_delegators :patent, :number, :cc, :kind
   
@@ -23,10 +23,12 @@ module PatentAgent
           PtoPatentClient.new(patent, 2),
           PtoFCClient.new(patent, 1, 3)
       )
-      run hydra
+      kick_the hydra
+
+
     end
 
-    def run(hydra)
+    def kick_the(hydra)
       res = hydra.run
 
       @family  = res.find_for_job_id(1).to_patent
@@ -34,7 +36,7 @@ module PatentAgent
       @fc      = res.find_for_job_id(3).to_patent
       @ops     = @family
       #fc_patents   = fc.get_full_fc
-      
+      get_family_members
       # now get the actual patents from PTO for each family member
       
       result       = [pto, family, fc]
@@ -66,12 +68,18 @@ module PatentAgent
       hash.merge!(pto: pto.to_h)
       hash.merge!(fc: fc)
     end
-
-    def family_members
-      @family_members ||= f = Fetcher.new(@patent, @family.family_issued).iterate
+    
+    def forward_citations
+      @forward_cites ||= Fetcher.new(@patent, @fc).iterate
     end
-
+    
     private
+
+      def get_family_members
+        @family_members ||= Fetcher.new(@patent, @family.us_family_issued).iterate
+      end
+
+
       #
       # delegate calls for the fields to the PatentFields object
       #
