@@ -49,6 +49,10 @@ module PatentAgent
         @members.select{|field| field.number if field.issued?}.map{|field| field.number}.sort
       end
 
+      def us_family_issued
+        @members.select{|field| field.number if PatentNumber.valid_us_patent_number?(field.number)}.map{|field| field.number}.sort
+      end
+
       alias :to_hash :to_h
       protected
 

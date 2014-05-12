@@ -73,7 +73,7 @@ module PatentAgent
         end
       }
       
-      %w[3,555,666 121,121 6,333,3339 RE555,991].each do |num|    
+      %w[3,555,666 121,121 6,333,3339 RE555,991 2004062261].each do |num|    
         @test.call(num)
         @test.call(num.delete(','))
         @test.call("US#{num}")

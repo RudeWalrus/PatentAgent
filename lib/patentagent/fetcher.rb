@@ -2,34 +2,42 @@ module PatentAgent
   class Fetcher < Array
     include PatentAgent::Util
 
-    attr_accessor :parent, :names
+    attr_accessor :parent, :names, :client
     
     # Receives:
     # param:  parent: a patent number or PatentNum
     # param:  names: a list or array of patent numbers
     def initialize(parent, *list)
+      type = list.pop if list.last.is_a?(Hash)
+
+      if type.nil?
+        @client = PtoPatentClient
+      else
+        @client = type[:client]
+      end
+
       @parent  = PatentNumber(parent)
       @names   = PatentNumber(Array(list).flatten)
       #iterate(names)
     end
 
-    def iterate(names)
+    def iterate(names=@names)
       # 1) get URLs for each patent number
       # 2) get the html for each patent (from the Hydra)
-      # 3) turn the HTML into PTOPatent objects.
-      url_objs   = urls_from names
-      text_objs  = text_from_urls url_objs
-      patent_from_text text_objs
+      # 3) turn the HTML into PTO, Patent objects.
+      urls   = urls_from names
+      texts  = text_from_urls urls
+      patent_from_text texts
     end
 
     private
 
     def urls_from(names)
-      names.map{|patent| PtoPatentClient.new(patent)}
+      names.map{|patent| @client.new(patent)}
     end
 
     #
-    # queues up a list of forward references to fetch & gets them
+    # queues up a list of items to fetch & gets them
     def text_from_urls(url_objs)
       Hydra.new(url_objs).run
     end

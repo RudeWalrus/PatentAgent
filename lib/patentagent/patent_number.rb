@@ -94,17 +94,15 @@ module PatentAgent
     
     def self.kind_of(num);    n = valid_patent_number(num); n ? n[2] : "invalid";     end
     
-    private
-      # formats the patent number to make it valid for HTML search
-      #
       # accepts: US7,256,232.B1 or 7,256,232
       # returns: 7256232
       #
       def self.valid_us_patent_number?(num)
         pnum = cleanup_number(num)
-        pnum.match(/(US)?([45678]\d{6})(\.[AB][12])?$|(US)?(RE\d{5}$)/) {|match| match[2] || match[5]}
+        pnum.match(/^(US)?([45678]\d{6})(\.[AB][12])?$|(US)?(RE\d{5}$)/mi) {|match| match[2] || match[5]}
       end
-  
+    
+    private
       #
       # A two letter country code like US, CA, JP, etc. Special case is RE,
       # which is a US re-issued patent. If RE, then its US.

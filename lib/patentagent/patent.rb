@@ -26,7 +26,7 @@ module PatentAgent
       run hydra
     end
 
-    def run hydra
+    def run(hydra)
       res = hydra.run
 
       @family  = res.find_for_job_id(1).to_patent
@@ -34,6 +34,8 @@ module PatentAgent
       @fc      = res.find_for_job_id(3).to_patent
       @ops     = @family
       #fc_patents   = fc.get_full_fc
+      
+      # now get the actual patents from PTO for each family member
       
       result       = [pto, family, fc]
       self
@@ -53,12 +55,9 @@ module PatentAgent
       p "Inventors: #{@pto.inventors}:#{@ops.inventors}"
     end
 
-    def first
-      family[0].to_h || {}
-    end
+    def first; family[0].to_h || {}; end
 
     def family; @family.members || []; end
-
     
     def pto; @pto || []; end
     
@@ -66,6 +65,10 @@ module PatentAgent
       hash = {ops: @family.to_h}
       hash.merge!(pto: pto.to_h)
       hash.merge!(fc: fc)
+    end
+
+    def family_members
+      @family_members ||= f = Fetcher.new(@patent, @family.family_issued).iterate
     end
 
     private

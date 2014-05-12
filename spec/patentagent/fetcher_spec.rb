@@ -9,6 +9,11 @@ module PatentAgent
     it          {should respond_to :parent, :names}
     its(:names) {should have(8).items }
 
+    it "Takes a hash for selecting client" do
+      f = Fetcher.new(parent, nums, client: OpsBiblioClient)
+      f.client.to_s.should eq "PatentAgent::OpsBiblioClient"
+    end
+
     describe "protected methods" do
       before {
         @clients = (0..7).collect{|x|PtoPatentClient.new(nums[x])}

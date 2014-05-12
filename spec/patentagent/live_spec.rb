@@ -11,13 +11,13 @@ module PatentAgent
     let(:pnum)       {"US" + number}
     subject(:patent) {Patent.new(pnum)}
 
-    # before { VCR.eject_cassette; VCR.turn_off!}
-    # PatentAgent.debug = true
-    # pat = Patent.new("7141219")
-    # #pat2 = Patent.new("7141214")
-    # #pp pat.ops.family_issued
-    # pp pat.pto
-    # # #pp pat.fc
-    # # #pp pat.ops
+    before { VCR.eject_cassette; VCR.turn_off!}
+    PatentAgent.debug = false
+    pat = Patent.new("7139271")
+    #pat2 = Patent.new("7141214")
+    #pp pat.ops.family_issued
+    pp pat.family_members.count
+    # #pp pat.fc
+    # #pp pat.ops
   end
 end

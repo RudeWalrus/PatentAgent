@@ -34,6 +34,13 @@ module PatentAgent::OPS
       patent.family_issued.should be_all {|x| x.is_a? String }
     end
 
+    it "#us_family_issued" do
+      patent.us_family_issued.should be_kind_of Array
+      patent.us_family_issued.should have(8).items
+      patent.us_family_issued.should be_all {|x| x.is_a? String }
+      
+    end
+
     its(:family_id) {should eq "37423271"}
 
     it "#map" do
