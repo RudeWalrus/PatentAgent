@@ -27,9 +27,9 @@ module PatentAgent
       end
 
       it "#patent_from_text" do
-        PatentAgent::PTO::PtoPatent.any_instance.stub(:parse).and_return(true)
+        PatentAgent::PTO::Patent.any_instance.stub(:parse).and_return(true)
         patents = fc.send(:patent_from_text, @texts)
-        patents.should be_all {|x| x.is_a? PatentAgent::PTO::PtoPatent}
+        patents.should be_all {|x| x.is_a? PatentAgent::PTO::Patent}
       end
     end
   end

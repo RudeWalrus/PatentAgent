@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    patentagent (0.4.4.pre)
+    patentagent (0.0.5.pre)
       nokogiri (~> 1.5, >= 1.5.6)
       typhoeus (~> 0.6, >= 0.6.8)
 

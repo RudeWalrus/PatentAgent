@@ -2,16 +2,16 @@ require 'spec_helper'
 
 module PatentAgent
   module PTO
-    describe PtoPatent do
+    describe Patent do
       let(:number)           {"6266379"}
       let(:cc)                {"US"}
       let(:patent_num)       {cc + number}
       let(:pnum)             {PatentNumber.new(patent_num)}
       let(:html)             {File.read(File.dirname(__FILE__) + "/../../fixtures/US6266379.html") }
-      subject(:patent)       {PtoPatent.new(pnum, html)}
+      subject(:patent)       {Patent.new(pnum, html)}
       
       describe "#initialize", :vcr do 
-        it                    {should be_kind_of(PtoPatent)}
+        it                    {should be_kind_of(Patent)}
         it                    {should respond_to :patent, :fields, :claims}
       
         its(:patent)           {should be_valid} 
@@ -19,7 +19,7 @@ module PatentAgent
         its("patent.cc")       {should eq cc}
 
         it "invalid patent number raises an error" do
-          PtoPatent.new("MyPatent5555", html).should raise_error
+          Patent.new("MyPatent5555", html).should raise_error
         end
       
         context "Fields:" do

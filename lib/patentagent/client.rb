@@ -77,7 +77,7 @@ module PatentAgent
     # converts itself to a PtoPatent
     #
     def to_patent
-      PTO::PtoPatent.new(patent, text)
+      PTO::Patent.new(patent, text)
     end 
   end
 
